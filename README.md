@@ -1,13 +1,13 @@
+DataSignalGraph.Swift
+=====================
+2015/05/09
+Hoon H.
 
 
 
 
-
-
-
-
-
-
+Provides components to build data signal graphs to define data processing in declarative 
+manner.
 
 
 
@@ -22,8 +22,6 @@ Usage
 -	Make a `~Replication`. These classes work as main data container in this framework.
 	Looks like a bit wired name, but you will see why it named in that way soon.
 
--	Make a `~Proxy` and plug its `.sensor` into replication's `.emitter`. 
-
 
 
 
@@ -37,18 +35,18 @@ Usage
 Type Roles and Hierarchy
 ------------------------
 
--	Gate						Defines in/out signal types.
-	-	Emitter					A stateless signal sender.
-		-	Dispatcher			A initial emitter that exposes a method to send signals actually.
-	-	Sensor					A stateless signal receiver
-		-	Monitor				A terminal sensor.
+-	*Gate*						--	Defines in/out signal types.
+	-	*Emitter*				--	A stateless signal sender.
+		-	*Dispatcher*		--	A initial emitter that exposes a method to send signals actually.
+	-	*Sensor*				--	A stateless signal receiver
+		-	*Monitor*			--	A terminal sensor.
 
--	Storage						A read-only state view that emits state mutation signals.
-	-	Replication				A storage that receives mutation signals to reconstruct state.
+-	*Storage*					--	A read-only state view that emits state mutation signals.
+	-	*Replication*			--	A storage that receives mutation signals to reconstruct state.
 
-See `Protocols.swift` for details. It also serves as a documentation of each concepts.
+See `Protocols.swift` for details. It also serves as a documentation for each concepts.
 
-Emitter/sensor protocols does not define uni/multi casting/catching behaviors.
+Emitter/sensor protocols does not define uni/multi-casting/catching behaviors.
 But implementations can define specific limitations. 
 
 -	`SignalEmitter`				A multicasting emitter. This can fire to multiple sensors.
@@ -78,3 +76,6 @@ There are utility classes you will eventuall need for them.
 
 
 
+License
+-------
+This framework is licensed under "MIT License".
