@@ -114,7 +114,8 @@ public class DictionarySignalSortingArrayMap<K,V,C where K: Hashable, C: Compara
 	///
 	private func findIndexForOrder(c: C) -> Int {
 		if let last = array.state.last {
-			if order(last) >= c {
+			if order(last) < c {
+				println(order(last))
 				return	array.state.count
 			}
 		}

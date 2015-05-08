@@ -76,6 +76,10 @@ There are utility classes you will eventuall need for them.
 
 
 
-License
--------
-This framework is licensed under "MIT License".
+Credits & License
+-----------------
+This framework is written by Hoon H., and licensed under "MIT License".
+
+
+
+
