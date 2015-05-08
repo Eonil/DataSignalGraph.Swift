@@ -42,23 +42,18 @@ extension ArraySignal: CollectionSignalType {
 	}
 }
 
-/////	Represents an atomic transaction.
-/////	Mutations are order-dependent to avoid diff cost and ambiguity.
-//struct ArrayTransaction<T> {
-//	var	mutations	:	[ArrayMutation<T>]
-//}
-//struct ArrayMutation<T> {
-//	var	operation	:	ArrayOperation
-//	var	past		:	(Int,T)
-//	var	future		:	(Int,T)
-//}
-//typealias ArrayOperation	=	IndexCollectionOperation
 
 
 
 
-//extension Array: SignalApplicableCollectionType {
-//}
+
+
+
+
+
+
+
+
 
 
 

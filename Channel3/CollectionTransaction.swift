@@ -139,6 +139,17 @@ private struct Primitives {
 
 
 
+public func + <K,V> (a: CollectionTransaction<K,V>, b: CollectionTransaction<K,V>) -> CollectionTransaction<K,V> {
+	return	CollectionTransaction(mutations: a.mutations + b.mutations)
+}
+
+
+
+
+
+
+
+
 
 
 

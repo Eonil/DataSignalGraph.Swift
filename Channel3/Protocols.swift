@@ -91,6 +91,10 @@ protocol MonitorType: SensorType, NonEmissiveType {
 
 
 
+protocol ViewType {
+	typealias	Emitter: EmitterType
+	var	emitter: Emitter  { get }
+}
 
 ///	Shows a state and emits mutation events of it.
 ///	This is essentially a read-only view of a state.

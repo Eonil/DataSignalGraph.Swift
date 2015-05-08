@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4503AE151AFBC3D8006AB1F0 /* ArrayEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4503AE141AFBC3D8006AB1F0 /* ArrayEditor.swift */; };
+		4503AE191AFCDE1F006AB1F0 /* SignalMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4503AE181AFCDE1F006AB1F0 /* SignalMap.swift */; };
+		4503AE1C1AFCDF71006AB1F0 /* SignalFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4503AE1B1AFCDF71006AB1F0 /* SignalFilter.swift */; };
+		4503AE201AFCE13B006AB1F0 /* DictionarySignalSortingArrayMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4503AE1F1AFCE13B006AB1F0 /* DictionarySignalSortingArrayMap.swift */; };
 		45611FFC1AFB9AAD00E7E5FA /* _junkyard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45611FFB1AFB9AAD00E7E5FA /* _junkyard.swift */; };
 		4563E0451AF8E1D600AA9EA6 /* ValueStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4563E0441AF8E1D600AA9EA6 /* ValueStorage.swift */; };
 		4563E0471AF8E7F300AA9EA6 /* SignalEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4563E0461AF8E7F300AA9EA6 /* SignalEmitter.swift */; };
@@ -38,7 +42,7 @@
 		45D987AF1AF924C2003A5BC0 /* CollectionStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D987AE1AF924C2003A5BC0 /* CollectionStorage.swift */; };
 		45E3F1B31AF8AF570078E7E8 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E3F1B21AF8AF570078E7E8 /* main.swift */; };
 		45E3F1BA1AF8AF600078E7E8 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E3F1B91AF8AF600078E7E8 /* Protocols.swift */; };
-		45E3F1BE1AF8BB820078E7E8 /* xObservatory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E3F1BD1AF8BB820078E7E8 /* xObservatory.swift */; };
+		45E3F1BE1AF8BB820078E7E8 /* _Observatory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E3F1BD1AF8BB820078E7E8 /* _Observatory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -54,6 +58,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4503AE141AFBC3D8006AB1F0 /* ArrayEditor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayEditor.swift; sourceTree = "<group>"; };
+		4503AE181AFCDE1F006AB1F0 /* SignalMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalMap.swift; sourceTree = "<group>"; };
+		4503AE1B1AFCDF71006AB1F0 /* SignalFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalFilter.swift; sourceTree = "<group>"; };
+		4503AE1F1AFCE13B006AB1F0 /* DictionarySignalSortingArrayMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionarySignalSortingArrayMap.swift; sourceTree = "<group>"; };
 		45611FFB1AFB9AAD00E7E5FA /* _junkyard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _junkyard.swift; sourceTree = "<group>"; };
 		4563E0441AF8E1D600AA9EA6 /* ValueStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueStorage.swift; sourceTree = "<group>"; };
 		4563E0461AF8E7F300AA9EA6 /* SignalEmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalEmitter.swift; sourceTree = "<group>"; };
@@ -78,7 +86,7 @@
 		45E3F1AF1AF8AF570078E7E8 /* Channel3 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Channel3; sourceTree = BUILT_PRODUCTS_DIR; };
 		45E3F1B21AF8AF570078E7E8 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		45E3F1B91AF8AF600078E7E8 /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
-		45E3F1BD1AF8BB820078E7E8 /* xObservatory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = xObservatory.swift; sourceTree = "<group>"; };
+		45E3F1BD1AF8BB820078E7E8 /* _Observatory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Observatory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +108,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4563E0581AF8F48E00AA9EA6 /* (transaction signals) */ = {
+		4503AE1A1AFCDE32006AB1F0 /* (stateless signal processing) */ = {
+			isa = PBXGroup;
+			children = (
+				4503AE181AFCDE1F006AB1F0 /* SignalMap.swift */,
+				4503AE1B1AFCDF71006AB1F0 /* SignalFilter.swift */,
+			);
+			name = "(stateless signal processing)";
+			sourceTree = "<group>";
+		};
+		4503AE211AFCE13F006AB1F0 /* (stateful signals processing) */ = {
+			isa = PBXGroup;
+			children = (
+				4503AE1F1AFCE13B006AB1F0 /* DictionarySignalSortingArrayMap.swift */,
+			);
+			name = "(stateful signals processing)";
+			sourceTree = "<group>";
+		};
+		4503AE221AFD043B006AB1F0 /* (concepts) */ = {
+			isa = PBXGroup;
+			children = (
+				45E3F1B91AF8AF600078E7E8 /* Protocols.swift */,
+			);
+			name = "(concepts)";
+			sourceTree = "<group>";
+		};
+		4563E0581AF8F48E00AA9EA6 /* (stateful signals) */ = {
 			isa = PBXGroup;
 			children = (
 				4563E04A1AF8F35600AA9EA6 /* CollectionTransaction.swift */,
@@ -109,9 +142,8 @@
 				4563E04C1AF8F35600AA9EA6 /* ArraySignal.swift */,
 				4563E0541AF8F3F800AA9EA6 /* OrderingTreeSignal.swift */,
 				4563E0561AF8F3FF00AA9EA6 /* OrderlessTreeSignal.swift */,
-				4563E05F1AF8FB4A00AA9EA6 /* (UIKit support) */,
 			);
-			name = "(transaction signals)";
+			name = "(stateful signals)";
 			sourceTree = "<group>";
 		};
 		4563E0591AF8F49700AA9EA6 /* (stateless signaling facilities) */ = {
@@ -131,6 +163,7 @@
 				45D987AC1AF923C0003A5BC0 /* SetStorage.swift */,
 				45D987AA1AF923BB003A5BC0 /* DictionaryStorage.swift */,
 				4563E05B1AF8F4F400AA9EA6 /* ArrayStorage.swift */,
+				4503AE141AFBC3D8006AB1F0 /* ArrayEditor.swift */,
 			);
 			name = "(state containers)";
 			sourceTree = "<group>";
@@ -201,12 +234,15 @@
 			isa = PBXGroup;
 			children = (
 				45E3F1B21AF8AF570078E7E8 /* main.swift */,
-				45E3F1B91AF8AF600078E7E8 /* Protocols.swift */,
-				45611FFB1AFB9AAD00E7E5FA /* _junkyard.swift */,
+				4503AE221AFD043B006AB1F0 /* (concepts) */,
 				4563E0591AF8F49700AA9EA6 /* (stateless signaling facilities) */,
+				4503AE1A1AFCDE32006AB1F0 /* (stateless signal processing) */,
 				4563E05A1AF8F4D400AA9EA6 /* (state containers) */,
-				4563E0581AF8F48E00AA9EA6 /* (transaction signals) */,
-				45E3F1BD1AF8BB820078E7E8 /* xObservatory.swift */,
+				4563E0581AF8F48E00AA9EA6 /* (stateful signals) */,
+				4503AE211AFCE13F006AB1F0 /* (stateful signals processing) */,
+				4563E05F1AF8FB4A00AA9EA6 /* (UIKit support) */,
+				45E3F1BD1AF8BB820078E7E8 /* _Observatory.swift */,
+				45611FFB1AFB9AAD00E7E5FA /* _junkyard.swift */,
 			);
 			path = Channel3;
 			sourceTree = "<group>";
@@ -333,9 +369,13 @@
 				45E3F1B31AF8AF570078E7E8 /* main.swift in Sources */,
 				4563E05E1AF8F7EA00AA9EA6 /* ArrayDiffset.swift in Sources */,
 				4563E0471AF8E7F300AA9EA6 /* SignalEmitter.swift in Sources */,
+				4503AE201AFCE13B006AB1F0 /* DictionarySignalSortingArrayMap.swift in Sources */,
 				4563E04E1AF8F35600AA9EA6 /* CollectionTransaction.swift in Sources */,
 				45611FFC1AFB9AAD00E7E5FA /* _junkyard.swift in Sources */,
-				45E3F1BE1AF8BB820078E7E8 /* xObservatory.swift in Sources */,
+				4503AE1C1AFCDF71006AB1F0 /* SignalFilter.swift in Sources */,
+				4503AE151AFBC3D8006AB1F0 /* ArrayEditor.swift in Sources */,
+				45E3F1BE1AF8BB820078E7E8 /* _Observatory.swift in Sources */,
+				4503AE191AFCDE1F006AB1F0 /* SignalMap.swift in Sources */,
 				4563E04F1AF8F35600AA9EA6 /* SetSignal.swift in Sources */,
 				45E3F1BA1AF8AF600078E7E8 /* Protocols.swift in Sources */,
 				45D987AB1AF923BB003A5BC0 /* DictionaryStorage.swift in Sources */,

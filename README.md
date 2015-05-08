@@ -46,7 +46,7 @@ Type Roles and Hierarchy
 -	Storage						A read-only state view that emits state mutation signals.
 	-	Replication				A storage that receives mutation signals to reconstruct state.
 
-See `Protocols.swift` for final details. It also serves as a documentation of each roles.
+See `Protocols.swift` for details. It also serves as a documentation of each concepts.
 
 Emitter/sensor protocols does not define uni/multi casting/catching behaviors.
 But implementations can define specific limitations. 
@@ -64,7 +64,12 @@ implementation of signal emitter and signal sensor.
 -	`ArrayStorage`				A multiple index/value pair storage. Index is treated as a 
 								specialized key.
 
+There are utility classes you will eventuall need for them.
 
+-	`SignalMap`							Maps a source signals into destination signals.
+-	`SignalFilter`						Filters to select a subset of signals.
+-	`ArrayEditor`						Provides array-like interface to a `ArrayReplication`.
+-	`DictionarySignalSortingArrayMap`	Maps a dictionary signal into a sorted array.
 
 
 

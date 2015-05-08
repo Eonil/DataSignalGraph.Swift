@@ -88,11 +88,10 @@ let	s	=	SignalMonitor<ArraySignal<Int>> { (s: ArraySignal<Int>) -> () in
 		println(s)
 	}
 }
-var	e	=	ArrayEditor<Int>()
-e.emitter.register(s)
-e.emitter.register(c.itemsRepo.sensor)
-e.append(123123)
-
+//var	e	=	ArrayEditor<Int>()
+//e.emitter.register(s)
+//e.emitter.register(c.itemsRepo.sensor)
+//e.append(123123)
 
 
 

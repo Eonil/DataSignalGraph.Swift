@@ -37,6 +37,10 @@ public class SignalMonitor<T>: SignalSensor<T>, MonitorType {
 	typealias	Out		=	()
 	typealias	Signal	=	T
 	
+	public convenience init() {
+		self.init({ _ in () })
+	}
+	
 	public override init(_ handler: T -> ()) {
 		super.init(handler)
 	}
