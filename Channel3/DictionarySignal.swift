@@ -14,32 +14,32 @@ public enum DictionarySignal<K: Hashable,V> {
 	case Transition	(transaction: Transaction)
 	case Termination(snapshot	: Snapshot)						//<	Passes snapshot of current (latest) state.
 }
-extension DictionarySignal: CollectionSignalType {
-	var initiation: Snapshot? {
-		get {
-			switch self {
-			case .Initiation(snapshot: let s):		return	s
-			default:								return	nil
-			}
-		}
-	}
-	var transition: Transaction? {
-		get {
-			switch self {
-			case .Transition(transaction: let s):	return	s
-			default:								return	nil
-			}
-		}
-	}
-	var termination: Snapshot? {
-		get {
-			switch self {
-			case .Termination(snapshot: let s):		return	s
-			default:								return	nil
-			}
-		}
-	}
-}
+//extension DictionarySignal: CollectionSignalType {
+//	var initiation: Snapshot? {
+//		get {
+//			switch self {
+//			case .Initiation(snapshot: let s):		return	s
+//			default:								return	nil
+//			}
+//		}
+//	}
+//	var transition: Transaction? {
+//		get {
+//			switch self {
+//			case .Transition(transaction: let s):	return	s
+//			default:								return	nil
+//			}
+//		}
+//	}
+//	var termination: Snapshot? {
+//		get {
+//			switch self {
+//			case .Termination(snapshot: let s):		return	s
+//			default:								return	nil
+//			}
+//		}
+//	}
+//}
 extension DictionarySignal {
 	func apply(inout d: Dictionary<K,V>?) {
 		switch self {

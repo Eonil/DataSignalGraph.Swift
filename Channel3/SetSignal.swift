@@ -14,32 +14,32 @@ public enum SetSignal<T: Hashable> {
 	case Transition	(transaction: Transaction)
 	case Termination(snapshot	: Snapshot)
 }
-extension SetSignal: CollectionSignalType {
-	var initiation: Snapshot? {
-		get {
-			switch self {
-			case .Initiation(snapshot: let s):		return	s
-			default:								return	nil
-			}
-		}
-	}
-	var transition: Transaction? {
-		get {
-			switch self {
-			case .Transition(transaction: let s):	return	s
-			default:								return	nil
-			}
-		}
-	}
-	var termination: Snapshot? {
-		get {
-			switch self {
-			case .Termination(snapshot: let s):		return	s
-			default:								return	nil
-			}
-		}
-	}
-}
+//extension SetSignal: CollectionSignalType {
+//	var initiation: Snapshot? {
+//		get {
+//			switch self {
+//			case .Initiation(snapshot: let s):		return	s
+//			default:								return	nil
+//			}
+//		}
+//	}
+//	var transition: Transaction? {
+//		get {
+//			switch self {
+//			case .Transition(transaction: let s):	return	s
+//			default:								return	nil
+//			}
+//		}
+//	}
+//	var termination: Snapshot? {
+//		get {
+//			switch self {
+//			case .Termination(snapshot: let s):		return	s
+//			default:								return	nil
+//			}
+//		}
+//	}
+//}
 extension SetSignal {
 	func apply(inout set: Set<T>?) {
 		switch self {
