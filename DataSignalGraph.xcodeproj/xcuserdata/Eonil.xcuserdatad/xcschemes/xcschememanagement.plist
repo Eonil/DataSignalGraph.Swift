@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>DataSignalGraph.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+		<key>DataSignalGraphMobile.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>DataSignalGraphMobileTest.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>4503AE2A1AFDB3D0006AB1F0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4563E0641AF8FCA800AA9EA6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4563E06E1AF8FCA800AA9EA6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>45D934E31AFE4228000EE661</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>45D934ED1AFE4228000EE661</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>45E3F1AE1AF8AF570078E7E8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

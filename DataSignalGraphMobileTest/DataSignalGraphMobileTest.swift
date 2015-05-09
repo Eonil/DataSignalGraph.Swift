@@ -8,7 +8,7 @@
 
 import UIKit
 import XCTest
-import Channel3Mobile
+import DataSignalGraphMobile
 
 class DataSignalGraphMobileTest: XCTestCase {
     
