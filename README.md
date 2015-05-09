@@ -36,9 +36,9 @@ Type Roles and Hierarchy
 ------------------------
 
 -	*Gate*						--	Defines in/out signal types.
-	-	*Emitter*				--	A stateless signal sender.
-		-	*Dispatcher*		--	A initial emitter that exposes a method to send signals actually.
-	-	*Sensor*				--	A stateless signal receiver
+	-	*Emitter*				--	A signal sender.
+		-	*Dispatcher*		--	An initial emitter that exposes a method to send signals actually.
+	-	*Sensor*				--	A signal receiver
 		-	*Monitor*			--	A terminal sensor.
 
 -	*Storage*					--	A read-only state view that emits state mutation signals.

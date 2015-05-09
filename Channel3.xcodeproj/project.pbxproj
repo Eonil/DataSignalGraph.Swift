@@ -10,7 +10,9 @@
 		4503AE151AFBC3D8006AB1F0 /* ArrayEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4503AE141AFBC3D8006AB1F0 /* ArrayEditor.swift */; };
 		4503AE191AFCDE1F006AB1F0 /* SignalMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4503AE181AFCDE1F006AB1F0 /* SignalMap.swift */; };
 		4503AE1C1AFCDF71006AB1F0 /* SignalFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4503AE1B1AFCDF71006AB1F0 /* SignalFilter.swift */; };
-		4503AE201AFCE13B006AB1F0 /* DictionarySignalSortingArrayMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4503AE1F1AFCE13B006AB1F0 /* DictionarySignalSortingArrayMap.swift */; };
+		4503AE201AFCE13B006AB1F0 /* DictionarySignalSortingArrayStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4503AE1F1AFCE13B006AB1F0 /* DictionarySignalSortingArrayStorage.swift */; };
+		4503AE241AFD9431006AB1F0 /* DictionarySignalSubsetDictionaryStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4503AE231AFD9431006AB1F0 /* DictionarySignalSubsetDictionaryStorage.swift */; };
+		4503AE261AFD9EEF006AB1F0 /* DictionaryEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4503AE251AFD9EEF006AB1F0 /* DictionaryEditor.swift */; };
 		45611FFC1AFB9AAD00E7E5FA /* _junkyard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45611FFB1AFB9AAD00E7E5FA /* _junkyard.swift */; };
 		4563E0451AF8E1D600AA9EA6 /* ValueStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4563E0441AF8E1D600AA9EA6 /* ValueStorage.swift */; };
 		4563E0471AF8E7F300AA9EA6 /* SignalEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4563E0461AF8E7F300AA9EA6 /* SignalEmitter.swift */; };
@@ -61,7 +63,9 @@
 		4503AE141AFBC3D8006AB1F0 /* ArrayEditor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayEditor.swift; sourceTree = "<group>"; };
 		4503AE181AFCDE1F006AB1F0 /* SignalMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalMap.swift; sourceTree = "<group>"; };
 		4503AE1B1AFCDF71006AB1F0 /* SignalFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalFilter.swift; sourceTree = "<group>"; };
-		4503AE1F1AFCE13B006AB1F0 /* DictionarySignalSortingArrayMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionarySignalSortingArrayMap.swift; sourceTree = "<group>"; };
+		4503AE1F1AFCE13B006AB1F0 /* DictionarySignalSortingArrayStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionarySignalSortingArrayStorage.swift; sourceTree = "<group>"; };
+		4503AE231AFD9431006AB1F0 /* DictionarySignalSubsetDictionaryStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionarySignalSubsetDictionaryStorage.swift; sourceTree = "<group>"; };
+		4503AE251AFD9EEF006AB1F0 /* DictionaryEditor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryEditor.swift; sourceTree = "<group>"; };
 		45611FFB1AFB9AAD00E7E5FA /* _junkyard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _junkyard.swift; sourceTree = "<group>"; };
 		4563E0441AF8E1D600AA9EA6 /* ValueStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueStorage.swift; sourceTree = "<group>"; };
 		4563E0461AF8E7F300AA9EA6 /* SignalEmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalEmitter.swift; sourceTree = "<group>"; };
@@ -120,7 +124,8 @@
 		4503AE211AFCE13F006AB1F0 /* (stateful signals processing) */ = {
 			isa = PBXGroup;
 			children = (
-				4503AE1F1AFCE13B006AB1F0 /* DictionarySignalSortingArrayMap.swift */,
+				4503AE231AFD9431006AB1F0 /* DictionarySignalSubsetDictionaryStorage.swift */,
+				4503AE1F1AFCE13B006AB1F0 /* DictionarySignalSortingArrayStorage.swift */,
 			);
 			name = "(stateful signals processing)";
 			sourceTree = "<group>";
@@ -162,6 +167,7 @@
 				45D987AE1AF924C2003A5BC0 /* CollectionStorage.swift */,
 				45D987AC1AF923C0003A5BC0 /* SetStorage.swift */,
 				45D987AA1AF923BB003A5BC0 /* DictionaryStorage.swift */,
+				4503AE251AFD9EEF006AB1F0 /* DictionaryEditor.swift */,
 				4563E05B1AF8F4F400AA9EA6 /* ArrayStorage.swift */,
 				4503AE141AFBC3D8006AB1F0 /* ArrayEditor.swift */,
 			);
@@ -369,7 +375,7 @@
 				45E3F1B31AF8AF570078E7E8 /* main.swift in Sources */,
 				4563E05E1AF8F7EA00AA9EA6 /* ArrayDiffset.swift in Sources */,
 				4563E0471AF8E7F300AA9EA6 /* SignalEmitter.swift in Sources */,
-				4503AE201AFCE13B006AB1F0 /* DictionarySignalSortingArrayMap.swift in Sources */,
+				4503AE201AFCE13B006AB1F0 /* DictionarySignalSortingArrayStorage.swift in Sources */,
 				4563E04E1AF8F35600AA9EA6 /* CollectionTransaction.swift in Sources */,
 				45611FFC1AFB9AAD00E7E5FA /* _junkyard.swift in Sources */,
 				4503AE1C1AFCDF71006AB1F0 /* SignalFilter.swift in Sources */,
@@ -387,6 +393,8 @@
 				4563E0551AF8F3F800AA9EA6 /* OrderingTreeSignal.swift in Sources */,
 				45D987AF1AF924C2003A5BC0 /* CollectionStorage.swift in Sources */,
 				4563E0491AF8E86100AA9EA6 /* SignalSensor.swift in Sources */,
+				4503AE261AFD9EEF006AB1F0 /* DictionaryEditor.swift in Sources */,
+				4503AE241AFD9431006AB1F0 /* DictionarySignalSubsetDictionaryStorage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

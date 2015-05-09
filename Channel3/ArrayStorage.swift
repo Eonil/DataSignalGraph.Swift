@@ -35,6 +35,7 @@ public class ArrayStorage<T>: StorageType {
 
 
 
+
 ///	A storage that provides indirect signal based mutator.
 ///
 ///	Collection containers cannot have non-empty initial state because

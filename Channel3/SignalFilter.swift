@@ -8,9 +8,14 @@
 
 class SignalFilter<T> {
 	///	:param:		filter
-	///				Returns `true` is the signal can be passed to next node.
-	///				Returns `false` if the signal should not be passed to next node.
+	///				Returns `true` if the signal can be passed.
+	///				Returns `false` if the signal should not be passed.
 	///
+	///	Though it is recommended to use referentially transparent function,
+	///	you still can use referentially opaque function if you want because
+	///	this object is intended to be used for state-less signal processing.
+	///	Anyway, using of opaque function will make your processing network 
+	///	opaque.
 	init(_ filter: T->Bool) {
 		self.filter		=	filter
 		monitor.handler	=	{ [weak self] v in

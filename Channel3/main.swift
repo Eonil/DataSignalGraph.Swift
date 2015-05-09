@@ -106,7 +106,7 @@ func orderOf(e:(String,String)) -> String {
 }
 
 let	dic1	=	DictionaryReplication<String,String>()
-let	arr2	=	DictionarySignalSortingArrayMap(orderOf)
+let	arr2	=	DictionarySignalSortingArrayStorage(orderOf)
 dic1.emitter.register(arr2.sensor)
 
 typealias	M	=	CollectionTransaction<String, String>.Mutation
@@ -120,7 +120,7 @@ let	t	=	CollectionTransaction(mutations: ms)
 let	s	=	DictionarySignal.Transition(transaction: t)
 
 dic1.sensor.signal(s)
-println(arr2.array.state)
+println(arr2.state)
 
 
 

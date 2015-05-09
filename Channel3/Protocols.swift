@@ -20,7 +20,6 @@ protocol GateType {
 
 
 
-
 ///	A gate that emits signal to multiple sensors.
 protocol EmitterType: GateType {
 	typealias	Signal

@@ -1,25 +1,39 @@
 //
-//  DictionarySignalSortingArrayMap.swift
+//  DictionarySignalSortingArrayStorage.swift
 //  Channel3
 //
 //  Created by Hoon H. on 2015/05/08.
 //  Copyright (c) 2015 Eonil. All rights reserved.
 //
 
-///	Manages a sorted array by sorting a virtual dictionary coming from dictionary signal
-///	in ascending order.
+
+
+///	Manages a sorted array in ascending order by sorting a virtual dictionary derived from
+///	dictionary signal.
 ///	
 ///	The mutation operation needs binary search lookup that costs `O(log N)`.
-///	First/last orders are checked first, so if you're inserting/updating/deleting entries
+///	First/last orders are checked earlier. If you're inserting/updating/deleting entries
 ///	at first/last order, lookup cost will be `O(1)`.
 ///	Anyway this is only lookup cost. Mutation operation itself on the `Array` will just 
 ///	follow mutation cost of the `Array` type. See the type documentation for details.
 ///
-public class DictionarySignalSortingArrayMap<K,V,C where K: Hashable, C: Comparable> {
+public class DictionarySignalSortingArrayStorage<K,V,C where K: Hashable, C: Comparable>: StorageType {
 	
 	///	:param:		order
-	///				Creates a comparable object to be used for sorting the entries.
-	///				This function will be called very frequently, so should be very cheap.
+	///				Creates a comparable order for an entry.
+	///				This class will sort entries using the returning object in ascending
+	///				order.
+	///
+	///				REQUIREMENTS
+	///				------------
+	///				This function must be **referentially transparent**.
+	///				That means same input must produce same output always.
+	///				In other words, do not change internal logic of this while this 
+	///				function is bound to this object.
+	///
+	///				This function should be very cheap because this function will be
+	///				called very frequently, and evaluation result will not be memoized
+	///				at all. (so you can do it yourself if desired)
 	///
 	public init(_ order: (K,V)->C) {
 		self.order				=	order
@@ -36,9 +50,14 @@ public class DictionarySignalSortingArrayMap<K,V,C where K: Hashable, C: Compara
 	
 	///	A reconstructed array from the dictionary signal
 	///	using the ordering.
-	public var array: ArrayStorage<(K,V)> {
+	public var state: [(K,V)] {
 		get {
-			return	replication
+			return	replication.state
+		}
+	}
+	public var emitter: SignalEmitter<ArraySignal<(K,V)>> {
+		get {
+			return	replication.emitter
 		}
 	}
 	
@@ -56,6 +75,9 @@ public class DictionarySignalSortingArrayMap<K,V,C where K: Hashable, C: Compara
 		}
 	}
 	
+	///	Central signal processor.
+	///	Signals will be distributd to a proper subprocessing
+	///	methods by need.
 	private func process(s: DictionarySignal<K,V>) {
 		switch s {
 		case .Initiation(let s):
@@ -73,14 +95,17 @@ public class DictionarySignalSortingArrayMap<K,V,C where K: Hashable, C: Compara
 			}
 		case .Termination(let s):
 			replication.sensor.signal(ArraySignal.Termination(snapshot: replication.state))
+			replication.sensor.signal(ArraySignal.Initiation(snapshot: []))
 //			for e in s {
 //				delete(e)
 //			}
 		}
 	}
-	
-	///	Order between entries must be fully resolved.
-	///	Ambiguous order will produce unstable resulting array.
+
+	///	Order between entries must be fully clean.
+	///	It is your responsibility that ensuring clear ordering.
+	///	Ambiguous order will produce unstable resulting array,
+	///	so do not use it unless it's your intention.
 	private func insert(e: (K,V)) {
 		let	i	=	findIndexForOrder(order(e))
 		var	ed	=	editor
@@ -107,31 +132,33 @@ public class DictionarySignalSortingArrayMap<K,V,C where K: Hashable, C: Compara
 	///
 	///	If there's no existing entry for the order,
 	///	this will return smallest index for an entry that
-	///	has larger order than the supplied order. This is
-	///	proper index to insert a new entry.
+	///	has equals or larger order than the supplied order. 
+	///	This is a proper index to insert a new entry at a 
+	///	proper ascending order.
 	///
 	///	This performs binary search. Should be `O(log N)`.
 	///
 	private func findIndexForOrder(c: C) -> Int {
-		if let last = array.state.last {
+		if let last = state.last {
 			if order(last) < c {
 				println(order(last))
-				return	array.state.count
+				return	state.count
 			}
 		}
 		
 		//	TODO:	Re-implement using binary search.
 		//			The array must always be sorted in ascending order.
-		for i in 0..<array.state.count {
-			let	e	=	array.state[i]
+		for i in 0..<state.count {
+			let	e	=	state[i]
 			let	o	=	order(e)
 			if o >= c {
 				return	i
 			}
 		}
 		
-		//	Don't forget the case where `array.count == 0`.
-		return	array.state.count
+		//	Don't forget the case where `array.count == 0` that
+		//	will not be handled by above.
+		return	state.count
 	}
 }
 

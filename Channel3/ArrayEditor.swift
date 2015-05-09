@@ -10,18 +10,22 @@
 ///	direct mutator method interface.
 public struct ArrayEditor<T> {
 	
-	public weak var	origin: ArrayReplication<T>? 
+	public unowned let	origin: ArrayReplication<T>
+	
+	public init(_ origin: ArrayReplication<T>) {
+		self.origin	=	origin
+	}
 	
 	////
 	
 	public var count: Int {
 		get {
-			return	origin!.state.count
+			return	origin.state.count
 		}
 	}
 	public subscript(i: Int) -> T {
 		get {
-			return	origin!.state[i]
+			return	origin.state[i]
 		}
 		set(v) {
 			replaceRange(i..<i.successor(), with: [v])
@@ -37,8 +41,8 @@ public struct ArrayEditor<T> {
 		removeRange(i..<i.successor())
 	}
 	public mutating func removeAll() {
-		origin!.sensor.signal(ArraySignal.Termination(snapshot: origin!.state))
-		origin!.sensor.signal(ArraySignal.Initiation(snapshot: []))
+		origin.sensor.signal(ArraySignal.Termination(snapshot: origin.state))
+		origin.sensor.signal(ArraySignal.Initiation(snapshot: []))
 	}
 	
 	public mutating func replaceRange<C : CollectionType where C.Generator.Element == T>(subRange: Range<Int>, with newElements: C) {
@@ -48,8 +52,8 @@ public struct ArrayEditor<T> {
 	}
 	public mutating func splice<S : CollectionType where S.Generator.Element == T>(newElements: S, atIndex i: Int) {
 		if i == 0 && count == 0 {
-			origin!.sensor.signal(ArraySignal.Termination(snapshot: []))
-			origin!.sensor.signal(ArraySignal.Initiation(snapshot: Array(newElements)))
+			origin.sensor.signal(ArraySignal.Termination(snapshot: []))
+			origin.sensor.signal(ArraySignal.Initiation(snapshot: Array(newElements)))
 		} else {
 			dispatchMutations(insertSequenceMutations(newElements, at: i))
 		}
@@ -106,15 +110,10 @@ public struct ArrayEditor<T> {
 	private func dispatchMutations(ms: [M]) {
 		let	t	=	CollectionTransaction(mutations: ms)
 		let	s	=	ArraySignal.Transition(transaction: t)
-		origin!.sensor.signal(s)
+		origin.sensor.signal(s)
 	}
 }
 
-public extension ArrayEditor {
-	init(_ origin: ArrayReplication<T>) {
-		self.origin	=	origin
-	}
-}
 
 
 
