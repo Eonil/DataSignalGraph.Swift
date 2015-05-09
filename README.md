@@ -1,4 +1,4 @@
-DataSignalGraph.Swift
+SignalGraph.Swift
 =====================
 2015/05/09
 Hoon H.
