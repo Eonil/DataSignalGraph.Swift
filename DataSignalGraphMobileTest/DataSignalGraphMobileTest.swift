@@ -70,20 +70,19 @@ class DataSignalGraphMobileTest: XCTestCase {
 		XCTAssert(ss == [111,333])
 	}
 	
-//	func testValueReplication() {
-//		let	v	=	ValueReplication<Int>(111)
-//		XCTAssert(v.state == 111)
-//		
-//		let	d	=	SignalDispatcher<Int>()
-//		d.register(v.sensor)
-//		d.signal(333)
-//		XCTAssert(v.state == 333)
-//		d.signal(888)
-//		XCTAssert(v.state == 888)
-//		d.deregister(v.sensor)
-//		d.signal(444)
-//		XCTAssert(v.state == 888)
-//	}
+	func testValueReplication() {
+		let	v	=	ValueReplication<Int>()
+		let	d	=	SignalDispatcher<ValueSignal<Int>>()
+		d.register(v.sensor)
+		d.signal(ValueSignal.Initiation({0}))
+		d.signal(ValueSignal.Transition({333}))
+		XCTAssert(v.state == 333)
+		d.signal(ValueSignal.Transition({888}))
+		XCTAssert(v.state == 888)
+		d.deregister(v.sensor)
+		d.signal(ValueSignal.Transition({444}))
+		XCTAssert(v.state == 888)
+	}
 	
 	func testArrayEditorAndReplication() {
 		let	a	=	ArrayReplication<Int>()
