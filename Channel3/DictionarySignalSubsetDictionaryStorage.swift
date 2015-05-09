@@ -30,7 +30,7 @@ public class DictionarySignalSubsetDictionaryStorage<K: Hashable,V>: StorageType
 	///				called very frequently, and evaluation result will not be memoized
 	///				at all. (so you can do it yourself if desired)
 	///
-	init(_ filter: (K,V) -> Bool) {
+	public init(_ filter: (K,V) -> Bool) {
 		self.filter		=	filter
 		monitor.handler	=	{ [unowned self] s in self.process(s) }
 	}
@@ -76,7 +76,9 @@ public class DictionarySignalSubsetDictionaryStorage<K: Hashable,V>: StorageType
 				let	ts	=	(m.past == nil, m.future == nil)
 				switch ts {
 				case (true, false):
-					insert(m.identity, m.future!)
+					if filter(m.identity, m.future!) {
+						insert(m.identity, m.future!)
+					}
 					
 				case (false, false):
 					let	fs	=	(filter(m.identity, m.past!), filter(m.identity, m.future!))
@@ -99,12 +101,20 @@ public class DictionarySignalSubsetDictionaryStorage<K: Hashable,V>: StorageType
 						//	Treat it as a delete.
 						delete(m.identity)
 						
+					case (false, false):
+						//	Both of past and future values 
+						//	are filtered out.
+						//	Just ignore it.
+						()
+						
 					default:
 						fatalError("Unsupported filtering state combination `\(fs)`.")
 						
 					}
 				case (false, true):
-					delete(m.identity)
+					if filter(m.identity, m.past!) {
+						delete(m.identity)
+					}
 					
 				default:
 					fatalError("Unsupported value transiation entry combination `\(ts)`.")

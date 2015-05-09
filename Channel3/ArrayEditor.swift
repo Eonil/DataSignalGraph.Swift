@@ -34,6 +34,11 @@ public struct ArrayEditor<T> {
 	public mutating func append(v: T) {
 		insert(v, atIndex: count)
 	}
+	public mutating func extend<S: SequenceType where S.Generator.Element == T>(vs: S) {
+		//	TODO:	Review cost of making the array...
+		//			Would it require enumeration of all elements?
+		splice(Array(vs), atIndex: count)
+	}
 	public mutating func insert(v: T, atIndex i: Int) {
 		splice([v], atIndex: i)
 	}

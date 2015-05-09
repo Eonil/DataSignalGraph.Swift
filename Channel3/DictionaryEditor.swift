@@ -29,12 +29,19 @@ public struct DictionaryEditor<K: Hashable,V> {
 			//	TODO:	Find out behavior in case of `v == nil`
 			//			and define a proper behavior.
 			assert(v != nil, "The value `v` should not be a `nil`. Operation is not defined yet.")
-			updateMutation(k, v!)
+			if let _ = origin.state[k] {
+				let	ms	=	[updateMutation(k, v!)]
+				dispatchMutations(ms)
+			} else {
+				let	ms	=	[insertMutation(k, v!)]
+				dispatchMutations(ms)
+			}
 		}
 	}
 	public mutating func removeValueForKey(k: K) -> V? {
 		let	v	=	origin.state[k]
-		deleteMutation(k)
+		let	ms	=	[deleteMutation(k)]
+		dispatchMutations(ms)
 		return	v
 	}
 	public mutating func removeAll() {
@@ -47,12 +54,15 @@ public struct DictionaryEditor<K: Hashable,V> {
 	private typealias	M	=	CollectionTransaction<K,V>.Mutation
 	
 	private func insertMutation(k: K, _ v: V) -> M {
+		assert(self[k] == nil, "You cannot make an insert mutation for key `\(k)` because there's a value `\(self[k]!)` registered with the key.")
 		return	M(k, nil, v)
 	}
 	private func updateMutation(k: K, _ v: V) -> M {
+		assert(self[k] != nil, "You cannot make an update mutation for key `\(k)` because there's no value registered with the key.")
 		return	M(k, self[k], v)
 	}
 	private func deleteMutation(k: K) -> M {
+		assert(self[k] != nil, "You cannot make an delete mutation for key `\(k)` because there's no value registered with the key.")
 		return	M(k, self[k], nil)
 	}
 	private func dispatchMutations(ms: [M]) {

@@ -88,8 +88,8 @@ public class DictionarySignalSortingArrayStorage<K,V,C where K: Hashable, C: Com
 			for m in s.mutations {
 				switch (m.past == nil, m.future == nil) {
 				case (true, false):		insert(m.identity, m.future!)
-				case (false, false):	update(m.identity, m.future!)
-				case (false, true):		delete(m.identity, m.future!)
+				case (false, false):	update(m.identity, m.past!, m.future!)
+				case (false, true):		delete(m.identity, m.past!)
 				default:				fatalError("Unsupported mutation pattern. This shouldn't be exist.")
 				}
 			}
@@ -112,11 +112,18 @@ public class DictionarySignalSortingArrayStorage<K,V,C where K: Hashable, C: Com
 		precondition(i == ed.count || ed[i].0 != e.0, "There should be no equal existing key.")
 		ed.insert(e, atIndex: i)
 	}
-	private func update(e: (K,V)) {
-		let	i	=	findIndexForOrder(order(e))
+	///	Sorting index is resolved by pair of key and value, 
+	///	and can be changed after value changed.
+	private func update(e: (K,V,V)) {
+		let	i0	=	findIndexForOrder(order(e.0, e.1))
 		var	ed	=	editor
-		precondition(ed[i].0 == e.0, "Keys must be matched.")
-		ed[i]	=	e
+		precondition(ed[i0].0 == e.0, "Keys must be matched.")
+		ed.removeAtIndex(i0)
+		
+		//	Index resolution is execution order dependent.
+		//	Resolve it after removing finished.
+		let	i1	=	findIndexForOrder(order(e.0, e.2))
+		ed.insert((e.0, e.2), atIndex: i1)
 	}
 	private func delete(e: (K,V)) {
 		let	i	=	findIndexForOrder(order(e))

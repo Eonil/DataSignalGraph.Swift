@@ -13,6 +13,17 @@
 		4503AE201AFCE13B006AB1F0 /* DictionarySignalSortingArrayStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4503AE1F1AFCE13B006AB1F0 /* DictionarySignalSortingArrayStorage.swift */; };
 		4503AE241AFD9431006AB1F0 /* DictionarySignalSubsetDictionaryStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4503AE231AFD9431006AB1F0 /* DictionarySignalSubsetDictionaryStorage.swift */; };
 		4503AE261AFD9EEF006AB1F0 /* DictionaryEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4503AE251AFD9EEF006AB1F0 /* DictionaryEditor.swift */; };
+		4503AE301AFDB3D0006AB1F0 /* DataSignalGraphMobileTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4503AE2F1AFDB3D0006AB1F0 /* DataSignalGraphMobileTest.swift */; };
+		4503AE311AFDB3D0006AB1F0 /* Channel3Mobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4563E0651AF8FCA800AA9EA6 /* Channel3Mobile.framework */; };
+		4503AE371AFDB95A006AB1F0 /* ArrayEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4503AE141AFBC3D8006AB1F0 /* ArrayEditor.swift */; };
+		4503AE381AFDB95E006AB1F0 /* DictionarySignalSubsetDictionaryStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4503AE231AFD9431006AB1F0 /* DictionarySignalSubsetDictionaryStorage.swift */; };
+		4503AE391AFDB95E006AB1F0 /* DictionarySignalSortingArrayStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4503AE1F1AFCE13B006AB1F0 /* DictionarySignalSortingArrayStorage.swift */; };
+		4503AE3A1AFDB96D006AB1F0 /* SignalMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4503AE181AFCDE1F006AB1F0 /* SignalMap.swift */; };
+		4503AE3B1AFDB96D006AB1F0 /* SignalFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4503AE1B1AFCDF71006AB1F0 /* SignalFilter.swift */; };
+		4503AE3C1AFDB96D006AB1F0 /* CollectionStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D987AE1AF924C2003A5BC0 /* CollectionStorage.swift */; };
+		4503AE3D1AFDB96D006AB1F0 /* SetStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D987AC1AF923C0003A5BC0 /* SetStorage.swift */; };
+		4503AE3E1AFDB96D006AB1F0 /* DictionaryStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D987AA1AF923BB003A5BC0 /* DictionaryStorage.swift */; };
+		4503AE3F1AFDB96D006AB1F0 /* DictionaryEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4503AE251AFD9EEF006AB1F0 /* DictionaryEditor.swift */; };
 		45611FFC1AFB9AAD00E7E5FA /* _junkyard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45611FFB1AFB9AAD00E7E5FA /* _junkyard.swift */; };
 		4563E0451AF8E1D600AA9EA6 /* ValueStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4563E0441AF8E1D600AA9EA6 /* ValueStorage.swift */; };
 		4563E0471AF8E7F300AA9EA6 /* SignalEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4563E0461AF8E7F300AA9EA6 /* SignalEmitter.swift */; };
@@ -47,6 +58,16 @@
 		45E3F1BE1AF8BB820078E7E8 /* _Observatory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E3F1BD1AF8BB820078E7E8 /* _Observatory.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		4503AE321AFDB3D0006AB1F0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 45E3F1A71AF8AF560078E7E8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4563E0641AF8FCA800AA9EA6;
+			remoteInfo = Channel3Mobile;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		45E3F1AD1AF8AF570078E7E8 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -66,6 +87,9 @@
 		4503AE1F1AFCE13B006AB1F0 /* DictionarySignalSortingArrayStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionarySignalSortingArrayStorage.swift; sourceTree = "<group>"; };
 		4503AE231AFD9431006AB1F0 /* DictionarySignalSubsetDictionaryStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionarySignalSubsetDictionaryStorage.swift; sourceTree = "<group>"; };
 		4503AE251AFD9EEF006AB1F0 /* DictionaryEditor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryEditor.swift; sourceTree = "<group>"; };
+		4503AE2B1AFDB3D0006AB1F0 /* DataSignalGraphMobileTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DataSignalGraphMobileTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4503AE2E1AFDB3D0006AB1F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4503AE2F1AFDB3D0006AB1F0 /* DataSignalGraphMobileTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSignalGraphMobileTest.swift; sourceTree = "<group>"; };
 		45611FFB1AFB9AAD00E7E5FA /* _junkyard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _junkyard.swift; sourceTree = "<group>"; };
 		4563E0441AF8E1D600AA9EA6 /* ValueStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueStorage.swift; sourceTree = "<group>"; };
 		4563E0461AF8E7F300AA9EA6 /* SignalEmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalEmitter.swift; sourceTree = "<group>"; };
@@ -81,8 +105,6 @@
 		4563E0651AF8FCA800AA9EA6 /* Channel3Mobile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Channel3Mobile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4563E0681AF8FCA800AA9EA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4563E0691AF8FCA800AA9EA6 /* Channel3Mobile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Channel3Mobile.h; sourceTree = "<group>"; };
-		4563E0751AF8FCA800AA9EA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4563E0761AF8FCA800AA9EA6 /* Channel3MobileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel3MobileTests.swift; sourceTree = "<group>"; };
 		4563E08A1AF8FE4700AA9EA6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		45D987AA1AF923BB003A5BC0 /* DictionaryStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryStorage.swift; sourceTree = "<group>"; };
 		45D987AC1AF923C0003A5BC0 /* SetStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetStorage.swift; sourceTree = "<group>"; };
@@ -94,6 +116,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		4503AE281AFDB3D0006AB1F0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4503AE311AFDB3D0006AB1F0 /* Channel3Mobile.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4563E0611AF8FCA800AA9EA6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -130,12 +160,29 @@
 			name = "(stateful signals processing)";
 			sourceTree = "<group>";
 		};
-		4503AE221AFD043B006AB1F0 /* (concepts) */ = {
+		4503AE221AFD043B006AB1F0 /* (core concepts) */ = {
 			isa = PBXGroup;
 			children = (
 				45E3F1B91AF8AF600078E7E8 /* Protocols.swift */,
 			);
-			name = "(concepts)";
+			name = "(core concepts)";
+			sourceTree = "<group>";
+		};
+		4503AE2C1AFDB3D0006AB1F0 /* DataSignalGraphMobileTest */ = {
+			isa = PBXGroup;
+			children = (
+				4503AE2F1AFDB3D0006AB1F0 /* DataSignalGraphMobileTest.swift */,
+				4503AE2D1AFDB3D0006AB1F0 /* Supporting Files */,
+			);
+			path = DataSignalGraphMobileTest;
+			sourceTree = "<group>";
+		};
+		4503AE2D1AFDB3D0006AB1F0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4503AE2E1AFDB3D0006AB1F0 /* Info.plist */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		4563E0581AF8F48E00AA9EA6 /* (stateful signals) */ = {
@@ -199,30 +246,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		4563E0731AF8FCA800AA9EA6 /* Channel3MobileTests */ = {
-			isa = PBXGroup;
-			children = (
-				4563E0761AF8FCA800AA9EA6 /* Channel3MobileTests.swift */,
-				4563E0741AF8FCA800AA9EA6 /* Supporting Files */,
-			);
-			path = Channel3MobileTests;
-			sourceTree = "<group>";
-		};
-		4563E0741AF8FCA800AA9EA6 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				4563E0751AF8FCA800AA9EA6 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		45E3F1A61AF8AF560078E7E8 = {
 			isa = PBXGroup;
 			children = (
 				4563E08A1AF8FE4700AA9EA6 /* UIKit.framework */,
 				45E3F1B11AF8AF570078E7E8 /* Channel3 */,
 				4563E0661AF8FCA800AA9EA6 /* Channel3Mobile */,
-				4563E0731AF8FCA800AA9EA6 /* Channel3MobileTests */,
+				4503AE2C1AFDB3D0006AB1F0 /* DataSignalGraphMobileTest */,
 				45E3F1B01AF8AF570078E7E8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -232,6 +262,7 @@
 			children = (
 				45E3F1AF1AF8AF570078E7E8 /* Channel3 */,
 				4563E0651AF8FCA800AA9EA6 /* Channel3Mobile.framework */,
+				4503AE2B1AFDB3D0006AB1F0 /* DataSignalGraphMobileTest.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -240,7 +271,7 @@
 			isa = PBXGroup;
 			children = (
 				45E3F1B21AF8AF570078E7E8 /* main.swift */,
-				4503AE221AFD043B006AB1F0 /* (concepts) */,
+				4503AE221AFD043B006AB1F0 /* (core concepts) */,
 				4563E0591AF8F49700AA9EA6 /* (stateless signaling facilities) */,
 				4503AE1A1AFCDE32006AB1F0 /* (stateless signal processing) */,
 				4563E05A1AF8F4D400AA9EA6 /* (state containers) */,
@@ -267,6 +298,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		4503AE2A1AFDB3D0006AB1F0 /* DataSignalGraphMobileTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4503AE341AFDB3D0006AB1F0 /* Build configuration list for PBXNativeTarget "DataSignalGraphMobileTest" */;
+			buildPhases = (
+				4503AE271AFDB3D0006AB1F0 /* Sources */,
+				4503AE281AFDB3D0006AB1F0 /* Frameworks */,
+				4503AE291AFDB3D0006AB1F0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4503AE331AFDB3D0006AB1F0 /* PBXTargetDependency */,
+			);
+			name = DataSignalGraphMobileTest;
+			productName = DataSignalGraphMobileTest;
+			productReference = 4503AE2B1AFDB3D0006AB1F0 /* DataSignalGraphMobileTest.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		4563E0641AF8FCA800AA9EA6 /* Channel3Mobile */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4563E0781AF8FCA800AA9EA6 /* Build configuration list for PBXNativeTarget "Channel3Mobile" */;
@@ -311,6 +360,9 @@
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = Eonil;
 				TargetAttributes = {
+					4503AE2A1AFDB3D0006AB1F0 = {
+						CreatedOnToolsVersion = 6.3.1;
+					};
 					4563E0641AF8FCA800AA9EA6 = {
 						CreatedOnToolsVersion = 6.3.1;
 					};
@@ -333,11 +385,19 @@
 			targets = (
 				45E3F1AE1AF8AF570078E7E8 /* Channel3 */,
 				4563E0641AF8FCA800AA9EA6 /* Channel3Mobile */,
+				4503AE2A1AFDB3D0006AB1F0 /* DataSignalGraphMobileTest */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		4503AE291AFDB3D0006AB1F0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4563E0631AF8FCA800AA9EA6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -348,6 +408,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		4503AE271AFDB3D0006AB1F0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4503AE301AFDB3D0006AB1F0 /* DataSignalGraphMobileTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4563E0601AF8FCA800AA9EA6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -358,12 +426,21 @@
 				4563E07F1AF8FCBD00AA9EA6 /* SignalEmitter.swift in Sources */,
 				4563E07E1AF8FCBD00AA9EA6 /* Protocols.swift in Sources */,
 				4563E0891AF8FCBD00AA9EA6 /* ArrayDiffset.swift in Sources */,
+				4503AE3A1AFDB96D006AB1F0 /* SignalMap.swift in Sources */,
 				4563E0831AF8FCBD00AA9EA6 /* CollectionTransaction.swift in Sources */,
+				4503AE381AFDB95E006AB1F0 /* DictionarySignalSubsetDictionaryStorage.swift in Sources */,
+				4503AE3C1AFDB96D006AB1F0 /* CollectionStorage.swift in Sources */,
+				4503AE3B1AFDB96D006AB1F0 /* SignalFilter.swift in Sources */,
 				4563E0811AF8FCBD00AA9EA6 /* ValueStorage.swift in Sources */,
 				4563E0871AF8FCBD00AA9EA6 /* OrderingTreeSignal.swift in Sources */,
+				4503AE3E1AFDB96D006AB1F0 /* DictionaryStorage.swift in Sources */,
 				4563E0841AF8FCBD00AA9EA6 /* SetSignal.swift in Sources */,
 				4563E0861AF8FCBD00AA9EA6 /* DictionarySignal.swift in Sources */,
 				4563E0881AF8FCBD00AA9EA6 /* OrderlessTreeSignal.swift in Sources */,
+				4503AE3D1AFDB96D006AB1F0 /* SetStorage.swift in Sources */,
+				4503AE371AFDB95A006AB1F0 /* ArrayEditor.swift in Sources */,
+				4503AE3F1AFDB96D006AB1F0 /* DictionaryEditor.swift in Sources */,
+				4503AE391AFDB95E006AB1F0 /* DictionarySignalSortingArrayStorage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,7 +477,51 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		4503AE331AFDB3D0006AB1F0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4563E0641AF8FCA800AA9EA6 /* Channel3Mobile */;
+			targetProxy = 4503AE321AFDB3D0006AB1F0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		4503AE351AFDB3D0006AB1F0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = DataSignalGraphMobileTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		4503AE361AFDB3D0006AB1F0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = DataSignalGraphMobileTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		4563E0791AF8FCA800AA9EA6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -546,6 +667,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		4503AE341AFDB3D0006AB1F0 /* Build configuration list for PBXNativeTarget "DataSignalGraphMobileTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4503AE351AFDB3D0006AB1F0 /* Debug */,
+				4503AE361AFDB3D0006AB1F0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4563E0781AF8FCA800AA9EA6 /* Build configuration list for PBXNativeTarget "Channel3Mobile" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

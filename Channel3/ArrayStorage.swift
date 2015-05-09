@@ -16,7 +16,7 @@
 public class ArrayStorage<T>: StorageType {
 	public typealias	Element	=	T
 	
-	internal(set) var	state: [T] = []
+	public internal(set) var	state: [T] = []
 	
 	public var emitter: SignalEmitter<ArraySignal<T>> {
 		get {

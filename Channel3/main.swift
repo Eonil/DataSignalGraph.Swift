@@ -100,7 +100,6 @@ println("Hello, World!")
 //
 //
 
-
 func orderOf(e:(String,String)) -> String {
 	return	e.0
 }
@@ -111,9 +110,12 @@ dic1.emitter.register(arr2.sensor)
 
 typealias	M	=	CollectionTransaction<String, String>.Mutation
 let			ms	=	[
+	M("E", nil, "Erase"),
 	M("A", nil, "Apple"),
 	M("C", nil, "Crap"),
 	M("B", nil, "Blues"),
+	M("F", nil, "Flexibility"),
+	M("D", nil, "Depth"),
 ]
 
 let	t	=	CollectionTransaction(mutations: ms)
@@ -121,6 +123,7 @@ let	s	=	DictionarySignal.Transition(transaction: t)
 
 dic1.sensor.signal(s)
 println(arr2.state)
+assert(arr2.state.map({$0.0}) == ["A","B","C","D","E","F"])
 
 
 

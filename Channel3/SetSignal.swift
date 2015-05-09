@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Eonil. All rights reserved.
 //
 
-
+///	**WARNING**: Not tested yet.
 public enum SetSignal<T: Hashable> {
 	typealias	Snapshot	=	Set<T>
 	typealias	Transaction	=	CollectionTransaction<T,()>

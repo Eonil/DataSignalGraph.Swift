@@ -9,28 +9,14 @@
          <BuildActionEntry
             buildForTesting = "YES"
             buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4563E0641AF8FCA800AA9EA6"
-               BuildableName = "Channel3Mobile.framework"
-               BlueprintName = "Channel3Mobile"
-               ReferencedContainer = "container:Channel3.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
             buildForProfiling = "NO"
             buildForArchiving = "NO"
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4563E06E1AF8FCA800AA9EA6"
-               BuildableName = "Channel3MobileTests.xctest"
-               BlueprintName = "Channel3MobileTests"
+               BlueprintIdentifier = "4503AE2A1AFDB3D0006AB1F0"
+               BuildableName = "DataSignalGraphMobileTest.xctest"
+               BlueprintName = "DataSignalGraphMobileTest"
                ReferencedContainer = "container:Channel3.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -46,9 +32,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4563E06E1AF8FCA800AA9EA6"
-               BuildableName = "Channel3MobileTests.xctest"
-               BlueprintName = "Channel3MobileTests"
+               BlueprintIdentifier = "4503AE2A1AFDB3D0006AB1F0"
+               BuildableName = "DataSignalGraphMobileTest.xctest"
+               BlueprintName = "DataSignalGraphMobileTest"
                ReferencedContainer = "container:Channel3.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -56,9 +42,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "45E3F1AE1AF8AF570078E7E8"
-            BuildableName = "Channel3"
-            BlueprintName = "Channel3"
+            BlueprintIdentifier = "4503AE2A1AFDB3D0006AB1F0"
+            BuildableName = "DataSignalGraphMobileTest.xctest"
+            BlueprintName = "DataSignalGraphMobileTest"
             ReferencedContainer = "container:Channel3.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -72,16 +58,15 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "45E3F1AE1AF8AF570078E7E8"
-            BuildableName = "Channel3"
-            BlueprintName = "Channel3"
+            BlueprintIdentifier = "4503AE2A1AFDB3D0006AB1F0"
+            BuildableName = "DataSignalGraphMobileTest.xctest"
+            BlueprintName = "DataSignalGraphMobileTest"
             ReferencedContainer = "container:Channel3.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -94,9 +79,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4563E0641AF8FCA800AA9EA6"
-            BuildableName = "Channel3Mobile.framework"
-            BlueprintName = "Channel3Mobile"
+            BlueprintIdentifier = "4503AE2A1AFDB3D0006AB1F0"
+            BuildableName = "DataSignalGraphMobileTest.xctest"
+            BlueprintName = "DataSignalGraphMobileTest"
             ReferencedContainer = "container:Channel3.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

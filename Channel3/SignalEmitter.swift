@@ -8,6 +8,16 @@
 
 
 public class SignalEmitter<T>: EmitterType {
+	
+	public func register(sensor: SignalSensor<T>) {
+		self.registerImpl(sensor)
+	}
+	public func deregister(sensor: SignalSensor<T>) {
+		self.deregisterImpl(sensor)
+	}
+	
+	////
+	
 	typealias	In		=	()
 	typealias	Out		=	T
 	typealias	Signal	=	T

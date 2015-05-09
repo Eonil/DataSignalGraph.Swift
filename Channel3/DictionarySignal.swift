@@ -75,13 +75,16 @@ extension Dictionary {
 				switch (m.past != nil, m.future != nil) {
 				case (false, true):
 					//	Insert.
+					assert(self[m.identity] == nil, "There should be no existing value for the key `\(m.identity)`, but there's an existing value `\(self[m.identity]!)` for the key.")
 					self[m.identity]	=	m.future
 					
 				case (true, true):
 					//	Update.
+					assert(self[m.identity] != nil, "There should be an existing value for the key `\(m.identity)`, but there's none.")
 					self[m.identity]	=	m.future
 					
 				case (true, false):
+					assert(self[m.identity] != nil, "There should be an existing value for the key `\(m.identity)`, but there's none.")
 					//	Delete.
 					self.removeValueForKey(m.identity)
 					
