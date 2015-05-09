@@ -22,11 +22,6 @@ public class SignalEmitter<T>: EmitterType {
 	typealias	Out		=	T
 	typealias	Signal	=	T
 	
-	var numberOfRegistration: Int {
-		get {
-			return	sensors.count
-		}
-	}
 	func register<S: SensorType where S.Signal == Signal>(sensor: S) {
 		registerImpl(sensor)
 	}

@@ -7,16 +7,20 @@
 //
 
 class Debugging {
+	///	Tracks emitter/sensor registration states globally.
+	///	
+	///	TOOD:	Consider thread safety.
+	///
 	struct EmitterSensorRegistration {
 		typealias	Pair	=	(emitter: AnyObject, sensor: AnyObject)
 		static func assertRegistrationOfStatefulChannelingSignaling(p: Pair) {
 			assert(Debugging.EmitterSensorRegistration.lookupPairWithSensor(p.sensor) == nil, "Specified sensor `\(p.sensor)` must be a state-ful channeling sensor, so it can be connected to only one emitter at a time.")
-			recordPair(p)
+			runOnlyInDebugMode { recordPair(p) }
 		}
 		static func assertDeregistrationOfStatefulChannelingSignaling(p: Pair) {
 			assert(lookupPairWithSensor(p.sensor) != nil)
 			assert(lookupPairWithSensor(p.sensor)!.emitter === p.emitter, "The only registered emitter of the sensor `\(p.sensor)` must be emitter `\(p.emitter)`.")
-			erasePair(p)
+			runOnlyInDebugMode { erasePair(p) }
 		}
 		
 		////
@@ -37,3 +41,11 @@ class Debugging {
 	}
 }
 
+private func runOnlyInDebugMode(@noescape f: ()->()) {
+	assert(runAsTrue(f))
+}
+
+private func runAsTrue(@noescape f: ()->()) -> Bool {
+	f()
+	return	true
+}
