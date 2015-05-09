@@ -67,7 +67,6 @@
 		45F03A231AFE144800B14678 /* ArraySlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F03A221AFE144800B14678 /* ArraySlot.swift */; };
 		45F03A241AFE168C00B14678 /* ArraySlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F03A221AFE144800B14678 /* ArraySlot.swift */; };
 		45F03A251AFE168E00B14678 /* DictionarySlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F03A201AFE11CC00B14678 /* DictionarySlot.swift */; };
-		45F03A271AFE18CE00B14678 /* AsynchronousProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F03A261AFE18CE00B14678 /* AsynchronousProtocols.swift */; };
 		45F03A2A1AFE190800B14678 /* Spawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F03A291AFE190800B14678 /* Spawn.swift */; };
 		45F03A2B1AFE192F00B14678 /* Spawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F03A291AFE190800B14678 /* Spawn.swift */; };
 		45F03A2D1AFE1E4800B14678 /* Wait.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F03A2C1AFE1E4800B14678 /* Wait.swift */; };
@@ -135,7 +134,6 @@
 		45E3F1BD1AF8BB820078E7E8 /* _Observatory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Observatory.swift; sourceTree = "<group>"; };
 		45F03A201AFE11CC00B14678 /* DictionarySlot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionarySlot.swift; sourceTree = "<group>"; };
 		45F03A221AFE144800B14678 /* ArraySlot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArraySlot.swift; sourceTree = "<group>"; };
-		45F03A261AFE18CE00B14678 /* AsynchronousProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsynchronousProtocols.swift; sourceTree = "<group>"; };
 		45F03A291AFE190800B14678 /* Spawn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spawn.swift; sourceTree = "<group>"; };
 		45F03A2C1AFE1E4800B14678 /* Wait.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wait.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -190,7 +188,6 @@
 			isa = PBXGroup;
 			children = (
 				45E3F1B91AF8AF600078E7E8 /* Protocols.swift */,
-				45F03A261AFE18CE00B14678 /* AsynchronousProtocols.swift */,
 			);
 			name = "(core concepts)";
 			sourceTree = "<group>";
@@ -500,7 +497,6 @@
 				4563E05C1AF8F4F400AA9EA6 /* ArrayStorage.swift in Sources */,
 				45E3F1B31AF8AF570078E7E8 /* main.swift in Sources */,
 				4563E05E1AF8F7EA00AA9EA6 /* ArrayDiffset.swift in Sources */,
-				45F03A271AFE18CE00B14678 /* AsynchronousProtocols.swift in Sources */,
 				4563E0471AF8E7F300AA9EA6 /* SignalEmitter.swift in Sources */,
 				4503AE201AFCE13B006AB1F0 /* DictionarySortingArrayStorage.swift in Sources */,
 				4563E04E1AF8F35600AA9EA6 /* CollectionTransaction.swift in Sources */,

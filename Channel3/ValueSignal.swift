@@ -15,3 +15,13 @@ public enum ValueSignal<T> {
 	case Termination(Snapshot)
 }
 
+
+public func == <T: Equatable> (a: ValueSignal<T>, b: ValueSignal<T>) -> Bool {
+	switch (a, b) {
+	case (.Initiation(let a1), .Initiation(let b1)):		return	a1() == b1()
+	case (.Transition(let a1), .Transition(let b1)):		return	a1() == b1()
+	case (.Termination(let a1), .Termination(let b1)):		return	a1() == b1()
+	default:												return	false
+	}
+}
+

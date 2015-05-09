@@ -138,11 +138,54 @@ private struct Primitives {
 
 
 
-
+///	Non-commutative.
 public func + <K,V> (a: CollectionTransaction<K,V>, b: CollectionTransaction<K,V>) -> CollectionTransaction<K,V> {
 	return	CollectionTransaction(mutations: a.mutations + b.mutations)
 }
 
+
+
+public func == <K: Equatable,V: Equatable> (a: CollectionTransaction<K,V>, b: CollectionTransaction<K,V>) -> Bool {
+	if a.mutations.count == b.mutations.count {
+		for i in 0..<a.mutations.count {
+			let	a1	=	a.mutations[i]
+			let	b1	=	b.mutations[i]
+			
+			if a1.identity != b1.identity {
+				return	false
+			}
+			if a1.past != b1.past {
+				return	false
+			}
+			if a1.future != b1.future {
+				return	false
+			}
+		}
+	}
+	return	true
+}
+public func == <K: Equatable> (a: CollectionTransaction<K,()>, b: CollectionTransaction<K,()>) -> Bool {
+	if a.mutations.count == b.mutations.count {
+		for i in 0..<a.mutations.count {
+			let	a1	=	a.mutations[i]
+			let	b1	=	b.mutations[i]
+			
+			if a1.identity != b1.identity {
+				return	false
+			}
+		}
+	}
+	return	true
+}
+
+
+
+public func == <K: Equatable,V: Equatable> (a: CollectionTransaction<K,V>.Mutation, b: CollectionTransaction<K,V>.Mutation) -> Bool {
+	return	a.identity == b.identity && a.past == b.past && a.future == b.future
+}
+public func == <K: Equatable> (a: CollectionTransaction<K,()>.Mutation, b: CollectionTransaction<K,()>.Mutation) -> Bool {
+	return	a.identity == b.identity
+}
 
 
 
