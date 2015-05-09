@@ -23,8 +23,14 @@ Usage
 	Looks like a bit wired name, but you will see why it named in that way soon.
 
 
+Usually, front-end applications will be configured like this.
 
+	DictionaryReplication								Stores origin data.
+	->	DictionaryFilteringDictionaryStorage		Filter it.
+	->	DictionarySortingArrayStorage				Sort it.
+	->	ArraySignalMapStorage							Convert into view.
 
+A `DictionaryEditor` can be used to generate mutation signals easily.
 
 
 

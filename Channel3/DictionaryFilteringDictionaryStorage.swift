@@ -1,5 +1,5 @@
 //
-//  DictionarySignalSubsetDictionaryStorage.swift
+//  DictionaryFilteringDictionaryStorage.swift
 //  Channel3
 //
 //  Created by Hoon H. on 2015/05/09.
@@ -12,7 +12,7 @@
 ///	dictionary signal.
 ///
 ///	
-public class DictionarySignalSubsetDictionaryStorage<K: Hashable,V>: StorageType {
+public class DictionaryFilteringDictionaryStorage<K: Hashable,V>: StorageType {
 	
 	///
 	///	:param:		filter
@@ -66,6 +66,7 @@ public class DictionarySignalSubsetDictionaryStorage<K: Hashable,V>: StorageType
 	private func process(s: DictionarySignal<K,V>) {
 		switch s {
 		case .Initiation(let s):
+			editor.initiate()
 			for e in s {
 				if filter(e) {
 					insert(e)
@@ -126,6 +127,7 @@ public class DictionarySignalSubsetDictionaryStorage<K: Hashable,V>: StorageType
 					delete(e.0)
 				}
 			}
+			editor.terminate()
 		}
 	}
 	

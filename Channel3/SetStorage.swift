@@ -24,10 +24,11 @@ public class SetStorage<T: Hashable>: StorageType {
 	private let	dispatcher	=	SignalDispatcher<SetSignal<T>>()
 }
 
-///	Collection containers cannot have non-empty initial state because
-///	it's hard to guarantee state integrity if there are many mutators.
-///	Always Having empty initial state will make everything a lot simpler.
-public final class SetReplication<T: Hashable>: SetStorage<T>, ReplicationType {
+///	A storage that provides indirect signal based mutator.
+///
+///	Initial state of a state-container is undefined, and you should not access
+///	them while this contains is not bound to a signal source.
+public class SetReplication<T: Hashable>: SetStorage<T>, ReplicationType {
 	
 	public override init() {
 		super.init()
@@ -47,8 +48,6 @@ public final class SetReplication<T: Hashable>: SetStorage<T>, ReplicationType {
 	
 	private let	monitor		=	SignalMonitor<SetSignal<T>>({ _ in })
 }
-
-
 
 
 

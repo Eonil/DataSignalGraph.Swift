@@ -10,14 +10,6 @@ public class SignalSensor<T>: SensorType {
 	func signal(s: T) {
 		handler(s)
 	}
-	func subscribe(emitter: AnyObject) {
-		assert(self.emitter === nil, "This is a unique channeling sensor, and already registered to an emitter `\(self.emitter!)`. So cannot be registered to another emitter again.")
-		self.emitter	=	emitter
-	}
-	func desubscribe(emitter: AnyObject) {
-		assert(self.emitter === emitter, "This is a unique channeling sensor, and can be deregistered only from current emitter `\(self.emitter!)`.")
-		self.emitter	=	nil
-	}
 	
 	////
 	
@@ -25,7 +17,6 @@ public class SignalSensor<T>: SensorType {
 	private typealias	Out		=	()
 	
 	private var			handler	:	T -> ()
-	private weak var	emitter	:	AnyObject?
 	
 	private init(_ handler: T -> ()) {
 		self.handler	=	handler

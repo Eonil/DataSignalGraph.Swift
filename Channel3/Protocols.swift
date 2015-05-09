@@ -37,13 +37,6 @@ protocol SensorType: GateType, AnyObject {
 	typealias	In		=	Signal
 	///	Senses signals.
 	func signal(Signal)
-	///	The emitter notifies registration done and this
-	///	sensor is going to start receiving signals from the emitter.
-	func subscribe(emitter: AnyObject)
-	///	The emitter notifies deregistration will occur and
-	///	this sensor is has been stopped receiving signals from
-	///	the emitter.
-	func desubscribe(emitter: AnyObject)
 }
 
 

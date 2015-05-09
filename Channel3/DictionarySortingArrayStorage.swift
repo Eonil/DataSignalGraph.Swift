@@ -1,10 +1,11 @@
 //
-//  DictionarySignalSortingArrayStorage.swift
+//  DictionarySortingArrayStorage.swift
 //  Channel3
 //
 //  Created by Hoon H. on 2015/05/08.
 //  Copyright (c) 2015 Eonil. All rights reserved.
 //
+
 
 
 
@@ -17,7 +18,7 @@
 ///	Anyway this is only lookup cost. Mutation operation itself on the `Array` will just 
 ///	follow mutation cost of the `Array` type. See the type documentation for details.
 ///
-public class DictionarySignalSortingArrayStorage<K,V,C where K: Hashable, C: Comparable>: StorageType {
+public class DictionarySortingArrayStorage<K,V,C where K: Hashable, C: Comparable>: StorageType {
 	
 	///	:param:		order
 	///				Creates a comparable order for an entry.
@@ -81,6 +82,7 @@ public class DictionarySignalSortingArrayStorage<K,V,C where K: Hashable, C: Com
 	private func process(s: DictionarySignal<K,V>) {
 		switch s {
 		case .Initiation(let s):
+			editor.initiate()
 			for e in s {
 				insert(e)
 			}
@@ -94,11 +96,10 @@ public class DictionarySignalSortingArrayStorage<K,V,C where K: Hashable, C: Com
 				}
 			}
 		case .Termination(let s):
-			replication.sensor.signal(ArraySignal.Termination(snapshot: replication.state))
-			replication.sensor.signal(ArraySignal.Initiation(snapshot: []))
 //			for e in s {
 //				delete(e)
 //			}
+			editor.terminate()
 		}
 	}
 

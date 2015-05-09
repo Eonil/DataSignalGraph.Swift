@@ -22,6 +22,11 @@ public class SignalEmitter<T>: EmitterType {
 	typealias	Out		=	T
 	typealias	Signal	=	T
 	
+	var numberOfRegistration: Int {
+		get {
+			return	sensors.count
+		}
+	}
 	func register<S: SensorType where S.Signal == Signal>(sensor: S) {
 		registerImpl(sensor)
 	}
@@ -45,11 +50,9 @@ public class SignalEmitter<T>: EmitterType {
 	private func registerImpl<S: SensorType where S.Signal == Signal>(sensor: S) {
 		let	e	=	Entry(ref: sensor, callSignal: { [unowned sensor] in sensor.signal($0) })
 		sensors.append(e)
-		sensor.subscribe(self)
 	}
 	
 	private func deregisterImpl<S: SensorType where S.Signal == Signal>(sensor: S) {
-		sensor.desubscribe(self)
 		for i in reverse(0..<sensors.count) {
 			let	e	=	sensors[i]
 			if e.ref === sensor {
@@ -69,6 +72,34 @@ public class SignalDispatcher<T>: SignalEmitter<T>, DispatcherType {
 		super.signal(s)
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -12,7 +12,7 @@ public enum DictionarySignal<K: Hashable,V> {
 	typealias	Transaction	=	CollectionTransaction<K,V>
 	case Initiation	(snapshot	: Snapshot)
 	case Transition	(transaction: Transaction)
-	case Termination(snapshot	: Snapshot)
+	case Termination(snapshot	: Snapshot)						//<	Passes snapshot of current (latest) state.
 }
 extension DictionarySignal: CollectionSignalType {
 	var initiation: Snapshot? {
@@ -40,53 +40,31 @@ extension DictionarySignal: CollectionSignalType {
 		}
 	}
 }
-
-/////	Represents an atomic transaction.
-/////	Mutations are order-dependent to avoid diff cost and ambiguity.
-//struct DictionaryTransaction<K: Hashable,V> {
-//	var	mutations	:	[DictionaryMutation<K,V>]
-//	
-//}
-//struct DictionaryMutation<K: Hashable,V> {
-//	var	operation	:	DictionaryOperation
-//	var	past		:	(K,V)
-//	var	future		:	(K,V)
-//}
-//typealias DictionaryOperation	=	IndexCollectionOperation
-
-
-
-
-//extension Dictionary: SignalApplicableCollectionType {
-//}
-
-
-
-
-extension Dictionary {
-	mutating func apply(s: DictionarySignal<Key,Value>) {
-		switch s {
+extension DictionarySignal {
+	func apply(inout d: Dictionary<K,V>?) {
+		switch self {
 		case .Initiation(snapshot: let s):
-			assert(self.count == 0, "Current array must be empty to apply initiation snapshot.")
-			self	=	s
+			assert(d == nil, "Current array must be empty to apply initiation snapshot.")
+			d	=	s
 			
 		case .Transition(transaction: let t):
+			assert(d != nil)
 			for m in t.mutations {
 				switch (m.past != nil, m.future != nil) {
 				case (false, true):
 					//	Insert.
-					assert(self[m.identity] == nil, "There should be no existing value for the key `\(m.identity)`, but there's an existing value `\(self[m.identity]!)` for the key.")
-					self[m.identity]	=	m.future
+					assert(d![m.identity] == nil, "There should be no existing value for the key `\(m.identity)`, but there's an existing value `\(d![m.identity]!)` for the key.")
+					d![m.identity]	=	m.future
 					
 				case (true, true):
 					//	Update.
-					assert(self[m.identity] != nil, "There should be an existing value for the key `\(m.identity)`, but there's none.")
-					self[m.identity]	=	m.future
+					assert(d![m.identity] != nil, "There should be an existing value for the key `\(m.identity)`, but there's none.")
+					d![m.identity]	=	m.future
 					
 				case (true, false):
-					assert(self[m.identity] != nil, "There should be an existing value for the key `\(m.identity)`, but there's none.")
+					assert(d![m.identity] != nil, "There should be an existing value for the key `\(m.identity)`, but there's none.")
 					//	Delete.
-					self.removeValueForKey(m.identity)
+					d!.removeValueForKey(m.identity)
 					
 				default:
 					fatalError("Unsupported combination.")
@@ -94,11 +72,21 @@ extension Dictionary {
 			}
 			
 		case .Termination(snapshot: let s):
-			assert(s.count == self.count, "Current array must be equal to latest snapshot to apply termination.")
-			self	=	Dictionary()
+			assert(d != nil)
+			assert(s.count == d!.count, "Current array must be equal to latest snapshot to apply termination.")
+			d	=	nil
 		}
 	}
 }
+
+
+
+
+
+
+
+
+
 
 
 

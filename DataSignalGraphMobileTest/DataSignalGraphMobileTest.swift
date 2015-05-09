@@ -70,25 +70,27 @@ class DataSignalGraphMobileTest: XCTestCase {
 		XCTAssert(ss == [111,333])
 	}
 	
-	func testValueReplication() {
-		let	v	=	ValueReplication<Int>(111)
-		XCTAssert(v.state == 111)
-		
-		let	d	=	SignalDispatcher<Int>()
-		d.register(v.sensor)
-		d.signal(333)
-		XCTAssert(v.state == 333)
-		d.signal(888)
-		XCTAssert(v.state == 888)
-		d.deregister(v.sensor)
-		d.signal(444)
-		XCTAssert(v.state == 888)
-	}
+//	func testValueReplication() {
+//		let	v	=	ValueReplication<Int>(111)
+//		XCTAssert(v.state == 111)
+//		
+//		let	d	=	SignalDispatcher<Int>()
+//		d.register(v.sensor)
+//		d.signal(333)
+//		XCTAssert(v.state == 333)
+//		d.signal(888)
+//		XCTAssert(v.state == 888)
+//		d.deregister(v.sensor)
+//		d.signal(444)
+//		XCTAssert(v.state == 888)
+//	}
 	
 	func testArrayEditorAndReplication() {
 		let	a	=	ArrayReplication<Int>()
 		var	e	=	ArrayEditor<Int>(a)
 
+		e.initiate()
+		
 		XCTAssert(a.state == [])
 		e.append(111)
 		XCTAssert(a.state == [111])
@@ -102,11 +104,16 @@ class DataSignalGraphMobileTest: XCTestCase {
 		XCTAssert(a.state == [111, 888, 444])
 		e.removeAll()
 		XCTAssert(a.state == [])
+		
+		e.terminate()
 	}
 	
 	func testDictionaryEditorAndReplication() {
 		let	d	=	DictionaryReplication<Int,String>()
 		var	e	=	DictionaryEditor(d)
+		
+		e.initiate()
+		
 		XCTAssert(d.state == [:])
 		XCTAssert(d.state.count == 0)
 		
@@ -126,6 +133,7 @@ class DataSignalGraphMobileTest: XCTestCase {
 		XCTAssert(d.state == [555: "5th", 666: "6th"])
 		XCTAssert(d.state.count == 2)
 		
+		e.terminate()
 	}
 	
 	func testDictionarySortingArray() {
@@ -134,10 +142,12 @@ class DataSignalGraphMobileTest: XCTestCase {
 		}
 		
 		let	dic1	=	DictionaryReplication<Int,String>()
-		let	arr2	=	DictionarySignalSortingArrayStorage(orderOf)
+		let	arr2	=	DictionarySortingArrayStorage(orderOf)
 		dic1.emitter.register(arr2.sensor)
 		
 		var	ed1		=	DictionaryEditor(dic1)
+		ed1.initiate()
+		
 		ed1[666]	=	"F"
 		ed1[111]	=	"A"
 		ed1[333]	=	"C"
@@ -160,6 +170,8 @@ class DataSignalGraphMobileTest: XCTestCase {
 		XCTAssert(dic1.state == [222: "B", 555: "E", 666: "F"])
 		XCTAssert(arr2.state.map({$0.0}) == [222, 555, 666])
 		XCTAssert(arr2.state.map({$0.1}) == ["B", "E", "F"])
+		
+		ed1.terminate()
 	}
 	
 	func testDictionaryFilteringDictionary() {
@@ -167,10 +179,12 @@ class DataSignalGraphMobileTest: XCTestCase {
 			return	e.0 >= 100 && e.0 <= 999
 		}
 		let	dic1	=	DictionaryReplication<Int,String>()
-		let	dic2	=	DictionarySignalSubsetDictionaryStorage<Int,String>(filter)
+		let	dic2	=	DictionaryFilteringDictionaryStorage<Int,String>(filter)
 		dic1.emitter.register(dic2.sensor)
 		
 		var	ed1		=	DictionaryEditor(dic1)
+		ed1.initiate()
+		
 		ed1[1]		=	"a"
 		ed1[111]	=	"A"
 		ed1[3]		=	"c"
@@ -190,6 +204,7 @@ class DataSignalGraphMobileTest: XCTestCase {
 		XCTAssert(dic1.state == [111: "A", 3: "c"])
 		XCTAssert(dic2.state == [111: "A"])
 		
+		ed1.terminate()
 	}
 }
 

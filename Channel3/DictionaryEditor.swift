@@ -14,6 +14,13 @@ public struct DictionaryEditor<K: Hashable,V> {
 		self.origin		=	origin
 	}
 	
+	public func initiate() {
+		self.origin.sensor.signal(DictionarySignal.Initiation(snapshot: [:]))
+	}
+	public func terminate() {
+		self.origin.sensor.signal(DictionarySignal.Termination(snapshot: origin.state))
+	}
+	
 	////
 	
 	public var count: Int {
