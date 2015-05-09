@@ -144,14 +144,12 @@ class DataSignalGraphMobileTest: XCTestCase {
 		ed1[222]	=	"B"
 		ed1[444]	=	"D"
 		ed1[555]	=	"E"
-		
 		XCTAssert(dic1.state == [111: "A", 222: "B", 333: "C", 444: "D", 555: "E", 666: "F"])
 		XCTAssert(arr2.state.map({$0.0}) == [111, 222, 333, 444, 555, 666])
 		XCTAssert(arr2.state.map({$0.1}) == ["A", "B", "C", "D", "E", "F"])
 		
 		ed1[444]	=	"DDD"
 		ed1[333]	=	"CCC"
-		
 		XCTAssert(dic1.state == [111: "A", 222: "B", 333: "CCC", 444: "DDD", 555: "E", 666: "F"])
 		XCTAssert(arr2.state.map({$0.0}) == [111, 222, 333, 444, 555, 666])
 		XCTAssert(arr2.state.map({$0.1}) == ["A", "B", "CCC", "DDD", "E", "F"])
@@ -159,7 +157,6 @@ class DataSignalGraphMobileTest: XCTestCase {
 		ed1.removeValueForKey(444)
 		ed1.removeValueForKey(333)
 		ed1.removeValueForKey(111)
-		
 		XCTAssert(dic1.state == [222: "B", 555: "E", 666: "F"])
 		XCTAssert(arr2.state.map({$0.0}) == [222, 555, 666])
 		XCTAssert(arr2.state.map({$0.1}) == ["B", "E", "F"])
@@ -179,14 +176,17 @@ class DataSignalGraphMobileTest: XCTestCase {
 		ed1[3]		=	"c"
 		ed1[333]	=	"C"
 		ed1[2222]	=	"BBBB"
-		
 		XCTAssert(dic1.state == [1: "a", 111: "A", 3: "c", 333: "C", 2222: "BBBB"])
 		XCTAssert(dic2.state == [111: "A", 333: "C"])
+		
+		ed1[1]		=	"aaa"
+		ed1[333]	=	"CCC"
+		XCTAssert(dic1.state == [1: "aaa", 111: "A", 3: "c", 333: "CCC", 2222: "BBBB"])
+		XCTAssert(dic2.state == [111: "A", 333: "CCC"])
 		
 		ed1.removeValueForKey(2222)
 		ed1.removeValueForKey(333)
 		ed1.removeValueForKey(1)
-		
 		XCTAssert(dic1.state == [111: "A", 3: "c"])
 		XCTAssert(dic2.state == [111: "A"])
 		
