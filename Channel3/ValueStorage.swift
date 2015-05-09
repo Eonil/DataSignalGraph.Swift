@@ -64,14 +64,14 @@ public class ValueStorage<T>: StorageType {
 public class ValueReplication<T>: ValueStorage<T>, ReplicationType {
 	public override init() {
 		super.init()
-		self.monitor.handler	=	{ [weak self] s in
+		self.monitor.handler	=	{ [unowned self] s in
 			switch s {
 			case .Initiation(let s):
-				self!.value		=	s()
+				self.value		=	s()
 			case .Transition(let s):
-				self!.value		=	s()
+				self.value		=	s()
 			case .Termination(_):
-				self!.value		=	nil
+				self.value		=	nil
 			}
 		}
 	}
@@ -92,15 +92,15 @@ public class ValueReplication<T>: ValueStorage<T>, ReplicationType {
 
 
 
-
+///	Self-editable value-replication.
 public class ValueSlot<T>: ValueReplication<T> {
 	public init(_ state: T) {
 		super.init()
 		super.sensor.signal(ValueSignal.Initiation({state}))
 	}
 	deinit {
-		let	v	=	state
-		super.sensor.signal(ValueSignal.Termination({v}))
+		//	Do not send any signal.
+		//	Because any non-strong reference to self is inaccessible here.
 	}
 	
 	public override var state: T {

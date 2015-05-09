@@ -46,11 +46,18 @@ public struct ArrayEditor<T> {
 		//			Would it require enumeration of all elements?
 		splice(Array(vs), atIndex: count)
 	}
+	public mutating func removeLast() -> T {
+		let	v	=	origin.state.last!
+		removeAtIndex(count-1)
+		return	v
+	}
 	public mutating func insert(v: T, atIndex i: Int) {
 		splice([v], atIndex: i)
 	}
-	public mutating func removeAtIndex(i: Int) {
+	public mutating func removeAtIndex(i: Int) -> T {
+		let	v	=	origin.state[i]
 		removeRange(i..<i.successor())
+		return	v
 	}
 	public mutating func removeAll() {
 		origin.sensor.signal(ArraySignal.Termination(snapshot: origin.state))

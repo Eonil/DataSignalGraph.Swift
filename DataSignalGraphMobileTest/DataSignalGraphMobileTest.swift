@@ -84,6 +84,31 @@ class DataSignalGraphMobileTest: XCTestCase {
 		XCTAssert(v.state == 888)
 	}
 	
+	func testValueSlot() {
+		let	s	=	ValueSlot<Int>(111)
+		assert(s.state == 111)
+		s.state	=	222
+		assert(s.state == 222)
+		s.state	=	333
+		assert(s.state == 333)
+	}
+
+	func testSetSlot() {
+		let	s	=	SetSlot<Int>()
+		s.insert(444)
+		assert(Array(s) == [444])
+		
+		s.insert(888)
+		assert(Array(s) == [444, 888])
+		
+		s.remove(444)
+		assert(Array(s) == [888])
+		
+		s.remove(111)
+		//	It's fine trying to remove non-existing value.
+		//	Same behavior with Swift `Set` type.
+	}
+	
 	func testArrayEditorAndReplication() {
 		let	a	=	ArrayReplication<Int>()
 		var	e	=	ArrayEditor<Int>(a)

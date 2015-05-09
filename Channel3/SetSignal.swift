@@ -40,46 +40,19 @@ extension SetSignal: CollectionSignalType {
 		}
 	}
 }
-
-/////	Represents an atomic transaction.
-/////	Mutations are order-dependent to avoid diff cost and ambiguity.
-//struct SetTransaction<T: Hashable> {
-//	var	mutations	:	[SetMutation<T>]
-//}
-//struct SetMutation<T: Hashable> {
-//	var	operation	:	SetOperation
-//	var	value		:	T?
-//}
-//typealias	SetOperation	=	IndexlessCollectionOperation
-
-
-
-
-
-
-
-
-
-
-//extension Set: SignalApplicableCollectionType {
-//}
-
-
-
-
-extension Set {
-	mutating func apply(s: SetSignal<Element>) {
-		switch s {
-		case .Initiation(snapshot: let s):
-			assert(self.count == 0, "Current array must be empty to apply initiation snapshot.")
-			self	=	s
+extension SetSignal {
+	func apply(inout set: Set<T>?) {
+		switch self {
+		case .Initiation(let s):
+			assert(set == nil, "Current array must be empty to apply initiation snapshot.")
+			set		=	s
 			
-		case .Transition(transaction: let t):
+		case .Transition(let t):
 			for m in t.mutations {
 				switch (m.past != nil, m.future != nil) {
 				case (false, true):
 					//	Insert.
-					self.insert(m.identity)
+					set!.insert(m.identity)
 					
 				case (true, true):
 					//	Update.
@@ -88,19 +61,36 @@ extension Set {
 					
 				case (true, false):
 					//	Delete.
-					self.remove(m.identity)
+					set!.remove(m.identity)
 					
 				default:
 					fatalError("Unsupported combination.")
 				}
 			}
 			
-		case .Termination(snapshot: let s):
-			assert(s.count == self.count, "Current array must be equal to latest snapshot to apply termination.")
-			self	=	Set()
+		case .Termination(let s):
+			assert(set != nil)
+			assert(s.count == set!.count, "Current array must be equal to latest snapshot to apply termination.")
+			set		=	nil
 		}
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
