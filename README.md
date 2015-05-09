@@ -38,6 +38,30 @@ A `DictionaryEditor` can be used to generate mutation signals easily.
 
 
 
+
+
+Rules
+-----
+
+>	If you made it, you must clean it up.
+
+For example, if you registered a sensor to an emitter, you MUST deregister
+it from the emitter. There's no safe way to implement automatic deregistration 
+due to linguistic behavior choice of Swift. I installed heavy assertions to
+ensure that you deinstall every sensors when the emitter dies. These assertions
+are activated at debug build, and will be stripped away in release build.
+
+
+
+
+
+
+
+
+
+
+
+
 Type Roles and Hierarchy
 ------------------------
 

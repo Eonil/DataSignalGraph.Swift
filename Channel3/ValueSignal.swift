@@ -7,35 +7,11 @@
 //
 
 public enum ValueSignal<T> {
+	//	TODO:	Remove closure and convert into bare value
+	//			after compiler support it.
 	typealias	Snapshot	=	()->T
 	case Initiation	(Snapshot)
 	case Transition	(Snapshot)
 	case Termination(Snapshot)
 }
-//extension ValueSignal {
-//	var initiation: Snapshot? {
-//		get {
-//			switch self {
-//			case .Initiation(snapshot: let s):		return	s
-//			default:								return	nil
-//			}
-//		}
-//	}
-//	var transition: Snapshot? {
-//		get {
-//			switch self {
-//			case .Transition(transaction: let s):	return	s
-//			default:								return	nil
-//			}
-//		}
-//	}
-//	var termination: Snapshot? {
-//		get {
-//			switch self {
-//			case .Termination(snapshot: let s):		return	s
-//			default:								return	nil
-//			}
-//		}
-//	}
-//}
-//
+

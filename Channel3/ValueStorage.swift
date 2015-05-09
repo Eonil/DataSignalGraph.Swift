@@ -11,12 +11,20 @@
 
 
 private final class ValueSignalDispatcher<T>: SignalDispatcher<ValueSignal<T>> {
+	weak var owner: ValueStorage<T>?
+
 	override func register(sensor: SignalSensor<ValueSignal<T>>) {
 		Debugging.EmitterSensorRegistration.assertRegistrationOfStatefulChannelingSignaling((self, sensor))
 		super.register(sensor)
+		if let s = owner!.value {
+			sensor.signal(ValueSignal.Initiation({s}))
+		}
 	}
 	override func deregister(sensor: SignalSensor<ValueSignal<T>>) {
 		Debugging.EmitterSensorRegistration.assertDeregistrationOfStatefulChannelingSignaling((self, sensor))
+		if let s = owner!.value {
+			sensor.signal(ValueSignal.Termination({s}))
+		}
 		super.deregister(sensor)
 	}
 }
@@ -41,6 +49,7 @@ public class ValueStorage<T>: StorageType {
 	private let	dispatcher	=	ValueSignalDispatcher<T>()
 	
 	private init() {
+		dispatcher.owner	=	self
 	}
 	
 	private var	value: T? {

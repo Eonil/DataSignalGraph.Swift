@@ -32,10 +32,13 @@ public class SignalEmitter<T>: EmitterType {
 	
 	////
 	
-	private typealias	Entry		=	(ref: AnyObject, callSignal: T->())
+	private typealias	Entry		=	(ref: ()->AnyObject, callSignal: T->())
 	private var			sensors		=	[] as [Entry]
 	
 	private init() {
+	}
+	deinit {
+		assert(sensors.count == 0, "You must deregister all sensors from this object before this object `deinit`ializes.")
 	}
 	private func signal(s: T) {
 		for e in sensors {
@@ -43,14 +46,14 @@ public class SignalEmitter<T>: EmitterType {
 		}
 	}
 	private func registerImpl<S: SensorType where S.Signal == Signal>(sensor: S) {
-		let	e	=	Entry(ref: sensor, callSignal: { [unowned sensor] in sensor.signal($0) })
+		let	e	=	Entry(ref: { [weak sensor] in return sensor! }, callSignal: { [weak sensor] in sensor!.signal($0) })
 		sensors.append(e)
 	}
 	
 	private func deregisterImpl<S: SensorType where S.Signal == Signal>(sensor: S) {
 		for i in reverse(0..<sensors.count) {
 			let	e	=	sensors[i]
-			if e.ref === sensor {
+			if e.ref() === sensor {
 				sensors.removeAtIndex(i)
 				return
 			}

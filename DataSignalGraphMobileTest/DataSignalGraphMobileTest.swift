@@ -50,6 +50,7 @@ class DataSignalGraphMobileTest: XCTestCase {
 			d.signal(v)
 		}
 		XCTAssert(c == vs.count)
+		d.deregister(m)
 	}
 	
 	func testSignalDispatcherAndMonitorDeregistration() {
@@ -68,6 +69,7 @@ class DataSignalGraphMobileTest: XCTestCase {
 		d.register(m)
 		d.signal(333)
 		XCTAssert(ss == [111,333])
+		d.deregister(m)
 	}
 	
 	func testValueReplication() {
@@ -196,6 +198,7 @@ class DataSignalGraphMobileTest: XCTestCase {
 		XCTAssert(arr2.state.map({$0.1}) == ["B", "E", "F"])
 		
 		ed1.terminate()
+		dic1.emitter.deregister(arr2.sensor)
 	}
 	
 	func testDictionaryFilteringDictionary() {
@@ -229,10 +232,120 @@ class DataSignalGraphMobileTest: XCTestCase {
 		XCTAssert(dic2.state == [111: "A"])
 		
 		ed1.terminate()
+		dic1.emitter.deregister(dic2.sensor)
+	}
+	
+	func testTerminationSignal() {
+		var	ok1	=	false
+		let	s2	=	SignalMonitor<ValueSignal<Int>>()
+		let	t1	=	{ ()->() in
+			let	s1	=	ValueSlot<Int>(111)
+			s1.state	=	333
+			s1.emitter.register(s2)
+			s2.handler	=	{ s in
+				switch s {
+				case .Termination(let s):
+					XCTAssert(s() == 333)
+					ok1	=	true
+				default:
+					XCTAssert(false)
+				}
+			}
+			s1.emitter.deregister(s2)
+			()
+		}
+		t1()
+		assert(ok1)
+	}
+	func testSignalSequence1() {
+		var	ss	=	[
+			.Initiation,
+			.Termination,
+			] as [ChannelingSignalKind]
+		let	s2	=	SignalMonitor<ValueSignal<Int>>()
+		s2.handler	=	{ s in
+			let	s1	=	ss.first!
+			XCTAssert(s1 == s._kind)
+			ss.removeAtIndex(0)
+		}
+		let	t1	=	{ ()->() in
+			let	s1	=	ValueSlot<Int>(111)
+			s1.state	=	333
+			s1.emitter.register(s2)
+			s1.emitter.deregister(s2)
+			()
+		}
+		t1()
 	}
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+private enum ChannelingSignalKind {
+	case Initiation
+	case Transition
+	case Termination
+}
+
+private protocol _KindProvision {
+	var _kind: ChannelingSignalKind { get }
+}
+extension ArraySignal: _KindProvision {
+	private var _kind: ChannelingSignalKind {
+		get {
+			switch self {
+			case .Initiation(_):	return	.Initiation
+			case .Transition(_):	return	.Transition
+			case .Termination(_):	return	.Termination
+			}
+		}
+	}
+}
+extension DictionarySignal: _KindProvision {
+	private var _kind: ChannelingSignalKind {
+		get {
+			switch self {
+			case .Initiation(_):	return	.Initiation
+			case .Transition(_):	return	.Transition
+			case .Termination(_):	return	.Termination
+			}
+		}
+	}
+}
+extension SetSignal: _KindProvision {
+	private var _kind: ChannelingSignalKind {
+		get {
+			switch self {
+			case .Initiation(_):	return	.Initiation
+			case .Transition(_):	return	.Transition
+			case .Termination(_):	return	.Termination
+			}
+		}
+	}
+}
+extension ValueSignal: _KindProvision {
+	private var _kind: ChannelingSignalKind {
+		get {
+			switch self {
+			case .Initiation(_):	return	.Initiation
+			case .Transition(_):	return	.Transition
+			case .Termination(_):	return	.Termination
+			}
+		}
+	}
+}
 
 
 

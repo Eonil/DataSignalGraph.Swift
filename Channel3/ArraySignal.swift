@@ -15,32 +15,6 @@ public enum ArraySignal<T> {
 	case Transition	(transaction: Transaction)
 	case Termination(snapshot: Snapshot)
 }
-//extension ArraySignal: CollectionSignalType {
-//	var initiation: Snapshot? {
-//		get {
-//			switch self {
-//			case .Initiation(snapshot: let s):		return	s
-//			default:								return	nil
-//			}
-//		}
-//	}
-//	var transition: Transaction? {
-//		get {
-//			switch self {
-//			case .Transition(transaction: let s):	return	s
-//			default:								return	nil
-//			}
-//		}
-//	}
-//	var termination: Snapshot? {
-//		get {
-//			switch self {
-//			case .Termination(snapshot: let s):		return	s
-//			default:								return	nil
-//			}
-//		}
-//	}
-//}
 extension ArraySignal {
 	func apply(inout a: [T]?) {
 		switch self {
