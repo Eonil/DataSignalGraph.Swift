@@ -75,6 +75,8 @@
 		4563E0651AF8FCA800AA9EA6 /* SignalGraphMobile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SignalGraphMobile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4563E0681AF8FCA800AA9EA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4563E08A1AF8FE4700AA9EA6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		459D96AE1AFE52D3006AF2C0 /* SignalGraphAppKitAddon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SignalGraphAppKitAddon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		459D96B11AFE52D3006AF2C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		45D442861AFDCC3B003D9E32 /* ArraySignalMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArraySignalMap.swift; sourceTree = "<group>"; };
 		45D442891AFDD418003D9E32 /* Aliases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Aliases.swift; sourceTree = "<group>"; };
 		45D4428B1AFDD8FD003D9E32 /* ValueSignal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueSignal.swift; sourceTree = "<group>"; };
@@ -107,6 +109,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				4563E08B1AF8FE4700AA9EA6 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		459D96AA1AFE52D3006AF2C0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,12 +228,29 @@
 			path = SignalGraphMobile;
 			sourceTree = "<group>";
 		};
+		459D96AF1AFE52D3006AF2C0 /* SignalGraphAppKitAddon */ = {
+			isa = PBXGroup;
+			children = (
+				459D96B01AFE52D3006AF2C0 /* Supporting Files */,
+			);
+			path = SignalGraphAppKitAddon;
+			sourceTree = "<group>";
+		};
+		459D96B01AFE52D3006AF2C0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				459D96B11AFE52D3006AF2C0 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		45E3F1A61AF8AF560078E7E8 = {
 			isa = PBXGroup;
 			children = (
 				45E3F1B11AF8AF570078E7E8 /* SignalGraph */,
 				4563E0661AF8FCA800AA9EA6 /* SignalGraphMobile */,
 				4503AE2C1AFDB3D0006AB1F0 /* SignalGraphMobileTest */,
+				459D96AF1AFE52D3006AF2C0 /* SignalGraphAppKitAddon */,
 				4563E08A1AF8FE4700AA9EA6 /* UIKit.framework */,
 				45E3F1B01AF8AF570078E7E8 /* Products */,
 			);
@@ -236,6 +262,7 @@
 				4563E0651AF8FCA800AA9EA6 /* SignalGraphMobile.framework */,
 				4503AE2B1AFDB3D0006AB1F0 /* SignalGraphMobileTest.xctest */,
 				45D934E41AFE4228000EE661 /* SignalGraph.framework */,
+				459D96AE1AFE52D3006AF2C0 /* SignalGraphAppKitAddon.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -274,6 +301,13 @@
 
 /* Begin PBXHeadersBuildPhase section */
 		4563E0621AF8FCA800AA9EA6 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		459D96AB1AFE52D3006AF2C0 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -326,6 +360,24 @@
 			productReference = 4563E0651AF8FCA800AA9EA6 /* SignalGraphMobile.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		459D96AD1AFE52D3006AF2C0 /* SignalGraphAppKitAddon */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 459D96C51AFE52D3006AF2C0 /* Build configuration list for PBXNativeTarget "SignalGraphAppKitAddon" */;
+			buildPhases = (
+				459D96A91AFE52D3006AF2C0 /* Sources */,
+				459D96AA1AFE52D3006AF2C0 /* Frameworks */,
+				459D96AB1AFE52D3006AF2C0 /* Headers */,
+				459D96AC1AFE52D3006AF2C0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SignalGraphAppKitAddon;
+			productName = SignalGraphAppKitAddon;
+			productReference = 459D96AE1AFE52D3006AF2C0 /* SignalGraphAppKitAddon.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		45D934E31AFE4228000EE661 /* SignalGraph */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 45D934F71AFE4228000EE661 /* Build configuration list for PBXNativeTarget "SignalGraph" */;
@@ -359,6 +411,9 @@
 					4563E0641AF8FCA800AA9EA6 = {
 						CreatedOnToolsVersion = 6.3.1;
 					};
+					459D96AD1AFE52D3006AF2C0 = {
+						CreatedOnToolsVersion = 6.3.2;
+					};
 					45D934E31AFE4228000EE661 = {
 						CreatedOnToolsVersion = 6.3.2;
 					};
@@ -379,6 +434,7 @@
 				45D934E31AFE4228000EE661 /* SignalGraph */,
 				4563E0641AF8FCA800AA9EA6 /* SignalGraphMobile */,
 				4503AE2A1AFDB3D0006AB1F0 /* SignalGraphMobileTest */,
+				459D96AD1AFE52D3006AF2C0 /* SignalGraphAppKitAddon */,
 			);
 		};
 /* End PBXProject section */
@@ -392,6 +448,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		4563E0631AF8FCA800AA9EA6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		459D96AC1AFE52D3006AF2C0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -448,6 +511,13 @@
 				4503AE3F1AFDB96D006AB1F0 /* DictionaryEditor.swift in Sources */,
 				45D442901AFDE8AF003D9E32 /* Debugging.swift in Sources */,
 				4503AE391AFDB95E006AB1F0 /* DictionarySortingArrayStorage.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		459D96A91AFE52D3006AF2C0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -550,6 +620,50 @@
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		459D96C11AFE52D3006AF2C0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SignalGraphAppKitAddon/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		459D96C21AFE52D3006AF2C0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = SignalGraphAppKitAddon/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -697,6 +811,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		459D96C51AFE52D3006AF2C0 /* Build configuration list for PBXNativeTarget "SignalGraphAppKitAddon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				459D96C11AFE52D3006AF2C0 /* Debug */,
+				459D96C21AFE52D3006AF2C0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		45D934F71AFE4228000EE661 /* Build configuration list for PBXNativeTarget "SignalGraph" */ = {
 			isa = XCConfigurationList;

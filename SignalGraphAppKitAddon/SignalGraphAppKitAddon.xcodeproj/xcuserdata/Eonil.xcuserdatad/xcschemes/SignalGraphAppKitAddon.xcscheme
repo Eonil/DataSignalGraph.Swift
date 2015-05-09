@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4563E0641AF8FCA800AA9EA6"
-               BuildableName = "DataSignalGraphMobile.framework"
-               BlueprintName = "SignalGraphMobile"
-               ReferencedContainer = "container:SignalGraph.xcodeproj">
+               BlueprintIdentifier = "459D96801AFE5279006AF2C0"
+               BuildableName = "SignalGraphAppKitAddon.framework"
+               BlueprintName = "SignalGraphAppKitAddon"
+               ReferencedContainer = "container:SignalGraphAppKitAddon.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -28,10 +28,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4563E06E1AF8FCA800AA9EA6"
-               BuildableName = "Channel3MobileTests.xctest"
-               BlueprintName = "Channel3MobileTests"
-               ReferencedContainer = "container:SignalGraph.xcodeproj">
+               BlueprintIdentifier = "459D968B1AFE5279006AF2C0"
+               BuildableName = "SignalGraphAppKitAddonTests.xctest"
+               BlueprintName = "SignalGraphAppKitAddonTests"
+               ReferencedContainer = "container:SignalGraphAppKitAddon.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -46,20 +46,20 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4563E06E1AF8FCA800AA9EA6"
-               BuildableName = "Channel3MobileTests.xctest"
-               BlueprintName = "Channel3MobileTests"
-               ReferencedContainer = "container:SignalGraph.xcodeproj">
+               BlueprintIdentifier = "459D968B1AFE5279006AF2C0"
+               BuildableName = "SignalGraphAppKitAddonTests.xctest"
+               BlueprintName = "SignalGraphAppKitAddonTests"
+               ReferencedContainer = "container:SignalGraphAppKitAddon.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "45D934E31AFE4228000EE661"
-            BuildableName = "SignalGraph.framework"
-            BlueprintName = "SignalGraph"
-            ReferencedContainer = "container:SignalGraph.xcodeproj">
+            BlueprintIdentifier = "459D96801AFE5279006AF2C0"
+            BuildableName = "SignalGraphAppKitAddon.framework"
+            BlueprintName = "SignalGraphAppKitAddon"
+            ReferencedContainer = "container:SignalGraphAppKitAddon.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -72,16 +72,15 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "45D934E31AFE4228000EE661"
-            BuildableName = "SignalGraph.framework"
-            BlueprintName = "SignalGraph"
-            ReferencedContainer = "container:SignalGraph.xcodeproj">
+            BlueprintIdentifier = "459D96801AFE5279006AF2C0"
+            BuildableName = "SignalGraphAppKitAddon.framework"
+            BlueprintName = "SignalGraphAppKitAddon"
+            ReferencedContainer = "container:SignalGraphAppKitAddon.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -94,10 +93,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4563E0641AF8FCA800AA9EA6"
-            BuildableName = "DataSignalGraphMobile.framework"
-            BlueprintName = "SignalGraphMobile"
-            ReferencedContainer = "container:SignalGraph.xcodeproj">
+            BlueprintIdentifier = "459D96801AFE5279006AF2C0"
+            BuildableName = "SignalGraphAppKitAddon.framework"
+            BlueprintName = "SignalGraphAppKitAddon"
+            ReferencedContainer = "container:SignalGraphAppKitAddon.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>
