@@ -18,21 +18,12 @@ manner.
 Usage
 -----
 
-
--	Make a `~Replication`. These classes work as main data container in this framework.
-	Looks like a bit wired name, but you will see why it named in that way soon.
-
-
 Usually, front-end applications will be configured like this.
 
-	DictionaryReplication								Stores origin data.
-	->	DictionaryFilteringDictionaryStorage		Filter it.
-	->	DictionarySortingArrayStorage				Sort it.
-	->	ArraySignalMapStorage							Convert into view.
-
-A `DictionaryEditor` can be used to generate mutation signals easily.
-
-
+	*	EditableDictionaryStorage						Stores origin data model values.
+		->	DictionaryFilteringDictionaryStorage		Filter it.
+			->	DictionarySortingArrayStorage			Sort it.
+				->	ArraySignalMapStorage				Convert into view model values.
 
 
 
@@ -43,17 +34,72 @@ A `DictionaryEditor` can be used to generate mutation signals easily.
 Rules
 -----
 
->	If you made it, you must clean it up.
+>	If you set it up, you must tear it down.
 
-For example, if you registered a sensor to an emitter, you MUST deregister
-it from the emitter. There's no safe way to implement automatic deregistration 
-due to linguistic behavior choice of Swift. I installed heavy assertions to
-ensure that you deinstall every sensors when the emitter dies. These assertions
-are activated at debug build, and will be stripped away in release build.
+State-ful signals needs strict explicit pairing of initiation and termination 
+signals that are sent automatically at registration and deregistration of sensors.
+
+There are two reasons why I always require this explicit deregistration.
+
+-	I believe it makes a good habbit and resulting code.
+-	Sensors are stored as a weak reference in emitters, and inaccessible in `deinit`.
+
+The problem is Swift will nil-lize any weak references in `deinit`. So we cannot
+access to the sensors in `deinit` of emitter, and then we have no way to send
+termination signal when the emitter dies. Consequently, sensors cannot receive
+termination signal, and this breaks basic premises of this framework.
+
+To prevent this issue, I installed heavy assertions to ensure that you to deinstall
+every sensors when the emitter dies. These assertions are activated at debug build,
+and will be stripped away in release build.
+
+Also, I believe requiring explicit deregistration is far better convention than 
+implicit deregistration. So I expanded this to all implementations of signal emitters 
+and sensors.
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+State-ful Signals
+-----------------
+State-ful signals presume you're sening signals to represent mutable state, and
+represent it by sening multiple states over time. It also presumes you cannot 
+access the signal origin, so you cannot get current state of the origin.
+
+With these premises, signals are designed to allow receivers can reconstruct full
+state by accumulating them. To make tracking easier, signals are usually sent in
+form of mutation commands rather then state snapshot.
+
+State signals usually have three cases. 
+
+-	Initiation
+-	Transition
+-	Termination
+
+Please note that signals does not provides timing information. A transition can be
+sent before or after the actual transition happens, and source state can actually
+be non-existent. So you shouldn't depend on the timing of signal receiving, and 
+should reconstruct everything only from the information passed with the signal 
+itself.
+
+Transition passes mutation command instead of state snapshot. This is mainly for
+optimization. Because you usually need to transform signals, and passing full state
+snapshot usually means full conversion that is usually inacceptable cost.
+
+If you think there're too many mutations so sending snapshot is faster, then you
+can send pair of termination/initiation signals instead of. Which means resetting 
+by snapshot that means semantically same with sening full snapshot state.
+So transition signal can be thought as a kind of optimization.
 
 
 
@@ -73,6 +119,8 @@ Type Roles and Hierarchy
 
 -	*Storage*					--	A read-only state view that emits state mutation signals.
 	-	*Replication*			--	A storage that receives mutation signals to reconstruct state.
+		-	*Slot*				--	A replication that allows you to edit the value directly.
+									And you cannot send signals to this type objects.
 
 See `Protocols.swift` for details. It also serves as a documentation for each concepts.
 
@@ -94,10 +142,31 @@ implementation of signal emitter and signal sensor.
 
 There are utility classes you will eventuall need for them.
 
--	`SignalMap`							Maps a source signals into destination signals.
--	`SignalFilter`						Filters to select a subset of signals.
--	`ArrayEditor`						Provides array-like interface to a `ArrayReplication`.
--	`DictionarySignalSortingArrayMap`	Maps a dictionary signal into a sorted array.
+-	`SignalMap`								Maps a source signals into destination signals.
+-	`SignalFilter`							Filters to select a subset of signals.
+
+These are utility classes for state-ful signals.
+
+-	`ArrayEditor`							Provides array-like interface to a `ReplicatingArrayStorage`.
+-	`DictionaryFilteringDictionaryStorage`	Maps a dictionary signal into a filtered subset of itself.
+-	`DictionarySortingArrayStorage`			Maps a dictionary signal into a sorted array.
+-	`ArraySignalMap`						Maps all values in the array signals into another type.
+-	`StateHandler`							Provides simplified predefined state event handling points.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

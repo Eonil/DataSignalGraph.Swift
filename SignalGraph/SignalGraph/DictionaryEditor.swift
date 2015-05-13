@@ -8,9 +8,9 @@
 
 public struct DictionaryEditor<K: Hashable,V> {
 	
-	public unowned let	origin	:	DictionaryReplication<K,V>
+	public unowned let	origin	:	ReplicatingDictionaryStorage<K,V>
 	
-	public init(_ origin: DictionaryReplication<K,V>) {
+	public init(_ origin: ReplicatingDictionaryStorage<K,V>) {
 		self.origin		=	origin
 	}
 	

@@ -1,12 +1,15 @@
 //
-//  ArraySlot.swift
+//  EditableArrayStorage.swift
 //  SignalGraph
 //
 //  Created by Hoon H. on 2015/05/09.
 //  Copyright (c) 2015 Eonil. All rights reserved.
 //
 
-public class ArraySlot<T>: ArrayReplication<T> {
+
+
+///	A directly writable replicating array storage.
+public class EditableArrayStorage<T>: ReplicatingArrayStorage<T> {
 	public init(_ state: [T] = []) {
 		super.init()
 		sensor.signal(ArraySignal.Initiation(snapshot: state))
@@ -21,7 +24,7 @@ public class ArraySlot<T>: ArrayReplication<T> {
 		}
 	}
 }
-extension ArraySlot {
+extension EditableArrayStorage {
 //	public var startIndex: Int { get }
 //	public var endIndex: Int { get }
 //	public var count: Int { get }

@@ -57,7 +57,7 @@
 //	}
 //	
 ////		public private(set) weak var superview: View?public
-//	public let	subviews	=	ArraySlot<View>()
+//	public let	subviews	=	EditableArrayStorage<View>()
 //	
 //	////
 //	

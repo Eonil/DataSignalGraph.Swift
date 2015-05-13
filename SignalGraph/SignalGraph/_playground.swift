@@ -63,10 +63,10 @@ println("Hello, World!")
 //	
 //	////
 //	
-//	private let	readyRepo	=	ValueReplication<Bool>(false)
-//	private let	runningRepo	=	ValueReplication<Bool>(false)
-//	private let	errorRepo	=	ValueReplication<NSError?>(nil)
-//	private let	itemsRepo	=	ArrayReplication<T>()
+//	private let	readyRepo	=	ReplicatingValueStorage<Bool>(false)
+//	private let	runningRepo	=	ReplicatingValueStorage<Bool>(false)
+//	private let	errorRepo	=	ReplicatingValueStorage<NSError?>(nil)
+//	private let	itemsRepo	=	ReplicatingArrayStorage<T>()
 //}
 //
 //
@@ -104,7 +104,7 @@ func orderOf(e:(String,String)) -> String {
 	return	e.0
 }
 
-let	dic1	=	DictionaryReplication<String,String>()
+let	dic1	=	ReplicatingDictionaryStorage<String,String>()
 let	arr2	=	DictionarySortingArrayStorage(orderOf)
 dic1.emitter.register(arr2.sensor)
 

@@ -70,7 +70,7 @@ public class ValueStorage<T>: StorageType {
 ///	A mutable storage. Mutation can be performed by receiving mutation 
 ///	signals. So the sensor is the only mutator.
 ///
-public class ValueReplication<T>: ValueStorage<T>, ReplicationType {
+public class ReplicatingValueStorage<T>: ValueStorage<T>, ReplicationType {
 	public override init() {
 		super.init()
 		self.monitor.handler	=	{ [unowned self] s in
@@ -102,7 +102,7 @@ public class ValueReplication<T>: ValueStorage<T>, ReplicationType {
 
 
 ///	Self-editable value-replication.
-public class ValueSlot<T>: ValueReplication<T> {
+public class ValueSlot<T>: ReplicatingValueStorage<T> {
 	public init(_ state: T) {
 		super.init()
 		super.sensor.signal(ValueSignal.Initiation({state}))

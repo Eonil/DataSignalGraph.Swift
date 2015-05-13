@@ -10,9 +10,9 @@
 ///	direct mutator method interface.
 public struct ArrayEditor<T> {
 	
-	public unowned let	origin: ArrayReplication<T>
+	public unowned let	origin: ReplicatingArrayStorage<T>
 	
-	public init(_ origin: ArrayReplication<T>) {
+	public init(_ origin: ReplicatingArrayStorage<T>) {
 		self.origin	=	origin
 	}
 	

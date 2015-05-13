@@ -53,7 +53,7 @@ public class DictionaryStorage<K,V where K: Hashable>: StorageType {
 ///
 ///	Initial state of a state-container is undefined, and you should not access
 ///	them while this contains is not bound to a signal source.
-public class DictionaryReplication<K,V where K: Hashable>: DictionaryStorage<K,V>, ReplicationType {
+public class ReplicatingDictionaryStorage<K,V where K: Hashable>: DictionaryStorage<K,V>, ReplicationType {
 	
 	public override init() {
 		super.init()

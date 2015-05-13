@@ -72,8 +72,8 @@ class SignalGraphMobileTest: XCTestCase {
 		d.deregister(m)
 	}
 	
-	func testValueReplication() {
-		let	v	=	ValueReplication<Int>()
+	func testReplicatingValueStorage() {
+		let	v	=	ReplicatingValueStorage<Int>()
 		let	d	=	SignalDispatcher<ValueSignal<Int>>()
 		d.register(v.sensor)
 		d.signal(ValueSignal.Initiation({0}))
@@ -95,8 +95,8 @@ class SignalGraphMobileTest: XCTestCase {
 		assert(s.state == 333)
 	}
 
-	func testSetSlot() {
-		let	s	=	SetSlot<Int>()
+	func testEditableSetStorage() {
+		let	s	=	EditableSetStorage<Int>()
 		s.insert(444)
 		assert(Array(s) == [444])
 		
@@ -112,7 +112,7 @@ class SignalGraphMobileTest: XCTestCase {
 	}
 	
 	func testArrayEditorAndReplication() {
-		let	a	=	ArrayReplication<Int>()
+		let	a	=	ReplicatingArrayStorage<Int>()
 		var	e	=	ArrayEditor<Int>(a)
 
 		e.initiate()
@@ -135,7 +135,7 @@ class SignalGraphMobileTest: XCTestCase {
 	}
 	
 	func testDictionaryEditorAndReplication() {
-		let	d	=	DictionaryReplication<Int,String>()
+		let	d	=	ReplicatingDictionaryStorage<Int,String>()
 		var	e	=	DictionaryEditor(d)
 		
 		e.initiate()
@@ -167,7 +167,7 @@ class SignalGraphMobileTest: XCTestCase {
 			return	e.0
 		}
 		
-		let	dic1	=	DictionaryReplication<Int,String>()
+		let	dic1	=	ReplicatingDictionaryStorage<Int,String>()
 		let	arr2	=	DictionarySortingArrayStorage(orderOf)
 		dic1.emitter.register(arr2.sensor)
 		
@@ -205,7 +205,7 @@ class SignalGraphMobileTest: XCTestCase {
 		func filter(e: (Int, String)) -> Bool {
 			return	e.0 >= 100 && e.0 <= 999
 		}
-		let	dic1	=	DictionaryReplication<Int,String>()
+		let	dic1	=	ReplicatingDictionaryStorage<Int,String>()
 		let	dic2	=	DictionaryFilteringDictionaryStorage<Int,String>(filter)
 		dic1.emitter.register(dic2.sensor)
 		

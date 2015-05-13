@@ -34,7 +34,7 @@ public class SetStorage<T: Hashable>: StorageType {
 ///
 ///	Initial state of a state-container is undefined, and you should not access
 ///	them while this contains is not bound to a signal source.
-public class SetReplication<T: Hashable>: SetStorage<T>, ReplicationType {
+public class ReplicatingSetStorage<T: Hashable>: SetStorage<T>, ReplicationType {
 	
 	public override init() {
 		super.init()
@@ -65,7 +65,7 @@ public class SetReplication<T: Hashable>: SetStorage<T>, ReplicationType {
 
 ///	Provides in-place `Set`-like mutator interface.
 ///	Signal sensor is disabled to guarantee consistency.
-public class SetSlot<T: Hashable>: SetReplication<T> {
+public class EditableSetStorage<T: Hashable>: ReplicatingSetStorage<T> {
 	public init(_ state: Set<T> = Set()) {
 		super.init()
 		super.sensor.signal(SetSignal.Initiation(snapshot: state))
@@ -82,7 +82,7 @@ public class SetSlot<T: Hashable>: SetReplication<T> {
 		}
 	}
 }
-extension SetSlot: SequenceType {
+extension EditableSetStorage: SequenceType {
 	public typealias	Index	=	SetIndex<T>
 	public func insert(member: T) {
 		super.sensor.signal(SetSignal.Transition(transaction: CollectionTransaction.insert((member,()))))

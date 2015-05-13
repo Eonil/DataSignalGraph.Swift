@@ -13,14 +13,27 @@ import SignalGraph
 
 
 
+///	A buttin that provides `Click` signal emission on clicking by user interaction.
+///
+///	You also can perform clicking by sending `Click` to sensor.
+///
 public class SignalingButton: NSButton {
+	public enum Signal {
+		case Click
+	}
 	public init() {
 		agent.owner		=	self
 		super.target	=	agent
 		super.action	=	"onAction:"
+		monit.handler	=	{ [weak self] s in self.process(s) }
 	}
 	
-	public var emitter: SignalEmitter<()> {
+	public var sensor: SignalSensor<Signal> {
+		get {
+			return	monit
+		}
+	}
+	public var emitter: SignalEmitter<Signal> {
 		get {
 			return	disp
 		}
@@ -52,11 +65,16 @@ public class SignalingButton: NSButton {
 	public override func sendActionOn(mask: Int) -> Int {
 		fatalError()
 	}
+	@availability(*,unavailable)
+	public override func performClick(sender: AnyObject?) {
+		fatalError()
+	}
 	
 	////
 	
 	private let	agent	=	Agent()
-	private let	disp	=	SignalDispatcher<()>()
+	private let	monit	=	SignalMonitor<Signal>()
+	private let	disp	=	SignalDispatcher<Signal>()
 	
 	private func onAction() {
 		disp.signal()
@@ -68,6 +86,13 @@ public class SignalingButton: NSButton {
 		@objc
 		func onAction(AnyObject?) {
 			owner!.onAction()
+		}
+	}
+	
+	private func process(s: Signal) {
+		self.sensor.
+		switch s {
+		case .Click:	super.performClick(self)
 		}
 	}
 }

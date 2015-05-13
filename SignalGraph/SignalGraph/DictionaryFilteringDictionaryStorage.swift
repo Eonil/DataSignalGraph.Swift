@@ -16,8 +16,7 @@ public class DictionaryFilteringDictionaryStorage<K: Hashable,V>: StorageType {
 	
 	///
 	///	:param:		filter
-	///				A filter function to filter key-value pair
-	///				subset.
+	///				A filter function to filter key-value pair subset.
 	///
 	///				REQUIREMENTS
 	///				------------
@@ -28,7 +27,7 @@ public class DictionaryFilteringDictionaryStorage<K: Hashable,V>: StorageType {
 	///
 	///				This function should be very cheap because this function will be
 	///				called very frequently, and evaluation result will not be memoized
-	///				at all. (so you can do it yourself if desired)
+	///				at all. (you can do it yourself if you want)
 	///
 	public init(_ filter: (K,V) -> Bool) {
 		self.filter		=	filter
@@ -55,7 +54,7 @@ public class DictionaryFilteringDictionaryStorage<K: Hashable,V>: StorageType {
 	
 	private let	monitor		=	SignalMonitor<DictionarySignal<K,V>>()
 	private let	filter		:	(K,V) -> Bool
-	private let	replication	=	DictionaryReplication<K,V>()
+	private let	replication	=	ReplicatingDictionaryStorage<K,V>()
 	
 	private var editor: DictionaryEditor<K,V> {
 		get {

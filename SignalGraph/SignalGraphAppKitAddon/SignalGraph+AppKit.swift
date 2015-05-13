@@ -88,7 +88,7 @@
 //		
 //	}
 //	
-//	let	subcomponents	=	ArraySlot<AnyObject>([])
+//	let	subcomponents	=	EditableArrayStorage<AnyObject>([])
 //	
 //	var	data	:	Data?
 //	let	view	=	NSView()

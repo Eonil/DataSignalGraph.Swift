@@ -12,17 +12,18 @@
 ///	Manages a sorted array in ascending order by sorting a virtual dictionary derived from
 ///	dictionary signal.
 ///	
-///	The mutation operation needs binary search lookup that costs `O(log N)`.
-///	First/last orders are checked earlier. If you're inserting/updating/deleting entries
-///	at first/last order, lookup cost will be `O(1)`.
-///	Anyway this is only lookup cost. Mutation operation itself on the `Array` will just 
+///	Mutation operations needs binary search lookup that costs `O(log N)`.
+///	Exceptionally, values at first/last orders will be checked at first, and will cost `O(1)`
+///	if you're inserting/updating/deleting entries at the position.
+///
+///	Please take care that is only lookup cost. Mutation operation itself on the `Array` will just
 ///	follow mutation cost of the `Array` type. See the type documentation for details.
 ///
 public class DictionarySortingArrayStorage<K,V,C where K: Hashable, C: Comparable>: StorageType {
 	
 	///	:param:		order
-	///				Creates a comparable order for an entry.
-	///				This class will sort entries using the returning object in ascending
+	///				Creates a comparable "order" for an entry.
+	///				This class will sort entries using the returning order object in ascending
 	///				order.
 	///
 	///				REQUIREMENTS
@@ -34,7 +35,7 @@ public class DictionarySortingArrayStorage<K,V,C where K: Hashable, C: Comparabl
 	///
 	///				This function should be very cheap because this function will be
 	///				called very frequently, and evaluation result will not be memoized
-	///				at all. (so you can do it yourself if desired)
+	///				at all. (you can do it yourself if you want)
 	///
 	public init(_ order: (K,V)->C) {
 		self.order				=	order
@@ -66,13 +67,16 @@ public class DictionarySortingArrayStorage<K,V,C where K: Hashable, C: Comparabl
 	
 	private typealias	M	=	CollectionTransaction<Int,(K,V)>.Mutation
 	
-	private let	replication	=	ArrayReplication<(K,V)>()
+	private let	replication	=	ReplicatingArrayStorage<(K,V)>()
 	private let	monitor		:	SignalMonitor<DictionarySignal<K,V>>
 	private let	order		:	(K,V) -> C
 	
 	private var editor: ArrayEditor<(K,V)> {
 		get {
 			return	ArrayEditor(replication)
+		}
+		set(v) {
+			assert(v.origin === replication)
 		}
 	}
 	
@@ -106,7 +110,7 @@ public class DictionarySortingArrayStorage<K,V,C where K: Hashable, C: Comparabl
 	///	Order between entries must be fully clean.
 	///	It is your responsibility that ensuring clear ordering.
 	///	Ambiguous order will produce unstable resulting array,
-	///	so do not use it unless it's your intention.
+	///	so do not use it unless if you want the unstability.
 	private func insert(e: (K,V)) {
 		let	i	=	findIndexForOrder(order(e))
 		var	ed	=	editor
@@ -117,20 +121,18 @@ public class DictionarySortingArrayStorage<K,V,C where K: Hashable, C: Comparabl
 	///	and can be changed after value changed.
 	private func update(e: (K,V,V)) {
 		let	i0	=	findIndexForOrder(order(e.0, e.1))
-		var	ed	=	editor
-		precondition(ed[i0].0 == e.0, "Keys must be matched.")
-		ed.removeAtIndex(i0)
+		precondition(editor[i0].0 == e.0, "Keys must be matched.")
+		editor.removeAtIndex(i0)
 		
 		//	Index resolution is execution order dependent.
 		//	Resolve it after removing finished.
 		let	i1	=	findIndexForOrder(order(e.0, e.2))
-		ed.insert((e.0, e.2), atIndex: i1)
+		editor.insert((e.0, e.2), atIndex: i1)
 	}
 	private func delete(e: (K,V)) {
 		let	i	=	findIndexForOrder(order(e))
-		var	ed	=	editor
-		precondition(ed[i].0 == e.0, "Keys must be matched.")
-		ed.removeAtIndex(i)
+		precondition(editor[i].0 == e.0, "Keys must be matched.")
+		editor.removeAtIndex(i)
 	}
 	
 	///	Find an index for specified order.
@@ -140,7 +142,7 @@ public class DictionarySortingArrayStorage<K,V,C where K: Hashable, C: Comparabl
 	///
 	///	If there's no existing entry for the order,
 	///	this will return smallest index for an entry that
-	///	has equals or larger order than the supplied order. 
+	///	has equal or larger order than the supplied order.
 	///	This is a proper index to insert a new entry at a 
 	///	proper ascending order.
 	///

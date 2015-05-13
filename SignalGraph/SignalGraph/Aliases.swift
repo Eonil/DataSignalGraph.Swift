@@ -10,7 +10,7 @@ import Foundation
 
 extension DictionaryStorage {
 	typealias	Signal			=	DictionarySignal<K,V>
-	typealias	Replication		=	DictionaryReplication<K,V>
+	typealias	Replication		=	ReplicatingDictionaryStorage<K,V>
 	typealias	Editor			=	DictionaryEditor<K,V>
 	typealias	Filtering		=	DictionaryFilteringDictionaryStorage<K,V>
 	typealias	Sorting			=	DictionarySortingArrayStorage<K,V>

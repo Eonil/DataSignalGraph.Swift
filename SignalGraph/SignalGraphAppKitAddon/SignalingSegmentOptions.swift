@@ -32,7 +32,7 @@ public class SignalingSegmentOptions: NSSegmentedControl {
 		case	Deselect(Segment)
 	}
 	
-	public let		segments	=	ArraySlot<Segment>([])
+	public let		segments	=	EditableArrayStorage<Segment>([])
 	
 	public init() {
 		agent.owner		=	self
@@ -40,7 +40,7 @@ public class SignalingSegmentOptions: NSSegmentedControl {
 		super.action	=	"onAction:"
 	}
 	
-	public var selection: SetSlot<Segment> {
+	public var selection: EditableSetStorage<Segment> {
 		
 	}
 	public var emitter: SignalEmitter<Signal> {

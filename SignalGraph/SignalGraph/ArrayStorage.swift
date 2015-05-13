@@ -74,7 +74,7 @@ public class ArrayStorage<T>: StorageType {
 ///
 ///	Initial state of a state-container is undefined, and you should not access
 ///	them while this contains is not bound to a signal source.
-public class ArrayReplication<T>: ArrayStorage<T>, ReplicationType {
+public class ReplicatingArrayStorage<T>: ArrayStorage<T>, ReplicationType {
 	
 	public override init() {
 		super.init()

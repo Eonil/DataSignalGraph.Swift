@@ -1,12 +1,12 @@
 //
-//  DictionarySlot.swift
+//  EditableDictionaryStorage.swift
 //  SignalGraph
 //
 //  Created by Hoon H. on 2015/05/09.
 //  Copyright (c) 2015 Eonil. All rights reserved.
 //
 
-public class DictionarySlot<K: Hashable,V>: DictionaryReplication<K,V> {
+public class EditableDictionaryStorage<K: Hashable,V>: ReplicatingDictionaryStorage<K,V> {
 	public init(_ state: Dictionary<K,V> = [:]) {
 		super.init()
 		super.sensor.signal(DictionarySignal.Initiation(snapshot: state))
@@ -21,7 +21,7 @@ public class DictionarySlot<K: Hashable,V>: DictionaryReplication<K,V> {
 		}
 	}
 }
-extension DictionarySlot {
+extension EditableDictionaryStorage {
 	public var count: Int {
 		get {
 			return	editor.count
