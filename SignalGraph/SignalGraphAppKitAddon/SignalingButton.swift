@@ -13,7 +13,7 @@ import SignalGraph
 
 
 
-///	A buttin that provides `Click` signal emission on clicking by user interaction.
+///	A button that provides `Click` signal emission on clicking by user interaction.
 ///
 ///	You also can perform clicking by sending `Click` to sensor.
 ///
@@ -25,14 +25,17 @@ public class SignalingButton: NSButton {
 		agent.owner		=	self
 		super.target	=	agent
 		super.action	=	"onAction:"
-		monit.handler	=	{ [weak self] s in self.process(s) }
+		monit.handler	=	{ [weak self] s in self!.process(s) }
 	}
 	
+	///	Send a signal to simulate clicking.
 	public var sensor: SignalSensor<Signal> {
 		get {
 			return	monit
 		}
 	}
+	
+	///	Watch a signal to track clicking.
 	public var emitter: SignalEmitter<Signal> {
 		get {
 			return	disp
@@ -77,7 +80,7 @@ public class SignalingButton: NSButton {
 	private let	disp	=	SignalDispatcher<Signal>()
 	
 	private func onAction() {
-		disp.signal()
+		disp.signal(Signal.Click)
 	}
 	
 	@objc
@@ -90,7 +93,6 @@ public class SignalingButton: NSButton {
 	}
 	
 	private func process(s: Signal) {
-		self.sensor.
 		switch s {
 		case .Click:	super.performClick(self)
 		}

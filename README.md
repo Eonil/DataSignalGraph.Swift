@@ -34,28 +34,19 @@ Usually, front-end applications will be configured like this.
 Rules
 -----
 
->	If you set it up, you must tear it down.
+>	Clarity is far more important than shorter code.
 
-State-ful signals needs strict explicit pairing of initiation and termination 
-signals that are sent automatically at registration and deregistration of sensors.
+Short code is important. Because it provides better readability. But clarity is far 
+more important than the readability. 
 
-There are two reasons why I always require this explicit deregistration.
+>	If you set it up, you must tear it down yourself.
 
--	I believe it makes a good habbit and resulting code.
--	Sensors are stored as a weak reference in emitters, and inaccessible in `deinit`.
+If you call `register`, then you must call a paired `deregister`. No exception.
+This is a policy, but there's also a technical reason. I simply cannot deregister
+sensors automatically in `deinit` due to nil-lization of weak references in Swift.
+Anyway, don't worry too much. This framework will fire errors if you forgot
+deregistration in debug build.
 
-The problem is Swift will nil-lize any weak references in `deinit`. So we cannot
-access to the sensors in `deinit` of emitter, and then we have no way to send
-termination signal when the emitter dies. Consequently, sensors cannot receive
-termination signal, and this breaks basic premises of this framework.
-
-To prevent this issue, I installed heavy assertions to ensure that you to deinstall
-every sensors when the emitter dies. These assertions are activated at debug build,
-and will be stripped away in release build.
-
-Also, I believe requiring explicit deregistration is far better convention than 
-implicit deregistration. So I expanded this to all implementations of signal emitters 
-and sensors.
 
 
 
@@ -140,17 +131,16 @@ implementation of signal emitter and signal sensor.
 -	`ArrayStorage`				A multiple index/value pair storage. Index is treated as a 
 								specialized key.
 
-There are utility classes you will eventuall need for them.
+There are utility classes you will eventually feel need for them.
 
 -	`SignalMap`								Maps a source signals into destination signals.
 -	`SignalFilter`							Filters to select a subset of signals.
 
-These are utility classes for state-ful signals.
+Also for state-ful signals.
 
--	`ArrayEditor`							Provides array-like interface to a `ReplicatingArrayStorage`.
--	`DictionaryFilteringDictionaryStorage`	Maps a dictionary signal into a filtered subset of itself.
--	`DictionarySortingArrayStorage`			Maps a dictionary signal into a sorted array.
--	`ArraySignalMap`						Maps all values in the array signals into another type.
+-	`DictionaryFilteringDictionaryStorage`	Provides a filtered subset from signals from a dictionary.
+-	`DictionarySortingArrayStorage`			Provides a sorted array from signals from a dictionary.
+-	`ArraySignalMap`						Maps all values in array signals into another type.
 -	`StateHandler`							Provides simplified predefined state event handling points.
 
 

@@ -19,6 +19,7 @@
 		4503AE3E1AFDB96D006AB1F0 /* DictionaryStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D987AA1AF923BB003A5BC0 /* DictionaryStorage.swift */; };
 		4503AE3F1AFDB96D006AB1F0 /* DictionaryEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4503AE251AFD9EEF006AB1F0 /* DictionaryEditor.swift */; };
 		452C706A1AFF9FF0005B3793 /* StateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452C70691AFF9FF0005B3793 /* StateHandler.swift */; };
+		452C706C1B03A95D005B3793 /* SignalingTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452C706B1B03A95D005B3793 /* SignalingTable.swift */; };
 		4563E07E1AF8FCBD00AA9EA6 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E3F1B91AF8AF600078E7E8 /* Protocols.swift */; };
 		4563E07F1AF8FCBD00AA9EA6 /* SignalEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4563E0461AF8E7F300AA9EA6 /* SignalEmitter.swift */; };
 		4563E0801AF8FCBD00AA9EA6 /* SignalSensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4563E0481AF8E86100AA9EA6 /* SignalSensor.swift */; };
@@ -97,6 +98,7 @@
 		4503AE2E1AFDB3D0006AB1F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4503AE2F1AFDB3D0006AB1F0 /* DataSignalGraphMobileTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSignalGraphMobileTest.swift; sourceTree = "<group>"; };
 		452C70691AFF9FF0005B3793 /* StateHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateHandler.swift; sourceTree = "<group>"; };
+		452C706B1B03A95D005B3793 /* SignalingTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalingTable.swift; sourceTree = "<group>"; };
 		45611FFB1AFB9AAD00E7E5FA /* _junkyard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _junkyard.swift; sourceTree = "<group>"; };
 		4563E0441AF8E1D600AA9EA6 /* ValueStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueStorage.swift; sourceTree = "<group>"; };
 		4563E0461AF8E7F300AA9EA6 /* SignalEmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalEmitter.swift; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 				459D96E61AFE5DE4006AF2C0 /* Trial2.swift */,
 				459D96E81AFECAF6006AF2C0 /* SignalingButton.swift */,
 				459D97131AFECF53006AF2C0 /* SignalingSegmentOptions.swift */,
+				452C706B1B03A95D005B3793 /* SignalingTable.swift */,
 				459D97111AFECDE1006AF2C0 /* ObjectiveCRuntime.swift */,
 			);
 			path = SignalGraphAppKitAddon;
@@ -570,6 +573,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				459D97191AFF5325006AF2C0 /* SignalGraphExtensions.swift in Sources */,
+				452C706C1B03A95D005B3793 /* SignalingTable.swift in Sources */,
 				459D97141AFECF53006AF2C0 /* SignalingSegmentOptions.swift in Sources */,
 				459D96E91AFECAF6006AF2C0 /* SignalingButton.swift in Sources */,
 				459D97121AFECDE1006AF2C0 /* ObjectiveCRuntime.swift in Sources */,
