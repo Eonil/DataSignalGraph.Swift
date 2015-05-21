@@ -79,7 +79,7 @@ public struct CollectionTransaction<K,V>: CollectionTransactionType {
 	///		use arbitrary collection type for our needs.
 	///
 	public typealias	Mutation	=	(identity: K, past: V?, future: V?)
-	public var			mutations	:	[Mutation]
+	public var		mutations	:	[Mutation]
 }
 
 extension CollectionTransaction {

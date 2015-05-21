@@ -32,7 +32,6 @@
 		4563E0871AF8FCBD00AA9EA6 /* OrderingTreeSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4563E0541AF8F3F800AA9EA6 /* OrderingTreeSignal.swift */; };
 		4563E0881AF8FCBD00AA9EA6 /* OrderlessTreeSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4563E0561AF8F3FF00AA9EA6 /* OrderlessTreeSignal.swift */; };
 		4563E0891AF8FCBD00AA9EA6 /* ArrayDiffset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4563E05D1AF8F7EA00AA9EA6 /* ArrayDiffset.swift */; };
-		4563E08B1AF8FE4700AA9EA6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4563E08A1AF8FE4700AA9EA6 /* UIKit.framework */; };
 		459D96C81AFE531B006AF2C0 /* SignalGraph+AppKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459D96C71AFE531B006AF2C0 /* SignalGraph+AppKit.swift */; };
 		459D96C91AFE538F006AF2C0 /* SignalGraph.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45D934E41AFE4228000EE661 /* SignalGraph.framework */; };
 		459D96CA1AFE54FB006AF2C0 /* Debugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D4428E1AFDE6A6003D9E32 /* Debugging.swift */; };
@@ -68,6 +67,14 @@
 		459D97121AFECDE1006AF2C0 /* ObjectiveCRuntime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459D97111AFECDE1006AF2C0 /* ObjectiveCRuntime.swift */; };
 		459D97141AFECF53006AF2C0 /* SignalingSegmentOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459D97131AFECF53006AF2C0 /* SignalingSegmentOptions.swift */; };
 		459D97191AFF5325006AF2C0 /* SignalGraphExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459D97181AFF5325006AF2C0 /* SignalGraphExtensions.swift */; };
+		45BE34171B0CC02D0029B752 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BE34161B0CC02D0029B752 /* AppDelegate.swift */; };
+		45BE34191B0CC02D0029B752 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45BE34181B0CC02D0029B752 /* Images.xcassets */; };
+		45BE341C1B0CC02D0029B752 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45BE341A1B0CC02D0029B752 /* MainMenu.xib */; };
+		45BE342F1B0CC0820029B752 /* SignalGraph.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45D934E41AFE4228000EE661 /* SignalGraph.framework */; };
+		45BE34301B0CC0820029B752 /* SignalGraph.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 45D934E41AFE4228000EE661 /* SignalGraph.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		45BE34351B0CC0B60029B752 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BE34341B0CC0B60029B752 /* ListViewController.swift */; };
+		45BE34371B0CC17F0029B752 /* ViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BE34361B0CC17F0029B752 /* ViewProtocol.swift */; };
+		45BE34391B0CC2110029B752 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BE34381B0CC2110029B752 /* MainWindowController.swift */; };
 		45D442881AFDCE13003D9E32 /* ArraySignalMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D442861AFDCC3B003D9E32 /* ArraySignalMap.swift */; };
 		45D4428D1AFDD944003D9E32 /* ValueSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D4428B1AFDD8FD003D9E32 /* ValueSignal.swift */; };
 		45D442901AFDE8AF003D9E32 /* Debugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D4428E1AFDE6A6003D9E32 /* Debugging.swift */; };
@@ -85,7 +92,28 @@
 			remoteGlobalIDString = 4563E0641AF8FCA800AA9EA6;
 			remoteInfo = Channel3Mobile;
 		};
+		45BE34311B0CC0820029B752 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 45E3F1A71AF8AF560078E7E8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 45D934E31AFE4228000EE661;
+			remoteInfo = SignalGraph;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		45BE34331B0CC0820029B752 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				45BE34301B0CC0820029B752 /* SignalGraph.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		4503AE141AFBC3D8006AB1F0 /* ArrayEditor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayEditor.swift; sourceTree = "<group>"; };
@@ -113,7 +141,6 @@
 		4563E05D1AF8F7EA00AA9EA6 /* ArrayDiffset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayDiffset.swift; sourceTree = "<group>"; };
 		4563E0651AF8FCA800AA9EA6 /* SignalGraphMobile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SignalGraphMobile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4563E0681AF8FCA800AA9EA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4563E08A1AF8FE4700AA9EA6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		459D96AE1AFE52D3006AF2C0 /* SignalGraphAppKitAddon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SignalGraphAppKitAddon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		459D96B11AFE52D3006AF2C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		459D96C71AFE531B006AF2C0 /* SignalGraph+AppKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SignalGraph+AppKit.swift"; sourceTree = "<group>"; };
@@ -122,6 +149,14 @@
 		459D97111AFECDE1006AF2C0 /* ObjectiveCRuntime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectiveCRuntime.swift; sourceTree = "<group>"; };
 		459D97131AFECF53006AF2C0 /* SignalingSegmentOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalingSegmentOptions.swift; sourceTree = "<group>"; };
 		459D97181AFF5325006AF2C0 /* SignalGraphExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalGraphExtensions.swift; sourceTree = "<group>"; };
+		45BE34121B0CC02D0029B752 /* OSXTestdriveApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OSXTestdriveApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		45BE34151B0CC02D0029B752 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		45BE34161B0CC02D0029B752 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		45BE34181B0CC02D0029B752 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		45BE341B1B0CC02D0029B752 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		45BE34341B0CC0B60029B752 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		45BE34361B0CC17F0029B752 /* ViewProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewProtocol.swift; sourceTree = "<group>"; };
+		45BE34381B0CC2110029B752 /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		45D442861AFDCC3B003D9E32 /* ArraySignalMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArraySignalMap.swift; sourceTree = "<group>"; };
 		45D442891AFDD418003D9E32 /* Aliases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Aliases.swift; sourceTree = "<group>"; };
 		45D4428B1AFDD8FD003D9E32 /* ValueSignal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueSignal.swift; sourceTree = "<group>"; };
@@ -153,7 +188,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4563E08B1AF8FE4700AA9EA6 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,6 +196,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				459D96C91AFE538F006AF2C0 /* SignalGraph.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		45BE340F1B0CC02D0029B752 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45BE342F1B0CC0820029B752 /* SignalGraph.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,6 +340,28 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		45BE34131B0CC02D0029B752 /* OSXTestdriveApp */ = {
+			isa = PBXGroup;
+			children = (
+				45BE34161B0CC02D0029B752 /* AppDelegate.swift */,
+				45BE34381B0CC2110029B752 /* MainWindowController.swift */,
+				45BE34341B0CC0B60029B752 /* ListViewController.swift */,
+				45BE34361B0CC17F0029B752 /* ViewProtocol.swift */,
+				45BE34181B0CC02D0029B752 /* Images.xcassets */,
+				45BE341A1B0CC02D0029B752 /* MainMenu.xib */,
+				45BE34141B0CC02D0029B752 /* Supporting Files */,
+			);
+			path = OSXTestdriveApp;
+			sourceTree = "<group>";
+		};
+		45BE34141B0CC02D0029B752 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				45BE34151B0CC02D0029B752 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		45E3F1A61AF8AF560078E7E8 = {
 			isa = PBXGroup;
 			children = (
@@ -305,7 +369,7 @@
 				4563E0661AF8FCA800AA9EA6 /* SignalGraphMobile */,
 				4503AE2C1AFDB3D0006AB1F0 /* SignalGraphMobileTest */,
 				459D96AF1AFE52D3006AF2C0 /* SignalGraphAppKitAddon */,
-				4563E08A1AF8FE4700AA9EA6 /* UIKit.framework */,
+				45BE34131B0CC02D0029B752 /* OSXTestdriveApp */,
 				45E3F1B01AF8AF570078E7E8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -317,6 +381,7 @@
 				4503AE2B1AFDB3D0006AB1F0 /* SignalGraphMobileTest.xctest */,
 				45D934E41AFE4228000EE661 /* SignalGraph.framework */,
 				459D96AE1AFE52D3006AF2C0 /* SignalGraphAppKitAddon.framework */,
+				45BE34121B0CC02D0029B752 /* OSXTestdriveApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -432,6 +497,25 @@
 			productReference = 459D96AE1AFE52D3006AF2C0 /* SignalGraphAppKitAddon.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		45BE34111B0CC02D0029B752 /* OSXTestdriveApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 45BE34291B0CC02E0029B752 /* Build configuration list for PBXNativeTarget "OSXTestdriveApp" */;
+			buildPhases = (
+				45BE340E1B0CC02D0029B752 /* Sources */,
+				45BE340F1B0CC02D0029B752 /* Frameworks */,
+				45BE34101B0CC02D0029B752 /* Resources */,
+				45BE34331B0CC0820029B752 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				45BE34321B0CC0820029B752 /* PBXTargetDependency */,
+			);
+			name = OSXTestdriveApp;
+			productName = OSXTestdriveApp;
+			productReference = 45BE34121B0CC02D0029B752 /* OSXTestdriveApp.app */;
+			productType = "com.apple.product-type.application";
+		};
 		45D934E31AFE4228000EE661 /* SignalGraph */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 45D934F71AFE4228000EE661 /* Build configuration list for PBXNativeTarget "SignalGraph" */;
@@ -468,6 +552,9 @@
 					459D96AD1AFE52D3006AF2C0 = {
 						CreatedOnToolsVersion = 6.3.2;
 					};
+					45BE34111B0CC02D0029B752 = {
+						CreatedOnToolsVersion = 6.3.2;
+					};
 					45D934E31AFE4228000EE661 = {
 						CreatedOnToolsVersion = 6.3.2;
 					};
@@ -479,6 +566,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 45E3F1A61AF8AF560078E7E8;
 			productRefGroup = 45E3F1B01AF8AF570078E7E8 /* Products */;
@@ -489,6 +577,7 @@
 				4563E0641AF8FCA800AA9EA6 /* SignalGraphMobile */,
 				4503AE2A1AFDB3D0006AB1F0 /* SignalGraphMobileTest */,
 				459D96AD1AFE52D3006AF2C0 /* SignalGraphAppKitAddon */,
+				45BE34111B0CC02D0029B752 /* OSXTestdriveApp */,
 			);
 		};
 /* End PBXProject section */
@@ -512,6 +601,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		45BE34101B0CC02D0029B752 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45BE34191B0CC02D0029B752 /* Images.xcassets in Resources */,
+				45BE341C1B0CC02D0029B752 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -582,6 +680,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		45BE340E1B0CC02D0029B752 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45BE34351B0CC0B60029B752 /* ListViewController.swift in Sources */,
+				45BE34371B0CC17F0029B752 /* ViewProtocol.swift in Sources */,
+				45BE34391B0CC2110029B752 /* MainWindowController.swift in Sources */,
+				45BE34171B0CC02D0029B752 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		45D934DF1AFE4228000EE661 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -626,7 +735,23 @@
 			target = 4563E0641AF8FCA800AA9EA6 /* SignalGraphMobile */;
 			targetProxy = 4503AE321AFDB3D0006AB1F0 /* PBXContainerItemProxy */;
 		};
+		45BE34321B0CC0820029B752 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 45D934E31AFE4228000EE661 /* SignalGraph */;
+			targetProxy = 45BE34311B0CC0820029B752 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		45BE341A1B0CC02D0029B752 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				45BE341B1B0CC02D0029B752 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		4503AE351AFDB3D0006AB1F0 /* Debug */ = {
@@ -683,7 +808,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = SignalGraphMobile;
+				PRODUCT_MODULE_NAME = SignalGraph;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -705,7 +830,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = SignalGraphMobile;
+				PRODUCT_MODULE_NAME = SignalGraph;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -762,9 +887,38 @@
 			};
 			name = Release;
 		};
+		45BE342A1B0CC02E0029B752 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = OSXTestdriveApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		45BE342B1B0CC02E0029B752 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = OSXTestdriveApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		45D934F81AFE4228000EE661 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -779,7 +933,6 @@
 				INFOPLIST_FILE = SignalGraph/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = SignalGraph;
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -789,6 +942,7 @@
 		45D934F91AFE4228000EE661 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -799,7 +953,6 @@
 				INFOPLIST_FILE = SignalGraph/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = SignalGraph;
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -844,6 +997,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -880,6 +1034,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -913,6 +1068,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		45BE34291B0CC02E0029B752 /* Build configuration list for PBXNativeTarget "OSXTestdriveApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				45BE342A1B0CC02E0029B752 /* Debug */,
+				45BE342B1B0CC02E0029B752 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		45D934F71AFE4228000EE661 /* Build configuration list for PBXNativeTarget "SignalGraph" */ = {
 			isa = XCConfigurationList;

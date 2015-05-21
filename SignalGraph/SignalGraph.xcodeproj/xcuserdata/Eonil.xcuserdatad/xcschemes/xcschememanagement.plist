@@ -19,10 +19,15 @@
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
-		<key>SignalGraphAppKitAddon.xcscheme</key>
+		<key>OSXTestdriveApp.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>4</integer>
+		</dict>
+		<key>SignalGraphAppKitAddon.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -48,6 +53,16 @@
 			<true/>
 		</dict>
 		<key>459D96B71AFE52D3006AF2C0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>45BE34111B0CC02D0029B752</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>45BE34201B0CC02D0029B752</key>
 		<dict>
 			<key>primary</key>
 			<true/>

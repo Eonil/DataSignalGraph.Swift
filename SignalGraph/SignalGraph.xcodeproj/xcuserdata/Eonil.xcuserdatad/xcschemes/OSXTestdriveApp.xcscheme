@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4563E0641AF8FCA800AA9EA6"
-               BuildableName = "SignalGraph.framework"
-               BlueprintName = "SignalGraphMobile"
+               BlueprintIdentifier = "45BE34111B0CC02D0029B752"
+               BuildableName = "OSXTestdriveApp.app"
+               BlueprintName = "OSXTestdriveApp"
                ReferencedContainer = "container:SignalGraph.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,9 +28,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4563E06E1AF8FCA800AA9EA6"
-               BuildableName = "Channel3MobileTests.xctest"
-               BlueprintName = "Channel3MobileTests"
+               BlueprintIdentifier = "45BE34201B0CC02D0029B752"
+               BuildableName = "OSXTestdriveAppTests.xctest"
+               BlueprintName = "OSXTestdriveAppTests"
                ReferencedContainer = "container:SignalGraph.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -46,9 +46,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4563E06E1AF8FCA800AA9EA6"
-               BuildableName = "Channel3MobileTests.xctest"
-               BlueprintName = "Channel3MobileTests"
+               BlueprintIdentifier = "45BE34201B0CC02D0029B752"
+               BuildableName = "OSXTestdriveAppTests.xctest"
+               BlueprintName = "OSXTestdriveAppTests"
                ReferencedContainer = "container:SignalGraph.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -56,9 +56,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "45D934E31AFE4228000EE661"
-            BuildableName = "SignalGraph.framework"
-            BlueprintName = "SignalGraph"
+            BlueprintIdentifier = "45BE34111B0CC02D0029B752"
+            BuildableName = "OSXTestdriveApp.app"
+            BlueprintName = "OSXTestdriveApp"
             ReferencedContainer = "container:SignalGraph.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -76,9 +76,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "45D934E31AFE4228000EE661"
-            BuildableName = "SignalGraph.framework"
-            BlueprintName = "SignalGraph"
+            BlueprintIdentifier = "45BE34111B0CC02D0029B752"
+            BuildableName = "OSXTestdriveApp.app"
+            BlueprintName = "OSXTestdriveApp"
             ReferencedContainer = "container:SignalGraph.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -91,15 +91,16 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4563E0641AF8FCA800AA9EA6"
-            BuildableName = "SignalGraph.framework"
-            BlueprintName = "SignalGraphMobile"
+            BlueprintIdentifier = "45BE34111B0CC02D0029B752"
+            BuildableName = "OSXTestdriveApp.app"
+            BlueprintName = "OSXTestdriveApp"
             ReferencedContainer = "container:SignalGraph.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
