@@ -12,7 +12,10 @@
 public class EditableArrayStorage<T>: ReplicatingArrayStorage<T> {
 	public init(_ state: [T] = []) {
 		super.init()
-		sensor.signal(ArraySignal.Initiation(snapshot: state))
+		editor.initiate()
+	}
+	deinit {
+		editor.terminate()
 	}
 	
 	private var editor: ArrayEditor<T> {

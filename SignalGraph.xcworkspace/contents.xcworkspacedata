@@ -2,10 +2,10 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:LICENSE.md">
+      location = "group:README.md">
    </FileRef>
    <FileRef
-      location = "group:README.md">
+      location = "group:LICENSE.md">
    </FileRef>
    <FileRef
       location = "group:SignalGraph/SignalGraph.xcodeproj">

@@ -17,7 +17,7 @@ Deisng Goals
 ------------
 -	Data-consumers care only registration/deregistration, and will automatically 
 	takes full data integrity without any extra query on data-source. Implementors
-	(you!) just follow singla signal protocol, and everything becomes automatically
+	(you!) just follow single signal protocol, and everything becomes automatically
 	integrate.
 -	Data-signals can freely be chained without concerning of data-loss.
 -	You don't need to worry about memory leak by making cycles. No node keeps
@@ -48,31 +48,33 @@ These are my original intention of how to use this library.
 	When a sensor registeres itself to an emitter, it will receive an initiation
 	snapshot signal. Emitter sends snapshot of its state at once, and sensor can
 	perform initial synchronization. And then, mutations of emitter will be sent
-	in delath-set form. When sensor deregisters itself from the emitter, emitter
-	will send termination snapshot. Thisis redundant information, but useful to
-	validate sensor state, and some sensors requires this.
+	in delta-set form. When sensor deregisters itself from the emitter, emitter
+	will send termination snapshot. This is redundant information, but useful to
+	validate sensor state, and some sensors require this.
 
-	Also, initiation/termination signals can be sent in a signaling session to 
-	reset whole state at once.
+	Also, initiation/termination signals can be sent multiple times in a signaling
+	session to reset whole state at once. But still should be sent in order.
 
 -	Emitter does not provide guarantee of specific state. So do not assume emitter
 	state will be equal with sensor state when they're receiving signals. Sensors
-	must depend only on the signals to reconstruct state.
+	must depend only on the signals to reconstruct state. They just guarantees 
+	state-full signals to be sent *in order*.
+
+-	But, some specialized emitters can provide such guarantee for your convenience.
+	In that case, the class should note that in documentation.
 
 -	Don't forget that just "signal" is state-less, and 
 
--	Clarity is far more important than shorter code.
-
-	Short code is important. Because it provides better readability. But clarity 
-	is far  more important than the readability. 
+-	Clarity is far more important than shorter code. Small benefit of short code
+	will be sacrificed for huge benefit of clarity.
 
 -	If you set it up, you must tear it down yourself.
 
-	If you call `register`, then you must call a paired `deregister`. No exception.
-	This is a policy, but there's also a technical reason. I simply cannot deregister
-	sensors automatically in `deinit` due to early nil-lization of weak references
-	in Swift. Anyway, don't worry too much. This framework will check it and fire
-	errors if you forgot deregistration in debug build.
+	If you call `register`, then you must call a paired `deregister`. No exception
+	on this rule. This is a policy, but there's also a technical reason. I simply 
+	cannot deregister sensors automatically in `deinit` due to early nil-lization 
+	of weak references in Swift. Anyway, don't worry too much. This framework will
+	check it and fire errors if you forgot deregistration in debug build.
 
 Now let's see how to use these actually.
 
@@ -128,7 +130,7 @@ State-ful signals presume you're sending signals to represent mutable state, and
 representin it by sening multiple immutable states over time. It also presumes 
 you cannot access the signal origin, so you cannot get current state of the origin.
 
-With these premises, signals are designed to allow receivers can reconstruct full
+With these premises, signals are designed to allow receivers to reconstruct full
 state by accumulating them. To make tracking clear and easier, signals are usually 
 sent in form of mutation commands rather then state snapshot.
 
@@ -140,9 +142,9 @@ State signals usually have three cases.
 
 Please note that signals does not provide timing guarantee. A transition can be
 sent asynchronously (after or even before!) from actual transition happens, and 
-source state can actually be non-existent. So you shouldn't depend on the timing 
-of signal receiving, and should reconstruct everything only from the information 
-passed with the signal itself.
+source state can actually be non-existent. So you shouldn't expect emitter state
+to be synchronized with timing of signal transferring, and should reconstruct 
+everything only from the information passed within the signal itself.
 
 Transition passes mutation command instead of state snapshot. There're many reasons
 of sending mutation command.
@@ -154,13 +156,13 @@ of sending mutation command.
 
 -	Current view systems are usually state-ful, and works far better with 
 	diff-set rather than full state. If I send snapshot, views need to resolve
-	the diffset. 
+	diffset themselves. 
 
 -	Because you usually need to transform signals, and passing full state
 	snapshot usually means full conversion that is usually inacceptable cost.
 	This will affect performance.
 
-If you think there're too many mutations so sending snapshot is faster, then you
+If you think there're too many mutations, and sending snapshot is faster, then you
 can send pair of termination/initiation signals instead of. Which means resetting 
 by snapshot that means semantically same with sening full snapshot state.
 So transition signal can be thought as a kind of optimization.
@@ -191,8 +193,8 @@ See `Protocols.swift` for details. It also serves as a documentation for each co
 Emitter/sensor protocols does not define uni/multi-casting/catching behaviors.
 But implementations can define specific limitations. 
 
--	`SignalEmitter`				A multicasting emitter. This can fire to multiple sensors.
--	`SignalSensor`				A unicatching sensor. This can observe only one emitter.
+-	`SignalEmitter`				A multicasting emitter. This can send signals to multiple sensors.
+-	`SignalSensor`				A unicatching sensor. This can receive signals from only one emitter.
 
 Storage and replication roles are implemented by these specialized classes.
 These implementations require multicasting emitter and unicatching sensor, and using default

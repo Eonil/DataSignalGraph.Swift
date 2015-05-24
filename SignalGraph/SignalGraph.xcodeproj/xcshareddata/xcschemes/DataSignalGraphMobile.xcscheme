@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4563E0641AF8FCA800AA9EA6"
-               BuildableName = "SignalGraph.framework"
+               BuildableName = "SignalGraphMobile.framework"
                BlueprintName = "SignalGraphMobile"
                ReferencedContainer = "container:SignalGraph.xcodeproj">
             </BuildableReference>
@@ -95,7 +95,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4563E0641AF8FCA800AA9EA6"
-            BuildableName = "SignalGraph.framework"
+            BuildableName = "SignalGraphMobile.framework"
             BlueprintName = "SignalGraphMobile"
             ReferencedContainer = "container:SignalGraph.xcodeproj">
          </BuildableReference>

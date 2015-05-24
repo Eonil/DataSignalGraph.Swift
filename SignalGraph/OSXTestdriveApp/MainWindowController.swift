@@ -8,21 +8,39 @@
 
 import Foundation
 import AppKit
+import SignalGraph
 
 class MainWindowController {
 	
 	let	window	=	NSWindow()
-	
-	let	scroll	=	NSScrollView()
-	let	list	=	ListViewController()
+	let	list	=	SingleColumnListViewController<Int, TestTextField1>()
+	let	storage	=	EditableArrayStorage<Int>([])
 	
 	init() {
 		window.styleMask	|=	NSResizableWindowMask
-							|	NSClosableWindowMask
+					|	NSClosableWindowMask
 		window.setFrame(CGRect(x: 100, y: 100, width: 400, height: 300), display: true)
 		window.makeKeyAndOrderFront(self)
+		window.contentView	=	list.view
+
+		storage.emitter.register(list.sensor)
 		
-		scroll.documentView	=	list.tableView
-		window.contentView	=	scroll
+		let	a	=	Array(0..<1024)
+		storage.extend(a)
 	}
 }
+
+class TestTextField1: NSTextField, DataPresentable {
+	typealias	Data	=	Int
+	
+	var data: Int? {
+		didSet {
+			if let data = data {
+				self.stringValue	=	"\(data)"
+			} else {
+				self.stringValue	=	""
+			}
+		}
+	}
+}
+

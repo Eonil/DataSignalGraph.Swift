@@ -16,7 +16,8 @@ public enum ArraySignal<T> {
 	case Termination(snapshot: Snapshot)
 }
 extension ArraySignal {
-	func apply(inout a: [T]?) {
+	///	Applies mutations in this signal to an array.
+	public func apply(inout a: [T]?) {
 		switch self {
 		case .Initiation(snapshot: let s):
 			assert(a == nil, "Target array must be nil to apply initiation snapshot.")

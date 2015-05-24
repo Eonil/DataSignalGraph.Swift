@@ -18,6 +18,7 @@
 		4503AE3D1AFDB96D006AB1F0 /* SetStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D987AC1AF923C0003A5BC0 /* SetStorage.swift */; };
 		4503AE3E1AFDB96D006AB1F0 /* DictionaryStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D987AA1AF923BB003A5BC0 /* DictionaryStorage.swift */; };
 		4503AE3F1AFDB96D006AB1F0 /* DictionaryEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4503AE251AFD9EEF006AB1F0 /* DictionaryEditor.swift */; };
+		4510C68B1B1198DC007930D2 /* ArraySignal+NSTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4510C68A1B1198DC007930D2 /* ArraySignal+NSTableView.swift */; };
 		452C706A1AFF9FF0005B3793 /* StateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452C70691AFF9FF0005B3793 /* StateHandler.swift */; };
 		452C706C1B03A95D005B3793 /* SignalingTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452C706B1B03A95D005B3793 /* SignalingTable.swift */; };
 		4563E07E1AF8FCBD00AA9EA6 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E3F1B91AF8AF600078E7E8 /* Protocols.swift */; };
@@ -29,8 +30,8 @@
 		4563E0841AF8FCBD00AA9EA6 /* SetSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4563E04B1AF8F35600AA9EA6 /* SetSignal.swift */; };
 		4563E0851AF8FCBD00AA9EA6 /* ArraySignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4563E04C1AF8F35600AA9EA6 /* ArraySignal.swift */; };
 		4563E0861AF8FCBD00AA9EA6 /* DictionarySignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4563E04D1AF8F35600AA9EA6 /* DictionarySignal.swift */; };
-		4563E0871AF8FCBD00AA9EA6 /* OrderingTreeSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4563E0541AF8F3F800AA9EA6 /* OrderingTreeSignal.swift */; };
-		4563E0881AF8FCBD00AA9EA6 /* OrderlessTreeSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4563E0561AF8F3FF00AA9EA6 /* OrderlessTreeSignal.swift */; };
+		4563E0871AF8FCBD00AA9EA6 /* _OrderingTreeSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4563E0541AF8F3F800AA9EA6 /* _OrderingTreeSignal.swift */; };
+		4563E0881AF8FCBD00AA9EA6 /* _OrderlessTreeSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4563E0561AF8F3FF00AA9EA6 /* _OrderlessTreeSignal.swift */; };
 		4563E0891AF8FCBD00AA9EA6 /* ArrayDiffset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4563E05D1AF8F7EA00AA9EA6 /* ArrayDiffset.swift */; };
 		459D96C81AFE531B006AF2C0 /* SignalGraph+AppKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459D96C71AFE531B006AF2C0 /* SignalGraph+AppKit.swift */; };
 		459D96C91AFE538F006AF2C0 /* SignalGraph.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45D934E41AFE4228000EE661 /* SignalGraph.framework */; };
@@ -54,8 +55,8 @@
 		459D96DB1AFE54FB006AF2C0 /* SetSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4563E04B1AF8F35600AA9EA6 /* SetSignal.swift */; };
 		459D96DC1AFE54FB006AF2C0 /* DictionarySignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4563E04D1AF8F35600AA9EA6 /* DictionarySignal.swift */; };
 		459D96DD1AFE54FB006AF2C0 /* ArraySignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4563E04C1AF8F35600AA9EA6 /* ArraySignal.swift */; };
-		459D96DE1AFE54FB006AF2C0 /* OrderingTreeSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4563E0541AF8F3F800AA9EA6 /* OrderingTreeSignal.swift */; };
-		459D96DF1AFE54FB006AF2C0 /* OrderlessTreeSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4563E0561AF8F3FF00AA9EA6 /* OrderlessTreeSignal.swift */; };
+		459D96DE1AFE54FB006AF2C0 /* _OrderingTreeSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4563E0541AF8F3F800AA9EA6 /* _OrderingTreeSignal.swift */; };
+		459D96DF1AFE54FB006AF2C0 /* _OrderlessTreeSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4563E0561AF8F3FF00AA9EA6 /* _OrderlessTreeSignal.swift */; };
 		459D96E01AFE54FB006AF2C0 /* DictionaryFilteringDictionaryStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4503AE231AFD9431006AB1F0 /* DictionaryFilteringDictionaryStorage.swift */; };
 		459D96E11AFE54FB006AF2C0 /* DictionarySortingArrayStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4503AE1F1AFCE13B006AB1F0 /* DictionarySortingArrayStorage.swift */; };
 		459D96E21AFE54FB006AF2C0 /* ArraySignalMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D442861AFDCC3B003D9E32 /* ArraySignalMap.swift */; };
@@ -72,9 +73,10 @@
 		45BE341C1B0CC02D0029B752 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45BE341A1B0CC02D0029B752 /* MainMenu.xib */; };
 		45BE342F1B0CC0820029B752 /* SignalGraph.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45D934E41AFE4228000EE661 /* SignalGraph.framework */; };
 		45BE34301B0CC0820029B752 /* SignalGraph.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 45D934E41AFE4228000EE661 /* SignalGraph.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		45BE34351B0CC0B60029B752 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BE34341B0CC0B60029B752 /* ListViewController.swift */; };
+		45BE34351B0CC0B60029B752 /* SingleColumnListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BE34341B0CC0B60029B752 /* SingleColumnListViewController.swift */; };
 		45BE34371B0CC17F0029B752 /* ViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BE34361B0CC17F0029B752 /* ViewProtocol.swift */; };
 		45BE34391B0CC2110029B752 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BE34381B0CC2110029B752 /* MainWindowController.swift */; };
+		45CB7AE71B11C51000C5EE54 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CB7AE61B11C51000C5EE54 /* ListViewController.swift */; };
 		45D442881AFDCE13003D9E32 /* ArraySignalMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D442861AFDCC3B003D9E32 /* ArraySignalMap.swift */; };
 		45D4428D1AFDD944003D9E32 /* ValueSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D4428B1AFDD8FD003D9E32 /* ValueSignal.swift */; };
 		45D442901AFDE8AF003D9E32 /* Debugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D4428E1AFDE6A6003D9E32 /* Debugging.swift */; };
@@ -125,6 +127,7 @@
 		4503AE2B1AFDB3D0006AB1F0 /* SignalGraphMobileTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SignalGraphMobileTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4503AE2E1AFDB3D0006AB1F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4503AE2F1AFDB3D0006AB1F0 /* DataSignalGraphMobileTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSignalGraphMobileTest.swift; sourceTree = "<group>"; };
+		4510C68A1B1198DC007930D2 /* ArraySignal+NSTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ArraySignal+NSTableView.swift"; sourceTree = "<group>"; };
 		452C70691AFF9FF0005B3793 /* StateHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateHandler.swift; sourceTree = "<group>"; };
 		452C706B1B03A95D005B3793 /* SignalingTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalingTable.swift; sourceTree = "<group>"; };
 		45611FFB1AFB9AAD00E7E5FA /* _junkyard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _junkyard.swift; sourceTree = "<group>"; };
@@ -135,8 +138,8 @@
 		4563E04B1AF8F35600AA9EA6 /* SetSignal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetSignal.swift; sourceTree = "<group>"; };
 		4563E04C1AF8F35600AA9EA6 /* ArraySignal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArraySignal.swift; sourceTree = "<group>"; };
 		4563E04D1AF8F35600AA9EA6 /* DictionarySignal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionarySignal.swift; sourceTree = "<group>"; };
-		4563E0541AF8F3F800AA9EA6 /* OrderingTreeSignal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderingTreeSignal.swift; sourceTree = "<group>"; };
-		4563E0561AF8F3FF00AA9EA6 /* OrderlessTreeSignal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderlessTreeSignal.swift; sourceTree = "<group>"; };
+		4563E0541AF8F3F800AA9EA6 /* _OrderingTreeSignal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _OrderingTreeSignal.swift; sourceTree = "<group>"; };
+		4563E0561AF8F3FF00AA9EA6 /* _OrderlessTreeSignal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _OrderlessTreeSignal.swift; sourceTree = "<group>"; };
 		4563E05B1AF8F4F400AA9EA6 /* ArrayStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayStorage.swift; sourceTree = "<group>"; };
 		4563E05D1AF8F7EA00AA9EA6 /* ArrayDiffset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayDiffset.swift; sourceTree = "<group>"; };
 		4563E0651AF8FCA800AA9EA6 /* SignalGraphMobile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SignalGraphMobile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,9 +157,10 @@
 		45BE34161B0CC02D0029B752 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		45BE34181B0CC02D0029B752 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		45BE341B1B0CC02D0029B752 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		45BE34341B0CC0B60029B752 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		45BE34341B0CC0B60029B752 /* SingleColumnListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleColumnListViewController.swift; sourceTree = "<group>"; };
 		45BE34361B0CC17F0029B752 /* ViewProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewProtocol.swift; sourceTree = "<group>"; };
 		45BE34381B0CC2110029B752 /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
+		45CB7AE61B11C51000C5EE54 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		45D442861AFDCC3B003D9E32 /* ArraySignalMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArraySignalMap.swift; sourceTree = "<group>"; };
 		45D442891AFDD418003D9E32 /* Aliases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Aliases.swift; sourceTree = "<group>"; };
 		45D4428B1AFDD8FD003D9E32 /* ValueSignal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueSignal.swift; sourceTree = "<group>"; };
@@ -270,8 +274,8 @@
 				4563E04B1AF8F35600AA9EA6 /* SetSignal.swift */,
 				4563E04D1AF8F35600AA9EA6 /* DictionarySignal.swift */,
 				4563E04C1AF8F35600AA9EA6 /* ArraySignal.swift */,
-				4563E0541AF8F3F800AA9EA6 /* OrderingTreeSignal.swift */,
-				4563E0561AF8F3FF00AA9EA6 /* OrderlessTreeSignal.swift */,
+				4563E0541AF8F3F800AA9EA6 /* _OrderingTreeSignal.swift */,
+				4563E0561AF8F3FF00AA9EA6 /* _OrderlessTreeSignal.swift */,
 			);
 			name = "(stateful signals)";
 			sourceTree = "<group>";
@@ -345,11 +349,13 @@
 			children = (
 				45BE34161B0CC02D0029B752 /* AppDelegate.swift */,
 				45BE34381B0CC2110029B752 /* MainWindowController.swift */,
-				45BE34341B0CC0B60029B752 /* ListViewController.swift */,
+				45BE34341B0CC0B60029B752 /* SingleColumnListViewController.swift */,
+				45CB7AE61B11C51000C5EE54 /* ListViewController.swift */,
 				45BE34361B0CC17F0029B752 /* ViewProtocol.swift */,
 				45BE34181B0CC02D0029B752 /* Images.xcassets */,
 				45BE341A1B0CC02D0029B752 /* MainMenu.xib */,
 				45BE34141B0CC02D0029B752 /* Supporting Files */,
+				4510C68A1B1198DC007930D2 /* ArraySignal+NSTableView.swift */,
 			);
 			path = OSXTestdriveApp;
 			sourceTree = "<group>";
@@ -652,12 +658,12 @@
 				4503AE3C1AFDB96D006AB1F0 /* CollectionStorage.swift in Sources */,
 				4503AE3B1AFDB96D006AB1F0 /* SignalFilter.swift in Sources */,
 				4563E0811AF8FCBD00AA9EA6 /* ValueStorage.swift in Sources */,
-				4563E0871AF8FCBD00AA9EA6 /* OrderingTreeSignal.swift in Sources */,
+				4563E0871AF8FCBD00AA9EA6 /* _OrderingTreeSignal.swift in Sources */,
 				4503AE3E1AFDB96D006AB1F0 /* DictionaryStorage.swift in Sources */,
 				4563E0841AF8FCBD00AA9EA6 /* SetSignal.swift in Sources */,
 				4563E0861AF8FCBD00AA9EA6 /* DictionarySignal.swift in Sources */,
 				45D4428D1AFDD944003D9E32 /* ValueSignal.swift in Sources */,
-				4563E0881AF8FCBD00AA9EA6 /* OrderlessTreeSignal.swift in Sources */,
+				4563E0881AF8FCBD00AA9EA6 /* _OrderlessTreeSignal.swift in Sources */,
 				4503AE3D1AFDB96D006AB1F0 /* SetStorage.swift in Sources */,
 				4503AE371AFDB95A006AB1F0 /* ArrayEditor.swift in Sources */,
 				4503AE3F1AFDB96D006AB1F0 /* DictionaryEditor.swift in Sources */,
@@ -684,7 +690,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45BE34351B0CC0B60029B752 /* ListViewController.swift in Sources */,
+				4510C68B1B1198DC007930D2 /* ArraySignal+NSTableView.swift in Sources */,
+				45BE34351B0CC0B60029B752 /* SingleColumnListViewController.swift in Sources */,
+				45CB7AE71B11C51000C5EE54 /* ListViewController.swift in Sources */,
 				45BE34371B0CC17F0029B752 /* ViewProtocol.swift in Sources */,
 				45BE34391B0CC2110029B752 /* MainWindowController.swift in Sources */,
 				45BE34171B0CC02D0029B752 /* AppDelegate.swift in Sources */,
@@ -716,8 +724,8 @@
 				459D96DB1AFE54FB006AF2C0 /* SetSignal.swift in Sources */,
 				459D96DC1AFE54FB006AF2C0 /* DictionarySignal.swift in Sources */,
 				459D96DD1AFE54FB006AF2C0 /* ArraySignal.swift in Sources */,
-				459D96DE1AFE54FB006AF2C0 /* OrderingTreeSignal.swift in Sources */,
-				459D96DF1AFE54FB006AF2C0 /* OrderlessTreeSignal.swift in Sources */,
+				459D96DE1AFE54FB006AF2C0 /* _OrderingTreeSignal.swift in Sources */,
+				459D96DF1AFE54FB006AF2C0 /* _OrderlessTreeSignal.swift in Sources */,
 				459D96E01AFE54FB006AF2C0 /* DictionaryFilteringDictionaryStorage.swift in Sources */,
 				459D96E11AFE54FB006AF2C0 /* DictionarySortingArrayStorage.swift in Sources */,
 				459D96E21AFE54FB006AF2C0 /* ArraySignalMap.swift in Sources */,
@@ -1076,6 +1084,7 @@
 				45BE342B1B0CC02E0029B752 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		45D934F71AFE4228000EE661 /* Build configuration list for PBXNativeTarget "SignalGraph" */ = {
 			isa = XCConfigurationList;
