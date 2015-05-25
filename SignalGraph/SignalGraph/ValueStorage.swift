@@ -102,7 +102,7 @@ public class ReplicatingValueStorage<T>: ValueStorage<T>, ReplicationType {
 
 
 ///	Self-editable value-replication.
-public class ValueSlot<T>: ReplicatingValueStorage<T> {
+public class EditableValueStorage<T>: ReplicatingValueStorage<T> {
 	public init(_ state: T) {
 		super.init()
 		super.sensor.signal(ValueSignal.Initiation({state}))

@@ -8,29 +8,29 @@
 
 ///	A proxy of a replication that provides array-like 
 ///	direct mutator method interface.
-public struct ArrayEditor<T> {
+struct ArrayEditor<T> {
 	
-	public unowned let	origin: ReplicatingArrayStorage<T>
+	unowned let	origin: ReplicatingArrayStorage<T>
 	
-	public init(_ origin: ReplicatingArrayStorage<T>) {
+	init(_ origin: ReplicatingArrayStorage<T>) {
 		self.origin	=	origin
 	}
 	
-	public func initiate() {
+	func initiate() {
 		self.origin.sensor.signal(ArraySignal.Initiation(snapshot: []))
 	}
-	public func terminate() {
+	func terminate() {
 		self.origin.sensor.signal(ArraySignal.Termination(snapshot: origin.state))
 	}
 	
 	////
 	
-	public var count: Int {
+	var count: Int {
 		get {
 			return	origin.state.count
 		}
 	}
-	public subscript(i: Int) -> T {
+	subscript(i: Int) -> T {
 		get {
 			return	origin.state[i]
 		}
@@ -38,38 +38,38 @@ public struct ArrayEditor<T> {
 			replaceRange(i..<i.successor(), with: [v])
 		}
 	}
-	public mutating func append(v: T) {
+	mutating func append(v: T) {
 		insert(v, atIndex: count)
 	}
-	public mutating func extend<S: SequenceType where S.Generator.Element == T>(vs: S) {
+	mutating func extend<S: SequenceType where S.Generator.Element == T>(vs: S) {
 		//	TODO:	Review cost of making the array...
 		//			Would it require enumeration of all elements?
 		splice(Array(vs), atIndex: count)
 	}
-	public mutating func removeLast() -> T {
+	mutating func removeLast() -> T {
 		let	v	=	origin.state.last!
 		removeAtIndex(count-1)
 		return	v
 	}
-	public mutating func insert(v: T, atIndex i: Int) {
+	mutating func insert(v: T, atIndex i: Int) {
 		splice([v], atIndex: i)
 	}
-	public mutating func removeAtIndex(i: Int) -> T {
+	mutating func removeAtIndex(i: Int) -> T {
 		let	v	=	origin.state[i]
 		removeRange(i..<i.successor())
 		return	v
 	}
-	public mutating func removeAll() {
+	mutating func removeAll() {
 		origin.sensor.signal(ArraySignal.Termination(snapshot: origin.state))
 		origin.sensor.signal(ArraySignal.Initiation(snapshot: []))
 	}
 	
-	public mutating func replaceRange<C : CollectionType where C.Generator.Element == T>(subRange: Range<Int>, with newElements: C) {
+	mutating func replaceRange<C : CollectionType where C.Generator.Element == T>(subRange: Range<Int>, with newElements: C) {
 		let	ms0	=	deleteRangeMutations(subRange)
 		let	ms1	=	insertSequenceMutations(newElements, at: subRange.startIndex)
 		dispatchMutations(ms0 + ms1)
 	}
-	public mutating func splice<S : CollectionType where S.Generator.Element == T>(newElements: S, atIndex i: Int) {
+	mutating func splice<S : CollectionType where S.Generator.Element == T>(newElements: S, atIndex i: Int) {
 		if i == 0 && count == 0 {
 			origin.sensor.signal(ArraySignal.Termination(snapshot: []))
 			origin.sensor.signal(ArraySignal.Initiation(snapshot: Array(newElements)))
@@ -77,7 +77,7 @@ public struct ArrayEditor<T> {
 			dispatchMutations(insertSequenceMutations(newElements, at: i))
 		}
 	}
-	public mutating func removeRange(subRange: Range<Int>) {
+	mutating func removeRange(subRange: Range<Int>) {
 		if subRange.startIndex == 0 && subRange.endIndex == count {
 			removeAll()
 		} else {
