@@ -294,7 +294,10 @@ Also for state-ful signals.
 
 
 
-
+Issues
+------
+-	Do I really need direct reading from a readonly storage if all signals are asynchronous?
+-	Whatever, I need synchronous events to deal with view stuffs well...
 
 
 

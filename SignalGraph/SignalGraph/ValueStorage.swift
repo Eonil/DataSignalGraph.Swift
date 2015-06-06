@@ -29,6 +29,14 @@ private final class ValueSignalDispatcher<T>: SignalDispatcher<ValueSignal<T>> {
 	}
 }
 
+
+
+
+
+
+
+
+
 ///	A read-only proxy view of a repository.
 ///
 public class ValueStorage<T>: StorageType {

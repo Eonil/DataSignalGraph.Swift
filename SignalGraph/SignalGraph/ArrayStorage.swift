@@ -42,7 +42,7 @@ private final class ArraySignalDispatcher<T>: SignalDispatcher<ArraySignal<T>> {
 public class ArrayStorage<T>: StorageType {
 	public typealias	Element	=	T
 	
-	public var	state: [T] {
+	public var state: [T] {
 		get {
 			assert(values != nil, "This storage has not been initiated or already terminated. You can initialize by sending `ArraySignal.Initiation` signal.")
 			return	values!
@@ -57,13 +57,13 @@ public class ArrayStorage<T>: StorageType {
 	
 	////
 	
-	private var	values		=	nil as [T]?
+	private var values		=	nil as [T]?
 	
 	private init() {
 		dispatcher.owner	=	self
 	}
 	
-	private let	dispatcher	=	ArraySignalDispatcher<T>()
+	private let dispatcher		=	ArraySignalDispatcher<T>()
 }
 
 

@@ -15,10 +15,11 @@ public enum DictionarySignal<K: Hashable,V> {
 	case Termination(snapshot	: Snapshot)						//<	Passes snapshot of current (latest) state.
 }
 extension DictionarySignal {
+	///	Applies mutations in this signal to a dictionary.
 	func apply(inout d: Dictionary<K,V>?) {
 		switch self {
 		case .Initiation(snapshot: let s):
-			assert(d == nil, "Current array must be empty to apply initiation snapshot.")
+			assert(d == nil, "Current target must be `nil` to apply initiation snapshot.")
 			d	=	s
 			
 		case .Transition(transaction: let t):
@@ -47,7 +48,7 @@ extension DictionarySignal {
 			
 		case .Termination(snapshot: let s):
 			assert(d != nil)
-			assert(s.count == d!.count, "Current array must be equal to latest snapshot to apply termination.")
+			assert(s.count == d!.count, "Current target must be equal to latest snapshot to apply termination.")
 			d	=	nil
 		}
 	}
