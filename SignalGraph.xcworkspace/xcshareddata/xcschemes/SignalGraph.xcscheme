@@ -17,7 +17,7 @@
                BlueprintIdentifier = "45D934E31AFE4228000EE661"
                BuildableName = "SignalGraph.framework"
                BlueprintName = "SignalGraph"
-               ReferencedContainer = "container:SignalGraph.xcodeproj">
+               ReferencedContainer = "container:SignalGraph/SignalGraph.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -28,6 +28,16 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "45F82C201B2576C800A78AF5"
+               BuildableName = "SignalGraphUnitTest.xctest"
+               BlueprintName = "SignalGraphUnitTest"
+               ReferencedContainer = "container:SignalGraph/SignalGraph.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
@@ -35,7 +45,7 @@
             BlueprintIdentifier = "45D934E31AFE4228000EE661"
             BuildableName = "SignalGraph.framework"
             BlueprintName = "SignalGraph"
-            ReferencedContainer = "container:SignalGraph.xcodeproj">
+            ReferencedContainer = "container:SignalGraph/SignalGraph.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -48,16 +58,15 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "45D934E31AFE4228000EE661"
             BuildableName = "SignalGraph.framework"
             BlueprintName = "SignalGraph"
-            ReferencedContainer = "container:SignalGraph.xcodeproj">
+            ReferencedContainer = "container:SignalGraph/SignalGraph.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -67,16 +76,15 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "45D934E31AFE4228000EE661"
             BuildableName = "SignalGraph.framework"
             BlueprintName = "SignalGraph"
-            ReferencedContainer = "container:SignalGraph.xcodeproj">
+            ReferencedContainer = "container:SignalGraph/SignalGraph.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

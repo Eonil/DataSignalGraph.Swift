@@ -15,6 +15,7 @@ public enum ArraySignal<T> {
 	case Transition	(transaction: Transaction)
 	case Termination(snapshot: Snapshot)
 }
+
 extension ArraySignal {
 	///	Applies mutations in this signal to an array.
 	public func apply(inout a: [T]?) {

@@ -22,7 +22,6 @@ class Debugging {
 			assert(lookupPairWithSensor(p.sensor) != nil)
 			assert(lookupPairWithSensor(p.sensor)!.emitter === p.emitter, "The only registered emitter of the sensor `\(p.sensor)` must be emitter `\(p.emitter)`.")
 			runOnlyInDebugMode {
-
 				erasePair(Pair(emitter: p.emitter, sensor: p.sensor))
 			}
 		}
@@ -46,7 +45,7 @@ class Debugging {
 		////
 		
 		///	This was intented to be a `struct`, but became `class`
-		///	due to work around a compiler bug.
+		///	to work around a compiler bug.
 		private final class Pair {
 			weak var	emitter	:	AnyObject?
 			weak var	sensor	:	AnyObject?
@@ -65,7 +64,6 @@ private func runOnlyInDebugMode(@noescape f: ()->()) {
 }
 
 private func runAsTrue(@noescape f: ()->()) -> Bool {
-
 	f()
 	return	true
 }

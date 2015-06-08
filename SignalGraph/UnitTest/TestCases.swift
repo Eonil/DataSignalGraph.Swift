@@ -1,39 +1,33 @@
 //
-//  SignalGraphMobileTest.swift
-//  SignalGraphMobileTest
+//  TestCases.swift
+//  SignalGraph
 //
-//  Created by Hoon H. on 2015/05/09.
+//  Created by Hoon H. on 2015/06/08.
 //  Copyright (c) 2015 Eonil. All rights reserved.
 //
 
-import UIKit
-import XCTest
-import SignalGraphMobile
+import Foundation
+import SignalGraph
 
-class SignalGraphMobileTest: XCTestCase {
-    
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
-    }
+func XCTAssert(condition: Bool) {
+	assert(condition)
+}
+
+class TestCases {
 	
+	func run() {
+		testSignalDispatcherAndMonitorSignaling()
+		testSignalDispatcherAndMonitorDeregistration()
+		testReplicatingValueStorage()
+		testValueSlot()
+		//
+		//
+		testDictionaryEditorAndReplication()
+		testDictionaryFilteringDictionary()
+		testDictionarySortingArray()
+		testTerminationSignal()
+		testSignalSequence1()
+	}
 	
 	func testSignalDispatcherAndMonitorSignaling() {
 		var	c	=	0
@@ -87,7 +81,7 @@ class SignalGraphMobileTest: XCTestCase {
 	}
 	
 	func testValueSlot() {
-		let	s	=	ValueSlot<Int>(111)
+		let	s	=	EditableValueStorage<Int>(111)
 		assert(s.state == 111)
 		s.state	=	222
 		assert(s.state == 222)
@@ -95,44 +89,44 @@ class SignalGraphMobileTest: XCTestCase {
 		assert(s.state == 333)
 	}
 
-	func testEditableSetStorage() {
-		let	s	=	EditableSetStorage<Int>()
-		s.insert(444)
-		assert(Array(s) == [444])
-		
-		s.insert(888)
-		assert(Array(s) == [444, 888])
-		
-		s.remove(444)
-		assert(Array(s) == [888])
-		
-		s.remove(111)
-		//	It's fine trying to remove non-existing value.
-		//	Same behavior with Swift `Set` type.
-	}
+//	func testEditableSetStorage() {
+//		let	s	=	EditableSetStorage<Int>()
+//		s.insert(444)
+//		assert(Array(s) == [444])
+//		
+//		s.insert(888)
+//		assert(Array(s) == [444, 888])
+//		
+//		s.remove(444)
+//		assert(Array(s) == [888])
+//		
+//		s.remove(111)
+//		//	It's fine trying to remove non-existing value.
+//		//	Same behavior with Swift `Set` type.
+//	}
 	
-	func testArrayEditorAndReplication() {
-		let	a	=	ReplicatingArrayStorage<Int>()
-		var	e	=	ArrayEditor<Int>(a)
-
-		e.initiate()
-		
-		XCTAssert(a.state == [])
-		e.append(111)
-		XCTAssert(a.state == [111])
-		e.extend([222, 333, 444])
-		XCTAssert(a.state == [111, 222, 333, 444])
-
-		e[1]	=	888
-		XCTAssert(a.state == [111, 888, 333, 444])
-		
-		e.removeAtIndex(2)
-		XCTAssert(a.state == [111, 888, 444])
-		e.removeAll()
-		XCTAssert(a.state == [])
-		
-		e.terminate()
-	}
+//	func testArrayEditorAndReplication() {
+//		let	a	=	ReplicatingArrayStorage<Int>()
+//		var	e	=	ArrayEditor<Int>(a)
+//
+//		e.initiate()
+//		
+//		XCTAssert(a.state == [])
+//		e.append(111)
+//		XCTAssert(a.state == [111])
+//		e.extend([222, 333, 444])
+//		XCTAssert(a.state == [111, 222, 333, 444])
+//
+//		e[1]	=	888
+//		XCTAssert(a.state == [111, 888, 333, 444])
+//		
+//		e.removeAtIndex(2)
+//		XCTAssert(a.state == [111, 888, 444])
+//		e.removeAll()
+//		XCTAssert(a.state == [])
+//		
+//		e.terminate()
+//	}
 	
 	func testDictionaryEditorAndReplication() {
 		let	d	=	ReplicatingDictionaryStorage<Int,String>()
@@ -239,7 +233,7 @@ class SignalGraphMobileTest: XCTestCase {
 		var	ok1	=	false
 		let	s2	=	SignalMonitor<ValueSignal<Int>>()
 		let	t1	=	{ ()->() in
-			let	s1	=	ValueSlot<Int>(111)
+			let	s1	=	EditableValueStorage<Int>(111)
 			s1.state	=	333
 			s1.emitter.register(s2)
 			s2.handler	=	{ s in
@@ -269,7 +263,7 @@ class SignalGraphMobileTest: XCTestCase {
 			ss.removeAtIndex(0)
 		}
 		let	t1	=	{ ()->() in
-			let	s1	=	ValueSlot<Int>(111)
+			let	s1	=	EditableValueStorage<Int>(111)
 			s1.state	=	333
 			s1.emitter.register(s2)
 			s1.emitter.deregister(s2)
@@ -346,9 +340,6 @@ extension ValueSignal: _KindProvision {
 		}
 	}
 }
-
-
-
 
 
 

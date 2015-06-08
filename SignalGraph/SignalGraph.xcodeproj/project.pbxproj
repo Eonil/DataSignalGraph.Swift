@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4503AE301AFDB3D0006AB1F0 /* DataSignalGraphMobileTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4503AE2F1AFDB3D0006AB1F0 /* DataSignalGraphMobileTest.swift */; };
-		4503AE311AFDB3D0006AB1F0 /* SignalGraphMobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4563E0651AF8FCA800AA9EA6 /* SignalGraphMobile.framework */; };
 		4503AE371AFDB95A006AB1F0 /* ArrayEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4503AE141AFBC3D8006AB1F0 /* ArrayEditor.swift */; };
 		4503AE381AFDB95E006AB1F0 /* DictionaryFilteringDictionaryStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4503AE231AFD9431006AB1F0 /* DictionaryFilteringDictionaryStorage.swift */; };
 		4503AE391AFDB95E006AB1F0 /* DictionarySortingArrayStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4503AE1F1AFCE13B006AB1F0 /* DictionarySortingArrayStorage.swift */; };
@@ -21,6 +19,8 @@
 		4510C68B1B1198DC007930D2 /* ArraySignal+NSTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4510C68A1B1198DC007930D2 /* ArraySignal+NSTableView.swift */; };
 		452C706A1AFF9FF0005B3793 /* StateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452C70691AFF9FF0005B3793 /* StateHandler.swift */; };
 		452C706C1B03A95D005B3793 /* SignalingTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452C706B1B03A95D005B3793 /* SignalingTable.swift */; };
+		4557CC011B232B6400AD4EEB /* SynchronousSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4557CC001B232B6400AD4EEB /* SynchronousSignal.swift */; };
+		4557CC041B232BE400AD4EEB /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4557CC031B232BE400AD4EEB /* Channel.swift */; };
 		4563E07E1AF8FCBD00AA9EA6 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E3F1B91AF8AF600078E7E8 /* Protocols.swift */; };
 		4563E07F1AF8FCBD00AA9EA6 /* SignalEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4563E0461AF8E7F300AA9EA6 /* SignalEmitter.swift */; };
 		4563E0801AF8FCBD00AA9EA6 /* SignalSensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4563E0481AF8E86100AA9EA6 /* SignalSensor.swift */; };
@@ -84,16 +84,13 @@
 		45F03A251AFE168E00B14678 /* EditableDictionaryStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F03A201AFE11CC00B14678 /* EditableDictionaryStorage.swift */; };
 		45F03A2B1AFE192F00B14678 /* Spawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F03A291AFE190800B14678 /* Spawn.swift */; };
 		45F03A2E1AFE1E5900B14678 /* Wait.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F03A2C1AFE1E4800B14678 /* Wait.swift */; };
+		45F82C1C1B23DDDB00A78AF5 /* SynchronousMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F82C1B1B23DDDB00A78AF5 /* SynchronousMonitor.swift */; };
+		45F82C741B2585D600A78AF5 /* SignalGraph.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45D934E41AFE4228000EE661 /* SignalGraph.framework */; };
+		45F82C761B2585FD00A78AF5 /* TestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F82C751B2585FD00A78AF5 /* TestCases.swift */; };
+		45F82C781B25871C00A78AF5 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F82C771B25871C00A78AF5 /* main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		4503AE321AFDB3D0006AB1F0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 45E3F1A71AF8AF560078E7E8 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 4563E0641AF8FCA800AA9EA6;
-			remoteInfo = Channel3Mobile;
-		};
 		45BE34311B0CC0820029B752 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 45E3F1A71AF8AF560078E7E8 /* Project object */;
@@ -124,12 +121,11 @@
 		4503AE1F1AFCE13B006AB1F0 /* DictionarySortingArrayStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionarySortingArrayStorage.swift; sourceTree = "<group>"; };
 		4503AE231AFD9431006AB1F0 /* DictionaryFilteringDictionaryStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryFilteringDictionaryStorage.swift; sourceTree = "<group>"; };
 		4503AE251AFD9EEF006AB1F0 /* DictionaryEditor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryEditor.swift; sourceTree = "<group>"; };
-		4503AE2B1AFDB3D0006AB1F0 /* SignalGraphMobileTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SignalGraphMobileTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4503AE2E1AFDB3D0006AB1F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4503AE2F1AFDB3D0006AB1F0 /* DataSignalGraphMobileTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSignalGraphMobileTest.swift; sourceTree = "<group>"; };
 		4510C68A1B1198DC007930D2 /* ArraySignal+NSTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ArraySignal+NSTableView.swift"; sourceTree = "<group>"; };
 		452C70691AFF9FF0005B3793 /* StateHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateHandler.swift; sourceTree = "<group>"; };
 		452C706B1B03A95D005B3793 /* SignalingTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalingTable.swift; sourceTree = "<group>"; };
+		4557CC001B232B6400AD4EEB /* SynchronousSignal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SynchronousSignal.swift; sourceTree = "<group>"; };
+		4557CC031B232BE400AD4EEB /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
 		45611FFB1AFB9AAD00E7E5FA /* _junkyard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _junkyard.swift; sourceTree = "<group>"; };
 		4563E0441AF8E1D600AA9EA6 /* ValueStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueStorage.swift; sourceTree = "<group>"; };
 		4563E0461AF8E7F300AA9EA6 /* SignalEmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalEmitter.swift; sourceTree = "<group>"; };
@@ -177,17 +173,14 @@
 		45F03A221AFE144800B14678 /* EditableArrayStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditableArrayStorage.swift; sourceTree = "<group>"; };
 		45F03A291AFE190800B14678 /* Spawn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spawn.swift; sourceTree = "<group>"; };
 		45F03A2C1AFE1E4800B14678 /* Wait.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wait.swift; sourceTree = "<group>"; };
+		45F82C1B1B23DDDB00A78AF5 /* SynchronousMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SynchronousMonitor.swift; sourceTree = "<group>"; };
+		45F82C571B2585BF00A78AF5 /* UnitTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnitTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		45F82C5A1B2585C000A78AF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		45F82C751B2585FD00A78AF5 /* TestCases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCases.swift; sourceTree = "<group>"; };
+		45F82C771B25871C00A78AF5 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		4503AE281AFDB3D0006AB1F0 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4503AE311AFDB3D0006AB1F0 /* SignalGraphMobile.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		4563E0611AF8FCA800AA9EA6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -215,6 +208,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		45F82C541B2585BF00A78AF5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45F82C741B2585D600A78AF5 /* SignalGraph.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,21 +250,24 @@
 			name = "(core concepts)";
 			sourceTree = "<group>";
 		};
-		4503AE2C1AFDB3D0006AB1F0 /* SignalGraphMobileTest */ = {
+		4557CBFF1B232B1C00AD4EEB /* (synchronous signaling) */ = {
 			isa = PBXGroup;
 			children = (
-				4503AE2F1AFDB3D0006AB1F0 /* DataSignalGraphMobileTest.swift */,
-				4503AE2D1AFDB3D0006AB1F0 /* Supporting Files */,
+				4557CC001B232B6400AD4EEB /* SynchronousSignal.swift */,
+				45F82C1B1B23DDDB00A78AF5 /* SynchronousMonitor.swift */,
+				4563E0581AF8F48E00AA9EA6 /* (stateful signals) */,
+				4563E05A1AF8F4D400AA9EA6 /* (state containers) */,
+				4503AE211AFCE13F006AB1F0 /* (stateful signals processing) */,
 			);
-			path = SignalGraphMobileTest;
+			name = "(synchronous signaling)";
 			sourceTree = "<group>";
 		};
-		4503AE2D1AFDB3D0006AB1F0 /* Supporting Files */ = {
+		4557CC021B232BCB00AD4EEB /* (asynchronous signaling) */ = {
 			isa = PBXGroup;
 			children = (
-				4503AE2E1AFDB3D0006AB1F0 /* Info.plist */,
+				4557CC031B232BE400AD4EEB /* Channel.swift */,
 			);
-			name = "Supporting Files";
+			name = "(asynchronous signaling)";
 			sourceTree = "<group>";
 		};
 		4563E0581AF8F48E00AA9EA6 /* (stateful signals) */ = {
@@ -373,9 +377,9 @@
 			children = (
 				45E3F1B11AF8AF570078E7E8 /* SignalGraph */,
 				4563E0661AF8FCA800AA9EA6 /* SignalGraphMobile */,
-				4503AE2C1AFDB3D0006AB1F0 /* SignalGraphMobileTest */,
 				459D96AF1AFE52D3006AF2C0 /* SignalGraphAppKitAddon */,
 				45BE34131B0CC02D0029B752 /* OSXTestdriveApp */,
+				45F82C581B2585C000A78AF5 /* UnitTest */,
 				45E3F1B01AF8AF570078E7E8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -384,10 +388,10 @@
 			isa = PBXGroup;
 			children = (
 				4563E0651AF8FCA800AA9EA6 /* SignalGraphMobile.framework */,
-				4503AE2B1AFDB3D0006AB1F0 /* SignalGraphMobileTest.xctest */,
 				45D934E41AFE4228000EE661 /* SignalGraph.framework */,
 				459D96AE1AFE52D3006AF2C0 /* SignalGraphAppKitAddon.framework */,
 				45BE34121B0CC02D0029B752 /* OSXTestdriveApp.app */,
+				45F82C571B2585BF00A78AF5 /* UnitTest.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -401,9 +405,8 @@
 				4503AE221AFD043B006AB1F0 /* (core concepts) */,
 				4563E0591AF8F49700AA9EA6 /* (stateless signaling facilities) */,
 				4503AE1A1AFCDE32006AB1F0 /* (stateless signal processing) */,
-				4563E05A1AF8F4D400AA9EA6 /* (state containers) */,
-				4563E0581AF8F48E00AA9EA6 /* (stateful signals) */,
-				4503AE211AFCE13F006AB1F0 /* (stateful signals processing) */,
+				4557CC021B232BCB00AD4EEB /* (asynchronous signaling) */,
+				4557CBFF1B232B1C00AD4EEB /* (synchronous signaling) */,
 				4563E05F1AF8FB4A00AA9EA6 /* (UIKit support) */,
 				45E3F1BD1AF8BB820078E7E8 /* _Observatory.swift */,
 				45611FFB1AFB9AAD00E7E5FA /* _junkyard.swift */,
@@ -420,6 +423,24 @@
 				45F03A2C1AFE1E4800B14678 /* Wait.swift */,
 			);
 			path = Asynchronous;
+			sourceTree = "<group>";
+		};
+		45F82C581B2585C000A78AF5 /* UnitTest */ = {
+			isa = PBXGroup;
+			children = (
+				45F82C771B25871C00A78AF5 /* main.swift */,
+				45F82C751B2585FD00A78AF5 /* TestCases.swift */,
+				45F82C591B2585C000A78AF5 /* Supporting Files */,
+			);
+			path = UnitTest;
+			sourceTree = "<group>";
+		};
+		45F82C591B2585C000A78AF5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				45F82C5A1B2585C000A78AF5 /* Info.plist */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -449,24 +470,6 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		4503AE2A1AFDB3D0006AB1F0 /* SignalGraphMobileTest */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 4503AE341AFDB3D0006AB1F0 /* Build configuration list for PBXNativeTarget "SignalGraphMobileTest" */;
-			buildPhases = (
-				4503AE271AFDB3D0006AB1F0 /* Sources */,
-				4503AE281AFDB3D0006AB1F0 /* Frameworks */,
-				4503AE291AFDB3D0006AB1F0 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				4503AE331AFDB3D0006AB1F0 /* PBXTargetDependency */,
-			);
-			name = SignalGraphMobileTest;
-			productName = DataSignalGraphMobileTest;
-			productReference = 4503AE2B1AFDB3D0006AB1F0 /* SignalGraphMobileTest.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		4563E0641AF8FCA800AA9EA6 /* SignalGraphMobile */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4563E0781AF8FCA800AA9EA6 /* Build configuration list for PBXNativeTarget "SignalGraphMobile" */;
@@ -540,6 +543,23 @@
 			productReference = 45D934E41AFE4228000EE661 /* SignalGraph.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		45F82C561B2585BF00A78AF5 /* UnitTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 45F82C6E1B2585C000A78AF5 /* Build configuration list for PBXNativeTarget "UnitTest" */;
+			buildPhases = (
+				45F82C531B2585BF00A78AF5 /* Sources */,
+				45F82C541B2585BF00A78AF5 /* Frameworks */,
+				45F82C551B2585BF00A78AF5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = UnitTest;
+			productName = UnitTest;
+			productReference = 45F82C571B2585BF00A78AF5 /* UnitTest.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -549,9 +569,6 @@
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = Eonil;
 				TargetAttributes = {
-					4503AE2A1AFDB3D0006AB1F0 = {
-						CreatedOnToolsVersion = 6.3.1;
-					};
 					4563E0641AF8FCA800AA9EA6 = {
 						CreatedOnToolsVersion = 6.3.1;
 					};
@@ -562,6 +579,9 @@
 						CreatedOnToolsVersion = 6.3.2;
 					};
 					45D934E31AFE4228000EE661 = {
+						CreatedOnToolsVersion = 6.3.2;
+					};
+					45F82C561B2585BF00A78AF5 = {
 						CreatedOnToolsVersion = 6.3.2;
 					};
 				};
@@ -581,21 +601,14 @@
 			targets = (
 				45D934E31AFE4228000EE661 /* SignalGraph */,
 				4563E0641AF8FCA800AA9EA6 /* SignalGraphMobile */,
-				4503AE2A1AFDB3D0006AB1F0 /* SignalGraphMobileTest */,
 				459D96AD1AFE52D3006AF2C0 /* SignalGraphAppKitAddon */,
 				45BE34111B0CC02D0029B752 /* OSXTestdriveApp */,
+				45F82C561B2585BF00A78AF5 /* UnitTest */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		4503AE291AFDB3D0006AB1F0 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		4563E0631AF8FCA800AA9EA6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -626,17 +639,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-/* End PBXResourcesBuildPhase section */
-
-/* Begin PBXSourcesBuildPhase section */
-		4503AE271AFDB3D0006AB1F0 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
+		45F82C551B2585BF00A78AF5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4503AE301AFDB3D0006AB1F0 /* DataSignalGraphMobileTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
 		4563E0601AF8FCA800AA9EA6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -709,10 +721,12 @@
 				459D96CD1AFE54FB006AF2C0 /* SignalSensor.swift in Sources */,
 				459D96CE1AFE54FB006AF2C0 /* SignalMap.swift in Sources */,
 				459D96CF1AFE54FB006AF2C0 /* SignalFilter.swift in Sources */,
+				45F82C1C1B23DDDB00A78AF5 /* SynchronousMonitor.swift in Sources */,
 				459D96D01AFE54FB006AF2C0 /* ValueStorage.swift in Sources */,
 				459D96D11AFE54FB006AF2C0 /* CollectionStorage.swift in Sources */,
 				459D96D21AFE54FB006AF2C0 /* SetStorage.swift in Sources */,
 				459D96D31AFE54FB006AF2C0 /* DictionaryStorage.swift in Sources */,
+				4557CC011B232B6400AD4EEB /* SynchronousSignal.swift in Sources */,
 				459D96D41AFE54FB006AF2C0 /* DictionaryEditor.swift in Sources */,
 				459D96D51AFE54FB006AF2C0 /* EditableDictionaryStorage.swift in Sources */,
 				459D96D61AFE54FB006AF2C0 /* ArrayStorage.swift in Sources */,
@@ -724,6 +738,7 @@
 				459D96DB1AFE54FB006AF2C0 /* SetSignal.swift in Sources */,
 				459D96DC1AFE54FB006AF2C0 /* DictionarySignal.swift in Sources */,
 				459D96DD1AFE54FB006AF2C0 /* ArraySignal.swift in Sources */,
+				4557CC041B232BE400AD4EEB /* Channel.swift in Sources */,
 				459D96DE1AFE54FB006AF2C0 /* _OrderingTreeSignal.swift in Sources */,
 				459D96DF1AFE54FB006AF2C0 /* _OrderlessTreeSignal.swift in Sources */,
 				459D96E01AFE54FB006AF2C0 /* DictionaryFilteringDictionaryStorage.swift in Sources */,
@@ -735,14 +750,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		45F82C531B2585BF00A78AF5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45F82C761B2585FD00A78AF5 /* TestCases.swift in Sources */,
+				45F82C781B25871C00A78AF5 /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		4503AE331AFDB3D0006AB1F0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 4563E0641AF8FCA800AA9EA6 /* SignalGraphMobile */;
-			targetProxy = 4503AE321AFDB3D0006AB1F0 /* PBXContainerItemProxy */;
-		};
 		45BE34321B0CC0820029B752 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 45D934E31AFE4228000EE661 /* SignalGraph */;
@@ -762,42 +781,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		4503AE351AFDB3D0006AB1F0 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = SignalGraphMobileTest/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = SignalGraphMobileTest;
-				SDKROOT = iphoneos;
-			};
-			name = Debug;
-		};
-		4503AE361AFDB3D0006AB1F0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = SignalGraphMobileTest/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = SignalGraphMobileTest;
-				SDKROOT = iphoneos;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
 		4563E0791AF8FCA800AA9EA6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -814,7 +797,6 @@
 				);
 				INFOPLIST_FILE = SignalGraphMobile/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_MODULE_NAME = SignalGraph;
 				SDKROOT = iphoneos;
@@ -836,7 +818,6 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = SignalGraphMobile/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_MODULE_NAME = SignalGraph;
 				SDKROOT = iphoneos;
@@ -1002,6 +983,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1040,6 +1022,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1047,18 +1030,37 @@
 			};
 			name = Release;
 		};
+		45F82C6F1B2585C000A78AF5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = UnitTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		45F82C701B2585C000A78AF5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = UnitTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4503AE341AFDB3D0006AB1F0 /* Build configuration list for PBXNativeTarget "SignalGraphMobileTest" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				4503AE351AFDB3D0006AB1F0 /* Debug */,
-				4503AE361AFDB3D0006AB1F0 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		4563E0781AF8FCA800AA9EA6 /* Build configuration list for PBXNativeTarget "SignalGraphMobile" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1103,6 +1105,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		45F82C6E1B2585C000A78AF5 /* Build configuration list for PBXNativeTarget "UnitTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				45F82C6F1B2585C000A78AF5 /* Debug */,
+				45F82C701B2585C000A78AF5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
