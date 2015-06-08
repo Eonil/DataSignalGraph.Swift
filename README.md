@@ -122,14 +122,16 @@ These are my original intention of how to use this library.
 	session to reset whole state at once. But still should be sent in order.
 
 -	Emitter does not provide guarantee of specific state. So do not assume emitter
-	state will be equal with sensor state when they're receiving signals. Sensors
-	must depend only on the signals to reconstruct state. They just guarantees 
-	state-full signals to be sent *in order*.
+	state to be synchronized with sensor state when they're receiving signals. 
+	Sensors must depend only on the signals to reconstruct state. They just 
+	guarantees state-ful signals to be sent *in order*.
 
--	But, some specialized emitters can provide such guarantee for your convenience.
-	In that case, the class should note that in documentation.
+-	Some specialized emitters can provide more timing guarantees for your convenience.
+	In that case, the class should note that in documentation. 
 
--	Don't forget that just "signal" is state-less, and 
+	All classes in this library provides "synchronous post-event signaling". Which
+	means all signals will be sent synchronously right after the event.
+	Pre-signals are not provided because I don't feel need for them.
 
 -	Clarity is far more important than shorter code. Small benefit of short code
 	will be sacrificed for huge benefit of clarity.
@@ -140,7 +142,8 @@ These are my original intention of how to use this library.
 	on this rule. This is a policy, but there's also a technical reason. I simply 
 	cannot deregister sensors automatically in `deinit` due to early nil-lization 
 	of weak references in Swift. Anyway, don't worry too much. This framework will
-	check it and fire errors if you forgot deregistration in debug build.
+	check it and fire errors if you forgot deregistration in debug(unoptimized)
+	build.
 
 Now let's see how to use these actually.
 
@@ -277,7 +280,6 @@ Also for state-ful signals.
 -	`DictionarySortingArrayStorage`		Provides a sorted array from a dictionary.
 -	`ArraySignalMap`			Maps all values in array signals into another type.
 -	`StateHandler`				Provides simplified predefined state event handling points.
-
 
 
 

@@ -6,6 +6,38 @@
 //  Copyright (c) 2015 Eonil. All rights reserved.
 //
 
+
+
+
+
+private final class SetSignalDispatcher<T: Hashable>: SignalDispatcher<SetSignal<T>> {
+	weak var owner: SetStorage<T>?
+	override func register(sensor: SignalSensor<SetSignal<T>>) {
+		Debugging.EmitterSensorRegistration.assertRegistrationOfStatefulChannelingSignaling((self, sensor))
+		super.register(sensor)
+		if let _ = owner!.values {
+			sensor.signal(SetSignal.Initiation(snapshot: owner!.state))
+		}
+	}
+	override func deregister(sensor: SignalSensor<SetSignal<T>>) {
+		Debugging.EmitterSensorRegistration.assertDeregistrationOfStatefulChannelingSignaling((self, sensor))
+		super.deregister(sensor)
+		if let _ = owner!.values {
+			sensor.signal(SetSignal.Termination(snapshot: owner!.state))
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
 public class SetStorage<T: Hashable>: StorageType {
 	
 	public var state: Set<T> {

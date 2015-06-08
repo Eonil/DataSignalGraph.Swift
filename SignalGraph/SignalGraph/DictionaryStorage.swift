@@ -17,10 +17,10 @@ private final class DictionarySignalDispatcher<K: Hashable,V>: SignalDispatcher<
 	}
 	override func deregister(sensor: SignalSensor<DictionarySignal<K,V>>) {
 		Debugging.EmitterSensorRegistration.assertDeregistrationOfStatefulChannelingSignaling((self, sensor))
+		super.deregister(sensor)
 		if let _ = owner!.pairs {
 			sensor.signal(DictionarySignal.Termination(snapshot: owner!.state))
 		}
-		super.deregister(sensor)
 	}
 }
 

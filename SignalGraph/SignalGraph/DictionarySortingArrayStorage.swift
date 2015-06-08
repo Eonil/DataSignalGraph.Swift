@@ -81,7 +81,7 @@ public class DictionarySortingArrayStorage<K,V,C where K: Hashable, C: Comparabl
 	}
 	
 	///	Central signal processor.
-	///	Signals will be distributd to a proper subprocessing
+	///	Signals will be distributed to a proper subprocessing
 	///	methods by need.
 	private func process(s: DictionarySignal<K,V>) {
 		switch s {
@@ -93,16 +93,16 @@ public class DictionarySortingArrayStorage<K,V,C where K: Hashable, C: Comparabl
 		case .Transition(let s):
 			for m in s.mutations {
 				switch (m.past == nil, m.future == nil) {
-				case (true, false):		insert(m.identity, m.future!)
+				case (true, false):	insert(m.identity, m.future!)
 				case (false, false):	update(m.identity, m.past!, m.future!)
-				case (false, true):		delete(m.identity, m.past!)
-				default:				fatalError("Unsupported mutation pattern. This shouldn't be exist.")
+				case (false, true):	delete(m.identity, m.past!)
+				default:		fatalError("Unsupported mutation pattern. This shouldn't be exist.")
 				}
 			}
 		case .Termination(let s):
-//			for e in s {
-//				delete(e)
-//			}
+			for e in s {
+				delete(e)
+			}
 			editor.terminate()
 		}
 	}
@@ -117,6 +117,7 @@ public class DictionarySortingArrayStorage<K,V,C where K: Hashable, C: Comparabl
 		precondition(i == ed.count || ed[i].0 != e.0, "There should be no equal existing key.")
 		ed.insert(e, atIndex: i)
 	}
+	
 	///	Sorting index is resolved by pair of key and value, 
 	///	and can be changed after value changed.
 	private func update(e: (K,V,V)) {
@@ -129,6 +130,7 @@ public class DictionarySortingArrayStorage<K,V,C where K: Hashable, C: Comparabl
 		let	i1	=	findIndexForOrder(order(e.0, e.2))
 		editor.insert((e.0, e.2), atIndex: i1)
 	}
+	
 	private func delete(e: (K,V)) {
 		let	i	=	findIndexForOrder(order(e))
 		precondition(editor[i].0 == e.0, "Keys must be matched.")
@@ -157,7 +159,7 @@ public class DictionarySortingArrayStorage<K,V,C where K: Hashable, C: Comparabl
 		}
 		
 		//	TODO:	Re-implement using binary search.
-		//			The array must always be sorted in ascending order.
+		//		The array must always be sorted in ascending order.
 		for i in 0..<state.count {
 			let	e	=	state[i]
 			let	o	=	order(e)

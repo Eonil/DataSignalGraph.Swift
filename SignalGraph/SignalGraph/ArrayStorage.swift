@@ -25,10 +25,10 @@ private final class ArraySignalDispatcher<T>: SignalDispatcher<ArraySignal<T>> {
 	}
 	override func deregister(sensor: SignalSensor<ArraySignal<T>>) {
 		Debugging.EmitterSensorRegistration.assertDeregistrationOfStatefulChannelingSignaling((self, sensor))
+		super.deregister(sensor)
 		if let _ = owner!.values {
 			sensor.signal(ArraySignal.Termination(snapshot: owner!.state))
 		}
-		super.deregister(sensor)
 	}
 }
 
@@ -73,7 +73,7 @@ public class ArrayStorage<T>: StorageType {
 ///	A storage that provides indirect signal based mutator.
 ///
 ///	Initial state of a state-container is undefined, and you should not access
-///	them while this contains is not bound to a signal source.
+///	them while this container is not bound to a signal source.
 public class ReplicatingArrayStorage<T>: ArrayStorage<T>, ReplicationType {
 	
 	public override init() {
