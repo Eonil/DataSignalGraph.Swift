@@ -21,7 +21,7 @@
 ///
 public class DictionarySortingArrayStorage<K,V,C where K: Hashable, C: Comparable>: StorageType {
 	
-	///	:param:		order
+	///	- parameter		order:
 	///				Creates a comparable "order" for an entry.
 	///				This class will sort entries using the returning order object in ascending
 	///				order.
@@ -153,7 +153,7 @@ public class DictionarySortingArrayStorage<K,V,C where K: Hashable, C: Comparabl
 	private func findIndexForOrder(c: C) -> Int {
 		if let last = state.last {
 			if order(last) < c {
-				println(order(last))
+				print(order(last))
 				return	state.count
 			}
 		}

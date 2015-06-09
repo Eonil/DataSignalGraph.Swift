@@ -51,7 +51,7 @@ public class SignalEmitter<T>: EmitterType {
 	}
 	
 	private func deregisterImpl<S: SensorType where S.Signal == Signal>(sensor: S) {
-		for i in reverse(0..<sensors.count) {
+		for i in (0..<sensors.count).reverse() {
 			let	e	=	sensors[i]
 			if e.ref() === sensor {
 				sensors.removeAtIndex(i)

@@ -129,7 +129,7 @@ public class EditableValueStorage<T>: ReplicatingValueStorage<T> {
 		}
 	}
 	
-	@availability(*,unavailable)
+	@available(*,unavailable)
 	public override var sensor: SignalSensor<ValueSignal<T>> {
 		get {
 			fatalError("You cannot get sensor of this object. Replication from external emitter is prohibited.")

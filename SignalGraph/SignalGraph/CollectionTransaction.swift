@@ -112,7 +112,7 @@ extension CollectionTransaction {
 		func reverseMutationOf(m: Mutation) -> Mutation {
 			return	(m.identity, m.future, m.past)
 		}
-		return	CollectionTransaction(mutations: Swift.reverse(mutations))
+		return	CollectionTransaction(mutations: mutations.reverse())
 	}
 }
 

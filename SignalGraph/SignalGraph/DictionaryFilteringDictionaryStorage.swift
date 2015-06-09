@@ -15,7 +15,7 @@
 public class DictionaryFilteringDictionaryStorage<K: Hashable,V>: StorageType {
 	
 	///
-	///	:param:		filter
+	///	- parameter		filter:
 	///				A filter function to filter key-value pair subset.
 	///
 	///				REQUIREMENTS

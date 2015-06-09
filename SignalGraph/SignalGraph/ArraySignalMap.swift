@@ -36,7 +36,7 @@ class ArraySignalMap<T,U>: SignalMap<ArraySignal<T>, ArraySignal<U>> {
 	///	**Not implemented yet**
 	///
 	///	Mapped array must build a completely sequential indexes.
-	@availability(*,unavailable)
+	@available(*,unavailable)
 	init(_ map: (Int,T) -> (Int, U)) {
 		fatalError("Not implemented yet.")
 	}

@@ -107,7 +107,7 @@ public class EditableSetStorage<T: Hashable>: ReplicatingSetStorage<T> {
 		//	Because any non-strong reference to self is inaccessible here.
 	}
 	
-	@availability(*,unavailable)
+	@available(*,unavailable)
 	public override var sensor: SignalSensor<SetSignal<T>> {
 		get {
 			fatalError("You cannot get sensor of this object. Replication from external emitter is prohibited.")

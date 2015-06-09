@@ -7,7 +7,7 @@
 //
 
 class SignalFilter<T> {
-	///	:param:		filter
+	///	- parameter		filter:
 	///			Returns `true` if the signal can be passed.
 	///			Returns `false` if the signal should not be passed.
 	///
