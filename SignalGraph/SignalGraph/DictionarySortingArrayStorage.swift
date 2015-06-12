@@ -86,7 +86,7 @@ public class DictionarySortingArrayStorage<K,V,C where K: Hashable, C: Comparabl
 	private func process(s: DictionarySignal<K,V>) {
 		switch s {
 		case .Initiation(let s):
-			editor.initiate()
+			replication.sensor.signal(ArraySignal.Initiation(snapshot: []))
 			for e in s {
 				insert(e)
 			}
@@ -100,10 +100,12 @@ public class DictionarySortingArrayStorage<K,V,C where K: Hashable, C: Comparabl
 				}
 			}
 		case .Termination(let s):
+			assert(replication.state.count == s.count)
 			for e in s {
 				delete(e)
 			}
-			editor.terminate()
+			assert(replication.state.count == 0)
+			replication.sensor.signal(ArraySignal.Termination(snapshot: []))
 		}
 	}
 

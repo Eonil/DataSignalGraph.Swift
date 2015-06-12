@@ -11,6 +11,11 @@ public class EditableDictionaryStorage<K: Hashable,V>: ReplicatingDictionaryStor
 		super.init()
 		super.sensor.signal(DictionarySignal.Initiation(snapshot: state))
 	}
+	deinit {
+		//	We don't need to erase owning current state. Because
+		//	users must already been removed all sensors from emitter.
+		//	Emitter asserts no registered sensors when `deinit`ializes.
+	}
 	
 	private var editor: DictionaryEditor<K,V> {
 		get {

@@ -12,10 +12,12 @@
 public class EditableArrayStorage<T>: ReplicatingArrayStorage<T> {
 	public init(_ state: [T] = []) {
 		super.init()
-		editor.initiate()
+		sensor.signal(ArraySignal.Initiation(snapshot: state))
 	}
 	deinit {
-		editor.terminate()
+		//	We don't need to erase owning current state. Because
+		//	users must already been removed all sensors from emitter.
+		//	Emitter asserts no registered sensors when `deinit`ializes.
 	}
 	
 	private var editor: ArrayEditor<T> {

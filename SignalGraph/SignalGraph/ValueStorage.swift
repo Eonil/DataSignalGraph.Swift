@@ -118,6 +118,10 @@ public class EditableValueStorage<T>: ReplicatingValueStorage<T> {
 	deinit {
 		//	Do not send any signal.
 		//	Because any non-strong reference to self is inaccessible here.
+		
+		//	We don't need to erase owning current state. Because
+		//	users must already been removed all sensors from emitter.
+		//	Emitter asserts no registered sensors when `deinit`ializes.
 	}
 	
 	public override var state: T {

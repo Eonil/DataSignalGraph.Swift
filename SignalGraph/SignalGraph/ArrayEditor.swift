@@ -16,13 +16,6 @@ struct ArrayEditor<T> {
 		self.origin	=	origin
 	}
 	
-	func initiate() {
-		self.origin.sensor.signal(ArraySignal.Initiation(snapshot: []))
-	}
-	func terminate() {
-		self.origin.sensor.signal(ArraySignal.Termination(snapshot: origin.state))
-	}
-	
 	////
 	
 	var count: Int {

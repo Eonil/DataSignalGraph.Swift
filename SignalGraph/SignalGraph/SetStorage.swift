@@ -105,6 +105,10 @@ public class EditableSetStorage<T: Hashable>: ReplicatingSetStorage<T> {
 	deinit {
 		//	Do not send any signal. 
 		//	Because any non-strong reference to self is inaccessible here.
+		
+		//	We don't need to erase owning current state. Because
+		//	users must already been removed all sensors from emitter.
+		//	Emitter asserts no registered sensors when `deinit`ializes.
 	}
 	
 	@availability(*,unavailable)

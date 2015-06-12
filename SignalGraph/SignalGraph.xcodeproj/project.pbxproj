@@ -566,6 +566,7 @@
 		45E3F1A71AF8AF560078E7E8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = Eonil;
 				TargetAttributes = {
@@ -1113,6 +1114,7 @@
 				45F82C701B2585C000A78AF5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

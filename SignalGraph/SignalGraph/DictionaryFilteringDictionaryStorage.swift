@@ -65,7 +65,7 @@ public class DictionaryFilteringDictionaryStorage<K: Hashable,V>: StorageType {
 	private func process(s: DictionarySignal<K,V>) {
 		switch s {
 		case .Initiation(let s):
-			editor.initiate()
+			replication.sensor.signal(DictionarySignal.Initiation(snapshot: [:]))
 			for e in s {
 				if filter(e) {
 					insert(e)
@@ -121,12 +121,14 @@ public class DictionaryFilteringDictionaryStorage<K: Hashable,V>: StorageType {
 				}
 			}
 		case .Termination(let s):
+			assert(replication.state.count == s.count)
 			for e in s {
 				if filter(e) {
 					delete(e.0)
 				}
 			}
-			editor.terminate()
+			assert(replication.state.count == 0)
+			replication.sensor.signal(DictionarySignal.Termination(snapshot: [:]))
 		}
 	}
 	
