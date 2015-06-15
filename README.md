@@ -4,6 +4,8 @@ SignalGraph.Swift
 Hoon H.
 
 
+**ACTIVELY UNDER CONSTRUCTION, AND UNSTABLE. I DON'T RECOMMEND TO USE THIS LIBRARY FOR PRODUCTION USE YET.**
+
 
 
 Provides components to build data signal graphs to define data processing pipeline in
@@ -13,300 +15,87 @@ a declarative manner.
 
 
 
+Getting Started
+---------------
 
-Getting Started by Examples
----------------------------
-This is a typical usage of this framework.
+(to be filled...)
 
-	public class Car {
-		public var wheels: ArrayStorage<Wheel> {
-			get {
-				return	_wheels
-			}
-		}
-		
-		public func shouldReplaceWheels() -> Bool {
-			for w in _wheels.state {
-				if w.durability == 0 {
-					return	true
-				}
-			}
-			return	false
-		}
-		public func replaceFourWheels(wheels: [Wheel]) {
-			assert(wheels.count == 4)
-			_wheels.removeAll()
-			_wheels.extend(wheels)
-		}
-		
-		///	MARK:	-
-		
-		private let	_wheels	=	EditableArrayStorage<Wheel>([]);
-	}
 
-	public class Wheel {
-		
-		public var	durability	=	100
-	}
 
-Please note that `EditableArrayStorage` is a private storage and exposed publicly as
-`ArrayStorage`. As a result, code users can observe the wheels, but cannot mutate it
-directly. And they only can call mutator methods to perform proper operations. This
-provides a degree of safety. Now the class `Car` is guaranteed to have 0 or 4 wheels,
-and never will be with any other number of wheels.
 
-If you're familiar with C/C++, you'll notice this is classical `const&` pattern.
-If you're familiar with Objective-C, this is an analogue to `NSArray/NSMutableArray` 
-class pairs pattern. The only difference is, the `wheels` is observeable via its
-`emitter` property.
 
-Though this is essentially observation framework, I don't recommend you to observe
-data model to modify other data model. Recommended use is observing for view update.
 
 
 
+Concepts
+--------
 
+Core concept of this library is signals data types. Basically a signal is state-less
+value to represent parameters of each message.
 
+This signal exnteded further to represent stateful value. This state-ful signal is
+divided into four kinds -- value, set, array, dictionary. Core coneptual point of
+these signals is that you can reconstruct full state by only observing the signal.
+You don't have to access state source to reconstrcut the state. So by this, you can
+truly *decouple* the state source and state observer. To make de-coupling complete,
+this doesn't even provide timing synchronicity.
 
+This library provides several facilities to handle those signals. Basically each 
+signal types have corresponding these handling class set.
 
+-	`~Storage`		Abstract class of read-only container that can 
+				produce mutating signals.
 
+-	`Editable~Storage`	A container that keeps a mutable state and directly 
+				editable.
 
+-	`Replicating~Storage`	A container that synchronizes its state with signals.
 
+-	`Monitoring~Storage`	A `Replicating~Storage` that provides *synchronous*
+				hooks for each signals. 
 
+You can connect `Replicating~Storage` to observe any `~Storage` to make it to be 
+synchronized with it. 
 
+	Editable~Storage -> ~Replicating~Storage
+	~Replicating~Storage -> ~Replicating~Storage
+	Editable~Storage -> ~Replicating~Storage -> ~Replicating~Storage
 
+Contained state of a storage is defined only while it is registered to another signal
+source. Otherwise, state is undefined and inaccessible. Trial to access it will cause
+a runtime error.
+`Editable~Storage` maintains its own state by itself, and cannot observe another 
+signal source.
+`Monitoring~Storage` is recommended way to handling signals for reactions. 
 
+Here's typical storage configuration.
 
+	*	EditableValueStorage		
+	->	MonitoringValueStorage
 
+**NOTE**	Take care that you don't have synchronicity guarantee between 
+		`EditableValueStorage` and `MonitoringValueStorage`. Though 
+		`MonitoringValueStorage` provides synchronous monitoring, but it is
+		about signal application timing to itself, and nothing related to 
+		its source -- `EditableValueStorage`.
 
-Deisng Goals
-------------
--	Data-consumers care only registration/deregistration, and will automatically 
-	takes full data integrity without any extra query on data-source. Implementors
-	(you!) just follow single signal protocol, and everything becomes automatically
-	integrate.
--	Data-signals can freely be chained without concerning of data-loss.
--	You don't need to worry about memory leak by making cycles. No node keeps
-	strong reference to another.
--	Most of disallowed operations are prohibited by type system statically.
-	If it's impossible, it will be prohibited by runtime assertions in debug mode.
-	
+`Monitoring~Storage` is unicast only. If you need multicasting to multiple handlers,
+you can choose one of these.
 
+1.	Make multiple monitoring storage. Simple, clear but asynchronous.
+	This is recommended way. 
+2.	Route to multiple handlers in the handler yourself if you need absolute 
+	synchronicity between all handlers.
 
-Design Intentions
------------------
-These are my original intention of how to use this library.
 
--	Basically, signals are state-less. This means emitter does not maintain any
-	state for the signal. You will get signals only while you are registered to
-	an emitter. Otherwise, signals will be lost.
 
--	As a kind of specialization, there're also state-ful signals. These are sent
-	by a state-ful emitter. State-ful emitter maintains a state, and sends signals
-	to synchronize state of sensors with emitter itself. 
 
--	For that reason, state-ful signals are divided into three kinds.
-	
-	-	Initiation snapshot.
-	-	Transition delta.
-	-	Termination snapshot.
 
-	When a sensor registeres itself to an emitter, it will receive an initiation
-	snapshot signal. Emitter sends snapshot of its state at once, and sensor can
-	perform initial synchronization. And then, mutations of emitter will be sent
-	in delta-set form. When sensor deregisters itself from the emitter, emitter
-	will send termination snapshot. This is redundant information, but useful to
-	validate sensor state, and some sensors require this.
 
-	Also, initiation/termination signals can be sent multiple times in a signaling
-	session to reset whole state at once. But still should be sent in order.
 
--	Emitter does not provide guarantee of specific state. So do not assume emitter
-	state to be synchronized with sensor state when they're receiving signals. 
-	Sensors must depend only on the signals to reconstruct state. They just 
-	guarantees state-ful signals to be sent *in order*.
+					* * *
 
--	Some specialized emitters can provide more timing guarantees for your convenience.
-	In that case, the class should note that in documentation. 
 
-	All classes in this library provides "synchronous post-event signaling". Which
-	means all signals will be sent synchronously right after the event.
-	Pre-signals are not provided because I don't feel need for them.
-
--	Clarity is far more important than shorter code. Small benefit of short code
-	will be sacrificed for huge benefit of clarity.
-
--	If you set it up, you must tear it down yourself.
-
-	If you call `register`, then you must call a paired `deregister`. No exception
-	on this rule. This is a policy, but there's also a technical reason. I simply 
-	cannot deregister sensors automatically in `deinit` due to early nil-lization 
-	of weak references in Swift. Anyway, don't worry too much. This framework will
-	check it and fire errors if you forgot deregistration in debug(unoptimized)
-	build.
-
-Now let's see how to use these actually.
-
-
-
-
-
-
-
-
-
-
-Usage
------
-Usually, front-end applications will be configured like this.
-
-	*	EditableDictionaryStorage				Stores origin data model values.
-		->	DictionaryFilteringDictionaryStorage		Filter it.
-			->	DictionarySortingArrayStorage		Sort it.
-				->	ArraySignalMapStorage		Convert into view model values.
-
-
-
-
-
-
-
-Rules
------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-State-ful Signals
------------------
-State-ful signals presume you're sending signals to represent mutable state, and
-representin it by sening multiple immutable states over time. It also presumes 
-you cannot access the signal origin, so you cannot get current state of the origin.
-
-With these premises, signals are designed to allow receivers to reconstruct full
-state by accumulating them. To make tracking clear and easier, signals are usually 
-sent in form of mutation commands rather then state snapshot.
-
-State signals usually have three cases. 
-
--	Initiation
--	Transition
--	Termination
-
-Please note that signals does not provide timing guarantee. A transition can be
-sent asynchronously (after or even before!) from actual transition happens, and 
-source state can actually be non-existent. So you shouldn't expect emitter state
-to be synchronized with timing of signal transferring, and should reconstruct 
-everything only from the information passed within the signal itself.
-
-Transition passes mutation command instead of state snapshot. There're many reasons
-of sending mutation command.
-
--	Some subsystems need mutation *ordering* information to perform processing
-	correctly. For example, sometimes end-users want to know which one of 
-	deletion or insertion happen first or last precisely. Snapshot of diff-set
-	are not approptiate for this purpose.
-
--	Current view systems are usually state-ful, and works far better with 
-	diff-set rather than full state. If I send snapshot, views need to resolve
-	diffset themselves. 
-
--	Because you usually need to transform signals, and passing full state
-	snapshot usually means full conversion that is usually inacceptable cost.
-	This will affect performance.
-
-If you think there're too many mutations, and sending snapshot is faster, then you
-can send pair of termination/initiation signals instead of. Which means resetting 
-by snapshot that means semantically same with sening full snapshot state.
-So transition signal can be thought as a kind of optimization.
-
-
-
-
-
-
-
-
-Type Roles and Hierarchy
-------------------------
-
--	*Gate*					--	Defines in/out signal types.
-	-	*Emitter*			--	A signal sender.
-		-	*Dispatcher*		--	An initial emitter that exposes a method to send signals actually.
-	-	*Sensor*			--	A signal receiver
-		-	*Monitor*		--	A terminal sensor.
-
--	*Storage*				--	A read-only state view that emits state mutation signals.
-	-	*Replication*			--	A storage that receives mutation signals to reconstruct state.
-		-	*Slot*			--	A replication that allows you to edit the value directly.
-							And you cannot send signals to this type objects.
-
-See `Protocols.swift` for details. It also serves as a documentation for each concepts.
-
-Emitter/sensor protocols does not define uni/multi-casting/catching behaviors.
-But implementations can define specific limitations. 
-
--	`SignalEmitter`				A multicasting emitter. This can send signals to multiple sensors.
--	`SignalSensor`				A unicatching sensor. This can receive signals from only one emitter.
-
-Storage and replication roles are implemented by these specialized classes.
-These implementations require multicasting emitter and unicatching sensor, and using default
-implementation of signal emitter and signal sensor.
-
--	`ValueStorage`				A single value storage.
--	`SetStorage`				A multiple unique value (key) storage.
--	`DictionaryStorage`			A multiple key/value pair storage.
--	`ArrayStorage`				A multiple index/value pair storage. Index is treated as a 
-								specialized key.
-
-There are utility classes you will eventually feel need for them.
-
--	`SignalMap`				Maps a source state-less signals into destination signals.
--	`SignalFilter`				Filters to select a subset of state-less signals.
-
-Also for state-ful signals.
-
--	`DictionaryFilteringDictionaryStorage`	Provides a filtered subset from a dictionary.
--	`DictionarySortingArrayStorage`		Provides a sorted array from a dictionary.
--	`ArraySignalMap`			Maps all values in array signals into another type.
--	`StateHandler`				Provides simplified predefined state event handling points.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Issues
-------
--	Do I really need direct reading from a readonly storage if all signals are asynchronous?
--	Whatever, I need synchronous events to deal with view stuffs well...
-
-
-
-
-
-Credits & License
------------------
 This framework is written by Hoon H., and licensed under "MIT License".
 
 

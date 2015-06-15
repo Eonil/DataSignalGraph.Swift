@@ -30,10 +30,14 @@ public class SignalEmitter<T>: EmitterType {
 		deregisterImpl(sensor)
 	}
 	
-	////
+	func assertNoRegisteredSensor() {
+		assert(sensors.count == 0)
+	}
+	
+	///
 	
 	private typealias	Entry		=	(ref: ()->AnyObject, callSignal: T->())
-	private var			sensors		=	[] as [Entry]
+	private var		sensors		=	[] as [Entry]
 	
 	private init() {
 	}

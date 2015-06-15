@@ -88,10 +88,10 @@ protocol ViewType {
 	var	emitter: Emitter  { get }
 }
 
-///	Shows a state and emits mutation events of it.
+///	Shows a current state and emits mutation events of it.
 ///	This is essentially a read-only view of a state.
-///	Storage does not define how to mutate the state. Mutations are defined by
-///	implementations.
+///	This protocol does not define how to mutate the state. Mutations are defined 
+///	by implementations.
 protocol StorageType {
 	typealias	State
 	typealias	Emitter: EmitterType
@@ -109,8 +109,8 @@ protocol StorageType {
 ///	**WARNING**
 ///	If you plug sensor of a replication object into emitter of itself, you will
 ///	make infinite loop, and result undefined. Implementation should detect and 
-///	warn this kind of situation. Error detection is fully up to implementation 
-///	specific.
+///	warn this kind of situation if required. Error detection is fully up to 
+///	implementation specific.
 protocol ReplicationType: StorageType {
 	typealias	Sensor: SensorType
 	var	sensor: Sensor { get }

@@ -5,6 +5,9 @@
       location = "group:README.md">
    </FileRef>
    <FileRef
+      location = "group:/Users/Eonil/Workshop/Incubation/Editor/Submodules/SignalGraph.Swift/_README(deprecated).md">
+   </FileRef>
+   <FileRef
       location = "group:LICENSE.md">
    </FileRef>
    <FileRef
