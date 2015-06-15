@@ -93,10 +93,20 @@ you can choose one of these.
 
 
 
-					* * *
 
 
+
+License & Credits
+-----------------
 This framework is written by Hoon H., and licensed under "MIT License".
+
+
+
+
+
+
+
+
 
 
 

@@ -111,7 +111,7 @@ public class EditableValueStorage<T>: ValueStorage<T> {
 
 
 
-///	A value storage that reconstructs it state by signals.
+///	A value storage that reconstructs its state by signals.
 ///
 ///	This is conceptually a mutable storage. Mutation is performed by receiving 
 ///	explicit mutation signals. The sensor is the only mutator.
