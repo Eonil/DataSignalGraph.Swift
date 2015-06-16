@@ -52,7 +52,7 @@ public class ValueStorage<T>: StorageType {
 	
 	////
 	
-	private let	_dispatcher	=	ValueSignalDispatcher<T>()
+	private let _dispatcher		=	ValueSignalDispatcher<T>()
 	
 	private init() {
 		_dispatcher.owner	=	self
@@ -61,11 +61,15 @@ public class ValueStorage<T>: StorageType {
 		_dispatcher.owner	=	nil
 	}
 	
-	private var	_value: T? {
+	private var _value: T? {
 		didSet {
-			let	v	=	_value!
-			let	s	=	ValueSignal.Transition({v})
-			_dispatcher.signal(s)
+			let	newValue	=	_value
+			switch (oldValue, newValue) {
+			case (nil, nil):	break
+			case (nil, _):		_dispatcher.signal(ValueSignal.Initiation({newValue!}))
+			case (_, nil):		_dispatcher.signal(ValueSignal.Termination({newValue!}))
+			case (_, _):		_dispatcher.signal(ValueSignal.Transition({oldValue!}))
+			}
 		}
 	}
 }
