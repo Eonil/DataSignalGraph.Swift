@@ -67,8 +67,8 @@ public class ValueStorage<T>: StorageType {
 			switch (oldValue, newValue) {
 			case (nil, nil):	break
 			case (nil, _):		_dispatcher.signal(ValueSignal.Initiation({newValue!}))
-			case (_, nil):		_dispatcher.signal(ValueSignal.Termination({newValue!}))
-			case (_, _):		_dispatcher.signal(ValueSignal.Transition({oldValue!}))
+			case (_, _):		_dispatcher.signal(ValueSignal.Transition({newValue!}))
+			case (_, nil):		_dispatcher.signal(ValueSignal.Termination({oldValue!}))
 			}
 		}
 	}
