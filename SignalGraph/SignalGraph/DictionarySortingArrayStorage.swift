@@ -22,20 +22,20 @@
 public class DictionarySortingArrayStorage<K,V,C where K: Hashable, C: Comparable>: StorageType {
 	
 	///	:param:		order
-	///				Creates a comparable "order" for an entry.
-	///				This class will sort entries using the returning order object in ascending
-	///				order.
+	///			Creates a comparable "order" for an entry.
+	///			This class will sort entries using the returning order object in ascending
+	///			order.
 	///
-	///				REQUIREMENTS
-	///				------------
-	///				This function must be **referentially transparent**.
-	///				That means same input must produce same output always.
-	///				In other words, do not change internal logic of this while this 
-	///				function is bound to this object.
+	///			REQUIREMENTS
+	///			------------
+	///			This function must be **referentially transparent**.
+	///			That means same input must produce same output always.
+	///			In other words, do not change internal logic while this
+	///			function is bound to this object.
 	///
-	///				This function should be very cheap because this function will be
-	///				called very frequently, and evaluation result will not be memoized
-	///				at all. (you can do it yourself if you want)
+	///			This function should be very cheap because this function will be
+	///			called very frequently, and evaluation result will not be memoized
+	///			at all. (you can do it yourself if you want)
 	///
 	public init(_ order: (K,V)->C) {
 		self.order				=	order
@@ -72,9 +72,9 @@ public class DictionarySortingArrayStorage<K,V,C where K: Hashable, C: Comparabl
 	private let	order		:	(K,V) -> C
 	
 	///	Hacky tricky solution.
-	private var editor: ArrayReplicationEditor<(K,V)> {
+	private var editor: ArrayStorageEditor<(K,V)> {
 		get {
-			return	ArrayReplicationEditor(replication)
+			return	ArrayStorageEditor(replication)
 		}
 		set(v) {
 			assert(v.storage === replication)

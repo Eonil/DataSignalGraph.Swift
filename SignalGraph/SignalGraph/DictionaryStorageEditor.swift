@@ -1,5 +1,5 @@
 //
-//  DictionaryReplicationEditor.swift
+//  DictionaryStorageEditor.swift
 //  SignalGraph
 //
 //  Created by Hoon H. on 2015/05/09.
@@ -15,7 +15,7 @@
 ///	mutate it. Mutator methods also returns appropriate
 ///	values.
 ///
-public struct DictionaryReplicationEditor<K: Hashable,V>: CollectionType {
+public struct DictionaryStorageEditor<K: Hashable,V>: CollectionType {
 	
 	public static func initiate(storage: ReplicatingDictionaryStorage<K,V>, snapshot: [K:V]) {
 		let	s	=	DictionarySignal<K,V>.Initiation(snapshot: snapshot)

@@ -50,7 +50,11 @@ public class EditableDictionaryStorage<K: Hashable,V>: DictionaryStorage<K,V> {
 	
 	private let	_replication	=	ReplicatingDictionaryStorage<K,V>()
 }
-
+extension DictionaryStorageEditor {
+	public init(_ storage: EditableDictionaryStorage<K,V>) {
+		self.init(storage._replication)
+	}
+}
 extension EditableDictionaryStorage {
 	public var count: Int {
 		get {
@@ -92,9 +96,9 @@ extension EditableDictionaryStorage {
 	///
 	
 	///	Hacky tricky solution.
-	private var editor: DictionaryReplicationEditor<K,V> {
+	private var editor: DictionaryStorageEditor<K,V> {
 		get {
-			return	DictionaryReplicationEditor(_replication)
+			return	DictionaryStorageEditor(_replication)
 		}
 		set(v) {
 			assert(v.storage === _replication)
@@ -289,7 +293,7 @@ public class TrackingDictionaryStorage<K: Hashable, V>: ReplicatingDictionarySto
 			didDelete?(mutation)
 			
 		default:
-			fatalError("Unsupported combination.")
+			fatalError("Unsupported combination `\(mutation)` cannot be processed.")
 		}
 	}
 }

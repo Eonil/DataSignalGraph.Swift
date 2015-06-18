@@ -1,5 +1,5 @@
 //
-//  ArrayReplicationEditor.swift
+//  ArrayStorageEditor.swift
 //  SignalGraph
 //
 //  Created by Hoon H. on 2015/05/08.
@@ -15,7 +15,7 @@
 ///	mutate it. Mutator methods also returns appropriate 
 ///	values.
 ///
-public struct ArrayReplicationEditor<T>: SequenceType {
+public struct ArrayStorageEditor<T>: SequenceType {
 	
 	unowned let	storage: ReplicatingArrayStorage<T>
 	

@@ -88,7 +88,7 @@ println("Hello, World!")
 //		println(s)
 //	}
 //}
-////var	e	=	ArrayReplicationEditor<Int>()
+////var	e	=	ArrayStorageEditor<Int>()
 ////e.emitter.register(s)
 ////e.emitter.register(c.itemsRepo.sensor)
 ////e.append(123123)

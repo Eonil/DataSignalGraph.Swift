@@ -22,7 +22,7 @@ public class DictionaryFilteringDictionaryStorage<K: Hashable,V>: StorageType {
 	///			------------
 	///			This function must be **referentially transparent**.
 	///			That means same input must produce same output always.
-	///			In other words, do not change internal logic of this while this
+	///			In other words, do not change internal logic while this
 	///			function is bound to this object.
 	///
 	///			This function should be very cheap because this function will be
@@ -56,9 +56,9 @@ public class DictionaryFilteringDictionaryStorage<K: Hashable,V>: StorageType {
 	private let	_filter		:	(K,V) -> Bool
 	private let	_replication	=	ReplicatingDictionaryStorage<K,V>()
 	
-	private var _editor: DictionaryReplicationEditor<K,V> {
+	private var _editor: DictionaryStorageEditor<K,V> {
 		get {
-			return	DictionaryReplicationEditor(_replication)
+			return	DictionaryStorageEditor(_replication)
 		}
 	}
 	

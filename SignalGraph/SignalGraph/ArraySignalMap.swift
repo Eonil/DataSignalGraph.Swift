@@ -7,6 +7,18 @@
 //
 
 ///	Maps indexes and values of array mutation signal.
+///
+///	This simply converts data parts of signals.
+///
+///	**WARN**	Please be careful when you mapping indexes. 
+///			Produced index must build a complete array. 
+///			Any errors will silently corrupt internal	
+///			state of signal receivers. There's no checks
+///			or assertions for this.
+///			In most cases, mapping indexes are not a good
+///			idea because it's very hard to be correct.
+///			I recommend to map only values.
+///
 class ArraySignalMap<T,U>: SignalMap<ArraySignal<T>, ArraySignal<U>> {
 	///	Maps only values. No changes in indexes.
 	///	This is a kind of optimization.
@@ -36,6 +48,7 @@ class ArraySignalMap<T,U>: SignalMap<ArraySignal<T>, ArraySignal<U>> {
 	///	**Not implemented yet**
 	///
 	///	Mapped array must build a completely sequential indexes.
+	///
 	@availability(*,unavailable)
 	init(_ map: (Int,T) -> (Int, U)) {
 		fatalError("Not implemented yet.")

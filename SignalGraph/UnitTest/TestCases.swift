@@ -105,9 +105,9 @@ class TestCases {
 //		//	Same behavior with Swift `Set` type.
 //	}
 	
-//	func testArrayReplicationEditorAndReplication() {
+//	func testArrayStorageEditorAndReplication() {
 //		let	a	=	ReplicatingArrayStorage<Int>()
-//		var	e	=	ArrayReplicationEditor<Int>(a)
+//		var	e	=	ArrayStorageEditor<Int>(a)
 //
 //		e.initiate()
 //		
@@ -130,9 +130,9 @@ class TestCases {
 	
 	func testDictionaryEditorAndReplication() {
 		let	d	=	ReplicatingDictionaryStorage<Int,String>()
-		var	e	=	DictionaryReplicationEditor(d)
+		var	e	=	DictionaryStorageEditor(d)
 		
-		DictionaryReplicationEditor.initiate(d, snapshot: [:])
+		DictionaryStorageEditor.initiate(d, snapshot: [:])
 		
 		XCTAssert(d.state == [:])
 		XCTAssert(d.state.count == 0)
@@ -153,7 +153,7 @@ class TestCases {
 		XCTAssert(d.state == [555: "5th", 666: "6th"])
 		XCTAssert(d.state.count == 2)
 		
-		DictionaryReplicationEditor.terminate(d, snapshot: d.state)
+		DictionaryStorageEditor.terminate(d, snapshot: d.state)
 	}
 	
 	func testDictionarySortingArray() {
@@ -165,9 +165,9 @@ class TestCases {
 		let	arr2	=	DictionarySortingArrayStorage(orderOf)
 		dic1.emitter.register(arr2.sensor)
 		
-		var	ed1		=	DictionaryReplicationEditor(dic1)
+		var	ed1		=	DictionaryStorageEditor(dic1)
 		
-		DictionaryReplicationEditor.initiate(dic1, snapshot: [:])
+		DictionaryStorageEditor.initiate(dic1, snapshot: [:])
 		
 		ed1[666]	=	"F"
 		ed1[111]	=	"A"
@@ -192,7 +192,7 @@ class TestCases {
 		XCTAssert(arr2.state.map({$0.0}) == [222, 555, 666])
 		XCTAssert(arr2.state.map({$0.1}) == ["B", "E", "F"])
 		
-		DictionaryReplicationEditor.terminate(dic1, snapshot: dic1.state)
+		DictionaryStorageEditor.terminate(dic1, snapshot: dic1.state)
 		dic1.emitter.deregister(arr2.sensor)
 	}
 	
@@ -204,8 +204,8 @@ class TestCases {
 		let	dic2	=	DictionaryFilteringDictionaryStorage<Int,String>(filter)
 		dic1.emitter.register(dic2.sensor)
 		
-		var	ed1		=	DictionaryReplicationEditor(dic1)
-		DictionaryReplicationEditor.initiate(dic1, snapshot: [:])
+		var	ed1		=	DictionaryStorageEditor(dic1)
+		DictionaryStorageEditor.initiate(dic1, snapshot: [:])
 		
 		ed1[1]		=	"a"
 		ed1[111]	=	"A"
@@ -226,7 +226,7 @@ class TestCases {
 		XCTAssert(dic1.state == [111: "A", 3: "c"])
 		XCTAssert(dic2.state == [111: "A"])
 		
-		DictionaryReplicationEditor.terminate(dic1, snapshot: dic1.state)
+		DictionaryStorageEditor.terminate(dic1, snapshot: dic1.state)
 		dic1.emitter.deregister(dic2.sensor)
 	}
 	

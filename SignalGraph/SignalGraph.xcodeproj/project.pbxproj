@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4503AE371AFDB95A006AB1F0 /* ArrayReplicationEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4503AE141AFBC3D8006AB1F0 /* ArrayReplicationEditor.swift */; };
+		4503AE371AFDB95A006AB1F0 /* ArrayStorageEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4503AE141AFBC3D8006AB1F0 /* ArrayStorageEditor.swift */; };
 		4503AE381AFDB95E006AB1F0 /* DictionaryFilteringDictionaryStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4503AE231AFD9431006AB1F0 /* DictionaryFilteringDictionaryStorage.swift */; };
 		4503AE391AFDB95E006AB1F0 /* DictionarySortingArrayStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4503AE1F1AFCE13B006AB1F0 /* DictionarySortingArrayStorage.swift */; };
 		4503AE3A1AFDB96D006AB1F0 /* SignalMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4503AE181AFCDE1F006AB1F0 /* SignalMap.swift */; };
@@ -15,8 +15,9 @@
 		4503AE3C1AFDB96D006AB1F0 /* CollectionStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D987AE1AF924C2003A5BC0 /* CollectionStorage.swift */; };
 		4503AE3D1AFDB96D006AB1F0 /* SetStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D987AC1AF923C0003A5BC0 /* SetStorage.swift */; };
 		4503AE3E1AFDB96D006AB1F0 /* DictionaryStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D987AA1AF923BB003A5BC0 /* DictionaryStorage.swift */; };
-		4503AE3F1AFDB96D006AB1F0 /* DictionaryReplicationEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4503AE251AFD9EEF006AB1F0 /* DictionaryReplicationEditor.swift */; };
+		4503AE3F1AFDB96D006AB1F0 /* DictionaryStorageEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4503AE251AFD9EEF006AB1F0 /* DictionaryStorageEditor.swift */; };
 		4510C68B1B1198DC007930D2 /* ArraySignal+NSTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4510C68A1B1198DC007930D2 /* ArraySignal+NSTableView.swift */; };
+		4520DF141B337AFE004D6C60 /* _ArrayTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4520DF131B337AFE004D6C60 /* _ArrayTree.swift */; };
 		452C706A1AFF9FF0005B3793 /* StateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452C70691AFF9FF0005B3793 /* StateHandler.swift */; };
 		452C706C1B03A95D005B3793 /* SignalingTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452C706B1B03A95D005B3793 /* SignalingTable.swift */; };
 		4557CC011B232B6400AD4EEB /* SynchronousSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4557CC001B232B6400AD4EEB /* SynchronousSignal.swift */; };
@@ -30,7 +31,7 @@
 		4563E0841AF8FCBD00AA9EA6 /* SetSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4563E04B1AF8F35600AA9EA6 /* SetSignal.swift */; };
 		4563E0851AF8FCBD00AA9EA6 /* ArraySignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4563E04C1AF8F35600AA9EA6 /* ArraySignal.swift */; };
 		4563E0861AF8FCBD00AA9EA6 /* DictionarySignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4563E04D1AF8F35600AA9EA6 /* DictionarySignal.swift */; };
-		4563E0871AF8FCBD00AA9EA6 /* _OrderingTreeSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4563E0541AF8F3F800AA9EA6 /* _OrderingTreeSignal.swift */; };
+		4563E0871AF8FCBD00AA9EA6 /* _ArrayTreeSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4563E0541AF8F3F800AA9EA6 /* _ArrayTreeSignal.swift */; };
 		4563E0881AF8FCBD00AA9EA6 /* _OrderlessTreeSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4563E0561AF8F3FF00AA9EA6 /* _OrderlessTreeSignal.swift */; };
 		4563E0891AF8FCBD00AA9EA6 /* ArrayDiffset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4563E05D1AF8F7EA00AA9EA6 /* ArrayDiffset.swift */; };
 		459D96C81AFE531B006AF2C0 /* SignalGraph+AppKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459D96C71AFE531B006AF2C0 /* SignalGraph+AppKit.swift */; };
@@ -45,15 +46,15 @@
 		459D96D11AFE54FB006AF2C0 /* CollectionStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D987AE1AF924C2003A5BC0 /* CollectionStorage.swift */; };
 		459D96D21AFE54FB006AF2C0 /* SetStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D987AC1AF923C0003A5BC0 /* SetStorage.swift */; };
 		459D96D31AFE54FB006AF2C0 /* DictionaryStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D987AA1AF923BB003A5BC0 /* DictionaryStorage.swift */; };
-		459D96D41AFE54FB006AF2C0 /* DictionaryReplicationEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4503AE251AFD9EEF006AB1F0 /* DictionaryReplicationEditor.swift */; };
+		459D96D41AFE54FB006AF2C0 /* DictionaryStorageEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4503AE251AFD9EEF006AB1F0 /* DictionaryStorageEditor.swift */; };
 		459D96D61AFE54FB006AF2C0 /* ArrayStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4563E05B1AF8F4F400AA9EA6 /* ArrayStorage.swift */; };
-		459D96D71AFE54FB006AF2C0 /* ArrayReplicationEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4503AE141AFBC3D8006AB1F0 /* ArrayReplicationEditor.swift */; };
+		459D96D71AFE54FB006AF2C0 /* ArrayStorageEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4503AE141AFBC3D8006AB1F0 /* ArrayStorageEditor.swift */; };
 		459D96D91AFE54FB006AF2C0 /* ValueSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D4428B1AFDD8FD003D9E32 /* ValueSignal.swift */; };
 		459D96DA1AFE54FB006AF2C0 /* CollectionTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4563E04A1AF8F35600AA9EA6 /* CollectionTransaction.swift */; };
 		459D96DB1AFE54FB006AF2C0 /* SetSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4563E04B1AF8F35600AA9EA6 /* SetSignal.swift */; };
 		459D96DC1AFE54FB006AF2C0 /* DictionarySignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4563E04D1AF8F35600AA9EA6 /* DictionarySignal.swift */; };
 		459D96DD1AFE54FB006AF2C0 /* ArraySignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4563E04C1AF8F35600AA9EA6 /* ArraySignal.swift */; };
-		459D96DE1AFE54FB006AF2C0 /* _OrderingTreeSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4563E0541AF8F3F800AA9EA6 /* _OrderingTreeSignal.swift */; };
+		459D96DE1AFE54FB006AF2C0 /* _ArrayTreeSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4563E0541AF8F3F800AA9EA6 /* _ArrayTreeSignal.swift */; };
 		459D96DF1AFE54FB006AF2C0 /* _OrderlessTreeSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4563E0561AF8F3FF00AA9EA6 /* _OrderlessTreeSignal.swift */; };
 		459D96E01AFE54FB006AF2C0 /* DictionaryFilteringDictionaryStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4503AE231AFD9431006AB1F0 /* DictionaryFilteringDictionaryStorage.swift */; };
 		459D96E11AFE54FB006AF2C0 /* DictionarySortingArrayStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4503AE1F1AFCE13B006AB1F0 /* DictionarySortingArrayStorage.swift */; };
@@ -111,13 +112,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		4503AE141AFBC3D8006AB1F0 /* ArrayReplicationEditor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayReplicationEditor.swift; sourceTree = "<group>"; };
+		4503AE141AFBC3D8006AB1F0 /* ArrayStorageEditor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayStorageEditor.swift; sourceTree = "<group>"; };
 		4503AE181AFCDE1F006AB1F0 /* SignalMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalMap.swift; sourceTree = "<group>"; };
 		4503AE1B1AFCDF71006AB1F0 /* SignalFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalFilter.swift; sourceTree = "<group>"; };
 		4503AE1F1AFCE13B006AB1F0 /* DictionarySortingArrayStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionarySortingArrayStorage.swift; sourceTree = "<group>"; };
 		4503AE231AFD9431006AB1F0 /* DictionaryFilteringDictionaryStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryFilteringDictionaryStorage.swift; sourceTree = "<group>"; };
-		4503AE251AFD9EEF006AB1F0 /* DictionaryReplicationEditor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryReplicationEditor.swift; sourceTree = "<group>"; };
+		4503AE251AFD9EEF006AB1F0 /* DictionaryStorageEditor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryStorageEditor.swift; sourceTree = "<group>"; };
 		4510C68A1B1198DC007930D2 /* ArraySignal+NSTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ArraySignal+NSTableView.swift"; sourceTree = "<group>"; };
+		4520DF131B337AFE004D6C60 /* _ArrayTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _ArrayTree.swift; sourceTree = "<group>"; };
 		452C70691AFF9FF0005B3793 /* StateHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateHandler.swift; sourceTree = "<group>"; };
 		452C706B1B03A95D005B3793 /* SignalingTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalingTable.swift; sourceTree = "<group>"; };
 		4557CC001B232B6400AD4EEB /* SynchronousSignal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SynchronousSignal.swift; sourceTree = "<group>"; };
@@ -130,7 +132,7 @@
 		4563E04B1AF8F35600AA9EA6 /* SetSignal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetSignal.swift; sourceTree = "<group>"; };
 		4563E04C1AF8F35600AA9EA6 /* ArraySignal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArraySignal.swift; sourceTree = "<group>"; };
 		4563E04D1AF8F35600AA9EA6 /* DictionarySignal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionarySignal.swift; sourceTree = "<group>"; };
-		4563E0541AF8F3F800AA9EA6 /* _OrderingTreeSignal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _OrderingTreeSignal.swift; sourceTree = "<group>"; };
+		4563E0541AF8F3F800AA9EA6 /* _ArrayTreeSignal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _ArrayTreeSignal.swift; sourceTree = "<group>"; };
 		4563E0561AF8F3FF00AA9EA6 /* _OrderlessTreeSignal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _OrderlessTreeSignal.swift; sourceTree = "<group>"; };
 		4563E05B1AF8F4F400AA9EA6 /* ArrayStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayStorage.swift; sourceTree = "<group>"; };
 		4563E05D1AF8F7EA00AA9EA6 /* ArrayDiffset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayDiffset.swift; sourceTree = "<group>"; };
@@ -247,10 +249,20 @@
 		4520DF0A1B32F753004D6C60 /* (replication editors) */ = {
 			isa = PBXGroup;
 			children = (
-				4503AE141AFBC3D8006AB1F0 /* ArrayReplicationEditor.swift */,
-				4503AE251AFD9EEF006AB1F0 /* DictionaryReplicationEditor.swift */,
+				4503AE141AFBC3D8006AB1F0 /* ArrayStorageEditor.swift */,
+				4503AE251AFD9EEF006AB1F0 /* DictionaryStorageEditor.swift */,
 			);
 			name = "(replication editors)";
+			sourceTree = "<group>";
+		};
+		4520DF151B338044004D6C60 /* (junkyard) */ = {
+			isa = PBXGroup;
+			children = (
+				4563E0561AF8F3FF00AA9EA6 /* _OrderlessTreeSignal.swift */,
+				4563E0541AF8F3F800AA9EA6 /* _ArrayTreeSignal.swift */,
+				4520DF131B337AFE004D6C60 /* _ArrayTree.swift */,
+			);
+			name = "(junkyard)";
 			sourceTree = "<group>";
 		};
 		4557CBFF1B232B1C00AD4EEB /* (synchronous signaling) */ = {
@@ -282,8 +294,7 @@
 				4563E04B1AF8F35600AA9EA6 /* SetSignal.swift */,
 				4563E04D1AF8F35600AA9EA6 /* DictionarySignal.swift */,
 				4563E04C1AF8F35600AA9EA6 /* ArraySignal.swift */,
-				4563E0541AF8F3F800AA9EA6 /* _OrderingTreeSignal.swift */,
-				4563E0561AF8F3FF00AA9EA6 /* _OrderlessTreeSignal.swift */,
+				4520DF151B338044004D6C60 /* (junkyard) */,
 			);
 			name = "(stateful signals)";
 			sourceTree = "<group>";
@@ -669,15 +680,15 @@
 				4503AE3C1AFDB96D006AB1F0 /* CollectionStorage.swift in Sources */,
 				4503AE3B1AFDB96D006AB1F0 /* SignalFilter.swift in Sources */,
 				4563E0811AF8FCBD00AA9EA6 /* ValueStorage.swift in Sources */,
-				4563E0871AF8FCBD00AA9EA6 /* _OrderingTreeSignal.swift in Sources */,
+				4563E0871AF8FCBD00AA9EA6 /* _ArrayTreeSignal.swift in Sources */,
 				4503AE3E1AFDB96D006AB1F0 /* DictionaryStorage.swift in Sources */,
 				4563E0841AF8FCBD00AA9EA6 /* SetSignal.swift in Sources */,
 				4563E0861AF8FCBD00AA9EA6 /* DictionarySignal.swift in Sources */,
 				45D4428D1AFDD944003D9E32 /* ValueSignal.swift in Sources */,
 				4563E0881AF8FCBD00AA9EA6 /* _OrderlessTreeSignal.swift in Sources */,
 				4503AE3D1AFDB96D006AB1F0 /* SetStorage.swift in Sources */,
-				4503AE371AFDB95A006AB1F0 /* ArrayReplicationEditor.swift in Sources */,
-				4503AE3F1AFDB96D006AB1F0 /* DictionaryReplicationEditor.swift in Sources */,
+				4503AE371AFDB95A006AB1F0 /* ArrayStorageEditor.swift in Sources */,
+				4503AE3F1AFDB96D006AB1F0 /* DictionaryStorageEditor.swift in Sources */,
 				45D442901AFDE8AF003D9E32 /* Debugging.swift in Sources */,
 				4503AE391AFDB95E006AB1F0 /* DictionarySortingArrayStorage.swift in Sources */,
 			);
@@ -726,9 +737,9 @@
 				459D96D21AFE54FB006AF2C0 /* SetStorage.swift in Sources */,
 				459D96D31AFE54FB006AF2C0 /* DictionaryStorage.swift in Sources */,
 				4557CC011B232B6400AD4EEB /* SynchronousSignal.swift in Sources */,
-				459D96D41AFE54FB006AF2C0 /* DictionaryReplicationEditor.swift in Sources */,
+				459D96D41AFE54FB006AF2C0 /* DictionaryStorageEditor.swift in Sources */,
 				459D96D61AFE54FB006AF2C0 /* ArrayStorage.swift in Sources */,
-				459D96D71AFE54FB006AF2C0 /* ArrayReplicationEditor.swift in Sources */,
+				459D96D71AFE54FB006AF2C0 /* ArrayStorageEditor.swift in Sources */,
 				452C706A1AFF9FF0005B3793 /* StateHandler.swift in Sources */,
 				459D96D91AFE54FB006AF2C0 /* ValueSignal.swift in Sources */,
 				459D96DA1AFE54FB006AF2C0 /* CollectionTransaction.swift in Sources */,
@@ -736,7 +747,7 @@
 				459D96DC1AFE54FB006AF2C0 /* DictionarySignal.swift in Sources */,
 				459D96DD1AFE54FB006AF2C0 /* ArraySignal.swift in Sources */,
 				4557CC041B232BE400AD4EEB /* Channel.swift in Sources */,
-				459D96DE1AFE54FB006AF2C0 /* _OrderingTreeSignal.swift in Sources */,
+				459D96DE1AFE54FB006AF2C0 /* _ArrayTreeSignal.swift in Sources */,
 				459D96DF1AFE54FB006AF2C0 /* _OrderlessTreeSignal.swift in Sources */,
 				459D96E01AFE54FB006AF2C0 /* DictionaryFilteringDictionaryStorage.swift in Sources */,
 				459D96E11AFE54FB006AF2C0 /* DictionarySortingArrayStorage.swift in Sources */,
@@ -744,6 +755,7 @@
 				459D96E31AFE54FB006AF2C0 /* ArrayDiffset.swift in Sources */,
 				459D96E41AFE54FB006AF2C0 /* Spawn.swift in Sources */,
 				459D96E51AFE54FB006AF2C0 /* Wait.swift in Sources */,
+				4520DF141B337AFE004D6C60 /* _ArrayTree.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
