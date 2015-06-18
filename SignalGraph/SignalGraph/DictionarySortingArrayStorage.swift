@@ -71,12 +71,13 @@ public class DictionarySortingArrayStorage<K,V,C where K: Hashable, C: Comparabl
 	private let	monitor		:	SignalMonitor<DictionarySignal<K,V>>
 	private let	order		:	(K,V) -> C
 	
-	private var editor: ArrayEditor<(K,V)> {
+	///	Hacky tricky solution.
+	private var editor: ArrayReplicationEditor<(K,V)> {
 		get {
-			return	ArrayEditor(replication)
+			return	ArrayReplicationEditor(replication)
 		}
 		set(v) {
-			assert(v.origin === replication)
+			assert(v.storage === replication)
 		}
 	}
 	

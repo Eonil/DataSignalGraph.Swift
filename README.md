@@ -45,14 +45,22 @@ signal types have corresponding these handling class set.
 
 -	`~Storage`		Abstract class of read-only container that can 
 				produce mutating signals.
+				State is availble only  while this storage is 
+				registered to another storage and the source is
+				available. 
+				This mutates itself indirectly by the signals.
 
 -	`Editable~Storage`	A container that keeps a mutable state and directly 
-				editable.
+				editable. State is always available. This does not
+				take any input signal.
 
 -	`Replicating~Storage`	A container that synchronizes its state with signals.
 
 -	`Monitoring~Storage`	A `Replicating~Storage` that provides *synchronous*
-				hooks for each signals. 
+				hooks for each signals. Take care that the 
+				synchronicity means when applying the signal to state
+				of this object. This doesn mean the signal will come
+				synchronously. It's up to signal emitter.
 
 You can connect `Replicating~Storage` to observe any `~Storage` to make it to be 
 synchronized with it. 

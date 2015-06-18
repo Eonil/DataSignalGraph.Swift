@@ -16,58 +16,58 @@ public class DictionaryFilteringDictionaryStorage<K: Hashable,V>: StorageType {
 	
 	///
 	///	:param:		filter
-	///				A filter function to filter key-value pair subset.
+	///			A filter function to filter key-value pair subset.
 	///
-	///				REQUIREMENTS
-	///				------------
-	///				This function must be **referentially transparent**.
-	///				That means same input must produce same output always.
-	///				In other words, do not change internal logic of this while this
-	///				function is bound to this object.
+	///			REQUIREMENTS
+	///			------------
+	///			This function must be **referentially transparent**.
+	///			That means same input must produce same output always.
+	///			In other words, do not change internal logic of this while this
+	///			function is bound to this object.
 	///
-	///				This function should be very cheap because this function will be
-	///				called very frequently, and evaluation result will not be memoized
-	///				at all. (you can do it yourself if you want)
+	///			This function should be very cheap because this function will be
+	///			called very frequently, and evaluation result will not be memoized
+	///			at all. (you can do it yourself if you want)
 	///
 	public init(_ filter: (K,V) -> Bool) {
-		self.filter		=	filter
-		monitor.handler	=	{ [unowned self] s in self.process(s) }
+		_filter			=	filter
+		_monitor.handler	=	{ [unowned self] s in self._apply(s) }
 	}
 	
 	public var sensor: SignalSensor<DictionarySignal<K,V>> {
 		get {
-			return	monitor
+			return	_monitor
 		}
 	}
 	public var state: [K:V] {
 		get {
-			return	replication.state
+			return	_replication.state
 		}
 	}
 	public var emitter: SignalEmitter<DictionarySignal<K,V>> {
 		get {
-			return	replication.emitter
+			return	_replication.emitter
 		}
 	}
 	
 	////
 	
-	private let	monitor		=	SignalMonitor<DictionarySignal<K,V>>()
-	private let	filter		:	(K,V) -> Bool
-	private let	replication	=	ReplicatingDictionaryStorage<K,V>()
+	private let	_monitor	=	SignalMonitor<DictionarySignal<K,V>>()
+	private let	_filter		:	(K,V) -> Bool
+	private let	_replication	=	ReplicatingDictionaryStorage<K,V>()
 	
-	private var editor: DictionaryEditor<K,V> {
+	private var _editor: DictionaryReplicationEditor<K,V> {
 		get {
-			return	DictionaryEditor(replication)
+			return	DictionaryReplicationEditor(_replication)
 		}
 	}
 	
-	private func process(s: DictionarySignal<K,V>) {
+	private func _apply(s: DictionarySignal<K,V>) {
 		switch s {
 		case .Initiation(let s):
-			replication.sensor.signal(DictionarySignal.Initiation(snapshot: [:]))
+			_replication.sensor.signal(DictionarySignal.Initiation(snapshot: [:]))
 			for e in s {
-				if filter(e) {
+				if _filter(e) {
 					insert(e)
 				}
 			}
@@ -76,12 +76,12 @@ public class DictionaryFilteringDictionaryStorage<K: Hashable,V>: StorageType {
 				let	ts	=	(m.past == nil, m.future == nil)
 				switch ts {
 				case (true, false):
-					if filter(m.identity, m.future!) {
+					if _filter(m.identity, m.future!) {
 						insert(m.identity, m.future!)
 					}
 					
 				case (false, false):
-					let	fs	=	(filter(m.identity, m.past!), filter(m.identity, m.future!))
+					let	fs	=	(_filter(m.identity, m.past!), _filter(m.identity, m.future!))
 					switch fs {
 					case (false, true):
 						//	Past value was filtered out.
@@ -112,7 +112,7 @@ public class DictionaryFilteringDictionaryStorage<K: Hashable,V>: StorageType {
 						
 					}
 				case (false, true):
-					if filter(m.identity, m.past!) {
+					if _filter(m.identity, m.past!) {
 						delete(m.identity)
 					}
 					
@@ -121,28 +121,29 @@ public class DictionaryFilteringDictionaryStorage<K: Hashable,V>: StorageType {
 				}
 			}
 		case .Termination(let s):
-			assert(replication.state.count == s.count)
+			//	`s` is an unfiltered snapshot, so likely to have more elements
+			//	then `_replication.state`.
 			for e in s {
-				if filter(e) {
+				if _filter(e) {
 					delete(e.0)
 				}
 			}
-			assert(replication.state.count == 0)
-			replication.sensor.signal(DictionarySignal.Termination(snapshot: [:]))
+			assert(_replication.state.count == 0)
+			_replication.sensor.signal(DictionarySignal.Termination(snapshot: [:]))
 		}
 	}
 	
 	private func insert(e: (K,V)) {
-		assert(editor[e.0] == nil, "There should be no existing value for the key `\(e.0)`.")
-		var	ed	=	editor
+		assert(_editor[e.0] == nil, "There should be no existing value for the key `\(e.0)`.")
+		var	ed	=	_editor
 		ed[e.0]		=	e.1
 	}
 	private func update(e: (K,V)) {
-		var	ed	=	editor
+		var	ed	=	_editor
 		ed[e.0]		=	e.1
 	}
 	private func delete(e: (K)) {
-		var	ed	=	editor
+		var	ed	=	_editor
 		ed.removeValueForKey(e)
 	}
 }

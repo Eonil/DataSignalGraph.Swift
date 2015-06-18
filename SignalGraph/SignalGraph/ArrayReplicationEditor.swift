@@ -1,76 +1,98 @@
 //
-//  ArrayEditor.swift
+//  ArrayReplicationEditor.swift
 //  SignalGraph
 //
 //  Created by Hoon H. on 2015/05/08.
 //  Copyright (c) 2015 Eonil. All rights reserved.
 //
 
-///	A proxy of a replication that provides array-like 
-///	direct mutator method interface.
-struct ArrayEditor<T> {
+
+
+///	A zero-cost wrapper around a `ReplicatingArrayStorage`
+///	which provides array-like interface.
+///
+///	This produces and sends `ArraySignal` to `origin` to
+///	mutate it. Mutator methods also returns appropriate 
+///	values.
+///
+public struct ArrayReplicationEditor<T>: SequenceType {
 	
-	unowned let	origin: ReplicatingArrayStorage<T>
+	unowned let	storage: ReplicatingArrayStorage<T>
 	
-	init(_ origin: ReplicatingArrayStorage<T>) {
-		self.origin	=	origin
+	public init(_ storage: ReplicatingArrayStorage<T>) {
+		self.storage	=	storage
 	}
 	
 	////
 	
-	var count: Int {
+	public var startIndex: Array<T>.Index {
 		get {
-			return	origin.state.count
+			return	storage.state.startIndex
 		}
 	}
-	subscript(i: Int) -> T {
+	public var endIndex: Array<T>.Index {
 		get {
-			return	origin.state[i]
+			return	storage.state.endIndex
+		}
+	}
+	public var count: Int {
+		get {
+			return	storage.state.count
+		}
+	}
+	public subscript(i: Int) -> T {
+		get {
+			return	storage.state[i]
 		}
 		set(v) {
 			replaceRange(i..<i.successor(), with: [v])
 		}
 	}
-	mutating func append(v: T) {
+	
+	public func generate() -> Array<T>.Generator {
+		return	storage.state.generate()
+	}
+	
+	public mutating func append(v: T) {
 		insert(v, atIndex: count)
 	}
-	mutating func extend<S: SequenceType where S.Generator.Element == T>(vs: S) {
+	public mutating func extend<S: SequenceType where S.Generator.Element == T>(vs: S) {
 		//	TODO:	Review cost of making the array...
 		//			Would it require enumeration of all elements?
 		splice(Array(vs), atIndex: count)
 	}
-	mutating func removeLast() -> T {
-		let	v	=	origin.state.last!
+	public mutating func removeLast() -> T {
+		let	v	=	storage.state.last!
 		removeAtIndex(count-1)
 		return	v
 	}
-	mutating func insert(v: T, atIndex i: Int) {
+	public mutating func insert(v: T, atIndex i: Int) {
 		splice([v], atIndex: i)
 	}
-	mutating func removeAtIndex(i: Int) -> T {
-		let	v	=	origin.state[i]
+	public mutating func removeAtIndex(i: Int) -> T {
+		let	v	=	storage.state[i]
 		removeRange(i..<i.successor())
 		return	v
 	}
-	mutating func removeAll() {
-		origin.sensor.signal(ArraySignal.Termination(snapshot: origin.state))
-		origin.sensor.signal(ArraySignal.Initiation(snapshot: []))
+	public mutating func removeAll() {
+		storage.sensor.signal(ArraySignal.Termination(snapshot: storage.state))
+		storage.sensor.signal(ArraySignal.Initiation(snapshot: []))
 	}
 	
-	mutating func replaceRange<C : CollectionType where C.Generator.Element == T>(subRange: Range<Int>, with newElements: C) {
+	public mutating func replaceRange<C : CollectionType where C.Generator.Element == T>(subRange: Range<Int>, with newElements: C) {
 		let	ms0	=	deleteRangeMutations(subRange)
 		let	ms1	=	insertSequenceMutations(newElements, at: subRange.startIndex)
 		dispatchMutations(ms0 + ms1)
 	}
-	mutating func splice<S : CollectionType where S.Generator.Element == T>(newElements: S, atIndex i: Int) {
+	public mutating func splice<S : CollectionType where S.Generator.Element == T>(newElements: S, atIndex i: Int) {
 		if i == 0 && count == 0 {
-			origin.sensor.signal(ArraySignal.Termination(snapshot: []))
-			origin.sensor.signal(ArraySignal.Initiation(snapshot: Array(newElements)))
+			storage.sensor.signal(ArraySignal.Termination(snapshot: []))
+			storage.sensor.signal(ArraySignal.Initiation(snapshot: Array(newElements)))
 		} else {
 			dispatchMutations(insertSequenceMutations(newElements, at: i))
 		}
 	}
-	mutating func removeRange(subRange: Range<Int>) {
+	public mutating func removeRange(subRange: Range<Int>) {
 		if subRange.startIndex == 0 && subRange.endIndex == count {
 			removeAll()
 		} else {
@@ -122,7 +144,7 @@ struct ArrayEditor<T> {
 	private func dispatchMutations(ms: [M]) {
 		let	t	=	CollectionTransaction(mutations: ms)
 		let	s	=	ArraySignal.Transition(transaction: t)
-		origin.sensor.signal(s)
+		storage.sensor.signal(s)
 	}
 }
 
