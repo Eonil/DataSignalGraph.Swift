@@ -19,7 +19,7 @@ public protocol StateDefinitionType {
 public protocol StateStorageType: class {
 	typealias	Definition	:	StateDefinitionType
 	
-	var snapshot: Definition.Snapshot { get set }
+	var snapshot: Definition.Snapshot { get }
 }
 
 
@@ -157,23 +157,25 @@ public class StateStorage<D: StateDefinitionType>: SignalChannel<StateSignal<D>>
 
 
 public class StateMonitor<D: StateDefinitionType>: SignalSensor<StateSignal<D>> {
-	typealias	Signal				=	StateSignal<D>
-	typealias	Handler				=	()->()
-	typealias	StateSessionNotificationHandler	=	(state: D.Snapshot, by: StateSessionNotificationReason<D>)->()
-//	typealias	TransactionHandler		=	D.Transaction->()
+	public typealias	Signal				=	StateSignal<D>
+	public typealias	Handler				=	()->()
+	public typealias	StateSessionNotificationHandler	=	(state: D.Snapshot, by: StateSessionNotificationReason<D>)->()
+//	public typealias	TransactionHandler		=	D.Transaction->()
 	
 	override init() {
 		super.init()
 	}
 	deinit {
 	}
+
+	public var	didInitiate	:	Handler?
+//	public var	willApply	:	TransactionHandler?
+	public var	willEnd		:	StateSessionNotificationHandler?
+	public var	didBegin	:	StateSessionNotificationHandler?
+//	public var	didApply	:	TransactionHandler?
+	public var	willTerminate	:	Handler?
 	
-	var	didInitiate	:	Handler?
-//	var	willApply	:	TransactionHandler?
-	var	willEnd		:	StateSessionNotificationHandler?
-	var	didBegin	:	StateSessionNotificationHandler?
-//	var	didApply	:	TransactionHandler?
-	var	willTerminate	:	Handler?
+	///
 	
 //	@availability(*,unavailable)
 //	override var handler: (Signal->())? {
