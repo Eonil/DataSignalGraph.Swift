@@ -46,8 +46,9 @@ public protocol StateStorageType: class {
 ///
 ///	4.	DidBegin
 ///
-///	Above four signals (3,4) will be triggered by one transaction.
-///	That means you will get same transaction value from all four signals.
+///	Above two signals (3,4) will be triggered by one transaction.
+///	That means you will get same transaction parameter value from all four 
+///	signals.
 ///
 ///	These signals will be sent when you deregister a monitor from a storage.
 ///
