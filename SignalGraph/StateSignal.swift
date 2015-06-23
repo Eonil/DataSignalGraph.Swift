@@ -110,28 +110,21 @@ public class StateStorage<D: StateDefinitionType>: SignalChannel<StateSignal<D>>
 	public typealias	Signal		=	StateSignal<D>
 	
 	public init(_ snapshot: Definition.Snapshot) {
-		_snapshot	=	snapshot
+		self.snapshot	=	snapshot
 	}
-	public var snapshot: Definition.Snapshot {
-		get {
-			return	_snapshot
-		}
-		set(v) {
-			_snapshot	=	v
-		}
-	}
+	public var snapshot: Definition.Snapshot
 
 	///
 	
 	public override func register(sensor: SignalSensor<Signal>) {
 		super.register(sensor)
 		transfer(.DidInitiate)
-		apply { (inout state: Definition.Snapshot) -> () in
+		_apply { (inout state: Definition.Snapshot) -> () in
 			transfer(Signal.DidBegin(state: {state}, by: {Signal.Reason.SensorRegistration(with: {sensor})}))
 		}
 	}
 	public override func deregister(sensor: SignalSensor<Signal>) {
-		apply { (inout state: Definition.Snapshot) -> () in
+		_apply { (inout state: Definition.Snapshot) -> () in
 			transfer(Signal.WillEnd(state: {state}, by: {Signal.Reason.SensorDeregistration(with: {sensor})}))
 		}
 		transfer(.WillTerminate)
@@ -146,13 +139,9 @@ public class StateStorage<D: StateDefinitionType>: SignalChannel<StateSignal<D>>
 	
 	///
 	
-	internal func apply(@noescape mutate: (inout state: Definition.Snapshot)->()) {
-		mutate(state: &_snapshot)
+	private func _apply(@noescape mutate: (inout state: Definition.Snapshot)->()) {
+		mutate(state: &snapshot)
 	}
-
-	///
-	
-	private var	_snapshot	:	Definition.Snapshot
 }
 
 

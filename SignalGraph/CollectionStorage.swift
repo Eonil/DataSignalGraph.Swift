@@ -119,12 +119,15 @@ public class SetStorage<T: Hashable>: CollectionStorage<Set<T>, T, ()> {
 	private typealias	_Transaction	=	CollectionTransaction<T,()>
 	
 	private func _applyWithTransferring(transaction: _Transaction) {
-		apply() { (inout state: Definition.Snapshot)->() in
+		_apply() { (inout state: Definition.Snapshot)->() in
 			let	reason	=	_by(transaction)
 			transfer(_Signal.WillEnd(state: {state}, by: {reason}))
 			state.apply(transaction)
 			transfer(_Signal.DidBegin(state: {state}, by: {reason}))
 		}
+	}
+	private func _apply(@noescape mutate: (inout state: Definition.Snapshot)->()) {
+		mutate(state: &snapshot)
 	}
 	private func _by(transaction: _Transaction) -> _Signal.Reason {
 		return	_Signal.Reason.StateMutation(by: {transaction})
@@ -390,6 +393,12 @@ public class DictionaryStorage<K: Hashable, V>: CollectionStorage<[K:V], K, V> {
 	
 	///
 	
+	internal func apply(transaction: Definition.Transaction) {
+		_applyWithTransferring(transaction)
+	}
+	
+	///
+	
 	private typealias	_Signal		=	StateSignal<Definition>
 	private typealias	_Transaction	=	CollectionTransaction<K,V>
 	
@@ -433,101 +442,6 @@ class DictionaryMonitor<K: Hashable, V>: StateMonitor<DictionaryStorage<K,V>.Def
 
 
 
-
-
-
-public class DictionaryFilteringDictionaryStorage<K: Hashable, V>: SignalSensor<DictionaryStorage<K,V>.Definition>, StateStorageType {
-	public typealias	Definition	=	DictionaryStorage<K,V>.Definition
-	
-	public override init() {
-		super.init()
-	}
-	public convenience init(filter: ((K,V)->Bool)) {
-		self.init()
-		self.filter	=	filter
-	}
-	deinit {
-		filter	=	nil
-	}
-
-	///
-	
-	public var snapshot: Definition.Snapshot {
-		get {
-			return	_storage.snapshot
-		}
-	}
-	public var filter: ((K,V)->Bool)? {
-		willSet {
-			_disconnect()
-		}
-		didSet {
-			_connect()
-		}
-	}
-	
-	///
-	
-	public func register(sensor: SignalSensor<Definition.Signal>) {
-		_storage.register(sensor)
-	}
-	public func deregister(sensor: SignalSensor<Definition.Signal>) {
-		_storage.deregister(sensor)
-	}
-	final func register(monitor: StateMonitor<Definition>) {
-		_storage.register(monitor)
-	}
-	final func deregister(monitor: StateMonitor<Definition>) {
-		_storage.deregister(monitor)
-	}
-	
-	///
-	
-	private let	_storage	=	DictionaryStorage<K,V>([:])
-	private let	_monitor	=	StateMonitor<Definition>()
-	
-	private func _connect() {
-		_assertFilterExistence()
-		_monitor.didBegin		=	{ [weak self] in self!._didBegin($0, by: $1) }
-		_monitor.willEnd		=	{ [weak self] in self!._willEnd($0, by: $1) }
-		_storage.register(_monitor)
-	}
-	private func _disconnect() {
-		_assertFilterExistence()
-		_storage.deregister(_monitor)
-		_monitor.willEnd		=	nil
-		_monitor.didBegin		=	nil
-	}
-	
-	private func _didBegin(state: Definition.Snapshot, by: StateSessionNotificationReason<Definition>) {
-		_assertFilterExistence()
-	}
-	private func _willEnd(state: Definition.Snapshot, by: StateSessionNotificationReason<Definition>) {
-		_assertFilterExistence()
-		
-	}
-	private func _assertFilterExistence() {
-		assert(filter != nil, "You must set a filter before registering this storage to a source storage.")
-	}
-}
-
-public class DictionarySortingArrayStorage<K: Hashable, V>: StateMonitor<DictionaryStorage<K,V>.Definition>, StateStorageType {
-	public typealias	Definition	=	ArrayStorage<V>.Definition
-	
-	public init(_ snapshot: Definition.Snapshot) {
-		self.snapshot	=	snapshot
-	}
-	public var snapshot: Definition.Snapshot
-}
-
-public class ValueMappingArrayStorage<T,U>: StateMonitor<ArrayStorage<T>.Definition>, StateStorageType {
-	public typealias	Definition	=	ArrayStorage<U>.Definition
-	
-	public init(_ snapshot: Definition.Snapshot) {
-		self.snapshot	=	snapshot
-	}
-	public var snapshot: Definition.Snapshot
-}
 
 
 

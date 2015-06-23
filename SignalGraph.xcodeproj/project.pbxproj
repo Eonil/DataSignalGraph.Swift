@@ -14,6 +14,7 @@
 		45969A331B356820008319B4 /* CollectionStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45969A321B356820008319B4 /* CollectionStorage.swift */; };
 		45969A351B3574A5008319B4 /* ValueStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45969A341B3574A5008319B4 /* ValueStorage.swift */; };
 		4597E9CD1B366BCA00483C02 /* Signal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4597E9CC1B366BCA00483C02 /* Signal.swift */; };
+		45DEBE381B38570F003D386F /* AggregationCollectionStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DEBE371B38570F003D386F /* AggregationCollectionStorage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,6 +38,7 @@
 		45969A321B356820008319B4 /* CollectionStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionStorage.swift; sourceTree = "<group>"; };
 		45969A341B3574A5008319B4 /* ValueStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueStorage.swift; sourceTree = "<group>"; };
 		4597E9CC1B366BCA00483C02 /* Signal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Signal.swift; sourceTree = "<group>"; };
+		45DEBE371B38570F003D386F /* AggregationCollectionStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AggregationCollectionStorage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 				45969A301B3567AC008319B4 /* StateSignal.swift */,
 				45969A341B3574A5008319B4 /* ValueStorage.swift */,
 				45969A321B356820008319B4 /* CollectionStorage.swift */,
+				45DEBE371B38570F003D386F /* AggregationCollectionStorage.swift */,
 				4558CF621B3597B60080DEB9 /* TreePath.swift */,
 				4558CF601B35976C0080DEB9 /* ArrayTreeStorage.swift */,
 			);
@@ -143,6 +146,7 @@
 				45969A331B356820008319B4 /* CollectionStorage.swift in Sources */,
 				4558CF631B3597B60080DEB9 /* TreePath.swift in Sources */,
 				4558CF611B35976C0080DEB9 /* ArrayTreeStorage.swift in Sources */,
+				45DEBE381B38570F003D386F /* AggregationCollectionStorage.swift in Sources */,
 				45969A351B3574A5008319B4 /* ValueStorage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
