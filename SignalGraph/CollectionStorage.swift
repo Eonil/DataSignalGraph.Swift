@@ -130,7 +130,7 @@ public class SetStorage<T: Hashable>: CollectionStorage<Set<T>, T, ()> {
 		mutate(state: &snapshot)
 	}
 	private func _by(transaction: _Transaction) -> _Signal.Reason {
-		return	_Signal.Reason.StateMutation(by: {transaction})
+		return	_Signal.Reason.StateMutation({transaction})
 	}
 	private func _transaction(mutations: [_Transaction.Mutation]) -> CollectionTransaction<T,()> {
 		return	CollectionTransaction(mutations: mutations)
@@ -241,15 +241,12 @@ public class ArrayStorage<T>: CollectionStorage<[T], Int, T> {
 	private typealias	_Transaction	=	CollectionTransaction<Int,T>
 	
 	private func _applyWithTransferring(transaction: _Transaction) {
-		apply() { (inout state: Definition.Snapshot)->() in
-			let	reason		=	_by(transaction)
-			transfer(_Signal.WillEnd(state: {state}, by: {reason}))
+		ADHOC_apply { (inout state: Definition.Snapshot) -> () in
 			state.apply(transaction)
-			transfer(_Signal.DidBegin(state: {state}, by: {reason}))
 		}
 	}
 	private func _by(transaction: _Transaction) -> _Signal.Reason {
-		return	_Signal.Reason.StateMutation(by: {transaction})
+		return	_Signal.Reason.StateMutation({transaction})
 	}
 	private func _transaction(mutations: [_Transaction.Mutation]) -> _Transaction {
 		return	CollectionTransaction(mutations: mutations)
@@ -411,7 +408,7 @@ public class DictionaryStorage<K: Hashable, V>: CollectionStorage<[K:V], K, V> {
 		}
 	}
 	private func _by(transaction: _Transaction) -> _Signal.Reason {
-		return	_Signal.Reason.StateMutation(by: {transaction})
+		return	_Signal.Reason.StateMutation({transaction})
 	}
 	private func _transaction(mutations: [_Transaction.Mutation]) -> _Transaction {
 		return	_Transaction(mutations: mutations)
@@ -493,7 +490,7 @@ public protocol SignallableCollectionType: CollectionType {
 
 
 
-extension Set: SignallableCollectionType {
+extension Set: SignallableCollectionType, TransactionApplicable {
 	//	NOTE:	Change to `public` in Swift 2 when ready.
 	typealias	Definition	=	CollectionStateDefinition<Set<T>, CollectionTransaction<T,()>>
 	
@@ -514,7 +511,7 @@ extension Set: SignallableCollectionType {
 	}
 	
 }
-extension Array: SignallableCollectionType {
+extension Array: SignallableCollectionType, TransactionApplicable {
 	//	NOTE:	Change to `public` in Swift 2 when ready.
 	typealias	Definition	=	CollectionStateDefinition<[T], CollectionTransaction<Int,T>>
 	

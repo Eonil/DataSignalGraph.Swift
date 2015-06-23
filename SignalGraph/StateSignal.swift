@@ -22,6 +22,10 @@ public protocol StateStorageType: class {
 	var snapshot: Definition.Snapshot { get }
 }
 
+protocol TransactionApplicable {
+	typealias	Definition	:	StateDefinitionType
+	mutating func apply(transaction: Definition.Transaction)
+}
 
 
 
@@ -88,9 +92,9 @@ public enum StateSignal<D: StateDefinitionType>: StateDefinitionType {
 	typealias	Reason	=	StateSessionNotificationReason<D>
 }
 public enum StateSessionNotificationReason<D: StateDefinitionType> {
-	case SensorRegistration(with: ()->SignalSensor<StateSignal<D>>)
-	case SensorDeregistration(with: ()->SignalSensor<StateSignal<D>>)
-	case StateMutation(by: ()->D.Transaction)
+	case RegisteringSensor(()->SignalSensor<StateSignal<D>>)
+	case DeregisteringSensor(()->SignalSensor<StateSignal<D>>)
+	case StateMutation(()->D.Transaction)
 	
 //	var transaction: D.Transaction? {
 //		get {
@@ -120,12 +124,12 @@ public class StateStorage<D: StateDefinitionType>: SignalChannel<StateSignal<D>>
 		super.register(sensor)
 		transfer(.DidInitiate)
 		_apply { (inout state: Definition.Snapshot) -> () in
-			transfer(Signal.DidBegin(state: {state}, by: {Signal.Reason.SensorRegistration(with: {sensor})}))
+			transfer(Signal.DidBegin(state: {state}, by: {Signal.Reason.RegisteringSensor({sensor})}))
 		}
 	}
 	public override func deregister(sensor: SignalSensor<Signal>) {
 		_apply { (inout state: Definition.Snapshot) -> () in
-			transfer(Signal.WillEnd(state: {state}, by: {Signal.Reason.SensorDeregistration(with: {sensor})}))
+			transfer(Signal.WillEnd(state: {state}, by: {Signal.Reason.DeregisteringSensor({sensor})}))
 		}
 		transfer(.WillTerminate)
 		super.deregister(sensor)
@@ -138,10 +142,17 @@ public class StateStorage<D: StateDefinitionType>: SignalChannel<StateSignal<D>>
 	}
 	
 	///
-	
-	private func _apply(@noescape mutate: (inout state: Definition.Snapshot)->()) {
-		mutate(state: &snapshot)
+
+	///	An ad hoc function to avoid limitation of Swift 1,
+	///	You MUST apply same `transaction` to passed state in `ADHOC_process`.
+	internal func ADHOC_apply(transaction: Definition.Transaction, ADHOC_process: (inout Definition.Snapshot)->()) {
+		let	reason		=	Signal.Reason.StateMutation({transaction})
+		transfer(Signal.WillEnd(state: {snapshot}, by: {reason}))
+		ADHOC_process(&snapshot)
+		transfer(Signal.DidBegin(state: {snapshot}, by: {reason}))
 	}
+//	internal func apply(transaction: Definition.Transaction) {
+//	}
 }
 
 

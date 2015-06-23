@@ -33,7 +33,7 @@ public class DictionaryFilteringDictionaryStorage<K: Hashable, V>: SignalSensor<
 	public var snapshot: Definition.Snapshot {
 		get {
 			precondition(_registered == true, "You can access contained state of this storage only while this storage is registered to a source storage.")
-			return	_storage.snapshot
+			return	_filtered!.snapshot
 		}
 	}
 	///	Replacing filter function will trigger complete reloading of
@@ -41,12 +41,12 @@ public class DictionaryFilteringDictionaryStorage<K: Hashable, V>: SignalSensor<
 	public var filter: ((K,V)->Bool)? {
 		willSet {
 			if filter != nil {
-				_disconnect()
+//				_disconnect()
 			}
 		}
 		didSet {
 			if filter != nil {
-				_connect()
+//				_connect()
 			}
 		}
 	}
@@ -54,16 +54,16 @@ public class DictionaryFilteringDictionaryStorage<K: Hashable, V>: SignalSensor<
 	///
 	
 	public func register(sensor: SignalSensor<Definition.Signal>) {
-		_storage.register(sensor)
+		_dispatcher.register(sensor)
 	}
 	public func deregister(sensor: SignalSensor<Definition.Signal>) {
-		_storage.deregister(sensor)
+		_dispatcher.deregister(sensor)
 	}
 	final func register(monitor: StateMonitor<Definition>) {
-		_storage.register(monitor)
+		_dispatcher.register(monitor)
 	}
 	final func deregister(monitor: StateMonitor<Definition>) {
-		_storage.deregister(monitor)
+		_dispatcher.deregister(monitor)
 	}
 	
 	///
@@ -86,7 +86,9 @@ public class DictionaryFilteringDictionaryStorage<K: Hashable, V>: SignalSensor<
 	///
 	///
 	
-	private let	_storage	=	DictionaryStorage<K,V>([:])
+	private let	_sensor		=	SignalSensor<Definition.Signal>()
+	private let	_dispatcher	=	SignalDispatcher<Definition.Signal>()
+	private var	_filtered	:	DictionaryStorage<K,V>?
 	private var	_registered	=	false
 	
 	private func _process(signal: Definition.Signal) {
@@ -102,41 +104,87 @@ public class DictionaryFilteringDictionaryStorage<K: Hashable, V>: SignalSensor<
 		}
 	}
 	
-	private func _didBegin(state: Definition.Snapshot, by: StateSessionNotificationReason<Definition>) {
+	private func _didBegin(state: Definition.Snapshot, by: Definition.Signal.Reason) {
 		_assertFilterExistence()
-		_storage.apply { (inout state: Definition.Snapshot) -> () in
-			switch by {
-			case .StateMutation(by: let transaction):
-				_applyTransaction(transaction())
-				
-			default:
-				break
-			}
+		switch by {
+		case .StateMutation(let transaction):
+			_applyTransactionWithFiltering(transaction())
+		case .RegisteringSensor(_):
+			_sensor.handler	=	{ [weak self] in self!._dispatcher.transfer($0) }
+			_filtered	=	DictionaryStorage(_filterSnapshot(state))
+			_filtered!.register(_sensor)
+			
+		case .DeregisteringSensor(_):
+			break
 		}
 	}
-	private func _willEnd(state: Definition.Snapshot, by: StateSessionNotificationReason<Definition>) {
+	private func _willEnd(state: Definition.Snapshot, by: Definition.Signal.Reason) {
 		_assertFilterExistence()
-		
+		switch by {
+		case .StateMutation(let transaction):
+			break
+		case .RegisteringSensor(_):
+			_filtered!.deregister(_sensor)
+			_filtered	=	nil
+			_sensor.handler	=	nil
+			
+		case .DeregisteringSensor(_):
+			break
+		}
 	}
-	private func _assertFilterExistence() {
-		assert(filter != nil, "You must set a filter before registering this storage to a source storage.")
+	private func _filterSnapshot(snapshot: Definition.Snapshot) -> Definition.Snapshot {
+		var	snapshot1	=	[K:V]()
+		for (k,v) in snapshot {
+			if filter!(k,v) {
+				snapshot1[k]	=	v
+			}
+		}
+		return	snapshot
 	}
-	
-	private func _applyTransaction(transaction: Definition.Transaction) {
-		for mut in transaction.mutations {
+	private func _applyTransactionWithFiltering(transaction: Definition.Transaction) {
+		_assertFilterExistence()
+		let	muts1	=	transaction.mutations
+		let	muts2	=	_filterMutations(muts1)
+		let	tran2	=	Definition.Transaction(mutations: muts2)
+		_filtered!.apply(tran2)
+	}
+	private func _filterMutations(muts: [Definition.Transaction.Mutation]) -> [Definition.Transaction.Mutation] {
+		_assertFilterExistence()
+		var	muts1	=	Array<Definition.Transaction.Mutation>()
+		for mut in  muts {
 			switch (mut.past, mut.future) {
 			case (nil, nil):
-				break
+				fatalError("Unsupported combination.")
+
 			case (nil, _):
 				let	pass	=	filter!((mut.identity, mut.future!))
 				if pass {
-					
+					muts1.append(mut)
 				}
+				
 			case (_, _):
+				let	decomp1	=	(mut.identity, mut.past!, nil) as Definition.Transaction.Mutation
+				let	decomp2	=	(mut.identity, nil, mut.future!) as Definition.Transaction.Mutation
+				let	pass1	=	filter!(decomp1.identity, decomp1.past!)
+				let	pass2	=	filter!(decomp2.identity, decomp1.future!)
+				if pass1 {
+					muts1.append(decomp1)
+				}
+				if pass2 {
+					muts1.append(decomp1)
+				}
+				
 			case (_, nil):
+				let	pass	=	filter!((mut.identity, mut.past!))
+				if pass {
+					muts1.append(mut)
+				}
 			}
-			mut.identity
 		}
+		return	muts1
+	}
+	private func _assertFilterExistence() {
+		assert(filter != nil, "You must set a filter before registering this storage to a source storage.")
 	}
 	
 }
