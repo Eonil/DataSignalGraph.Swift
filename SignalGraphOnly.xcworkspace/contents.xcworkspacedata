@@ -2,9 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:README.md">
+      location = "group:NOTE.md">
    </FileRef>
    <FileRef
-      location = "container:SignalGraph.xcodeproj">
+      location = "container:ADHOC_SignalGraph3.xcodeproj">
    </FileRef>
 </Workspace>
