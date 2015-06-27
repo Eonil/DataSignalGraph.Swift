@@ -213,19 +213,32 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		457A3D8F1B3E29F200FFF5A1 /* Code */ = {
+		45669D6A1B3E8D9B00666D54 /* (stateless signaling) */ = {
 			isa = PBXGroup;
 			children = (
 				457A3D921B3E29F200FFF5A1 /* ChannelType.swift */,
 				457A3D9B1B3E29F200FFF5A1 /* SignalChannel.swift */,
 				457A3D9C1B3E29F200FFF5A1 /* SignalMonitor.swift */,
+			);
+			name = "(stateless signaling)";
+			sourceTree = "<group>";
+		};
+		45669D6B1B3E8DA500666D54 /* (stateful signaling) */ = {
+			isa = PBXGroup;
+			children = (
 				457A3D9D1B3E29F200FFF5A1 /* StateSignal.swift */,
 				457A3D9E1B3E29F200FFF5A1 /* StateStorage.swift */,
+			);
+			name = "(stateful signaling)";
+			sourceTree = "<group>";
+		};
+		45669D6C1B3E8DAF00666D54 /* (collection signaling) */ = {
+			isa = PBXGroup;
+			children = (
 				457A3D951B3E29F200FFF5A1 /* CollectionSignal.swift */,
 				457A3D961B3E29F200FFF5A1 /* CollectionTransaction.swift */,
 				457A3D941B3E29F200FFF5A1 /* CollectionMonitorType.swift */,
 				457A3D931B3E29F200FFF5A1 /* CollectionExtensions.swift */,
-				457A3D991B3E29F200FFF5A1 /* SetMonitor.swift */,
 				457A3D9A1B3E29F200FFF5A1 /* SetStorage.swift */,
 				457A3D911B3E29F200FFF5A1 /* ArrayStorage.swift */,
 				457A3D981B3E29F200FFF5A1 /* DictionaryStorage.swift */,
@@ -233,9 +246,28 @@
 				45669D521B3E32D700666D54 /* DictionaryFilteringDictionaryStorage.swift */,
 				45669D541B3E32E400666D54 /* DictionarySortingArrayStorage.swift */,
 				45669D561B3E32EF00666D54 /* ArrayMappingArrayStorage.swift */,
+				457A3D991B3E29F200FFF5A1 /* SetMonitor.swift */,
 				457A3D901B3E29F200FFF5A1 /* ArrayMonitor.swift */,
 				457A3D971B3E29F200FFF5A1 /* DictionaryMonitor.swift */,
+			);
+			name = "(collection signaling)";
+			sourceTree = "<group>";
+		};
+		45669D6D1B3E8DC900666D54 /* (tree signaling) */ = {
+			isa = PBXGroup;
+			children = (
 				457A3D9F1B3E29F200FFF5A1 /* TreePath.swift */,
+			);
+			name = "(tree signaling)";
+			sourceTree = "<group>";
+		};
+		457A3D8F1B3E29F200FFF5A1 /* Code */ = {
+			isa = PBXGroup;
+			children = (
+				45669D6A1B3E8D9B00666D54 /* (stateless signaling) */,
+				45669D6B1B3E8DA500666D54 /* (stateful signaling) */,
+				45669D6C1B3E8DAF00666D54 /* (collection signaling) */,
+				45669D6D1B3E8DC900666D54 /* (tree signaling) */,
 				45669D5E1B3E4CE700666D54 /* PseudoCoroutine.swift */,
 				457A3DB21B3E29F900FFF5A1 /* (incomplete yet) */,
 			);
