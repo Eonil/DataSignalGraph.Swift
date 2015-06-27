@@ -7,22 +7,11 @@
 //
 
 public class ArrayMonitor<T>: CollectionMonitorType {
-	///	Monitoring session has been just started.
 	public var didInitiate: (()->())?
-	
-	///	Monitoring session has been just ended.
 	public var willTerminate: (()->())?
-	
-	///	A transaction is about to be applied.
 	public var willApply: (CollectionTransaction<Int,T>->())?
-	
-	///	A transaction has been applied.
 	public var didApply: (CollectionTransaction<Int,T>->())?
-	
-	///	A state is about to be ended.
 	public var willEnd: (Array<T>->())?
-	
-	///	A state has been started.
 	public var didBegin: (Array<T>->())?
 	
 	///

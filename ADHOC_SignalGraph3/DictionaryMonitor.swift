@@ -7,22 +7,11 @@
 //
 
 public class DictionaryMonitor<K: Hashable, V>: CollectionMonitorType {
-	///	Monitoring session has been just started.
 	public var didInitiate: (()->())?
-	
-	///	Monitoring session has been just ended.
 	public var willTerminate: (()->())?
-	
-	///	A transaction is about to be applied.
 	public var willApply: (CollectionTransaction<K,V>->())?
-	
-	///	A transaction has been applied.
 	public var didApply: (CollectionTransaction<K,V>->())?
-	
-	///	A state is about to be ended.
 	public var willEnd: (Dictionary<K,V>->())?
-	
-	///	A state has been started.
 	public var didBegin: (Dictionary<K,V>->())?
 	
 	///

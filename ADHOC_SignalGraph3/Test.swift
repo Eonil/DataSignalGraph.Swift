@@ -6,34 +6,6 @@
 //  Copyright (c) 2015 Eonil. All rights reserved.
 //
 
-protocol Continuable {
-	func continuation() -> Self
-}
-extension Int: Continuable {
-	func continuation() -> Int {
-		return	self + 1
-	}
-}
-@availability(*,unavailable)
-class Expecting<T: Equatable> {
-	init() {
-	}
-	init<S: SequenceType where S.Generator.Element == T>(_ steps: S) {
-		var	g	=	steps.generate()
-		generate	=	{ return g.next()! }
-	}
-	private(set) var	generate	:	(()->T)?
-	private(set) var	record		=	[T]()
-
-	func assertAndRecord(state: T) {
-		let	current	=	generate!()
-		assert(current == state)
-		record.append(current)
-	}
-	func assertRecord(sample: [T]) {
-		assert(record == sample)
-	}
-}
 class Expect<T: Equatable> {
 	func expect(samples: [T]) {
 		check()
