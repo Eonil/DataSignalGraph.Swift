@@ -36,7 +36,7 @@ extension Continuation: NilLiteralConvertible {
 
 
 
-///	Something like Bolts `BFTask` with no frills.
+///	Something like Bolts' `BFTask` with no frills.
 class PseudoCoroutine {
 	typealias	Block	=	(_: PseudoCoroutine)->Continuation
 
