@@ -31,6 +31,28 @@ extension ArrayStorage {
 		deregister(ObjectIdentifier(monitor))
 	}
 }
+extension ArrayMappingArrayStorage {
+	///	Please note that channel does not keep a strong reference
+	///	to monitors. You're responsible to keep them alive while
+	///	they're attached to a channel.
+	public func register(monitor: ArrayMonitor<U>) {
+		register(ObjectIdentifier(monitor)) { [weak monitor] in monitor!._route($0) }
+	}
+	public func deregister(monitor: ArrayMonitor<U>) {
+		deregister(ObjectIdentifier(monitor))
+	}
+}
+extension DictionarySortingArrayStorage {
+	///	Please note that channel does not keep a strong reference
+	///	to monitors. You're responsible to keep them alive while
+	///	they're attached to a channel.
+	public func register(monitor: ArrayMonitor<(K,V)>) {
+		register(ObjectIdentifier(monitor)) { [weak monitor] in monitor!._route($0) }
+	}
+	public func deregister(monitor: ArrayMonitor<(K,V)>) {
+		deregister(ObjectIdentifier(monitor))
+	}
+}
 
 
 

@@ -31,6 +31,17 @@ extension DictionaryStorage {
 		deregister(ObjectIdentifier(monitor))
 	}
 }
+extension DictionaryFilteringDictionaryStorage {
+	///	Please note that channel does not keep a strong reference
+	///	to monitors. You're responsible to keep them alive while
+	///	they're attached to a channel.
+	public func register(monitor: DictionaryMonitor<K,V>) {
+		register(ObjectIdentifier(monitor)) { [weak monitor] in monitor!._route($0) }
+	}
+	public func deregister(monitor: DictionaryMonitor<K,V>) {
+		deregister(ObjectIdentifier(monitor))
+	}
+}
 
 
 

@@ -8,6 +8,11 @@
 
 ///	An observer that has explicitly referenceable identity.
 public class SignalMonitor<T> {
+	public init() {
+	}
+
+	///
+
 	public var handler: (T->())?
 	
 	///

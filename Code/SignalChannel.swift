@@ -14,7 +14,7 @@
 ///
 ///	1.	Chain channel to a `SignalCaster`.
 ///	2.	Override `cast` method.
-///	3.	Rout signal to desired channel at there.
+///	3.	Route signal to desired channel at there.
 ///
 ///	Signal casting is done in caller thread.
 ///
@@ -67,6 +67,9 @@ extension SignalChannel {
 
 
 public class SignalCaster<T>: SignalChannel<T> {
+	public override init() {
+		super.init()
+	}
 	public override func cast(signal: T) {
 		super.cast(signal)
 	}

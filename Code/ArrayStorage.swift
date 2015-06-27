@@ -69,7 +69,7 @@ public class ArrayStorage<T>: ChannelType, CollectionTransactionApplicable {
 
 
 
-extension ArrayStorage {
+extension ArrayStorage: SequenceType {
 	public var count: Int {
 		get {
 			return	_snapshot.count
@@ -91,7 +91,13 @@ extension ArrayStorage {
 			return	_snapshot[subRange]
 		}
 	}
-	
+
+	///
+
+	public func generate() -> IndexingGenerator<[T]> {
+		return	_snapshot.generate()
+	}
+
 	///
 	
 	public func insert(newElement: T, atIndex index: Int) {

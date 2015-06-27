@@ -7,10 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		453718AD1B3AD93500160463 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453718AC1B3AD93500160463 /* main.swift */; };
-		457A3D631B3CB38F00FFF5A1 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D621B3CB38F00FFF5A1 /* Test.swift */; };
+		45669D531B3E32D700666D54 /* DictionaryFilteringDictionaryStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45669D521B3E32D700666D54 /* DictionaryFilteringDictionaryStorage.swift */; };
+		45669D551B3E32E400666D54 /* DictionarySortingArrayStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45669D541B3E32E400666D54 /* DictionarySortingArrayStorage.swift */; };
+		45669D571B3E32EF00666D54 /* ArrayMappingArrayStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45669D561B3E32EF00666D54 /* ArrayMappingArrayStorage.swift */; };
+		45669D581B3E347B00666D54 /* DictionaryFilteringDictionaryStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45669D521B3E32D700666D54 /* DictionaryFilteringDictionaryStorage.swift */; };
+		45669D591B3E347C00666D54 /* DictionaryFilteringDictionaryStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45669D521B3E32D700666D54 /* DictionaryFilteringDictionaryStorage.swift */; };
+		45669D5C1B3E472B00666D54 /* DictionarySortingArrayStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45669D541B3E32E400666D54 /* DictionarySortingArrayStorage.swift */; };
+		45669D5D1B3E472B00666D54 /* DictionarySortingArrayStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45669D541B3E32E400666D54 /* DictionarySortingArrayStorage.swift */; };
+		45669D5F1B3E4CE700666D54 /* PseudoCoroutine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45669D5E1B3E4CE700666D54 /* PseudoCoroutine.swift */; };
+		45669D601B3E4D1600666D54 /* PseudoCoroutine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45669D5E1B3E4CE700666D54 /* PseudoCoroutine.swift */; };
+		45669D611B3E4D1700666D54 /* PseudoCoroutine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45669D5E1B3E4CE700666D54 /* PseudoCoroutine.swift */; };
+		45669D651B3E68AC00666D54 /* ReplicatingStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45669D641B3E68AC00666D54 /* ReplicatingStorage.swift */; };
+		45669D661B3E68AC00666D54 /* ReplicatingStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45669D641B3E68AC00666D54 /* ReplicatingStorage.swift */; };
+		45669D671B3E68AC00666D54 /* ReplicatingStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45669D641B3E68AC00666D54 /* ReplicatingStorage.swift */; };
+		45669D681B3E830D00666D54 /* ArrayMappingArrayStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45669D561B3E32EF00666D54 /* ArrayMappingArrayStorage.swift */; };
+		45669D691B3E830E00666D54 /* ArrayMappingArrayStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45669D561B3E32EF00666D54 /* ArrayMappingArrayStorage.swift */; };
 		457A3D811B3E29B500FFF5A1 /* SignalGraph.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 457A3D761B3E29B400FFF5A1 /* SignalGraph.framework */; };
-		457A3D881B3E29B500FFF5A1 /* SignalGraphTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D871B3E29B500FFF5A1 /* SignalGraphTests.swift */; };
 		457A3DA11B3E29F200FFF5A1 /* ArrayMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D901B3E29F200FFF5A1 /* ArrayMonitor.swift */; };
 		457A3DA21B3E29F200FFF5A1 /* ArrayStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D911B3E29F200FFF5A1 /* ArrayStorage.swift */; };
 		457A3DA31B3E29F200FFF5A1 /* ChannelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D921B3E29F200FFF5A1 /* ChannelType.swift */; };
@@ -28,6 +40,47 @@
 		457A3DAF1B3E29F200FFF5A1 /* StateStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D9E1B3E29F200FFF5A1 /* StateStorage.swift */; };
 		457A3DB01B3E29F200FFF5A1 /* TreePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D9F1B3E29F200FFF5A1 /* TreePath.swift */; };
 		457A3DB11B3E29F200FFF5A1 /* TreeStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3DA01B3E29F200FFF5A1 /* TreeStorage.swift */; };
+		457A3DB61B3E2B3A00FFF5A1 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3DB41B3E2B3A00FFF5A1 /* Test.swift */; };
+		457A3DCA1B3E2B7900FFF5A1 /* SignalGraphMobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 457A3DBF1B3E2B7800FFF5A1 /* SignalGraphMobile.framework */; };
+		457A3DD81B3E2B7F00FFF5A1 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3DB41B3E2B3A00FFF5A1 /* Test.swift */; };
+		457A3DD91B3E2B8000FFF5A1 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3DB41B3E2B3A00FFF5A1 /* Test.swift */; };
+		457A3DE51B3E2C4000FFF5A1 /* SignalGraphTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3DE11B3E2C3300FFF5A1 /* SignalGraphTests.swift */; };
+		457A3DE61B3E2C4200FFF5A1 /* SignalGraphMobileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3DE41B3E2C3300FFF5A1 /* SignalGraphMobileTests.swift */; };
+		457A3DE91B3E2C8D00FFF5A1 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3DE81B3E2C8D00FFF5A1 /* main.swift */; };
+		457A3DEA1B3E2CB800FFF5A1 /* ChannelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D921B3E29F200FFF5A1 /* ChannelType.swift */; };
+		457A3DEB1B3E2CB800FFF5A1 /* SignalChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D9B1B3E29F200FFF5A1 /* SignalChannel.swift */; };
+		457A3DEC1B3E2CB800FFF5A1 /* SignalMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D9C1B3E29F200FFF5A1 /* SignalMonitor.swift */; };
+		457A3DED1B3E2CB800FFF5A1 /* StateSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D9D1B3E29F200FFF5A1 /* StateSignal.swift */; };
+		457A3DEE1B3E2CB800FFF5A1 /* StateStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D9E1B3E29F200FFF5A1 /* StateStorage.swift */; };
+		457A3DEF1B3E2CB800FFF5A1 /* CollectionSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D951B3E29F200FFF5A1 /* CollectionSignal.swift */; };
+		457A3DF01B3E2CB800FFF5A1 /* CollectionTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D961B3E29F200FFF5A1 /* CollectionTransaction.swift */; };
+		457A3DF11B3E2CB800FFF5A1 /* CollectionMonitorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D941B3E29F200FFF5A1 /* CollectionMonitorType.swift */; };
+		457A3DF21B3E2CB800FFF5A1 /* CollectionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D931B3E29F200FFF5A1 /* CollectionExtensions.swift */; };
+		457A3DF31B3E2CB800FFF5A1 /* SetMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D991B3E29F200FFF5A1 /* SetMonitor.swift */; };
+		457A3DF41B3E2CB800FFF5A1 /* SetStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D9A1B3E29F200FFF5A1 /* SetStorage.swift */; };
+		457A3DF51B3E2CB800FFF5A1 /* ArrayMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D901B3E29F200FFF5A1 /* ArrayMonitor.swift */; };
+		457A3DF61B3E2CB800FFF5A1 /* ArrayStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D911B3E29F200FFF5A1 /* ArrayStorage.swift */; };
+		457A3DF71B3E2CB800FFF5A1 /* DictionaryMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D971B3E29F200FFF5A1 /* DictionaryMonitor.swift */; };
+		457A3DF81B3E2CB800FFF5A1 /* DictionaryStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D981B3E29F200FFF5A1 /* DictionaryStorage.swift */; };
+		457A3DF91B3E2CB800FFF5A1 /* TreePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D9F1B3E29F200FFF5A1 /* TreePath.swift */; };
+		457A3DFA1B3E2CB800FFF5A1 /* TreeStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3DA01B3E29F200FFF5A1 /* TreeStorage.swift */; };
+		457A3DFB1B3E2CBA00FFF5A1 /* ChannelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D921B3E29F200FFF5A1 /* ChannelType.swift */; };
+		457A3DFC1B3E2CBA00FFF5A1 /* SignalChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D9B1B3E29F200FFF5A1 /* SignalChannel.swift */; };
+		457A3DFD1B3E2CBA00FFF5A1 /* SignalMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D9C1B3E29F200FFF5A1 /* SignalMonitor.swift */; };
+		457A3DFE1B3E2CBA00FFF5A1 /* StateSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D9D1B3E29F200FFF5A1 /* StateSignal.swift */; };
+		457A3DFF1B3E2CBA00FFF5A1 /* StateStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D9E1B3E29F200FFF5A1 /* StateStorage.swift */; };
+		457A3E001B3E2CBA00FFF5A1 /* CollectionSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D951B3E29F200FFF5A1 /* CollectionSignal.swift */; };
+		457A3E011B3E2CBA00FFF5A1 /* CollectionTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D961B3E29F200FFF5A1 /* CollectionTransaction.swift */; };
+		457A3E021B3E2CBA00FFF5A1 /* CollectionMonitorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D941B3E29F200FFF5A1 /* CollectionMonitorType.swift */; };
+		457A3E031B3E2CBA00FFF5A1 /* CollectionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D931B3E29F200FFF5A1 /* CollectionExtensions.swift */; };
+		457A3E041B3E2CBA00FFF5A1 /* SetMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D991B3E29F200FFF5A1 /* SetMonitor.swift */; };
+		457A3E051B3E2CBA00FFF5A1 /* SetStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D9A1B3E29F200FFF5A1 /* SetStorage.swift */; };
+		457A3E061B3E2CBA00FFF5A1 /* ArrayMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D901B3E29F200FFF5A1 /* ArrayMonitor.swift */; };
+		457A3E071B3E2CBA00FFF5A1 /* ArrayStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D911B3E29F200FFF5A1 /* ArrayStorage.swift */; };
+		457A3E081B3E2CBA00FFF5A1 /* DictionaryMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D971B3E29F200FFF5A1 /* DictionaryMonitor.swift */; };
+		457A3E091B3E2CBA00FFF5A1 /* DictionaryStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D981B3E29F200FFF5A1 /* DictionaryStorage.swift */; };
+		457A3E0A1B3E2CBA00FFF5A1 /* TreePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D9F1B3E29F200FFF5A1 /* TreePath.swift */; };
+		457A3E0B1B3E2CBA00FFF5A1 /* TreeStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3DA01B3E29F200FFF5A1 /* TreeStorage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +90,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 457A3D751B3E29B400FFF5A1;
 			remoteInfo = SignalGraph;
+		};
+		457A3DCB1B3E2B7900FFF5A1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 453718A11B3AD93500160463 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 457A3DBE1B3E2B7800FFF5A1;
+			remoteInfo = SignalGraphMobile;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -54,13 +114,13 @@
 
 /* Begin PBXFileReference section */
 		453718A91B3AD93500160463 /* SignalGraph */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SignalGraph; sourceTree = BUILT_PRODUCTS_DIR; };
-		453718AC1B3AD93500160463 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		457A3D621B3CB38F00FFF5A1 /* Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
+		45669D521B3E32D700666D54 /* DictionaryFilteringDictionaryStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryFilteringDictionaryStorage.swift; sourceTree = "<group>"; };
+		45669D541B3E32E400666D54 /* DictionarySortingArrayStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionarySortingArrayStorage.swift; sourceTree = "<group>"; };
+		45669D561B3E32EF00666D54 /* ArrayMappingArrayStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayMappingArrayStorage.swift; sourceTree = "<group>"; };
+		45669D5E1B3E4CE700666D54 /* PseudoCoroutine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PseudoCoroutine.swift; sourceTree = "<group>"; };
+		45669D641B3E68AC00666D54 /* ReplicatingStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReplicatingStorage.swift; sourceTree = "<group>"; };
 		457A3D761B3E29B400FFF5A1 /* SignalGraph.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SignalGraph.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		457A3D791B3E29B400FFF5A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		457A3D801B3E29B400FFF5A1 /* SignalGraphTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SignalGraphTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		457A3D861B3E29B500FFF5A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		457A3D871B3E29B500FFF5A1 /* SignalGraphTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalGraphTests.swift; sourceTree = "<group>"; };
+		457A3D801B3E29B400FFF5A1 /* SignalGraphTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SignalGraphTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		457A3D901B3E29F200FFF5A1 /* ArrayMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayMonitor.swift; sourceTree = "<group>"; };
 		457A3D911B3E29F200FFF5A1 /* ArrayStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayStorage.swift; sourceTree = "<group>"; };
 		457A3D921B3E29F200FFF5A1 /* ChannelType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelType.swift; sourceTree = "<group>"; };
@@ -78,6 +138,16 @@
 		457A3D9E1B3E29F200FFF5A1 /* StateStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateStorage.swift; sourceTree = "<group>"; };
 		457A3D9F1B3E29F200FFF5A1 /* TreePath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreePath.swift; sourceTree = "<group>"; };
 		457A3DA01B3E29F200FFF5A1 /* TreeStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreeStorage.swift; sourceTree = "<group>"; };
+		457A3DB41B3E2B3A00FFF5A1 /* Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
+		457A3DBF1B3E2B7800FFF5A1 /* SignalGraphMobile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SignalGraphMobile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		457A3DC91B3E2B7900FFF5A1 /* SignalGraphTestMobile.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SignalGraphTestMobile.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		457A3DDC1B3E2C3300FFF5A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		457A3DDE1B3E2C3300FFF5A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		457A3DE01B3E2C3300FFF5A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		457A3DE11B3E2C3300FFF5A1 /* SignalGraphTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalGraphTests.swift; sourceTree = "<group>"; };
+		457A3DE31B3E2C3300FFF5A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		457A3DE41B3E2C3300FFF5A1 /* SignalGraphMobileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalGraphMobileTests.swift; sourceTree = "<group>"; };
+		457A3DE81B3E2C8D00FFF5A1 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,15 +173,30 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		457A3DBB1B3E2B7800FFF5A1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		457A3DC61B3E2B7900FFF5A1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				457A3DCA1B3E2B7900FFF5A1 /* SignalGraphMobile.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		453718A01B3AD93500160463 = {
 			isa = PBXGroup;
 			children = (
-				453718AB1B3AD93500160463 /* ADHOC_SignalGraph3 */,
-				457A3D771B3E29B400FFF5A1 /* SignalGraph */,
-				457A3D841B3E29B500FFF5A1 /* SignalGraphTests */,
+				457A3D8F1B3E29F200FFF5A1 /* Code */,
+				457A3DB31B3E2B3A00FFF5A1 /* Test */,
+				457A3DDA1B3E2C3300FFF5A1 /* Target */,
 				453718AA1B3AD93500160463 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -121,44 +206,11 @@
 			children = (
 				453718A91B3AD93500160463 /* SignalGraph */,
 				457A3D761B3E29B400FFF5A1 /* SignalGraph.framework */,
-				457A3D801B3E29B400FFF5A1 /* SignalGraphTests.xctest */,
+				457A3D801B3E29B400FFF5A1 /* SignalGraphTest.xctest */,
+				457A3DBF1B3E2B7800FFF5A1 /* SignalGraphMobile.framework */,
+				457A3DC91B3E2B7900FFF5A1 /* SignalGraphTestMobile.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		453718AB1B3AD93500160463 /* ADHOC_SignalGraph3 */ = {
-			isa = PBXGroup;
-			children = (
-				453718AC1B3AD93500160463 /* main.swift */,
-				457A3D621B3CB38F00FFF5A1 /* Test.swift */,
-			);
-			path = ADHOC_SignalGraph3;
-			sourceTree = "<group>";
-		};
-		457A3D771B3E29B400FFF5A1 /* SignalGraph */ = {
-			isa = PBXGroup;
-			children = (
-				457A3D791B3E29B400FFF5A1 /* Info.plist */,
-				457A3D8F1B3E29F200FFF5A1 /* Code */,
-			);
-			path = SignalGraph;
-			sourceTree = "<group>";
-		};
-		457A3D841B3E29B500FFF5A1 /* SignalGraphTests */ = {
-			isa = PBXGroup;
-			children = (
-				457A3D871B3E29B500FFF5A1 /* SignalGraphTests.swift */,
-				457A3D851B3E29B500FFF5A1 /* Supporting Files */,
-			);
-			path = SignalGraphTests;
-			sourceTree = "<group>";
-		};
-		457A3D851B3E29B500FFF5A1 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				457A3D861B3E29B500FFF5A1 /* Info.plist */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		457A3D8F1B3E29F200FFF5A1 /* Code */ = {
@@ -175,11 +227,16 @@
 				457A3D931B3E29F200FFF5A1 /* CollectionExtensions.swift */,
 				457A3D991B3E29F200FFF5A1 /* SetMonitor.swift */,
 				457A3D9A1B3E29F200FFF5A1 /* SetStorage.swift */,
-				457A3D901B3E29F200FFF5A1 /* ArrayMonitor.swift */,
 				457A3D911B3E29F200FFF5A1 /* ArrayStorage.swift */,
-				457A3D971B3E29F200FFF5A1 /* DictionaryMonitor.swift */,
 				457A3D981B3E29F200FFF5A1 /* DictionaryStorage.swift */,
+				45669D641B3E68AC00666D54 /* ReplicatingStorage.swift */,
+				45669D521B3E32D700666D54 /* DictionaryFilteringDictionaryStorage.swift */,
+				45669D541B3E32E400666D54 /* DictionarySortingArrayStorage.swift */,
+				45669D561B3E32EF00666D54 /* ArrayMappingArrayStorage.swift */,
+				457A3D901B3E29F200FFF5A1 /* ArrayMonitor.swift */,
+				457A3D971B3E29F200FFF5A1 /* DictionaryMonitor.swift */,
 				457A3D9F1B3E29F200FFF5A1 /* TreePath.swift */,
+				45669D5E1B3E4CE700666D54 /* PseudoCoroutine.swift */,
 				457A3DB21B3E29F900FFF5A1 /* (incomplete yet) */,
 			);
 			path = Code;
@@ -193,6 +250,68 @@
 			name = "(incomplete yet)";
 			sourceTree = "<group>";
 		};
+		457A3DB31B3E2B3A00FFF5A1 /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				457A3DB41B3E2B3A00FFF5A1 /* Test.swift */,
+			);
+			path = Test;
+			sourceTree = "<group>";
+		};
+		457A3DDA1B3E2C3300FFF5A1 /* Target */ = {
+			isa = PBXGroup;
+			children = (
+				457A3DDB1B3E2C3300FFF5A1 /* Framework */,
+				457A3DDD1B3E2C3300FFF5A1 /* FrameworkMobile */,
+				457A3DDF1B3E2C3300FFF5A1 /* UnitTest */,
+				457A3DE71B3E2C8400FFF5A1 /* UnitTestRun */,
+				457A3DE21B3E2C3300FFF5A1 /* UnitTestMobile */,
+			);
+			path = Target;
+			sourceTree = "<group>";
+		};
+		457A3DDB1B3E2C3300FFF5A1 /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				457A3DDC1B3E2C3300FFF5A1 /* Info.plist */,
+			);
+			path = Framework;
+			sourceTree = "<group>";
+		};
+		457A3DDD1B3E2C3300FFF5A1 /* FrameworkMobile */ = {
+			isa = PBXGroup;
+			children = (
+				457A3DDE1B3E2C3300FFF5A1 /* Info.plist */,
+			);
+			path = FrameworkMobile;
+			sourceTree = "<group>";
+		};
+		457A3DDF1B3E2C3300FFF5A1 /* UnitTest */ = {
+			isa = PBXGroup;
+			children = (
+				457A3DE01B3E2C3300FFF5A1 /* Info.plist */,
+				457A3DE11B3E2C3300FFF5A1 /* SignalGraphTests.swift */,
+			);
+			path = UnitTest;
+			sourceTree = "<group>";
+		};
+		457A3DE21B3E2C3300FFF5A1 /* UnitTestMobile */ = {
+			isa = PBXGroup;
+			children = (
+				457A3DE31B3E2C3300FFF5A1 /* Info.plist */,
+				457A3DE41B3E2C3300FFF5A1 /* SignalGraphMobileTests.swift */,
+			);
+			path = UnitTestMobile;
+			sourceTree = "<group>";
+		};
+		457A3DE71B3E2C8400FFF5A1 /* UnitTestRun */ = {
+			isa = PBXGroup;
+			children = (
+				457A3DE81B3E2C8D00FFF5A1 /* main.swift */,
+			);
+			path = UnitTestRun;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -203,12 +322,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		457A3DBC1B3E2B7800FFF5A1 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		453718A81B3AD93500160463 /* SignalGraphUnitTest */ = {
+		453718A81B3AD93500160463 /* SignalGraphTestRun */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 453718B01B3AD93500160463 /* Build configuration list for PBXNativeTarget "SignalGraphUnitTest" */;
+			buildConfigurationList = 453718B01B3AD93500160463 /* Build configuration list for PBXNativeTarget "SignalGraphTestRun" */;
 			buildPhases = (
 				453718A51B3AD93500160463 /* Sources */,
 				453718A61B3AD93500160463 /* Frameworks */,
@@ -218,7 +344,7 @@
 			);
 			dependencies = (
 			);
-			name = SignalGraphUnitTest;
+			name = SignalGraphTestRun;
 			productName = ADHOC_SignalGraph3;
 			productReference = 453718A91B3AD93500160463 /* SignalGraph */;
 			productType = "com.apple.product-type.tool";
@@ -241,9 +367,9 @@
 			productReference = 457A3D761B3E29B400FFF5A1 /* SignalGraph.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		457A3D7F1B3E29B400FFF5A1 /* SignalGraphTests */ = {
+		457A3D7F1B3E29B400FFF5A1 /* SignalGraphTest */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 457A3D8C1B3E29B500FFF5A1 /* Build configuration list for PBXNativeTarget "SignalGraphTests" */;
+			buildConfigurationList = 457A3D8C1B3E29B500FFF5A1 /* Build configuration list for PBXNativeTarget "SignalGraphTest" */;
 			buildPhases = (
 				457A3D7C1B3E29B400FFF5A1 /* Sources */,
 				457A3D7D1B3E29B400FFF5A1 /* Frameworks */,
@@ -254,9 +380,45 @@
 			dependencies = (
 				457A3D831B3E29B500FFF5A1 /* PBXTargetDependency */,
 			);
-			name = SignalGraphTests;
+			name = SignalGraphTest;
 			productName = SignalGraphTests;
-			productReference = 457A3D801B3E29B400FFF5A1 /* SignalGraphTests.xctest */;
+			productReference = 457A3D801B3E29B400FFF5A1 /* SignalGraphTest.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		457A3DBE1B3E2B7800FFF5A1 /* SignalGraphMobile */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 457A3DD21B3E2B7900FFF5A1 /* Build configuration list for PBXNativeTarget "SignalGraphMobile" */;
+			buildPhases = (
+				457A3DBA1B3E2B7800FFF5A1 /* Sources */,
+				457A3DBB1B3E2B7800FFF5A1 /* Frameworks */,
+				457A3DBC1B3E2B7800FFF5A1 /* Headers */,
+				457A3DBD1B3E2B7800FFF5A1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SignalGraphMobile;
+			productName = SignalGraphMobile;
+			productReference = 457A3DBF1B3E2B7800FFF5A1 /* SignalGraphMobile.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		457A3DC81B3E2B7900FFF5A1 /* SignalGraphTestMobile */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 457A3DD51B3E2B7900FFF5A1 /* Build configuration list for PBXNativeTarget "SignalGraphTestMobile" */;
+			buildPhases = (
+				457A3DC51B3E2B7900FFF5A1 /* Sources */,
+				457A3DC61B3E2B7900FFF5A1 /* Frameworks */,
+				457A3DC71B3E2B7900FFF5A1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				457A3DCC1B3E2B7900FFF5A1 /* PBXTargetDependency */,
+			);
+			name = SignalGraphTestMobile;
+			productName = SignalGraphMobileTests;
+			productReference = 457A3DC91B3E2B7900FFF5A1 /* SignalGraphTestMobile.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -278,6 +440,12 @@
 					457A3D7F1B3E29B400FFF5A1 = {
 						CreatedOnToolsVersion = 6.3.2;
 					};
+					457A3DBE1B3E2B7800FFF5A1 = {
+						CreatedOnToolsVersion = 6.3.2;
+					};
+					457A3DC81B3E2B7900FFF5A1 = {
+						CreatedOnToolsVersion = 6.3.2;
+					};
 				};
 			};
 			buildConfigurationList = 453718A41B3AD93500160463 /* Build configuration list for PBXProject "SignalGraph" */;
@@ -293,8 +461,10 @@
 			projectRoot = "";
 			targets = (
 				457A3D751B3E29B400FFF5A1 /* SignalGraph */,
-				457A3D7F1B3E29B400FFF5A1 /* SignalGraphTests */,
-				453718A81B3AD93500160463 /* SignalGraphUnitTest */,
+				457A3D7F1B3E29B400FFF5A1 /* SignalGraphTest */,
+				453718A81B3AD93500160463 /* SignalGraphTestRun */,
+				457A3DBE1B3E2B7800FFF5A1 /* SignalGraphMobile */,
+				457A3DC81B3E2B7900FFF5A1 /* SignalGraphTestMobile */,
 			);
 		};
 /* End PBXProject section */
@@ -314,6 +484,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		457A3DBD1B3E2B7800FFF5A1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		457A3DC71B3E2B7900FFF5A1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -321,8 +505,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				457A3D631B3CB38F00FFF5A1 /* Test.swift in Sources */,
-				453718AD1B3AD93500160463 /* main.swift in Sources */,
+				45669D681B3E830D00666D54 /* ArrayMappingArrayStorage.swift in Sources */,
+				457A3DF71B3E2CB800FFF5A1 /* DictionaryMonitor.swift in Sources */,
+				457A3DF51B3E2CB800FFF5A1 /* ArrayMonitor.swift in Sources */,
+				457A3DEE1B3E2CB800FFF5A1 /* StateStorage.swift in Sources */,
+				457A3DF81B3E2CB800FFF5A1 /* DictionaryStorage.swift in Sources */,
+				45669D611B3E4D1700666D54 /* PseudoCoroutine.swift in Sources */,
+				457A3DEC1B3E2CB800FFF5A1 /* SignalMonitor.swift in Sources */,
+				457A3DED1B3E2CB800FFF5A1 /* StateSignal.swift in Sources */,
+				457A3DFA1B3E2CB800FFF5A1 /* TreeStorage.swift in Sources */,
+				457A3DEF1B3E2CB800FFF5A1 /* CollectionSignal.swift in Sources */,
+				457A3DF61B3E2CB800FFF5A1 /* ArrayStorage.swift in Sources */,
+				457A3DF91B3E2CB800FFF5A1 /* TreePath.swift in Sources */,
+				45669D581B3E347B00666D54 /* DictionaryFilteringDictionaryStorage.swift in Sources */,
+				457A3DF11B3E2CB800FFF5A1 /* CollectionMonitorType.swift in Sources */,
+				45669D5C1B3E472B00666D54 /* DictionarySortingArrayStorage.swift in Sources */,
+				457A3DEA1B3E2CB800FFF5A1 /* ChannelType.swift in Sources */,
+				457A3DEB1B3E2CB800FFF5A1 /* SignalChannel.swift in Sources */,
+				45669D661B3E68AC00666D54 /* ReplicatingStorage.swift in Sources */,
+				457A3DE91B3E2C8D00FFF5A1 /* main.swift in Sources */,
+				457A3DF21B3E2CB800FFF5A1 /* CollectionExtensions.swift in Sources */,
+				457A3DF01B3E2CB800FFF5A1 /* CollectionTransaction.swift in Sources */,
+				457A3DF41B3E2CB800FFF5A1 /* SetStorage.swift in Sources */,
+				457A3DB61B3E2B3A00FFF5A1 /* Test.swift in Sources */,
+				457A3DF31B3E2CB800FFF5A1 /* SetMonitor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,20 +536,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45669D571B3E32EF00666D54 /* ArrayMappingArrayStorage.swift in Sources */,
 				457A3DA81B3E29F200FFF5A1 /* DictionaryMonitor.swift in Sources */,
 				457A3DA31B3E29F200FFF5A1 /* ChannelType.swift in Sources */,
 				457A3DA41B3E29F200FFF5A1 /* CollectionExtensions.swift in Sources */,
 				457A3DAF1B3E29F200FFF5A1 /* StateStorage.swift in Sources */,
 				457A3DAA1B3E29F200FFF5A1 /* SetMonitor.swift in Sources */,
 				457A3DAB1B3E29F200FFF5A1 /* SetStorage.swift in Sources */,
+				45669D5F1B3E4CE700666D54 /* PseudoCoroutine.swift in Sources */,
+				45669D531B3E32D700666D54 /* DictionaryFilteringDictionaryStorage.swift in Sources */,
 				457A3DB01B3E29F200FFF5A1 /* TreePath.swift in Sources */,
 				457A3DAE1B3E29F200FFF5A1 /* StateSignal.swift in Sources */,
 				457A3DAD1B3E29F200FFF5A1 /* SignalMonitor.swift in Sources */,
 				457A3DB11B3E29F200FFF5A1 /* TreeStorage.swift in Sources */,
+				45669D551B3E32E400666D54 /* DictionarySortingArrayStorage.swift in Sources */,
 				457A3DAC1B3E29F200FFF5A1 /* SignalChannel.swift in Sources */,
 				457A3DA71B3E29F200FFF5A1 /* CollectionTransaction.swift in Sources */,
 				457A3DA11B3E29F200FFF5A1 /* ArrayMonitor.swift in Sources */,
 				457A3DA91B3E29F200FFF5A1 /* DictionaryStorage.swift in Sources */,
+				45669D651B3E68AC00666D54 /* ReplicatingStorage.swift in Sources */,
 				457A3DA61B3E29F200FFF5A1 /* CollectionSignal.swift in Sources */,
 				457A3DA21B3E29F200FFF5A1 /* ArrayStorage.swift in Sources */,
 				457A3DA51B3E29F200FFF5A1 /* CollectionMonitorType.swift in Sources */,
@@ -354,7 +565,46 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				457A3D881B3E29B500FFF5A1 /* SignalGraphTests.swift in Sources */,
+				457A3DE51B3E2C4000FFF5A1 /* SignalGraphTests.swift in Sources */,
+				457A3DD91B3E2B8000FFF5A1 /* Test.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		457A3DBA1B3E2B7800FFF5A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45669D601B3E4D1600666D54 /* PseudoCoroutine.swift in Sources */,
+				457A3E071B3E2CBA00FFF5A1 /* ArrayStorage.swift in Sources */,
+				45669D671B3E68AC00666D54 /* ReplicatingStorage.swift in Sources */,
+				457A3DFD1B3E2CBA00FFF5A1 /* SignalMonitor.swift in Sources */,
+				457A3DFB1B3E2CBA00FFF5A1 /* ChannelType.swift in Sources */,
+				457A3E011B3E2CBA00FFF5A1 /* CollectionTransaction.swift in Sources */,
+				457A3E041B3E2CBA00FFF5A1 /* SetMonitor.swift in Sources */,
+				457A3E051B3E2CBA00FFF5A1 /* SetStorage.swift in Sources */,
+				45669D591B3E347C00666D54 /* DictionaryFilteringDictionaryStorage.swift in Sources */,
+				457A3E0A1B3E2CBA00FFF5A1 /* TreePath.swift in Sources */,
+				457A3DFC1B3E2CBA00FFF5A1 /* SignalChannel.swift in Sources */,
+				457A3E031B3E2CBA00FFF5A1 /* CollectionExtensions.swift in Sources */,
+				457A3E0B1B3E2CBA00FFF5A1 /* TreeStorage.swift in Sources */,
+				45669D5D1B3E472B00666D54 /* DictionarySortingArrayStorage.swift in Sources */,
+				457A3E091B3E2CBA00FFF5A1 /* DictionaryStorage.swift in Sources */,
+				457A3E081B3E2CBA00FFF5A1 /* DictionaryMonitor.swift in Sources */,
+				45669D691B3E830E00666D54 /* ArrayMappingArrayStorage.swift in Sources */,
+				457A3E021B3E2CBA00FFF5A1 /* CollectionMonitorType.swift in Sources */,
+				457A3E061B3E2CBA00FFF5A1 /* ArrayMonitor.swift in Sources */,
+				457A3E001B3E2CBA00FFF5A1 /* CollectionSignal.swift in Sources */,
+				457A3DFF1B3E2CBA00FFF5A1 /* StateStorage.swift in Sources */,
+				457A3DFE1B3E2CBA00FFF5A1 /* StateSignal.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		457A3DC51B3E2B7900FFF5A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				457A3DE61B3E2C4200FFF5A1 /* SignalGraphMobileTests.swift in Sources */,
+				457A3DD81B3E2B7F00FFF5A1 /* Test.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,6 +615,11 @@
 			isa = PBXTargetDependency;
 			target = 457A3D751B3E29B400FFF5A1 /* SignalGraph */;
 			targetProxy = 457A3D821B3E29B500FFF5A1 /* PBXContainerItemProxy */;
+		};
+		457A3DCC1B3E2B7900FFF5A1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 457A3DBE1B3E2B7800FFF5A1 /* SignalGraphMobile */;
+			targetProxy = 457A3DCB1B3E2B7900FFF5A1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -475,7 +730,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = SignalGraph/Info.plist;
+				INFOPLIST_FILE = Target/Framework/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -495,7 +750,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = SignalGraph/Info.plist;
+				INFOPLIST_FILE = Target/Framework/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -517,7 +772,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = SignalGraphTests/Info.plist;
+				INFOPLIST_FILE = Target/UnitTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -531,7 +786,83 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = SignalGraphTests/Info.plist;
+				INFOPLIST_FILE = Target/UnitTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		457A3DD31B3E2B7900FFF5A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = Target/FrameworkMobile/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		457A3DD41B3E2B7900FFF5A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = Target/FrameworkMobile/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		457A3DD61B3E2B7900FFF5A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = Target/UnitTestMobile/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		457A3DD71B3E2B7900FFF5A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = Target/UnitTestMobile/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -549,7 +880,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		453718B01B3AD93500160463 /* Build configuration list for PBXNativeTarget "SignalGraphUnitTest" */ = {
+		453718B01B3AD93500160463 /* Build configuration list for PBXNativeTarget "SignalGraphTestRun" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				453718B11B3AD93500160463 /* Debug */,
@@ -565,14 +896,34 @@
 				457A3D8B1B3E29B500FFF5A1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
-		457A3D8C1B3E29B500FFF5A1 /* Build configuration list for PBXNativeTarget "SignalGraphTests" */ = {
+		457A3D8C1B3E29B500FFF5A1 /* Build configuration list for PBXNativeTarget "SignalGraphTest" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				457A3D8D1B3E29B500FFF5A1 /* Debug */,
 				457A3D8E1B3E29B500FFF5A1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		457A3DD21B3E2B7900FFF5A1 /* Build configuration list for PBXNativeTarget "SignalGraphMobile" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				457A3DD31B3E2B7900FFF5A1 /* Debug */,
+				457A3DD41B3E2B7900FFF5A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		457A3DD51B3E2B7900FFF5A1 /* Build configuration list for PBXNativeTarget "SignalGraphTestMobile" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				457A3DD61B3E2B7900FFF5A1 /* Debug */,
+				457A3DD71B3E2B7900FFF5A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
