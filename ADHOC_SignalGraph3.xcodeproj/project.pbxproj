@@ -111,9 +111,17 @@
 				457A3D661B3CB76F00FFF5A1 /* DictionaryMonitor.swift */,
 				457A3D5A1B3CAB2000FFF5A1 /* CollectionExtensions.swift */,
 				457A3D6C1B3CBA3C00FFF5A1 /* TreePath.swift */,
-				457A3D6E1B3CBABD00FFF5A1 /* TreeStorage.swift */,
+				457A3D701B3D949400FFF5A1 /* (incomplete yet) */,
 			);
 			path = ADHOC_SignalGraph3;
+			sourceTree = "<group>";
+		};
+		457A3D701B3D949400FFF5A1 /* (incomplete yet) */ = {
+			isa = PBXGroup;
+			children = (
+				457A3D6E1B3CBABD00FFF5A1 /* TreeStorage.swift */,
+			);
+			name = "(incomplete yet)";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

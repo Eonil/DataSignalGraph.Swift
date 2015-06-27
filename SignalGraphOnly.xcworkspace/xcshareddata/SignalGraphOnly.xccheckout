@@ -12,20 +12,24 @@
 	<dict>
 		<key>D329A3A46F210F4D082850F5413E514CCDC3B443</key>
 		<string>https://github.com/Eonil/ADHOC_SignalGraph3</string>
+		<key>FBB6F2B2029C41EB36C6216F39D46AC69FF785A0</key>
+		<string>https://github.com/Eonil/SignalGraph.Swift</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>SignalGraphOnly.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>D329A3A46F210F4D082850F5413E514CCDC3B443</key>
+		<string>../../ADHOC_SignalGraph3</string>
+		<key>FBB6F2B2029C41EB36C6216F39D46AC69FF785A0</key>
 		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/Eonil/ADHOC_SignalGraph3</string>
+	<string>https://github.com/Eonil/SignalGraph.Swift</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>D329A3A46F210F4D082850F5413E514CCDC3B443</string>
+	<string>FBB6F2B2029C41EB36C6216F39D46AC69FF785A0</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
@@ -35,6 +39,14 @@
 			<string>D329A3A46F210F4D082850F5413E514CCDC3B443</string>
 			<key>IDESourceControlWCCName</key>
 			<string>ADHOC_SignalGraph3</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>FBB6F2B2029C41EB36C6216F39D46AC69FF785A0</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SignalGraph.Swift</string>
 		</dict>
 	</array>
 </dict>

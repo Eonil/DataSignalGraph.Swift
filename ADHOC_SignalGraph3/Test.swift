@@ -65,12 +65,11 @@ func testAll() {
 		let	v1		=	SetStorage([111,222,333])
 		let	m1		=	SetMonitor<Int>()
 		m1.didInitiate		=	{ exp.assertAndContinue(1) }
-		m1.didApply		=	{ _ in exp.assertAndContinue(3) }
-		m1.didBegin		=	{ _ in exp.assertAndContinue(2) }
-		
-		m1.willEnd		=	{ _ in exp.assertAndContinue(3) }
-		m1.willApply		=	{ _ in exp.assertAndContinue(2) }
 		m1.willTerminate	=	{ exp.assertAndContinue(2) }
+		m1.didApply		=	{ _ in exp.assertAndContinue(3) }
+		m1.willApply		=	{ _ in exp.assertAndContinue(2) }
+		m1.didBegin		=	{ _ in exp.assertAndContinue(2) }
+		m1.willEnd		=	{ _ in exp.assertAndContinue(3) }
 		
 		v1.register(m1)
 		exp.assertRecord([1,2])

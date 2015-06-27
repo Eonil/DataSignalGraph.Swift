@@ -10,44 +10,81 @@
 ///	This is provided only for you convenience. A regular way to
 ///	handle a signal is using `SignalMonitor`.
 ///
-///	**WARNING**
-///	Calling orders between event handles triggered by single signal
-///	are undefined. DO NOT depend on calling order. The only guarantee
-///	is this.
+///	How to Use
+///	----------
+///	Set handlers for `didBegin` and `willEnd` pair. Then you will be notified
+///	properly for almost cases.
+///	Set handlers for `didInitiate` and `willTerminate` pair if you need to 
+///	perform special initiation/termination oeprations when registering/
+///	deregistering monitors.
+///	Set handlers for `willApply` and `didApply` pair to do something 
+///	specifically for a transaction.
+///	If this feels a little complex, please see `CollectionSignal` type. That 
+///	should be simpler and easier to understand.
 ///
-///	-	`didInitiate`, `didApply`, `didBegin` will occur at timing
-///		of `DidBegin` signal.
+///	Notification Order
+///	------------------
+///	Semantically, notifiation order for single signal cannot be 
+///	defined. But we need them in practice. So this monitor just defines
+///	them only for your convenience.
+///	Please note that this order is defined only for this monitor, and
+///	not guaranteed for overall this library.
 ///
-///	-	`willTerminate`, `willApply`, `willEnd` will occur at timing
-///		of `WillEnd` signal.
+///	Notification will occur in this order.
+///
+///	-	When registering/deregistering a monitor.
+///
+///		1.	didInitiate
+///		2.	didBegin
+///
+///		3.	willEnd
+///		4.	willTerminate
+///
+///	-	When applying a transaction.
+///
+///		1.	didApply (with prior transaction that triggered current state)
+///		2.	didBegin
+///		
+///		3.	willEnd
+///		4.	willApply (with next transaction that will trigger new state)
+///
+///		Please note that this involves two different transactions.
+///		Then, for single transaction, notification order can be though in this way.
+///	
+///		1.	willEnd
+///		2.	willApply
+///
+///		>	(transaction application done at here)
+///
+///		3.	didApply
+///		4.	didBegin
 ///
 public protocol CollectionMonitorType {
 	typealias	StateSnapshot	:	CollectionType
 	typealias	MutationKey	:	Hashable
 	typealias	MutationValue
 	
-	///	Monitoring session has been just started.
+	///	A new state has begun by starting of monitoring session.
 	var didInitiate: (()->())? { get set }
 	
-	///	Monitoring session has been just ended.
+	///	Current state will be ended by ending of current monitoring session.
 	var willTerminate: (()->())? { get set }
 	
-	///	A transaction is about to be applied.
-	var willApply: (CollectionTransaction<MutationKey,MutationValue>->())? { get set }
-	
-	///	A transaction has been applied.
+	///	A new state has begun by applicating a transaction.
 	var didApply: (CollectionTransaction<MutationKey,MutationValue>->())? { get set }
 	
-	///	A state is about to be ended.
-	var willEnd: (StateSnapshot->())? { get set }
+	///	Current state will be ended by applicating a new transaction.
+	var willApply: (CollectionTransaction<MutationKey,MutationValue>->())? { get set }
 	
-	///	A state has been started.
+	///	A state has been started. You must already been notified the reason that
+	///	triggered this state mutation.
 	var didBegin: (StateSnapshot->())? { get set }
+
+	///	A state is about to be ended. You will be notified the reason that will
+	///	trigger this state mutation.
+	var willEnd: (StateSnapshot->())? { get set }
 }
 
-///	**WARNING**
-///	Calling orders between event handles triggered by single signal
-///	are undefined. DO NOT depend on calling order.
 internal func routeSignalToCollectionMonitor<M: CollectionMonitorType>(signal: CollectionSignal<M.StateSnapshot, M.MutationKey, M.MutationValue>, monitor: M) {
 	switch signal {
 	case .DidBegin(let state, let by):
@@ -69,3 +106,6 @@ internal func routeSignalToCollectionMonitor<M: CollectionMonitorType>(signal: C
 		}
 	}
 }
+
+
+

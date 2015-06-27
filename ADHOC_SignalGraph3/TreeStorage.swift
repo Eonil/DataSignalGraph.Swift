@@ -49,3 +49,8 @@ class ArrayTreeNode<V> {
 	private var	_storageID		:	ObjectIdentifier?
 	private var	_parentID		:	ObjectIdentifier?
 }
+
+
+
+
+
