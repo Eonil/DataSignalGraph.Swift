@@ -99,10 +99,10 @@ internal func routeSignalToCollectionMonitor<M: CollectionMonitorType>(signal: C
 	case .WillEnd(let state, let by):
 		monitor.willEnd?(state())
 		switch by {
-		case _:
-			monitor.willApply?(by!)
 		case nil:
 			monitor.willTerminate?()
+		case _:
+			monitor.willApply?(by!)
 		}
 	}
 }

@@ -27,7 +27,7 @@ public class SetStorage<T: Hashable>: ChannelType, CollectionTransactionApplicab
 	
 	public func apply(transaction: Signal.Transaction) {
 		_castWillEnd(by: transaction)
-		snapshot.apply(transaction)
+		_snapshot.apply(transaction)		//	Must apply through `_snapshot` directly to avoid duplicated signal dispatch.
 		_castDidBegin(by: transaction)
 	}
 	

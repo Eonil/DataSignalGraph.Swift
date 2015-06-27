@@ -29,7 +29,7 @@ public class DictionaryStorage<K: Hashable, V>: ChannelType, CollectionTransacti
 	
 	public func apply(transaction: Signal.Transaction) {
 		_castWillEnd(by: transaction)
-		snapshot.apply(transaction)
+		_snapshot.apply(transaction)		//	Must apply through `_snapshot` directly to avoid duplicated signal dispatch.
 		_castDidBegin(by: transaction)
 	}
 	
@@ -104,8 +104,9 @@ extension DictionaryStorage {
 	public func updateValue(value: V, forKey key: K) -> V? {
 		let	maybeOld	=	_snapshot[key]
 		let	new		=	value
-		if let old = maybeOld {
-			apply(CollectionTransaction(mutations: [(key, old, new)]))
+		switch (maybeOld, new) {
+		case (nil,_):		apply(CollectionTransaction(mutations: [(key, nil, new)]))
+		case (_,_):		apply(CollectionTransaction(mutations: [(key, maybeOld!, new)]))
 		}
 		return	maybeOld
 	}
