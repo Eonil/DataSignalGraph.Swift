@@ -1,0 +1,580 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		453718AD1B3AD93500160463 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453718AC1B3AD93500160463 /* main.swift */; };
+		457A3D631B3CB38F00FFF5A1 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D621B3CB38F00FFF5A1 /* Test.swift */; };
+		457A3D811B3E29B500FFF5A1 /* SignalGraph.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 457A3D761B3E29B400FFF5A1 /* SignalGraph.framework */; };
+		457A3D881B3E29B500FFF5A1 /* SignalGraphTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D871B3E29B500FFF5A1 /* SignalGraphTests.swift */; };
+		457A3DA11B3E29F200FFF5A1 /* ArrayMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D901B3E29F200FFF5A1 /* ArrayMonitor.swift */; };
+		457A3DA21B3E29F200FFF5A1 /* ArrayStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D911B3E29F200FFF5A1 /* ArrayStorage.swift */; };
+		457A3DA31B3E29F200FFF5A1 /* ChannelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D921B3E29F200FFF5A1 /* ChannelType.swift */; };
+		457A3DA41B3E29F200FFF5A1 /* CollectionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D931B3E29F200FFF5A1 /* CollectionExtensions.swift */; };
+		457A3DA51B3E29F200FFF5A1 /* CollectionMonitorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D941B3E29F200FFF5A1 /* CollectionMonitorType.swift */; };
+		457A3DA61B3E29F200FFF5A1 /* CollectionSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D951B3E29F200FFF5A1 /* CollectionSignal.swift */; };
+		457A3DA71B3E29F200FFF5A1 /* CollectionTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D961B3E29F200FFF5A1 /* CollectionTransaction.swift */; };
+		457A3DA81B3E29F200FFF5A1 /* DictionaryMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D971B3E29F200FFF5A1 /* DictionaryMonitor.swift */; };
+		457A3DA91B3E29F200FFF5A1 /* DictionaryStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D981B3E29F200FFF5A1 /* DictionaryStorage.swift */; };
+		457A3DAA1B3E29F200FFF5A1 /* SetMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D991B3E29F200FFF5A1 /* SetMonitor.swift */; };
+		457A3DAB1B3E29F200FFF5A1 /* SetStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D9A1B3E29F200FFF5A1 /* SetStorage.swift */; };
+		457A3DAC1B3E29F200FFF5A1 /* SignalChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D9B1B3E29F200FFF5A1 /* SignalChannel.swift */; };
+		457A3DAD1B3E29F200FFF5A1 /* SignalMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D9C1B3E29F200FFF5A1 /* SignalMonitor.swift */; };
+		457A3DAE1B3E29F200FFF5A1 /* StateSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D9D1B3E29F200FFF5A1 /* StateSignal.swift */; };
+		457A3DAF1B3E29F200FFF5A1 /* StateStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D9E1B3E29F200FFF5A1 /* StateStorage.swift */; };
+		457A3DB01B3E29F200FFF5A1 /* TreePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D9F1B3E29F200FFF5A1 /* TreePath.swift */; };
+		457A3DB11B3E29F200FFF5A1 /* TreeStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3DA01B3E29F200FFF5A1 /* TreeStorage.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		457A3D821B3E29B500FFF5A1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 453718A11B3AD93500160463 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 457A3D751B3E29B400FFF5A1;
+			remoteInfo = SignalGraph;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		453718A71B3AD93500160463 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		453718A91B3AD93500160463 /* SignalGraph */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SignalGraph; sourceTree = BUILT_PRODUCTS_DIR; };
+		453718AC1B3AD93500160463 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		457A3D621B3CB38F00FFF5A1 /* Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
+		457A3D761B3E29B400FFF5A1 /* SignalGraph.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SignalGraph.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		457A3D791B3E29B400FFF5A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		457A3D801B3E29B400FFF5A1 /* SignalGraphTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SignalGraphTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		457A3D861B3E29B500FFF5A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		457A3D871B3E29B500FFF5A1 /* SignalGraphTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalGraphTests.swift; sourceTree = "<group>"; };
+		457A3D901B3E29F200FFF5A1 /* ArrayMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayMonitor.swift; sourceTree = "<group>"; };
+		457A3D911B3E29F200FFF5A1 /* ArrayStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayStorage.swift; sourceTree = "<group>"; };
+		457A3D921B3E29F200FFF5A1 /* ChannelType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelType.swift; sourceTree = "<group>"; };
+		457A3D931B3E29F200FFF5A1 /* CollectionExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionExtensions.swift; sourceTree = "<group>"; };
+		457A3D941B3E29F200FFF5A1 /* CollectionMonitorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionMonitorType.swift; sourceTree = "<group>"; };
+		457A3D951B3E29F200FFF5A1 /* CollectionSignal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionSignal.swift; sourceTree = "<group>"; };
+		457A3D961B3E29F200FFF5A1 /* CollectionTransaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionTransaction.swift; sourceTree = "<group>"; };
+		457A3D971B3E29F200FFF5A1 /* DictionaryMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryMonitor.swift; sourceTree = "<group>"; };
+		457A3D981B3E29F200FFF5A1 /* DictionaryStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryStorage.swift; sourceTree = "<group>"; };
+		457A3D991B3E29F200FFF5A1 /* SetMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetMonitor.swift; sourceTree = "<group>"; };
+		457A3D9A1B3E29F200FFF5A1 /* SetStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetStorage.swift; sourceTree = "<group>"; };
+		457A3D9B1B3E29F200FFF5A1 /* SignalChannel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalChannel.swift; sourceTree = "<group>"; };
+		457A3D9C1B3E29F200FFF5A1 /* SignalMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalMonitor.swift; sourceTree = "<group>"; };
+		457A3D9D1B3E29F200FFF5A1 /* StateSignal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateSignal.swift; sourceTree = "<group>"; };
+		457A3D9E1B3E29F200FFF5A1 /* StateStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateStorage.swift; sourceTree = "<group>"; };
+		457A3D9F1B3E29F200FFF5A1 /* TreePath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreePath.swift; sourceTree = "<group>"; };
+		457A3DA01B3E29F200FFF5A1 /* TreeStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreeStorage.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		453718A61B3AD93500160463 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		457A3D721B3E29B400FFF5A1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		457A3D7D1B3E29B400FFF5A1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				457A3D811B3E29B500FFF5A1 /* SignalGraph.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		453718A01B3AD93500160463 = {
+			isa = PBXGroup;
+			children = (
+				453718AB1B3AD93500160463 /* ADHOC_SignalGraph3 */,
+				457A3D771B3E29B400FFF5A1 /* SignalGraph */,
+				457A3D841B3E29B500FFF5A1 /* SignalGraphTests */,
+				453718AA1B3AD93500160463 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		453718AA1B3AD93500160463 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				453718A91B3AD93500160463 /* SignalGraph */,
+				457A3D761B3E29B400FFF5A1 /* SignalGraph.framework */,
+				457A3D801B3E29B400FFF5A1 /* SignalGraphTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		453718AB1B3AD93500160463 /* ADHOC_SignalGraph3 */ = {
+			isa = PBXGroup;
+			children = (
+				453718AC1B3AD93500160463 /* main.swift */,
+				457A3D621B3CB38F00FFF5A1 /* Test.swift */,
+			);
+			path = ADHOC_SignalGraph3;
+			sourceTree = "<group>";
+		};
+		457A3D771B3E29B400FFF5A1 /* SignalGraph */ = {
+			isa = PBXGroup;
+			children = (
+				457A3D791B3E29B400FFF5A1 /* Info.plist */,
+				457A3D8F1B3E29F200FFF5A1 /* Code */,
+			);
+			path = SignalGraph;
+			sourceTree = "<group>";
+		};
+		457A3D841B3E29B500FFF5A1 /* SignalGraphTests */ = {
+			isa = PBXGroup;
+			children = (
+				457A3D871B3E29B500FFF5A1 /* SignalGraphTests.swift */,
+				457A3D851B3E29B500FFF5A1 /* Supporting Files */,
+			);
+			path = SignalGraphTests;
+			sourceTree = "<group>";
+		};
+		457A3D851B3E29B500FFF5A1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				457A3D861B3E29B500FFF5A1 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		457A3D8F1B3E29F200FFF5A1 /* Code */ = {
+			isa = PBXGroup;
+			children = (
+				457A3D921B3E29F200FFF5A1 /* ChannelType.swift */,
+				457A3D9B1B3E29F200FFF5A1 /* SignalChannel.swift */,
+				457A3D9C1B3E29F200FFF5A1 /* SignalMonitor.swift */,
+				457A3D9D1B3E29F200FFF5A1 /* StateSignal.swift */,
+				457A3D9E1B3E29F200FFF5A1 /* StateStorage.swift */,
+				457A3D951B3E29F200FFF5A1 /* CollectionSignal.swift */,
+				457A3D961B3E29F200FFF5A1 /* CollectionTransaction.swift */,
+				457A3D941B3E29F200FFF5A1 /* CollectionMonitorType.swift */,
+				457A3D931B3E29F200FFF5A1 /* CollectionExtensions.swift */,
+				457A3D991B3E29F200FFF5A1 /* SetMonitor.swift */,
+				457A3D9A1B3E29F200FFF5A1 /* SetStorage.swift */,
+				457A3D901B3E29F200FFF5A1 /* ArrayMonitor.swift */,
+				457A3D911B3E29F200FFF5A1 /* ArrayStorage.swift */,
+				457A3D971B3E29F200FFF5A1 /* DictionaryMonitor.swift */,
+				457A3D981B3E29F200FFF5A1 /* DictionaryStorage.swift */,
+				457A3D9F1B3E29F200FFF5A1 /* TreePath.swift */,
+				457A3DB21B3E29F900FFF5A1 /* (incomplete yet) */,
+			);
+			path = Code;
+			sourceTree = "<group>";
+		};
+		457A3DB21B3E29F900FFF5A1 /* (incomplete yet) */ = {
+			isa = PBXGroup;
+			children = (
+				457A3DA01B3E29F200FFF5A1 /* TreeStorage.swift */,
+			);
+			name = "(incomplete yet)";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		457A3D731B3E29B400FFF5A1 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		453718A81B3AD93500160463 /* SignalGraphUnitTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 453718B01B3AD93500160463 /* Build configuration list for PBXNativeTarget "SignalGraphUnitTest" */;
+			buildPhases = (
+				453718A51B3AD93500160463 /* Sources */,
+				453718A61B3AD93500160463 /* Frameworks */,
+				453718A71B3AD93500160463 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SignalGraphUnitTest;
+			productName = ADHOC_SignalGraph3;
+			productReference = 453718A91B3AD93500160463 /* SignalGraph */;
+			productType = "com.apple.product-type.tool";
+		};
+		457A3D751B3E29B400FFF5A1 /* SignalGraph */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 457A3D891B3E29B500FFF5A1 /* Build configuration list for PBXNativeTarget "SignalGraph" */;
+			buildPhases = (
+				457A3D711B3E29B400FFF5A1 /* Sources */,
+				457A3D721B3E29B400FFF5A1 /* Frameworks */,
+				457A3D731B3E29B400FFF5A1 /* Headers */,
+				457A3D741B3E29B400FFF5A1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SignalGraph;
+			productName = SignalGraph;
+			productReference = 457A3D761B3E29B400FFF5A1 /* SignalGraph.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		457A3D7F1B3E29B400FFF5A1 /* SignalGraphTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 457A3D8C1B3E29B500FFF5A1 /* Build configuration list for PBXNativeTarget "SignalGraphTests" */;
+			buildPhases = (
+				457A3D7C1B3E29B400FFF5A1 /* Sources */,
+				457A3D7D1B3E29B400FFF5A1 /* Frameworks */,
+				457A3D7E1B3E29B400FFF5A1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				457A3D831B3E29B500FFF5A1 /* PBXTargetDependency */,
+			);
+			name = SignalGraphTests;
+			productName = SignalGraphTests;
+			productReference = 457A3D801B3E29B400FFF5A1 /* SignalGraphTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		453718A11B3AD93500160463 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = Eonil;
+				TargetAttributes = {
+					453718A81B3AD93500160463 = {
+						CreatedOnToolsVersion = 6.3.2;
+					};
+					457A3D751B3E29B400FFF5A1 = {
+						CreatedOnToolsVersion = 6.3.2;
+					};
+					457A3D7F1B3E29B400FFF5A1 = {
+						CreatedOnToolsVersion = 6.3.2;
+					};
+				};
+			};
+			buildConfigurationList = 453718A41B3AD93500160463 /* Build configuration list for PBXProject "SignalGraph" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 453718A01B3AD93500160463;
+			productRefGroup = 453718AA1B3AD93500160463 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				457A3D751B3E29B400FFF5A1 /* SignalGraph */,
+				457A3D7F1B3E29B400FFF5A1 /* SignalGraphTests */,
+				453718A81B3AD93500160463 /* SignalGraphUnitTest */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		457A3D741B3E29B400FFF5A1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		457A3D7E1B3E29B400FFF5A1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		453718A51B3AD93500160463 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				457A3D631B3CB38F00FFF5A1 /* Test.swift in Sources */,
+				453718AD1B3AD93500160463 /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		457A3D711B3E29B400FFF5A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				457A3DA81B3E29F200FFF5A1 /* DictionaryMonitor.swift in Sources */,
+				457A3DA31B3E29F200FFF5A1 /* ChannelType.swift in Sources */,
+				457A3DA41B3E29F200FFF5A1 /* CollectionExtensions.swift in Sources */,
+				457A3DAF1B3E29F200FFF5A1 /* StateStorage.swift in Sources */,
+				457A3DAA1B3E29F200FFF5A1 /* SetMonitor.swift in Sources */,
+				457A3DAB1B3E29F200FFF5A1 /* SetStorage.swift in Sources */,
+				457A3DB01B3E29F200FFF5A1 /* TreePath.swift in Sources */,
+				457A3DAE1B3E29F200FFF5A1 /* StateSignal.swift in Sources */,
+				457A3DAD1B3E29F200FFF5A1 /* SignalMonitor.swift in Sources */,
+				457A3DB11B3E29F200FFF5A1 /* TreeStorage.swift in Sources */,
+				457A3DAC1B3E29F200FFF5A1 /* SignalChannel.swift in Sources */,
+				457A3DA71B3E29F200FFF5A1 /* CollectionTransaction.swift in Sources */,
+				457A3DA11B3E29F200FFF5A1 /* ArrayMonitor.swift in Sources */,
+				457A3DA91B3E29F200FFF5A1 /* DictionaryStorage.swift in Sources */,
+				457A3DA61B3E29F200FFF5A1 /* CollectionSignal.swift in Sources */,
+				457A3DA21B3E29F200FFF5A1 /* ArrayStorage.swift in Sources */,
+				457A3DA51B3E29F200FFF5A1 /* CollectionMonitorType.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		457A3D7C1B3E29B400FFF5A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				457A3D881B3E29B500FFF5A1 /* SignalGraphTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		457A3D831B3E29B500FFF5A1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 457A3D751B3E29B400FFF5A1 /* SignalGraph */;
+			targetProxy = 457A3D821B3E29B500FFF5A1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		453718AE1B3AD93500160463 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		453718AF1B3AD93500160463 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		453718B11B3AD93500160463 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = SignalGraph;
+			};
+			name = Debug;
+		};
+		453718B21B3AD93500160463 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = SignalGraph;
+			};
+			name = Release;
+		};
+		457A3D8A1B3E29B500FFF5A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SignalGraph/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		457A3D8B1B3E29B500FFF5A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = SignalGraph/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		457A3D8D1B3E29B500FFF5A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SignalGraphTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		457A3D8E1B3E29B500FFF5A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SignalGraphTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		453718A41B3AD93500160463 /* Build configuration list for PBXProject "SignalGraph" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				453718AE1B3AD93500160463 /* Debug */,
+				453718AF1B3AD93500160463 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		453718B01B3AD93500160463 /* Build configuration list for PBXNativeTarget "SignalGraphUnitTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				453718B11B3AD93500160463 /* Debug */,
+				453718B21B3AD93500160463 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		457A3D891B3E29B500FFF5A1 /* Build configuration list for PBXNativeTarget "SignalGraph" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				457A3D8A1B3E29B500FFF5A1 /* Debug */,
+				457A3D8B1B3E29B500FFF5A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		457A3D8C1B3E29B500FFF5A1 /* Build configuration list for PBXNativeTarget "SignalGraphTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				457A3D8D1B3E29B500FFF5A1 /* Debug */,
+				457A3D8E1B3E29B500FFF5A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 453718A11B3AD93500160463 /* Project object */;
+}

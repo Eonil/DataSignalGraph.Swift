@@ -5,6 +5,6 @@
       location = "group:NOTE.md">
    </FileRef>
    <FileRef
-      location = "container:ADHOC_SignalGraph3.xcodeproj">
+      location = "container:/Users/Eonil/Workshop/Development/SignalGraph.Swift/SignalGraph.xcodeproj">
    </FileRef>
 </Workspace>
