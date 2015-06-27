@@ -41,7 +41,7 @@ func run(_ name: String? = nil, @noescape f: ()->()) {
 func testAll() {
 	run {
 		let	exp		=	Expect<Int>()
-		let	ch		=	SignalCaster<Int>()
+		let	ch		=	SignalStation<Int>()
 
 		exp.expect([])
 		ch.register(ObjectIdentifier(ch)) { exp.satisfy($0) }
@@ -57,7 +57,7 @@ func testAll() {
 	}
 	run {
 		let	exp		=	Expect<Int>()
-		let	ch		=	SignalCaster<Int>()
+		let	ch		=	SignalStation<Int>()
 		let	mon		=	SignalMonitor<Int>()
 
 		mon.handler		=	{ exp.satisfy($0) }

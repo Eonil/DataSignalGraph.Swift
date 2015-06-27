@@ -12,7 +12,7 @@
 ///	You cannot assume any order between handlers.
 ///	Anyway, you can make signaling order if it is truly required.
 ///
-///	1.	Chain channel to a `SignalCaster`.
+///	1.	Chain channel to a `SignalStation`.
 ///	2.	Override `cast` method.
 ///	3.	Route signal to desired channel at there.
 ///
@@ -66,7 +66,7 @@ extension SignalChannel {
 
 
 
-public class SignalCaster<T>: SignalChannel<T> {
+public class SignalStation<T>: SignalChannel<T> {
 	public override init() {
 		super.init()
 	}

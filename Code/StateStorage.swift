@@ -39,7 +39,7 @@ public class StateStorage<T>: ChannelType {
 	///
 	
 	private let	_signch		=	SignalChannel<Signal>()
-	
+
 	private func _castDidBegin() {
 		_signch.cast(StateSignal<T>.DidBegin(state: { [weak self] in self!.state}))
 	}
