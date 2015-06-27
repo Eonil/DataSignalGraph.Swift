@@ -48,4 +48,14 @@ public class StateStorage<T>: ChannelType {
 	}
 }
 
+///	Temporary for Swift 1.x.
+///	Remove at Swift 2.x.
+extension StateStorage {
+	public var snapshot: T {
+		get {
+			return	state
+		}
+	}
+}
+
 
