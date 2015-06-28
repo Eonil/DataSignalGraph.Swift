@@ -14,6 +14,8 @@
 		<string>https://github.com/Eonil/ADHOC_SignalGraph3</string>
 		<key>FBB6F2B2029C41EB36C6216F39D46AC69FF785A0</key>
 		<string>https://github.com/Eonil/SignalGraph.Swift</string>
+		<key>FC8DBBA953E548D205F88EA925028C0D6DA341F0</key>
+		<string>https://github.com/Eonil/Editor</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>SignalGraphOnly.xcworkspace</string>
@@ -23,6 +25,8 @@
 		<string>../../ADHOC_SignalGraph3</string>
 		<key>FBB6F2B2029C41EB36C6216F39D46AC69FF785A0</key>
 		<string>..</string>
+		<key>FC8DBBA953E548D205F88EA925028C0D6DA341F0</key>
+		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/Eonil/SignalGraph.Swift</string>
@@ -32,6 +36,14 @@
 	<string>FBB6F2B2029C41EB36C6216F39D46AC69FF785A0</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>FC8DBBA953E548D205F88EA925028C0D6DA341F0</string>
+			<key>IDESourceControlWCCName</key>
+			<string>..</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>

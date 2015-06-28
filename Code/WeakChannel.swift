@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Eonil. All rights reserved.
 //
 
-public struct WeakChannel<Storage: WatchableStorageType>: Viewable, Emittable {
+public struct WeakChannel<Storage: StateStorageType>: Viewable, Emittable {
 	public init(_ storage: Storage) {
 		_storage	=	storage
 	}
@@ -32,3 +32,31 @@ public struct WeakChannel<Storage: WatchableStorageType>: Viewable, Emittable {
 
 	private unowned let	_storage	:	Storage
 }
+
+public extension ValueStorage {
+	typealias	Channel	=	WeakChannel<ValueStorage<T>>
+}
+public extension SetStorage {
+	typealias	Channel	=	WeakChannel<SetStorage<T>>
+}
+public extension ArrayStorage {
+	typealias	Channel	=	WeakChannel<ArrayStorage<T>>
+}
+public extension DictionaryStorage {
+	typealias	Channel	=	WeakChannel<DictionaryStorage<K,V>>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

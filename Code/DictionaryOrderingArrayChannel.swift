@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Eonil. All rights reserved.
 //
 
-class DictionaryOrderingArrayChannel<K: Hashable, V, C: Comparable>: DictionaryOrderingArrayChannelType {
+public class DictionaryOrderingArrayChannel<K: Hashable, V, C: Comparable>: DictionaryOrderingArrayChannelType {
 	typealias	Key			=	K
 	typealias	Value			=	V
 	typealias	Order			=	C
@@ -17,18 +17,23 @@ class DictionaryOrderingArrayChannel<K: Hashable, V, C: Comparable>: DictionaryO
 
 	///
 
-	var snapshot: [(K,V)] {
+	public init() {
+	}
+
+	///
+	
+	public var snapshot: [(K,V)] {
 		get {
 			return	_snapshot!
 		}
 	}
-	var order: ((K,V)->C)? {
+	public var order: ((K,V)->C)? {
 		willSet {
 			assert(_isOnline() == false, "You cannot replace `filter` while this channel is connected to a source storage.")
 		}
 	}
 
-	func cast(signal: IncomingSignal) {
+	public func cast(signal: IncomingSignal) {
 		switch signal.timing {
 		case .DidBegin:
 			if signal.by == nil {
@@ -45,16 +50,16 @@ class DictionaryOrderingArrayChannel<K: Hashable, V, C: Comparable>: DictionaryO
 		}
 	}
 
-	func register(identifier: ObjectIdentifier, handler: OutgoingSignal -> ()) {
+	public func register(identifier: ObjectIdentifier, handler: OutgoingSignal -> ()) {
 		_relay.register(identifier, handler: handler)
 	}
-	func deregister(identifier: ObjectIdentifier) {
+	public func deregister(identifier: ObjectIdentifier) {
 		_relay.deregister(identifier)
 	}
-	func register<S : SensitiveStationType where S.IncomingSignal == OutgoingSignal>(s: S) {
+	public func register<S : SensitiveStationType where S.IncomingSignal == OutgoingSignal>(s: S) {
 		_relay.register(s)
 	}
-	func deregister<S : SensitiveStationType where S.IncomingSignal == OutgoingSignal>(s: S) {
+	public func deregister<S : SensitiveStationType where S.IncomingSignal == OutgoingSignal>(s: S) {
 		_relay.deregister(s)
 	}
 
