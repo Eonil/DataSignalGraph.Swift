@@ -8,13 +8,14 @@
 
 
 
-public class ArrayStorage<T>: ChannelType, CollectionTransactionApplicable {
+public class ArrayStorage<T>: CollectionTransactionApplicable {
 	public typealias	Signal		=	CollectionSignal<Array<T>,Int,T>
 	
 	///
 	
 	public init(_ snapshot: [T]) {
 		_snapshot	=	snapshot
+		_sigch.owner	=	self
 	}
 	public var snapshot: Array<T> {
 		get {
@@ -26,35 +27,28 @@ public class ArrayStorage<T>: ChannelType, CollectionTransactionApplicable {
 			_castDidBegin(by: _beginSnapshotTransaction())
 		}
 	}
+	public var channel: ArrayChannel<T> {
+		get {
+			return	_sigch
+		}
+	}
 	
 	public func apply(transaction: Signal.Transaction) {
 		_castWillEnd(by: transaction)
 		_snapshot.apply(transaction)		//	Must apply through `_snapshot` directly to avoid duplicated signal dispatch.
 		_castDidBegin(by: transaction)
 	}
-	
-	public func register(identifier: ObjectIdentifier, handler: Signal->()) {
-		_signch.register(identifier, handler: handler)
-		_castDidBegin(by: nil)
-		
-	}
-	public func deregister(identifier: ObjectIdentifier) {
-		_castWillEnd(by: nil)
-		_signch.deregister(identifier)
-	}
-	
+
 	///
 	
-	///
-	
-	private let	_signch		=	SignalChannel<Signal>()
+	private let	_sigch		=	ArrayChannel<T>()
 	private var	_snapshot	=	Array<T>()
 	
 	private func _castDidBegin(by transaction: Signal.Transaction?) {
-		_signch.cast(Signal.DidBegin(state: { [weak self] in self!.snapshot}, by: transaction))
+		_sigch.cast(Signal.DidBegin(state: { [weak self] in self!.snapshot}, by: transaction))
 	}
 	private func _castWillEnd(by transaction: Signal.Transaction?) {
-		_signch.cast(Signal.WillEnd(state: { [weak self] in self!.snapshot}, by: transaction))
+		_sigch.cast(Signal.WillEnd(state: { [weak self] in self!.snapshot}, by: transaction))
 	}
 	
 	private func _beginSnapshotTransaction() -> Signal.Transaction {
@@ -65,6 +59,21 @@ public class ArrayStorage<T>: ChannelType, CollectionTransactionApplicable {
 		let	muts	=	map(enumerate(snapshot), { Signal.Transaction.Mutation($0, $1, nil) })
 		return	Signal.Transaction(mutations: muts)
 	}
+}
+//	We can generalize this into single `CollectionChannel` with Swift 2.x features.
+public class ArrayChannel<T>: SignalChannel<CollectionSignal<[T],Int,T>> {
+	public override func register(identifier: ObjectIdentifier, handler: Signal -> ()) {
+		super.register(identifier, handler: handler)
+		owner!._castDidBegin(by: nil)
+	}
+	public override func deregister(identifier: ObjectIdentifier) {
+		owner!._castWillEnd(by: nil)
+		super.deregister(identifier)
+	}
+
+	///
+
+	private weak var owner: ArrayStorage<T>?
 }
 
 

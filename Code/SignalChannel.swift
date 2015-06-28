@@ -65,15 +65,21 @@ extension SignalChannel {
 
 
 
+public class SignalStation<T> {
+	public init() {
+	}
+	public func cast(signal: T) {
+		_sigch.cast(signal)
+	}
+	public var channel: SignalChannel<T> {
+		return	_sigch
+	}
 
-public class SignalStation<T>: SignalChannel<T> {
-	public override init() {
-		super.init()
-	}
-	public override func cast(signal: T) {
-		super.cast(signal)
-	}
+	///
+
+	private let	_sigch	=	SignalChannel<T>()
 }
+
 
 
 

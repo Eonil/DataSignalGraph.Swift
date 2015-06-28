@@ -20,7 +20,7 @@ public class ArrayMonitor<T>: CollectionMonitorType {
 		routeSignalToCollectionMonitor(signal, self)
 	}
 }
-extension ArrayStorage {
+extension ArrayChannel {
 	///	Please note that channel does not keep a strong reference
 	///	to monitors. You're responsible to keep them alive while
 	///	they're attached to a channel.

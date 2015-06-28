@@ -41,36 +41,38 @@ func run(_ name: String? = nil, @noescape f: ()->()) {
 func testAll() {
 	run {
 		let	exp		=	Expect<Int>()
-		let	ch		=	SignalStation<Int>()
+		let	st		=	SignalStation<Int>()
+		let	ch		=	st.channel
 
 		exp.expect([])
-		ch.register(ObjectIdentifier(ch)) { exp.satisfy($0) }
+		st.channel.register(ObjectIdentifier(ch)) { exp.satisfy($0) }
 		exp.check()
 
 		exp.expect([123])
-		ch.cast(123)
+		st.channel.cast(123)
 		exp.check()
 
 		exp.expect([])
-		ch.deregister(ObjectIdentifier(ch))
+		st.channel.deregister(ObjectIdentifier(ch))
 		exp.check()
 	}
 	run {
 		let	exp		=	Expect<Int>()
-		let	ch		=	SignalStation<Int>()
+		let	st		=	SignalStation<Int>()
+		let	ch		=	st.channel
 		let	mon		=	SignalMonitor<Int>()
 
 		mon.handler		=	{ exp.satisfy($0) }
 		exp.expect([])
-		ch.register(mon)
+		st.channel.register(mon)
 		exp.check()
 
 		exp.expect([123])
-		ch.cast(123)
+		st.channel.cast(123)
 		exp.check()
 
 		exp.expect([])
-		ch.deregister(mon)
+		st.channel.deregister(mon)
 		exp.check()
 	}
 //	run {
@@ -143,7 +145,7 @@ func testAll() {
 		m1.willTerminate	=	{ x.satisfy(6) }
 
 		x.expect([1,3])
-		v1.register(m1)
+		v1.channel.register(m1)
 		x.check()
 
 		x.expect([4,5,2,3])
@@ -155,7 +157,7 @@ func testAll() {
 		x.check()
 
 		x.expect([4,6])
-		v1.deregister(m1)
+		v1.channel.deregister(m1)
 		x.check()
 
 		assert(v1.snapshot == [111,222,444])
@@ -178,7 +180,7 @@ func testAll() {
 		m1.willTerminate	=	{ x.satisfy(6) }
 
 		x.expect([1,3])
-		v1.register(m1)
+		v1.channel.register(m1)
 		x.check()
 
 		x.expect([4,5,2,3])
@@ -190,7 +192,7 @@ func testAll() {
 		x.check()
 
 		x.expect([4,6])
-		v1.deregister(m1)
+		v1.channel.deregister(m1)
 		x.check()
 
 		assert(v1.snapshot == [333: "C", 222: "B", 444: "D"])
@@ -220,7 +222,7 @@ func testAll() {
 		x.check()
 
 		x.expect([1,3])
-		a1.register(ObjectIdentifier(a2)) 	{ a2.cast($0) }
+		a1.channel.register(ObjectIdentifier(a2)) 	{ a2.cast($0) }
 		x.check()
 
 		x.expect([4,5,2,3])
@@ -255,7 +257,7 @@ func testAll() {
 		assert(a2.snapshot == [:])
 
 		x.expect([4,6])
-		a1.deregister(ObjectIdentifier(a2))
+		a1.channel.deregister(ObjectIdentifier(a2))
 		x.check()
 
 		x.expect([])
@@ -282,7 +284,7 @@ func testAll() {
 			x.check()
 
 			x.expect([1,3])
-			a1.register(ObjectIdentifier(a2)) 	{ a2.cast($0) }
+			a1.channel.register(ObjectIdentifier(a2)) 	{ a2.cast($0) }
 			x.check()
 
 			x.expect([4,5,2,3])
@@ -317,7 +319,7 @@ func testAll() {
 			assert(a2.snapshot == [])
 
 			x.expect([4,6])
-			a1.deregister(ObjectIdentifier(a2))
+			a1.channel.deregister(ObjectIdentifier(a2))
 			x.check()
 			
 			x.expect([])
@@ -329,7 +331,7 @@ func testAll() {
 			let	a2	=	DictionarySortingArrayStorage<Int,String,Int>()
 			a2.order	=	{ $0.0 }
 
-			a1.register(ObjectIdentifier(a2)) 	{ a2.cast($0) }
+			a1.channel.register(ObjectIdentifier(a2)) 	{ a2.cast($0) }
 
 			a1[222]	=	"BBB"
 			a1[999]	=	"III"
@@ -337,7 +339,7 @@ func testAll() {
 			a1[888]	=	"HHH"
 			assert(a2.snapshot == [(222,"BBB"), (777,"GGG"), (888,"HHH"), (999,"III")])
 
-			a1.deregister(ObjectIdentifier(a2))
+			a1.channel.deregister(ObjectIdentifier(a2))
 		}
 	}
 
@@ -359,7 +361,7 @@ func testAll() {
 		x.check()
 
 		x.expect([1,3])
-		a1.register(ObjectIdentifier(a2)) 	{ a2.cast($0) }
+		a1.channel.register(ObjectIdentifier(a2)) 	{ a2.cast($0) }
 		x.check()
 
 		x.expect([4,5,2,3])
@@ -375,7 +377,7 @@ func testAll() {
 		assert(a2.snapshot == [])
 
 		x.expect([4,6])
-		a1.deregister(ObjectIdentifier(a2))
+		a1.channel.deregister(ObjectIdentifier(a2))
 		x.check()
 
 		x.expect([])

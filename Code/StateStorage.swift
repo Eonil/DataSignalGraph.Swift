@@ -8,7 +8,7 @@
 
 
 
-public class StateStorage<T>: ChannelType {
+public class StateStorage<T> {
 	public typealias	Signal		=	StateSignal<T>
 	
 	public init(_ state: T) {
@@ -25,26 +25,22 @@ public class StateStorage<T>: ChannelType {
 			_castDidBegin()
 		}
 	}
-	
-	public func register(identifier: ObjectIdentifier, handler: Signal->()) {
-		_signch.register(identifier, handler: handler)
-		_castDidBegin()
-		
+
+	public var channel: SignalChannel<Signal> {
+		get {
+			return	_sigst.channel
+		}
 	}
-	public func deregister(identifier: ObjectIdentifier) {
-		_castWillEnd()
-		_signch.deregister(identifier)
-	}
-	
+
 	///
-	
-	private let	_signch		=	SignalChannel<Signal>()
+
+	private let	_sigst		=	SignalStation<Signal>()
 
 	private func _castDidBegin() {
-		_signch.cast(StateSignal<T>.DidBegin(state: { [weak self] in self!.state}))
+		_sigst.channel.cast(StateSignal<T>.DidBegin(state: { [weak self] in self!.state}))
 	}
 	private func _castWillEnd() {
-		_signch.cast(StateSignal<T>.WillEnd(state: { [weak self] in self!.state}))
+		_sigst.channel.cast(StateSignal<T>.WillEnd(state: { [weak self] in self!.state}))
 	}
 }
 

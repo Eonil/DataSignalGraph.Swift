@@ -59,7 +59,7 @@
 ///		3.	didApply
 ///		4.	didBegin
 ///
-public protocol CollectionMonitorType {
+public protocol CollectionMonitorType: class {
 	typealias	StateSnapshot	:	CollectionType
 	typealias	MutationKey	:	Hashable
 	typealias	MutationValue

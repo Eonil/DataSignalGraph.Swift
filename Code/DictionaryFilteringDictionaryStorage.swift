@@ -98,12 +98,12 @@ public final class DictionaryFilteringDictionaryStorage<K: Hashable, V>: Channel
 	private func _switchToOnline(snapshot: [K:V]) {
 		_filteredDS	=	DictionaryStorage(snapshot)
 		for pair in _handlerPairs {
-			_filteredDS!.register(pair.0, handler: pair.1)
+			_filteredDS!.channel.register(pair.0, handler: pair.1)
 		}
 	}
 	private func _switchToOffline(snapshot: [K:V]) {
 		for pair in _handlerPairs {
-			_filteredDS!.deregister(pair.0)
+			_filteredDS!.channel.deregister(pair.0)
 		}
 		_filteredDS	=	nil
 	}
@@ -113,7 +113,7 @@ public final class DictionaryFilteringDictionaryStorage<K: Hashable, V>: Channel
 
 	private func _processRegistration(identifier: ObjectIdentifier, handler: Signal->()) {
 		if _isOnline() {
-			_filteredDS!.register(identifier, handler: handler)
+			_filteredDS!.channel.register(identifier, handler: handler)
 		} else {
 			assert(_handlerPairs[identifier] == nil)
 			_handlerPairs[identifier]	=	handler
@@ -121,7 +121,7 @@ public final class DictionaryFilteringDictionaryStorage<K: Hashable, V>: Channel
 	}
 	private func _processDeregistration(identifier: ObjectIdentifier) {
 		if _isOnline() {
-			_filteredDS!.deregister(identifier)
+			_filteredDS!.channel.deregister(identifier)
 		} else {
 			assert(_handlerPairs[identifier] != nil)
 			_handlerPairs[identifier]	=	nil

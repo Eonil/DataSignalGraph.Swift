@@ -9,7 +9,15 @@
 //class ReplicatingStorage: ChannelType, CollectionTransactionApplicable {
 //	
 //}
-//
-//class DeferringSignalMonitor<T>: SignalMonitor<T> {
-//
-//}
+
+class DeferringSignalMonitor<T>: SignalMonitor<T> {
+
+}
+
+public class BufferingSetStorage<T: Hashable>: SignalMonitor<CollectionSignal<Set<T>,T,()>>, CollectionTransactionApplicable {
+	public func apply(transaction: CollectionTransaction<T, ()>) {
+		
+	}
+
+	public var run: Bool = false
+}

@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Eonil. All rights reserved.
 //
 
-public protocol ChannelType {
+public protocol ChannelType: class {
 	typealias	Signal
 	func register(identifier: ObjectIdentifier, handler: Signal->())
 	func deregister(identifier: ObjectIdentifier)

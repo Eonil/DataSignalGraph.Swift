@@ -82,12 +82,12 @@ public class ArrayMappingArrayStorage<T,U> {
 	private func _switchToOnline(snapshot: [T]) {
 		_mappedAS	=	ArrayStorage(snapshot.map(map!))
 		for pair in _handlerPairs {
-			_mappedAS!.register(pair.0, handler: pair.1)
+			_mappedAS!.channel.register(pair.0, handler: pair.1)
 		}
 	}
 	private func _switchToOffline(snapshot: [T]) {
 		for pair in _handlerPairs {
-			_mappedAS!.deregister(pair.0)
+			_mappedAS!.channel.deregister(pair.0)
 		}
 		_mappedAS	=	nil
 	}
@@ -97,7 +97,7 @@ public class ArrayMappingArrayStorage<T,U> {
 
 	private func _processRegistration(identifier: ObjectIdentifier, handler: _OutputSignal->()) {
 		if _isOnline() {
-			_mappedAS!.register(identifier, handler: handler)
+			_mappedAS!.channel.register(identifier, handler: handler)
 		} else {
 			assert(_handlerPairs[identifier] == nil)
 			_handlerPairs[identifier]	=	handler
@@ -105,7 +105,7 @@ public class ArrayMappingArrayStorage<T,U> {
 	}
 	private func _processDeregistration(identifier: ObjectIdentifier) {
 		if _isOnline() {
-			_mappedAS!.deregister(identifier)
+			_mappedAS!.channel.deregister(identifier)
 		} else {
 			assert(_handlerPairs[identifier] != nil)
 			_handlerPairs[identifier]	=	nil

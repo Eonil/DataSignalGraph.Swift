@@ -8,13 +8,14 @@
 
 
 
-public class DictionaryStorage<K: Hashable, V>: ChannelType, CollectionTransactionApplicable {
+public class DictionaryStorage<K: Hashable, V>: CollectionTransactionApplicable {
 	public typealias	Signal		=	CollectionSignal<Dictionary<K,V>,K,V>
 	
 	///
 	
 	public init(_ snapshot: [K:V]) {
 		_snapshot	=	snapshot
+		_sigch.owner	=	self
 	}
 	public var snapshot: Dictionary<K,V> {
 		get {
@@ -26,6 +27,11 @@ public class DictionaryStorage<K: Hashable, V>: ChannelType, CollectionTransacti
 			_castDidBegin(by: _beginSnapshotTransaction())
 		}
 	}
+	public var channel: DictionaryChannel<K,V> {
+		get {
+			return	_sigch
+		}
+	}
 	
 	public func apply(transaction: Signal.Transaction) {
 		_castWillEnd(by: transaction)
@@ -33,28 +39,16 @@ public class DictionaryStorage<K: Hashable, V>: ChannelType, CollectionTransacti
 		_castDidBegin(by: transaction)
 	}
 	
-	public func register(identifier: ObjectIdentifier, handler: Signal->()) {
-		_signch.register(identifier, handler: handler)
-		_castDidBegin(by: nil)
-		
-	}
-	public func deregister(identifier: ObjectIdentifier) {
-		_castWillEnd(by: nil)
-		_signch.deregister(identifier)
-	}
-	
 	///
 	
-	///
-	
-	private let	_signch		=	SignalChannel<Signal>()
+	private let	_sigch		=	DictionaryChannel<K,V>()
 	private var	_snapshot	=	Dictionary<K,V>()
 	
 	private func _castDidBegin(by transaction: Signal.Transaction?) {
-		_signch.cast(Signal.DidBegin(state: { [weak self] in self!.snapshot}, by: transaction))
+		_sigch.cast(Signal.DidBegin(state: { [weak self] in self!.snapshot}, by: transaction))
 	}
 	private func _castWillEnd(by transaction: Signal.Transaction?) {
-		_signch.cast(Signal.WillEnd(state: { [weak self] in self!.snapshot}, by: transaction))
+		_sigch.cast(Signal.WillEnd(state: { [weak self] in self!.snapshot}, by: transaction))
 	}
 	
 	private func _beginSnapshotTransaction() -> Signal.Transaction {
@@ -65,6 +59,21 @@ public class DictionaryStorage<K: Hashable, V>: ChannelType, CollectionTransacti
 		let	muts	=	map(snapshot, { Signal.Transaction.Mutation($0, $1, nil) })
 		return	Signal.Transaction(mutations: muts)
 	}
+}
+//	We can generalize this into single `CollectionChannel` with Swift 2.x features.
+public class DictionaryChannel<K: Hashable, V>: SignalChannel<CollectionSignal<[K:V],K,V>> {
+	public override func register(identifier: ObjectIdentifier, handler: Signal -> ()) {
+		super.register(identifier, handler: handler)
+		owner!._castDidBegin(by: nil)
+	}
+	public override func deregister(identifier: ObjectIdentifier) {
+		owner!._castWillEnd(by: nil)
+		super.deregister(identifier)
+	}
+
+	///
+
+	private weak var owner: DictionaryStorage<K,V>?
 }
 
 

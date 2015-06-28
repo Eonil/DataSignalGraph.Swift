@@ -88,12 +88,12 @@ public class DictionarySortingArrayStorage<K: Hashable, V, C: Comparable>: Chann
 	private func _switchToOnline(snapshot: [K:V]) {
 		_sortedAS	=	ArrayStorage(_sortSnapshot(snapshot))
 		for pair in _handlerPairs {
-			_sortedAS!.register(pair.0, handler: pair.1)
+			_sortedAS!.channel.register(pair.0, handler: pair.1)
 		}
 	}
 	private func _switchToOffline(snapshot: [K:V]) {
 		for pair in _handlerPairs {
-			_sortedAS!.deregister(pair.0)
+			_sortedAS!.channel.deregister(pair.0)
 		}
 		_sortedAS	=	nil
 	}
@@ -103,7 +103,7 @@ public class DictionarySortingArrayStorage<K: Hashable, V, C: Comparable>: Chann
 
 	private func _processRegistration(identifier: ObjectIdentifier, handler: _OutputSignal->()) {
 		if _isOnline() {
-			_sortedAS!.register(identifier, handler: handler)
+			_sortedAS!.channel.register(identifier, handler: handler)
 		} else {
 			assert(_handlerPairs[identifier] == nil)
 			_handlerPairs[identifier]	=	handler
@@ -111,7 +111,7 @@ public class DictionarySortingArrayStorage<K: Hashable, V, C: Comparable>: Chann
 	}
 	private func _processDeregistration(identifier: ObjectIdentifier) {
 		if _isOnline() {
-			_sortedAS!.deregister(identifier)
+			_sortedAS!.channel.deregister(identifier)
 		} else {
 			assert(_handlerPairs[identifier] != nil)
 			_handlerPairs[identifier]	=	nil

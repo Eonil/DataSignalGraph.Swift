@@ -17,7 +17,7 @@ public class SignalMonitor<T> {
 	
 	///
 	
-	private func handle(signal: T) {
+	internal func handle(signal: T) {
 		handler?(signal)
 	}
 }
