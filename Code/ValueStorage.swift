@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Eonil. All rights reserved.
 //
 
-public class ValueStorage<T>: StateStorageType {
+public class ValueStorage<T>: ValueStorageType {
 	typealias	Element			=	T
 	typealias	Snapshot		=	T
 	typealias	Transaction		=	T
@@ -23,9 +23,19 @@ public class ValueStorage<T>: StateStorageType {
 			return	_snapshot
 		}
 		set(v) {
-			_relay.cast(OutgoingSignal.willEnd(_snapshot, by: nil))
-
-			_relay.cast(OutgoingSignal.didBegin(_snapshot, by: nil))
+			_relay.cast(OutgoingSignal.willEnd(_snapshot, by: v))
+			_snapshot	=	v
+			_relay.cast(OutgoingSignal.didBegin(_snapshot, by: v))
+		}
+	}
+	public var state: Snapshot {
+		get {
+			return	_snapshot
+		}
+		set(v) {
+			_relay.cast(OutgoingSignal.willEnd(_snapshot, by: v))
+			_snapshot	=	v
+			_relay.cast(OutgoingSignal.didBegin(_snapshot, by: v))
 		}
 	}
 	public func apply(transaction: Transaction) {
@@ -61,5 +71,41 @@ extension ValueStorage: Editable, SequenceType {
 		return	GeneratorOfOne(_snapshot)
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+public extension ValueStorage {
+	public typealias	Channel	=	WeakChannel<ValueStorage<T>>
+
+	public func channelize() -> Channel {
+		return	Channel(self)
+	}
+}
+
+
+
+
+
+
+
+
 
 

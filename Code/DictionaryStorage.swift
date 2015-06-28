@@ -11,6 +11,8 @@ public class DictionaryStorage<K: Hashable, V>: DictionaryStorageType {
 	typealias	Transaction		=	CollectionTransaction<K,V>
 	typealias	OutgoingSignal		=	StateSignal<Snapshot,Transaction>
 
+	public typealias	Signal			=	OutgoingSignal
+	
 	///
 
 	public init(_ snapshot: Snapshot) {
@@ -145,5 +147,31 @@ extension DictionaryStorage: EditableDictionary, SequenceType {
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+public extension DictionaryStorage {
+	public typealias	Channel	=	WeakChannel<DictionaryStorage<K,V>>
+
+	public func channelize() -> Channel {
+		return	Channel(self)
+	}
+}
+
+
+
+
+
+
+
+
 
 

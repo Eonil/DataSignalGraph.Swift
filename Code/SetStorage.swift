@@ -12,6 +12,8 @@ public class SetStorage<T: Hashable>: SetStorageType {
 	typealias	Transaction		=	CollectionTransaction<T,()>
 	typealias	OutgoingSignal		=	StateSignal<Snapshot,Transaction>
 
+	public typealias	Signal			=	OutgoingSignal
+
 	///
 
 	public init(_ snapshot: Snapshot) {
@@ -92,6 +94,13 @@ extension SetStorage: EditableSet {
 
 
 
+public extension SetStorage {
+	public typealias	Channel	=	WeakChannel<SetStorage<T>>
+
+	public func channelize() -> Channel {
+		return	Channel(self)
+	}
+}
 
 
 

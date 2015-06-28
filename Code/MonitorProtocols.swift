@@ -1,10 +1,71 @@
 //
-//  CollectionMonitorType.swift
+//  MonitorProtocols.swift
 //  ADHOC_SignalGraph3
 //
 //  Created by Hoon H. on 2015/06/26.
 //  Copyright (c) 2015 Eonil. All rights reserved.
 //
+
+
+
+
+
+
+
+public protocol ValueMonitorType: SensitiveStationType {
+	typealias	StateSnapshot
+
+	///	A new state has begun by starting of monitoring session.
+	var didInitiate: (()->())? { get set }
+
+	///	Current state will be ended by ending of current monitoring session.
+	var willTerminate: (()->())? { get set }
+
+	///	A new state has begun by applicating a transaction.
+	var didApply: (StateSnapshot->())? { get set }
+
+	///	Current state will be ended by applicating a new transaction.
+	var willApply: (StateSnapshot->())? { get set }
+
+	///	A state has been started. You must already been notified the reason that
+	///	triggered this state mutation.
+	var didBegin: (StateSnapshot->())? { get set }
+
+	///	A state is about to be ended. You will be notified the reason that will
+	///	trigger this state mutation.
+	var willEnd: (StateSnapshot->())? { get set }
+}
+
+internal func routeSignalToValueMonitor<M: ValueMonitorType>(signal: StateSignal<M.StateSnapshot,M.StateSnapshot>, monitor: M) {
+	switch signal.timing {
+	case .DidBegin:
+		switch signal.by {
+		case nil:
+			monitor.didInitiate?()
+		case _:
+			monitor.didApply?(signal.by!)
+		}
+		monitor.didBegin?(signal.state)
+
+	case .WillEnd:
+		monitor.willEnd?(signal.state)
+		switch signal.by {
+		case nil:
+			monitor.willTerminate?()
+		case _:
+			monitor.willApply?(signal.by!)
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
 
 ///	Provides decomposed event handler slots for `CollectionSignal`.
 ///	This is provided only for you convenience. A regular way to

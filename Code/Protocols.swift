@@ -153,6 +153,17 @@ public protocol StateStorageType: StateChannelType, TransactionalStorageType {
 }
 
 
+
+
+public protocol ValueChannelType: StateChannelType {
+	var state: State { get }
+}
+public protocol ValueStorageType: ValueChannelType, StateStorageType {
+	var state: State { get set }
+}
+
+
+
 public protocol CollectionChannelType: StateChannelType {
 	typealias	Transaction	:	CollectionTransactionType
 }

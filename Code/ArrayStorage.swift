@@ -12,6 +12,8 @@ public class ArrayStorage<T>: ArrayStorageType {
 	typealias	Transaction		=	CollectionTransaction<Int,T>
 	typealias	OutgoingSignal		=	StateSignal<Snapshot,Transaction>
 
+	public typealias	Signal			=	OutgoingSignal
+	
 	///
 
 	public init(_ snapshot: Snapshot) {
@@ -155,6 +157,13 @@ extension ArrayStorage: EditableArray, CollectionType, SequenceType {
 
 
 
+public extension ArrayStorage {
+	public typealias	Channel	=	WeakChannel<ArrayStorage<T>>
+
+	public func channelize() -> Channel {
+		return	Channel(self)
+	}
+}
 
 
 

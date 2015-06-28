@@ -393,6 +393,36 @@ func testAll() {
 		a2.deregister(m1)
 		x.check()
 	}
+
+	run {
+		let	x	=	Expect<Int>()
+		let	v	=	ValueStorage<Int>(111)
+		let	m	=	ValueMonitor<Int>()
+		m.didInitiate	=	{ x.satisfy(1) }
+		m.didApply	=	{ _ in x.satisfy(2) }
+		m.didBegin	=	{ _ in x.satisfy(3) }
+		m.willEnd	=	{ _ in x.satisfy(4) }
+		m.willApply	=	{ _ in x.satisfy(5) }
+		m.willTerminate	=	{ x.satisfy(6) }
+
+		x.expect([1,3])
+		v.register(m)
+		x.check()
+
+		x.expect([4,5,2,3])
+		v.state	=	222
+		x.check()
+		assert(v.snapshot == 222)
+
+		x.expect([4,6])
+		v.deregister(m)
+		x.check()
+
+		x.expect([])
+		v.state	=	333
+		x.check()
+		assert(v.state == 333)
+	}
 }
 
 
