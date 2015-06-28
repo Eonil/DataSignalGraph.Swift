@@ -6,23 +6,26 @@ Hoon H.
 
 `SignalGraph` provides several stuffs.
 
--	Sending state-less signals. (`SignalChannel` class)
--	Sending simple mutation signals. (`StateStorage` class)
+-	Sending state-less signals. (`Relay`, `Monitor` class)
+-	Sending simple mutation signals. (`ValueStorage` class)
 -	Sending collection mutation signals. (`SetStorage`, `ArrayStorage`, `DictionaryStorage` classes)
 -	Sending filtering, sorting and mapping of collection entries.
 	
-	-	`DictionaryFilteringDictionaryStorage` class.
-	-	`DictionarySortingArrayStorage` class.
-	-	`ArrayMappingArrayStorage` class.
+	-	`DictionaryFilteringDictionaryChannel` class.
+	-	`DictionarySortingArrayStorageChannel` class.
+	-	`ArrayMappingArrayStorageChannel` class.
+
+-	Hiding mutators by wrapping storage. (`WeakChannel` type)
 
 Getting Started
 ---------------
 This is typical setup of signal graph.
 
 	DictionaryStorage
-	->	DictionaryFilteringDictionaryStorage
-	->	DictionarySortingArrayStorage
-	->	ArrayMappingArrayStorage
+	->	DictionaryFilteringDictionaryChannel
+	->	DictionarySortingArrayChannel
+	->	ArrayMappingArrayChannel
+	->	ArrayMonitor
 
 
 

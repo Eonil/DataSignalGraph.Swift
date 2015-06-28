@@ -59,7 +59,7 @@
 ///		3.	didApply
 ///		4.	didBegin
 ///
-public protocol CollectionMonitorType {
+public protocol CollectionMonitorType: SensitiveStationType {
 	typealias	StateSnapshot	:	CollectionType
 	typealias	MutationKey	:	Hashable
 	typealias	MutationValue
@@ -85,24 +85,24 @@ public protocol CollectionMonitorType {
 	var willEnd: (StateSnapshot->())? { get set }
 }
 
-internal func routeSignalToCollectionMonitor<M: CollectionMonitorType>(signal: CollectionSignal<M.StateSnapshot, M.MutationKey, M.MutationValue>, monitor: M) {
-	switch signal {
-	case .DidBegin(let state, let by):
-		switch by {
+internal func routeSignalToCollectionMonitor<M: CollectionMonitorType>(signal: StateSignal<M.StateSnapshot,CollectionTransaction<M.MutationKey, M.MutationValue>>, monitor: M) {
+	switch signal.timing {
+	case .DidBegin:
+		switch signal.by {
 		case nil:
 			monitor.didInitiate?()
 		case _:
-			monitor.didApply?(by!)
+			monitor.didApply?(signal.by!)
 		}
-		monitor.didBegin?(state())
+		monitor.didBegin?(signal.state)
 		
-	case .WillEnd(let state, let by):
-		monitor.willEnd?(state())
-		switch by {
+	case .WillEnd:
+		monitor.willEnd?(signal.state)
+		switch signal.by {
 		case nil:
 			monitor.willTerminate?()
 		case _:
-			monitor.willApply?(by!)
+			monitor.willApply?(signal.by!)
 		}
 	}
 }

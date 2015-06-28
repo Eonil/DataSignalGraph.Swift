@@ -1,80 +1,79 @@
 //
 //  DictionaryStorage.swift
-//  ADHOC_SignalGraph3
+//  SG4
 //
-//  Created by Hoon H. on 2015/06/26.
+//  Created by Hoon H. on 2015/06/28.
 //  Copyright (c) 2015 Eonil. All rights reserved.
 //
 
+public class DictionaryStorage<K: Hashable, V>: DictionaryStorageType {
+	typealias	Snapshot		=	[K:V]
+	typealias	Transaction		=	CollectionTransaction<K,V>
+	typealias	OutgoingSignal		=	StateSignal<Snapshot,Transaction>
 
-
-public class DictionaryStorage<K: Hashable, V>: ChannelType, CollectionTransactionApplicable {
-	public typealias	Signal		=	CollectionSignal<Dictionary<K,V>,K,V>
-	
 	///
-	
-	public init(_ snapshot: [K:V]) {
+
+	public init(_ snapshot: Snapshot) {
 		_snapshot	=	snapshot
 	}
-	public var snapshot: Dictionary<K,V> {
+	public var snapshot: Snapshot {
 		get {
 			return	_snapshot
 		}
 		set(v) {
-			_castWillEnd(by: _endSnapshotTransaction())
 			_snapshot	=	v
-			_castDidBegin(by: _beginSnapshotTransaction())
 		}
 	}
-	
-	public func apply(transaction: Signal.Transaction) {
-		_castWillEnd(by: transaction)
-		_snapshot.apply(transaction)		//	Must apply through `_snapshot` directly to avoid duplicated signal dispatch.
-		_castDidBegin(by: transaction)
+	public func apply(transaction: Transaction) {
+		_relay.cast(StateSignal.willEnd(_snapshot, by: transaction))
+		Algorithms.apply(transaction, to: &_snapshot)
+		_relay.cast(StateSignal.didBegin(_snapshot, by: transaction))
 	}
-	
-	public func register(identifier: ObjectIdentifier, handler: Signal->()) {
-		_signch.register(identifier, handler: handler)
-		_castDidBegin(by: nil)
-		
+	public func register(identifier: ObjectIdentifier, handler: OutgoingSignal->()) {
+		_relay.register(identifier, handler: handler)
+		_relay.cast(StateSignal.didBegin(_snapshot, by: nil))
 	}
 	public func deregister(identifier: ObjectIdentifier) {
-		_castWillEnd(by: nil)
-		_signch.deregister(identifier)
+		_relay.cast(StateSignal.willEnd(_snapshot, by: nil))
+		_relay.deregister(identifier)
 	}
-	
+	public func register<S : SensitiveStationType where S.IncomingSignal == OutgoingSignal>(s: S) {
+		_relay.register(s)
+		_relay.cast(StateSignal.didBegin(_snapshot, by: nil))
+	}
+	public func deregister<S : SensitiveStationType where S.IncomingSignal == OutgoingSignal>(s: S) {
+		_relay.cast(StateSignal.willEnd(_snapshot, by: nil))
+		_relay.deregister(s)
+	}
+
+
 	///
 	
-	///
-	
-	private let	_signch		=	SignalChannel<Signal>()
-	private var	_snapshot	=	Dictionary<K,V>()
-	
-	private func _castDidBegin(by transaction: Signal.Transaction?) {
-		_signch.cast(Signal.DidBegin(state: { [weak self] in self!.snapshot}, by: transaction))
-	}
-	private func _castWillEnd(by transaction: Signal.Transaction?) {
-		_signch.cast(Signal.WillEnd(state: { [weak self] in self!.snapshot}, by: transaction))
-	}
-	
-	private func _beginSnapshotTransaction() -> Signal.Transaction {
-		let	muts	=	map(snapshot, { Signal.Transaction.Mutation($0, nil, $1) })
-		return	Signal.Transaction(mutations: muts)
-	}
-	private func _endSnapshotTransaction() -> Signal.Transaction {
-		let	muts	=	map(snapshot, { Signal.Transaction.Mutation($0, $1, nil) })
-		return	Signal.Transaction(mutations: muts)
-	}
+	private var	_snapshot	=	Snapshot()
+	private let	_relay		=	Relay<OutgoingSignal>()
 }
-
-
-
-extension DictionaryStorage {
+extension DictionaryStorage: EditableDictionary, SequenceType {
 	public var count: Int {
 		get {
 			return	_snapshot.count
 		}
 	}
+	public var startIndex: Snapshot.Index {
+		get {
+			return	_snapshot.startIndex
+		}
+	}
+	var endIndex: Snapshot.Index {
+		get {
+			return	_snapshot.endIndex
+		}
+	}
+	public func generate() -> Snapshot.Generator {
+		return	_snapshot.generate()
+	}
+
+	///
+
 	public subscript(key: K) -> V? {
 		get {
 			return	_snapshot[key]
@@ -82,58 +81,58 @@ extension DictionaryStorage {
 		set(v) {
 			let	maybeOld	=	_snapshot[key]
 			let	maybeNew	=	v
-			
+
 			switch (maybeOld, maybeNew) {
 			case (nil, nil):
 				break
-				
+
 			case (nil, _):
-				apply(CollectionTransaction(mutations: [(key, nil, maybeNew)]))
-				
+				apply(CollectionTransaction([(key, nil, maybeNew)]))
+
 			case (_, nil):
-				apply(CollectionTransaction(mutations: [(key, maybeOld, nil)]))
-				
+				apply(CollectionTransaction([(key, maybeOld, nil)]))
+
 			case (_, _):
-				apply(CollectionTransaction(mutations: [(key, maybeOld, maybeNew)]))
+				apply(CollectionTransaction([(key, maybeOld, maybeNew)]))
 			}
 		}
 	}
-	
+
 	///
-	
+
 	public func updateValue(value: V, forKey key: K) -> V? {
 		let	maybeOld	=	_snapshot[key]
 		let	new		=	value
 		switch (maybeOld, new) {
-		case (nil,_):		apply(CollectionTransaction(mutations: [(key, nil, new)]))
-		case (_,_):		apply(CollectionTransaction(mutations: [(key, maybeOld!, new)]))
+		case (nil,_):		apply(CollectionTransaction([(key, nil, new)]))
+		case (_,_):		apply(CollectionTransaction([(key, maybeOld!, new)]))
 		}
 		return	maybeOld
 	}
-	
+
 	public func removeAtIndex(index: DictionaryIndex<K, V>) {
 		let	pair	=	_snapshot[index]
 		let	key	=	pair.0
 		let	old	=	pair.1
-		apply(CollectionTransaction(mutations: [(key, old, nil)]))
+		apply(CollectionTransaction([(key, old, nil)]))
 	}
-	
+
 	public func removeValueForKey(key: K) -> V? {
 		let	maybeOld	=	_snapshot[key]
 		if let old = maybeOld {
-			apply(CollectionTransaction(mutations: [(key, old, nil)]))
+			apply(CollectionTransaction([(key, old, nil)]))
 		}
 		return	maybeOld
 	}
-	
+
 	public func removeAll() {
-		var	muts		=	Array<Signal.Transaction.Mutation>()
+		var	muts		=	Array<Transaction.Mutation>()
 		for (k,v) in _snapshot {
 			muts.append((k, v, nil))
 		}
-		apply(CollectionTransaction(mutations: muts))
+		apply(CollectionTransaction(muts))
 	}
-	
+
 	public var keys: LazyForwardCollection<MapCollectionView<[K:V],K>> {
 		get {
 			return	_snapshot.keys
@@ -144,11 +143,7 @@ extension DictionaryStorage {
 			return	_snapshot.values
 		}
 	}
+
 }
-
-
-
-
-
 
 
