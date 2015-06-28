@@ -12,6 +12,8 @@ public class ValueStorage<T>: ValueStorageType {
 	typealias	Transaction		=	T
 	typealias	OutgoingSignal		=	StateSignal<Snapshot,Transaction>
 
+	public typealias	Signal			=	OutgoingSignal
+	
 	///
 
 	public init(_ snapshot: Snapshot) {
