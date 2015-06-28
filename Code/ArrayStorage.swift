@@ -49,7 +49,6 @@ public class ArrayStorage<T>: ArrayStorageType {
 		_relay.deregister(s)
 	}
 
-
 	///
 
 	private var	_snapshot	=	Snapshot()

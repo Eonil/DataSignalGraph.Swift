@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Eonil. All rights reserved.
 //
 
-public class CollectionMonitor<S: CollectionType, K: Hashable,V>: CollectionMonitorType {
+public class CollectionTimingMonitor<S: CollectionType, K: Hashable,V>: CollectionTimingMonitorType {
 
 	public var didInitiate: (()->())?
 	public var willTerminate: (()->())?
@@ -14,6 +14,9 @@ public class CollectionMonitor<S: CollectionType, K: Hashable,V>: CollectionMoni
 	public var didApply: (CollectionTransaction<K,V>->())?
 	public var willEnd: (S->())?
 	public var didBegin: (S->())?
+
+	public var didAdd: (V->())?
+	public var willRemove: (V->())?
 
 	public func cast(signal: StateSignal<S,CollectionTransaction<K,V>>) {
 		_route(signal)
@@ -26,15 +29,15 @@ public class CollectionMonitor<S: CollectionType, K: Hashable,V>: CollectionMoni
 	}
 }
 
-public class SetMonitor<T: Hashable>: CollectionMonitor<Set<T>,T,()> {
+public class SetTimingMonitor<T: Hashable>: CollectionTimingMonitor<Set<T>,T,()> {
 	public override init() {
 	}
 }
-public class ArrayMonitor<T>: CollectionMonitor<[T],Int,T> {
+public class ArrayTimingMonitor<T>: CollectionTimingMonitor<[T],Int,T> {
 	public override init() {
 	}
 }
-public class DictionaryMonitor<K: Hashable, V>: CollectionMonitor<[K:V],K,V> {
+public class DictionaryTimingMonitor<K: Hashable, V>: CollectionTimingMonitor<[K:V],K,V> {
 	public override init() {
 	}
 }

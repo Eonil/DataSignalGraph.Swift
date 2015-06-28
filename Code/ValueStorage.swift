@@ -62,7 +62,6 @@ public class ValueStorage<T>: ValueStorageType {
 		_relay.deregister(s)
 	}
 
-
 	///
 
 	private var	_snapshot	:	Snapshot

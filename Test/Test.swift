@@ -37,6 +37,8 @@ class Expect<T: Equatable> {
 
 
 
+
+
 func run(_ name: String? = nil, @noescape f: ()->()) {
 	f()
 }
@@ -112,7 +114,7 @@ func testAll() {
 	run {
 		let	x		=	Expect<Int>()
 		let	v1		=	SetStorage([111,222,333])
-		let	m1		=	SetMonitor<Int>()
+		let	m1		=	SetTimingMonitor<Int>()
 		m1.didInitiate		=	{ x.satisfy(1) }
 		m1.didApply		=	{ _ in x.satisfy(2) }
 		m1.didBegin		=	{ _ in x.satisfy(3) }
@@ -145,7 +147,7 @@ func testAll() {
 	run {
 		let	x		=	Expect<Int>()
 		let	v1		=	ArrayStorage([111,222,333])
-		let	m1		=	ArrayMonitor<Int>()
+		let	m1		=	ArrayTimingMonitor<Int>()
 		m1.didInitiate		=	{ x.satisfy(1) }
 		m1.didApply		=	{ _ in x.satisfy(2) }
 		m1.didBegin		=	{ _ in x.satisfy(3) }
@@ -180,7 +182,7 @@ func testAll() {
 	run {
 		let	x		=	Expect<Int>()
 		let	v1		=	DictionaryStorage([111: "A", 222: "B", 333: "C"])
-		let	m1		=	DictionaryMonitor<Int, String>()
+		let	m1		=	DictionaryTimingMonitor<Int, String>()
 		m1.didInitiate		=	{ x.satisfy(1) }
 		m1.didApply		=	{ _ in x.satisfy(2) }
 		m1.didBegin		=	{ _ in x.satisfy(3) }
@@ -218,7 +220,7 @@ func testAll() {
 		let	a1	=	DictionaryStorage<Int,String>([:])
 		let	a2	=	DictionaryFilteringDictionaryChannel<Int,String>()
 		a2.filter	=	{ k,v in return k % 2 == 0 }
-		let	m1	=	DictionaryMonitor<Int,String>()
+		let	m1	=	DictionaryTimingMonitor<Int,String>()
 		m1.didInitiate		=	{ x.satisfy(1) }
 		m1.didApply		=	{ _ in x.satisfy(2) }
 		m1.didBegin		=	{ _ in x.satisfy(3) }
@@ -280,7 +282,7 @@ func testAll() {
 			let	a1	=	DictionaryStorage<Int,String>([:])
 			let	a2	=	DictionaryOrderingArrayChannel<Int,String,Int>()
 			a2.order	=	{ $0.0 }
-			let	m1	=	ArrayMonitor<(Int,String)>()
+			let	m1	=	ArrayTimingMonitor<(Int,String)>()
 			m1.didInitiate		=	{ x.satisfy(1) }
 			m1.didApply		=	{ _ in x.satisfy(2) }
 			m1.didBegin		=	{ _ in x.satisfy(3) }
@@ -357,7 +359,7 @@ func testAll() {
 		let	a1	=	ArrayStorage<Int>([])
 		let	a2	=	ArrayMappingArrayChannel<Int,String>()
 		a2.map		=	{ "V:\($0)" }
-		let	m1	=	ArrayMonitor<String>()
+		let	m1	=	ArrayTimingMonitor<String>()
 		m1.didInitiate		=	{ x.satisfy(1) }
 		m1.didApply		=	{ _ in x.satisfy(2) }
 		m1.didBegin		=	{ _ in x.satisfy(3) }
@@ -394,10 +396,10 @@ func testAll() {
 		x.check()
 	}
 
-	run {
+	run("`ValueTimingMonitor` basics.") {
 		let	x	=	Expect<Int>()
 		let	v	=	ValueStorage<Int>(111)
-		let	m	=	ValueMonitor<Int>()
+		let	m	=	ValueTimingMonitor<Int>()
 		m.didInitiate	=	{ x.satisfy(1) }
 		m.didApply	=	{ _ in x.satisfy(2) }
 		m.didBegin	=	{ _ in x.satisfy(3) }
@@ -422,6 +424,88 @@ func testAll() {
 		v.state	=	333
 		x.check()
 		assert(v.state == 333)
+	}
+
+	run ("ExistenceMonitor family test.") {
+		run {
+			let	x	=	Expect<Int>()
+			let	v	=	ArrayStorage<Int>([])
+			let	m	=	ArrayExistenceMonitor<Int>()
+			m.didAdd	=	{ _ in x.satisfy(1) }
+			m.willRemove	=	{ _ in x.satisfy(2) }
+
+			x.expect([])
+			v.register(m)
+			x.check()
+
+			x.expect([1])
+			v.append(111)
+			x.check()
+
+			x.expect([1])
+			v.append(222)
+			x.check()
+
+			x.expect([1])
+			v.append(333)
+			x.check()
+
+			x.expect([2])
+			v.removeLast()
+			x.check()
+
+			x.expect([2,2])
+			v.deregister(m)
+			x.check()
+		}
+
+		run {
+			let	x	=	Expect<Int>()
+			let	v	=	ArrayStorage<Int>([111, 222])
+			let	m	=	ArrayExistenceMonitor<Int>()
+			m.didAdd	=	{ _ in x.satisfy(1) }
+			m.willRemove	=	{ _ in x.satisfy(2) }
+
+			x.expect([1,1])
+			v.register(m)
+			x.check()
+
+			x.expect([1])
+			v.append(333)
+			x.check()
+
+			x.expect([2,2,2])
+			v.removeAll()
+			x.check()
+
+			x.expect([])
+			v.deregister(m)
+			x.check()
+		}
+
+		run {
+			let	x	=	Expect<Int>()
+			let	v	=	ArrayStorage<Int>([111, 222])
+			let	m	=	ArrayExistenceMonitor<Int>()
+			m.didAdd	=	{ i in x.satisfy(i.1) }
+			m.willRemove	=	{ i in x.satisfy(i.1 * 10) }
+
+			x.expect([111, 222])
+			v.register(m)
+			x.check()
+
+			x.expect([333])
+			v.append(333)
+			x.check()
+
+			x.expect([3330])
+			v.removeLast()
+			x.check()
+
+			x.expect([2220, 1110])
+			v.deregister(m)
+			x.check()
+		}
 	}
 }
 

@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Eonil. All rights reserved.
 //
 
-public class ValueMonitor<T>: ValueMonitorType {
+public class ValueTimingMonitor<T>: ValueTimingMonitorType {
 	public init() {
 	}
 

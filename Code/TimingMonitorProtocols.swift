@@ -12,7 +12,7 @@
 
 
 
-public protocol ValueMonitorType: SensitiveStationType {
+public protocol ValueTimingMonitorType: SensitiveStationType {
 	typealias	StateSnapshot
 
 	///	A new state has begun by starting of monitoring session.
@@ -36,7 +36,7 @@ public protocol ValueMonitorType: SensitiveStationType {
 	var willEnd: (StateSnapshot->())? { get set }
 }
 
-internal func routeSignalToValueMonitor<M: ValueMonitorType>(signal: StateSignal<M.StateSnapshot,M.StateSnapshot>, monitor: M) {
+internal func routeSignalToValueMonitor<M: ValueTimingMonitorType>(signal: StateSignal<M.StateSnapshot,M.StateSnapshot>, monitor: M) {
 	switch signal.timing {
 	case .DidBegin:
 		switch signal.by {
@@ -120,7 +120,7 @@ internal func routeSignalToValueMonitor<M: ValueMonitorType>(signal: StateSignal
 ///		3.	didApply
 ///		4.	didBegin
 ///
-public protocol CollectionMonitorType: SensitiveStationType {
+public protocol CollectionTimingMonitorType: SensitiveStationType {
 	typealias	StateSnapshot	:	CollectionType
 	typealias	MutationKey	:	Hashable
 	typealias	MutationValue
@@ -146,7 +146,7 @@ public protocol CollectionMonitorType: SensitiveStationType {
 	var willEnd: (StateSnapshot->())? { get set }
 }
 
-internal func routeSignalToCollectionMonitor<M: CollectionMonitorType>(signal: StateSignal<M.StateSnapshot,CollectionTransaction<M.MutationKey, M.MutationValue>>, monitor: M) {
+internal func routeSignalToCollectionMonitor<M: CollectionTimingMonitorType>(signal: StateSignal<M.StateSnapshot,CollectionTransaction<M.MutationKey, M.MutationValue>>, monitor: M) {
 	switch signal.timing {
 	case .DidBegin:
 		switch signal.by {
