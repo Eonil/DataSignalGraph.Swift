@@ -1,15 +1,15 @@
 //
-//  SetStorage.swift
+//  ValueStorage.swift
 //  SG4
 //
 //  Created by Hoon H. on 2015/06/28.
-//  Copyright © 2015 Eonil. All rights reserved.
+//  Copyright (c) 2015 Eonil. All rights reserved.
 //
 
-public class SetStorage<T: Hashable>: SetStorageType {
+public class ValueStorage<T>: StateStorageType {
 	typealias	Element			=	T
-	typealias	Snapshot		=	Set<T>
-	typealias	Transaction		=	CollectionTransaction<T,()>
+	typealias	Snapshot		=	T
+	typealias	Transaction		=	T
 	typealias	OutgoingSignal		=	StateSignal<Snapshot,Transaction>
 
 	///
@@ -17,17 +17,20 @@ public class SetStorage<T: Hashable>: SetStorageType {
 	public init(_ snapshot: Snapshot) {
 		_snapshot	=	snapshot
 	}
+
 	public var snapshot: Snapshot {
 		get {
 			return	_snapshot
 		}
 		set(v) {
-			_snapshot	=	v
+			_relay.cast(OutgoingSignal.willEnd(_snapshot, by: nil))
+
+			_relay.cast(OutgoingSignal.didBegin(_snapshot, by: nil))
 		}
 	}
 	public func apply(transaction: Transaction) {
 		_relay.cast(StateSignal.willEnd(_snapshot, by: transaction))
-		Algorithms.apply(transaction, to: &_snapshot)
+		_snapshot	=	transaction
 		_relay.cast(StateSignal.didBegin(_snapshot, by: transaction))
 	}
 	public func register(identifier: ObjectIdentifier, handler: OutgoingSignal->()) {
@@ -47,51 +50,16 @@ public class SetStorage<T: Hashable>: SetStorageType {
 		_relay.deregister(s)
 	}
 
+
 	///
 
-	private var	_snapshot	=	Set<T>()
+	private var	_snapshot	:	Snapshot
 	private let	_relay		=	Relay<OutgoingSignal>()
 }
-extension SetStorage: EditableSet {
-	public var count: Int {
-		get {
-			return	_snapshot.count
-		}
-	}
-	public func generate() -> Snapshot.Generator {
-		return	_snapshot.generate()
-	}
-
-	///
-
-
-	public func insert(member: T) {
-		let	tran	=	CollectionTransaction([(member, nil, ())])
-		apply(tran)
-	}
-	public func remove(member: T) -> T? {
-		let	ele	=	_snapshot.contains(member) ? member : nil as T?
-		let	tran	=	CollectionTransaction([(member, (), nil)])
-		apply(tran)
-		return	ele
+extension ValueStorage: Editable, SequenceType {
+	public func generate() -> GeneratorOfOne<Snapshot> {
+		return	GeneratorOfOne(_snapshot)
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

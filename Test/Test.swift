@@ -8,6 +8,8 @@
 
 import SignalGraph
 
+
+
 class Expect<T: Equatable> {
 	func expect(samples: [T]) {
 		check()
@@ -40,66 +42,73 @@ func run(_ name: String? = nil, @noescape f: ()->()) {
 }
 func testAll() {
 	run {
+
+		let	r	=	Relay<Int>()
+		r.register(ObjectIdentifier(r)) { println($0) }
+		r.cast(111)
+		r.deregister(ObjectIdentifier(r))
+
+	}
+	run {
 		let	exp		=	Expect<Int>()
-		let	st		=	SignalStation<Int>()
-		let	ch		=	st.channel
+		let	r		=	Relay<Int>()
 
 		exp.expect([])
-		st.channel.register(ObjectIdentifier(ch)) { exp.satisfy($0) }
+		r.register(ObjectIdentifier(r)) { exp.satisfy($0) }
 		exp.check()
 
 		exp.expect([123])
-		st.channel.cast(123)
+		r.cast(123)
 		exp.check()
 
 		exp.expect([])
-		st.channel.deregister(ObjectIdentifier(ch))
+		r.deregister(ObjectIdentifier(r))
 		exp.check()
 	}
 	run {
 		let	exp		=	Expect<Int>()
-		let	st		=	SignalStation<Int>()
-		let	ch		=	st.channel
-		let	mon		=	SignalMonitor<Int>()
+		let	st		=	Relay<Int>()
+		let	ch		=	st
+		let	mon		=	Monitor<Int>()
 
 		mon.handler		=	{ exp.satisfy($0) }
 		exp.expect([])
-		st.channel.register(mon)
+		st.register(mon)
 		exp.check()
 
 		exp.expect([123])
-		st.channel.cast(123)
+		st.cast(123)
 		exp.check()
 
 		exp.expect([])
-		st.channel.deregister(mon)
+		st.deregister(mon)
 		exp.check()
 	}
-//	run {
-//		let	exp		=	Expect<Int>()
-//		let	v1		=	StateStorage(111)
-//		let	m1		=	StateMonitor<Int>()
-//		m1.didInitiate		=	{ exp.assertAndRecord(0) }
-//		m1.willTerminate	=	{ exp.assertAndRecord(1) }
-//		v1.register(m1)
-//		v1.deregister(m1)
-//		exp.assertRecord([0,1])
-//	}
-//	run {
-//		let	exp		=	Expecting([1,2,3,2,3,2,3,4])
-//		let	v1		=	ValueStorage(111)
-//		let	m1		=	ValueMonitor<Int>()
-//		m1.didInitiate		=	{ exp.assertAndRecord(1) }
-//		m1.willApply		=	{ _ in exp.assertAndRecord(2) }
-//		m1.didApply		=	{ _ in exp.assertAndRecord(3) }
-//		m1.willTerminate	=	{ exp.assertAndRecord(4) }
-//		v1.register(m1)
-//		exp.assertRecord([1,2,3])
-//		v1.snapshot		=	222
-//		exp.assertRecord([1,2,3,2,3])
-//		v1.deregister(m1)
-//		exp.assertRecord([1,2,3,2,3,2,3,4])
-//	}
+	//	run {
+	//		let	exp		=	Expect<Int>()
+	//		let	v1		=	StateStorage(111)
+	//		let	m1		=	StateMonitor<Int>()
+	//		m1.didInitiate		=	{ exp.assertAndRecord(0) }
+	//		m1.willTerminate	=	{ exp.assertAndRecord(1) }
+	//		v1.register(m1)
+	//		v1.deregister(m1)
+	//		exp.assertRecord([0,1])
+	//	}
+	//	run {
+	//		let	exp		=	Expecting([1,2,3,2,3,2,3,4])
+	//		let	v1		=	ValueStorage(111)
+	//		let	m1		=	ValueMonitor<Int>()
+	//		m1.didInitiate		=	{ exp.assertAndRecord(1) }
+	//		m1.willApply		=	{ _ in exp.assertAndRecord(2) }
+	//		m1.didApply		=	{ _ in exp.assertAndRecord(3) }
+	//		m1.willTerminate	=	{ exp.assertAndRecord(4) }
+	//		v1.register(m1)
+	//		exp.assertRecord([1,2,3])
+	//		v1.snapshot		=	222
+	//		exp.assertRecord([1,2,3,2,3])
+	//		v1.deregister(m1)
+	//		exp.assertRecord([1,2,3,2,3,2,3,4])
+	//	}
 	run {
 		let	x		=	Expect<Int>()
 		let	v1		=	SetStorage([111,222,333])
@@ -145,7 +154,7 @@ func testAll() {
 		m1.willTerminate	=	{ x.satisfy(6) }
 
 		x.expect([1,3])
-		v1.channel.register(m1)
+		v1.register(m1)
 		x.check()
 
 		x.expect([4,5,2,3])
@@ -157,7 +166,7 @@ func testAll() {
 		x.check()
 
 		x.expect([4,6])
-		v1.channel.deregister(m1)
+		v1.deregister(m1)
 		x.check()
 
 		assert(v1.snapshot == [111,222,444])
@@ -180,7 +189,7 @@ func testAll() {
 		m1.willTerminate	=	{ x.satisfy(6) }
 
 		x.expect([1,3])
-		v1.channel.register(m1)
+		v1.register(m1)
 		x.check()
 
 		x.expect([4,5,2,3])
@@ -192,7 +201,7 @@ func testAll() {
 		x.check()
 
 		x.expect([4,6])
-		v1.channel.deregister(m1)
+		v1.deregister(m1)
 		x.check()
 
 		assert(v1.snapshot == [333: "C", 222: "B", 444: "D"])
@@ -207,7 +216,7 @@ func testAll() {
 	run("DictionaryFilteringDictionaryStorage") {
 		let	x	=	Expect<Int>()
 		let	a1	=	DictionaryStorage<Int,String>([:])
-		let	a2	=	DictionaryFilteringDictionaryStorage<Int,String>()
+		let	a2	=	DictionaryFilteringDictionaryChannel<Int,String>()
 		a2.filter	=	{ k,v in return k % 2 == 0 }
 		let	m1	=	DictionaryMonitor<Int,String>()
 		m1.didInitiate		=	{ x.satisfy(1) }
@@ -222,7 +231,7 @@ func testAll() {
 		x.check()
 
 		x.expect([1,3])
-		a1.channel.register(ObjectIdentifier(a2)) 	{ a2.cast($0) }
+		a1.register(ObjectIdentifier(a2)) 	{ a2.cast($0) }
 		x.check()
 
 		x.expect([4,5,2,3])
@@ -257,7 +266,7 @@ func testAll() {
 		assert(a2.snapshot == [:])
 
 		x.expect([4,6])
-		a1.channel.deregister(ObjectIdentifier(a2))
+		a1.deregister(ObjectIdentifier(a2))
 		x.check()
 
 		x.expect([])
@@ -269,7 +278,7 @@ func testAll() {
 		run("Basics") {
 			let	x	=	Expect<Int>()
 			let	a1	=	DictionaryStorage<Int,String>([:])
-			let	a2	=	DictionarySortingArrayStorage<Int,String,Int>()
+			let	a2	=	DictionaryOrderingArrayChannel<Int,String,Int>()
 			a2.order	=	{ $0.0 }
 			let	m1	=	ArrayMonitor<(Int,String)>()
 			m1.didInitiate		=	{ x.satisfy(1) }
@@ -284,7 +293,7 @@ func testAll() {
 			x.check()
 
 			x.expect([1,3])
-			a1.channel.register(ObjectIdentifier(a2)) 	{ a2.cast($0) }
+			a1.register(ObjectIdentifier(a2)) 	{ a2.cast($0) }
 			x.check()
 
 			x.expect([4,5,2,3])
@@ -319,19 +328,19 @@ func testAll() {
 			assert(a2.snapshot == [])
 
 			x.expect([4,6])
-			a1.channel.deregister(ObjectIdentifier(a2))
+			a1.deregister(ObjectIdentifier(a2))
 			x.check()
-			
+
 			x.expect([])
 			a2.deregister(m1)
 			x.check()
 		}
 		run("Sorting") {
 			let	a1	=	DictionaryStorage<Int,String>([:])
-			let	a2	=	DictionarySortingArrayStorage<Int,String,Int>()
+			let	a2	=	DictionaryOrderingArrayChannel<Int,String,Int>()
 			a2.order	=	{ $0.0 }
 
-			a1.channel.register(ObjectIdentifier(a2)) 	{ a2.cast($0) }
+			a1.register(ObjectIdentifier(a2)) 	{ a2.cast($0) }
 
 			a1[222]	=	"BBB"
 			a1[999]	=	"III"
@@ -339,14 +348,14 @@ func testAll() {
 			a1[888]	=	"HHH"
 			assert(a2.snapshot == [(222,"BBB"), (777,"GGG"), (888,"HHH"), (999,"III")])
 
-			a1.channel.deregister(ObjectIdentifier(a2))
+			a1.deregister(ObjectIdentifier(a2))
 		}
 	}
 
 	run("ArrayMappingArrayStorage") {
 		let	x	=	Expect<Int>()
 		let	a1	=	ArrayStorage<Int>([])
-		let	a2	=	ArrayMappingArrayStorage<Int,String>()
+		let	a2	=	ArrayMappingArrayChannel<Int,String>()
 		a2.map		=	{ "V:\($0)" }
 		let	m1	=	ArrayMonitor<String>()
 		m1.didInitiate		=	{ x.satisfy(1) }
@@ -361,7 +370,7 @@ func testAll() {
 		x.check()
 
 		x.expect([1,3])
-		a1.channel.register(ObjectIdentifier(a2)) 	{ a2.cast($0) }
+		a1.register(ObjectIdentifier(a2)) 	{ a2.cast($0) }
 		x.check()
 
 		x.expect([4,5,2,3])
@@ -377,7 +386,7 @@ func testAll() {
 		assert(a2.snapshot == [])
 
 		x.expect([4,6])
-		a1.channel.deregister(ObjectIdentifier(a2))
+		a1.deregister(ObjectIdentifier(a2))
 		x.check()
 
 		x.expect([])
@@ -403,6 +412,7 @@ private func == <K: Equatable,V: Equatable> (left: [(K,V)], right: [(K,V)]) -> B
 	}
 	return	true
 }
+
 
 
 
