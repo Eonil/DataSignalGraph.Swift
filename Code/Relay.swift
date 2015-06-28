@@ -26,6 +26,14 @@ public class Relay<T>: SensitiveStationType, EmissiveStationType {
 	public typealias	IncomingSignal		=	T
 	public typealias	OutgoingSignal		=	T
 
+	public init() {
+	}
+	deinit {
+		assert(_handlers.count == 0, "You must deregister all handlers/sensors before this object dies.")
+	}
+
+	///
+
 	public func cast(signal: T) {
 		for h in _handlers.values {
 			h(signal)
@@ -52,6 +60,10 @@ public class Relay<T>: SensitiveStationType, EmissiveStationType {
 	private var	_handlers	=	Dictionary<ObjectIdentifier, OutgoingSignal->()>()
 }
 public class Monitor<T>: SensitiveStationType {
+
+	public init() {
+	}
+	
 	public var handler: (T->())?
 
 	public func cast(signal: T) {

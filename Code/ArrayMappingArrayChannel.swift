@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Eonil. All rights reserved.
 //
 
-class ArrayMappingArrayChannel<T,U>: ArrayMappingArrayChannelType {
+public class ArrayMappingArrayChannel<T,U>: ArrayMappingArrayChannelType {
 	typealias	Element			=	U
 	typealias	IncomingElement		=	T
 	typealias	OutgoingElement		=	U
@@ -16,18 +16,23 @@ class ArrayMappingArrayChannel<T,U>: ArrayMappingArrayChannelType {
 
 	///
 
-	var snapshot: [U] {
+	public init() {
+	}
+
+	///
+
+	public var snapshot: [U] {
 		get {
 			return	_snapshot!
 		}
 	}
-	var map: (T->U)? {
+	public var map: (T->U)? {
 		willSet {
 			assert(_isOnline() == false, "You cannot replace `filter` while this channel is connected to a source storage.")
 		}
 	}
 
-	func cast(signal: IncomingSignal) {
+	public func cast(signal: IncomingSignal) {
 		switch signal.timing {
 		case .DidBegin:
 			if signal.by == nil {
@@ -44,16 +49,16 @@ class ArrayMappingArrayChannel<T,U>: ArrayMappingArrayChannelType {
 		}
 	}
 
-	func register(identifier: ObjectIdentifier, handler: OutgoingSignal -> ()) {
+	public func register(identifier: ObjectIdentifier, handler: OutgoingSignal -> ()) {
 		_relay.register(identifier, handler: handler)
 	}
-	func deregister(identifier: ObjectIdentifier) {
+	public func deregister(identifier: ObjectIdentifier) {
 		_relay.deregister(identifier)
 	}
-	func register<S : SensitiveStationType where S.IncomingSignal == OutgoingSignal>(s: S) {
+	public func register<S : SensitiveStationType where S.IncomingSignal == OutgoingSignal>(s: S) {
 		_relay.register(s)
 	}
-	func deregister<S : SensitiveStationType where S.IncomingSignal == OutgoingSignal>(s: S) {
+	public func deregister<S : SensitiveStationType where S.IncomingSignal == OutgoingSignal>(s: S) {
 		_relay.deregister(s)
 	}
 

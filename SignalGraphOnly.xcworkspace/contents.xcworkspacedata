@@ -11,6 +11,6 @@
       location = "group:LICENSE.md">
    </FileRef>
    <FileRef
-      location = "container:/Users/Eonil/Workshop/Development/SignalGraph.Swift/SignalGraph.xcodeproj">
+      location = "group:SignalGraph.xcodeproj">
    </FileRef>
 </Workspace>
