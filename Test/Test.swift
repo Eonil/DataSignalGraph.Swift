@@ -426,87 +426,87 @@ func testAll() {
 		assert(v.state == 333)
 	}
 
-	run ("ExistenceMonitor family test.") {
-		run {
-			let	x	=	Expect<Int>()
-			let	v	=	ArrayStorage<Int>([])
-			let	m	=	ArrayExistenceMonitor<Int>()
-			m.didAdd	=	{ _ in x.satisfy(1) }
-			m.willRemove	=	{ _ in x.satisfy(2) }
-
-			x.expect([])
-			v.register(m)
-			x.check()
-
-			x.expect([1])
-			v.append(111)
-			x.check()
-
-			x.expect([1])
-			v.append(222)
-			x.check()
-
-			x.expect([1])
-			v.append(333)
-			x.check()
-
-			x.expect([2])
-			v.removeLast()
-			x.check()
-
-			x.expect([2,2])
-			v.deregister(m)
-			x.check()
-		}
-
-		run {
-			let	x	=	Expect<Int>()
-			let	v	=	ArrayStorage<Int>([111, 222])
-			let	m	=	ArrayExistenceMonitor<Int>()
-			m.didAdd	=	{ _ in x.satisfy(1) }
-			m.willRemove	=	{ _ in x.satisfy(2) }
-
-			x.expect([1,1])
-			v.register(m)
-			x.check()
-
-			x.expect([1])
-			v.append(333)
-			x.check()
-
-			x.expect([2,2,2])
-			v.removeAll()
-			x.check()
-
-			x.expect([])
-			v.deregister(m)
-			x.check()
-		}
-
-		run {
-			let	x	=	Expect<Int>()
-			let	v	=	ArrayStorage<Int>([111, 222])
-			let	m	=	ArrayExistenceMonitor<Int>()
-			m.didAdd	=	{ i in x.satisfy(i.1) }
-			m.willRemove	=	{ i in x.satisfy(i.1 * 10) }
-
-			x.expect([111, 222])
-			v.register(m)
-			x.check()
-
-			x.expect([333])
-			v.append(333)
-			x.check()
-
-			x.expect([3330])
-			v.removeLast()
-			x.check()
-
-			x.expect([2220, 1110])
-			v.deregister(m)
-			x.check()
-		}
-	}
+//	run ("ExistenceMonitor family test.") {
+//		run {
+//			let	x	=	Expect<Int>()
+//			let	v	=	ArrayStorage<Int>([])
+//			let	m	=	ArrayExistenceMonitor<Int>()
+//			m.didAdd	=	{ _ in x.satisfy(1) }
+//			m.willRemove	=	{ _ in x.satisfy(2) }
+//
+//			x.expect([])
+//			v.register(m)
+//			x.check()
+//
+//			x.expect([1])
+//			v.append(111)
+//			x.check()
+//
+//			x.expect([1])
+//			v.append(222)
+//			x.check()
+//
+//			x.expect([1])
+//			v.append(333)
+//			x.check()
+//
+//			x.expect([2])
+//			v.removeLast()
+//			x.check()
+//
+//			x.expect([2,2])
+//			v.deregister(m)
+//			x.check()
+//		}
+//
+//		run {
+//			let	x	=	Expect<Int>()
+//			let	v	=	ArrayStorage<Int>([111, 222])
+//			let	m	=	ArrayExistenceMonitor<Int>()
+//			m.didAdd	=	{ _ in x.satisfy(1) }
+//			m.willRemove	=	{ _ in x.satisfy(2) }
+//
+//			x.expect([1,1])
+//			v.register(m)
+//			x.check()
+//
+//			x.expect([1])
+//			v.append(333)
+//			x.check()
+//
+//			x.expect([2,2,2])
+//			v.removeAll()
+//			x.check()
+//
+//			x.expect([])
+//			v.deregister(m)
+//			x.check()
+//		}
+//
+//		run {
+//			let	x	=	Expect<Int>()
+//			let	v	=	ArrayStorage<Int>([111, 222])
+//			let	m	=	ArrayExistenceMonitor<Int>()
+//			m.didAdd	=	{ i in x.satisfy(i.1) }
+//			m.willRemove	=	{ i in x.satisfy(i.1 * 10) }
+//
+//			x.expect([111, 222])
+//			v.register(m)
+//			x.check()
+//
+//			x.expect([333])
+//			v.append(333)
+//			x.check()
+//
+//			x.expect([3330])
+//			v.removeLast()
+//			x.check()
+//
+//			x.expect([2220, 1110])
+//			v.deregister(m)
+//			x.check()
+//		}
+//	}
 }
 
 

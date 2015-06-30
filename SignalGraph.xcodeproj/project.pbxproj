@@ -75,6 +75,9 @@
 		4598C0AC1B40259500D07B63 /* MonitoringAlgorithms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4598C0AB1B40259500D07B63 /* MonitoringAlgorithms.swift */; };
 		4598C0AD1B40264600D07B63 /* MonitoringAlgorithms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4598C0AB1B40259500D07B63 /* MonitoringAlgorithms.swift */; };
 		4598C0AE1B40264700D07B63 /* MonitoringAlgorithms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4598C0AB1B40259500D07B63 /* MonitoringAlgorithms.swift */; };
+		459929571B4217F000D5162A /* DeduplicationAlgorithms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F9D0B31B403BC500F2B4B8 /* DeduplicationAlgorithms.swift */; };
+		459929581B4217F000D5162A /* DeduplicationAlgorithms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F9D0B31B403BC500F2B4B8 /* DeduplicationAlgorithms.swift */; };
+		4599295A1B421E9900D5162A /* Diff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459929591B421E9900D5162A /* Diff.swift */; };
 		45F9D0B41B403BC500F2B4B8 /* DeduplicationAlgorithms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F9D0B31B403BC500F2B4B8 /* DeduplicationAlgorithms.swift */; };
 /* End PBXBuildFile section */
 
@@ -141,6 +144,7 @@
 		4598BFFB1B3FE3CD00D07B63 /* ValueTimingMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueTimingMonitor.swift; sourceTree = "<group>"; };
 		4598C0A71B401D7C00D07B63 /* ExistenceMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExistenceMonitor.swift; sourceTree = "<group>"; };
 		4598C0AB1B40259500D07B63 /* MonitoringAlgorithms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitoringAlgorithms.swift; sourceTree = "<group>"; };
+		459929591B421E9900D5162A /* Diff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Diff.swift; sourceTree = "<group>"; };
 		45F9D0B31B403BC500F2B4B8 /* DeduplicationAlgorithms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeduplicationAlgorithms.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -252,6 +256,7 @@
 				45519DA91B3FBDD30006248B /* Algorithms.swift */,
 				4598C0AB1B40259500D07B63 /* MonitoringAlgorithms.swift */,
 				45F9D0B31B403BC500F2B4B8 /* DeduplicationAlgorithms.swift */,
+				459929591B421E9900D5162A /* Diff.swift */,
 				45669D6D1B3E8DC900666D54 /* (tree signaling) */,
 				45669D5E1B3E4CE700666D54 /* PseudoCoroutine.swift */,
 				457A3DB21B3E29F900FFF5A1 /* (incomplete yet) */,
@@ -525,6 +530,7 @@
 				45669D611B3E4D1700666D54 /* PseudoCoroutine.swift in Sources */,
 				45519DBF1B3FBDD30006248B /* ArrayStorage.swift in Sources */,
 				4598C0A91B401E3000D07B63 /* ExistenceMonitor.swift in Sources */,
+				459929571B4217F000D5162A /* DeduplicationAlgorithms.swift in Sources */,
 				45519DBC1B3FBDD30006248B /* ArrayMappingArrayChannel.swift in Sources */,
 				45519DC81B3FBDD30006248B /* DictionaryFilteringDictionaryChannel.swift in Sources */,
 				45519DD11B3FBDD30006248B /* ExtensionsToSwift.swift in Sources */,
@@ -565,6 +571,7 @@
 				45519DC71B3FBDD30006248B /* DictionaryFilteringDictionaryChannel.swift in Sources */,
 				45519DDF1B3FBDD30006248B /* ValueStorage.swift in Sources */,
 				457A3DB01B3E29F200FFF5A1 /* TreePath.swift in Sources */,
+				4599295A1B421E9900D5162A /* Diff.swift in Sources */,
 				45519DD61B3FBDD30006248B /* Protocols.swift in Sources */,
 				4598BFFC1B3FE3CD00D07B63 /* ValueTimingMonitor.swift in Sources */,
 				45519DC41B3FBDD30006248B /* TimingMonitorProtocols.swift in Sources */,
@@ -596,6 +603,7 @@
 				45519DBA1B3FBDD30006248B /* Algorithms.swift in Sources */,
 				45519DC31B3FBDD30006248B /* CollectionTimingMonitor.swift in Sources */,
 				45519DE41B3FBDD30006248B /* WeakChannel.swift in Sources */,
+				459929581B4217F000D5162A /* DeduplicationAlgorithms.swift in Sources */,
 				45519DCF1B3FBDD30006248B /* DictionaryStorage.swift in Sources */,
 				45519DC91B3FBDD30006248B /* DictionaryFilteringDictionaryChannel.swift in Sources */,
 				45519DE11B3FBDD30006248B /* ValueStorage.swift in Sources */,
