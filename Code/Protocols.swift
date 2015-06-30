@@ -77,7 +77,9 @@ public protocol WatchableStorageType: StorageType, EmissiveStationType {
 
 
 
-
+public protocol TransactionType {
+	typealias	Mutation
+}
 public protocol TransactionApplicable {
 	typealias	Transaction
 	mutating func apply(transaction: Transaction)
@@ -115,7 +117,26 @@ public protocol StateSignalType {
 
 
 
-public protocol CollectionTransactionType {
+
+
+public protocol ValueTransactionType: TransactionType {
+
+}
+public struct ValueTransaction<T>: ValueTransactionType {
+	typealias	Mutation	=	(past: T, future: T)
+	public var mutations: [Mutation]
+
+	public init(_ mutations: [Mutation]) {
+		self.mutations	=	mutations
+	}
+}
+
+
+
+
+
+
+public protocol CollectionTransactionType: TransactionType {
 	typealias	Identity
 	typealias	State
 	typealias	Mutation	=	(identity: Identity, past: State?, future: State?)
@@ -131,11 +152,16 @@ public struct CollectionTransaction<K,V>: CollectionTransactionType {
 		self.mutations	=	mutations
 	}
 }
-public struct StateSignal<S,T>: StateSignalType {
+public struct StateSignal<S,T: TransactionType>: StateSignalType {
 	typealias	Transaction	=	T
 	public var timing: StateSignalingTiming
 	public var state: S
 	public var by: T?
+}
+public enum StateCause<S,T,M> {
+	case Session(()->S)
+	case Transaction(()->T)
+	case Mutation(()->M)
 }
 public extension StateSignal {
 	static func didBegin(state: S, by: T?) -> StateSignal {

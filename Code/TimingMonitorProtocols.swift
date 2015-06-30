@@ -22,10 +22,10 @@ public protocol ValueTimingMonitorType: SensitiveStationType {
 	var willTerminate: (()->())? { get set }
 
 	///	A new state has begun by applicating a transaction.
-	var didApply: (StateSnapshot->())? { get set }
+	var didApply: (ValueTransaction<StateSnapshot>->())? { get set }
 
 	///	Current state will be ended by applicating a new transaction.
-	var willApply: (StateSnapshot->())? { get set }
+	var willApply: (ValueTransaction<StateSnapshot>->())? { get set }
 
 	///	A state has been started. You must already been notified the reason that
 	///	triggered this state mutation.
@@ -36,7 +36,7 @@ public protocol ValueTimingMonitorType: SensitiveStationType {
 	var willEnd: (StateSnapshot->())? { get set }
 }
 
-internal func routeSignalToValueMonitor<M: ValueTimingMonitorType>(signal: StateSignal<M.StateSnapshot,M.StateSnapshot>, monitor: M) {
+internal func routeSignalToValueMonitor<M: ValueTimingMonitorType>(signal: StateSignal<M.StateSnapshot,ValueTransaction<M.StateSnapshot>>, monitor: M) {
 	switch signal.timing {
 	case .DidBegin:
 		switch signal.by {

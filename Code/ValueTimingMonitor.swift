@@ -7,23 +7,24 @@
 //
 
 public class ValueTimingMonitor<T>: ValueTimingMonitorType {
+
 	public init() {
 	}
 
 	public var didInitiate: (()->())?
 	public var willTerminate: (()->())?
-	public var willApply: (T->())?
-	public var didApply: (T->())?
+	public var willApply: (ValueTransaction<T>->())?
+	public var didApply: (ValueTransaction<T>->())?
 	public var willEnd: (T->())?
 	public var didBegin: (T->())?
 
-	public func cast(signal: StateSignal<T,T>) {
+	public func cast(signal: StateSignal<T,ValueTransaction<T>>) {
 		_route(signal)
 	}
 
 	///
 
-	private func _route(signal: StateSignal<T,T>) {
+	private func _route(signal: StateSignal<T,ValueTransaction<T>>) {
 		routeSignalToValueMonitor(signal, self)
 	}
 }

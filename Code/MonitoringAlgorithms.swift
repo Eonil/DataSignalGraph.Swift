@@ -11,13 +11,16 @@
 ///
 struct MonitoringAlgorithms {
 
-	static func route<T, M: ExistenceMonitorType where M.Entry == T>(signal: StateSignal<T,T>, to monitor: M) {
+	static func route<T, M: ExistenceMonitorType where M.Entry == T>(signal: StateSignal<T,ValueTransaction<T>>, to monitor: M) {
 		switch signal.timing {
 		case .DidBegin:
 			if let didAdd = monitor.didAdd {
 				switch signal.by {
 				case nil:	didAdd(signal.state)
-				case _:		didAdd(signal.by!)
+				case _:
+					if let last = signal.by!.mutations.last {
+						didAdd(last.future)
+					}
 				}
 			}
 
@@ -25,7 +28,10 @@ struct MonitoringAlgorithms {
 			if let willRemove = monitor.willRemove {
 				switch signal.by {
 				case nil:	willRemove(signal.state)
-				case _:		willRemove(signal.by!)
+				case _:
+					if let last = signal.by!.mutations.last {
+						willRemove(last.past)
+					}
 				}
 			}
 		}

@@ -9,8 +9,8 @@
 public class ValueStorage<T>: ValueStorageType {
 	typealias	Element			=	T
 	typealias	Snapshot		=	T
-	typealias	Transaction		=	T
-	typealias	OutgoingSignal		=	StateSignal<Snapshot,Transaction>
+	typealias	Transaction		=	ValueTransaction<T>
+	typealias	OutgoingSignal		=	StateSignal<T,ValueTransaction<T>>
 
 	public typealias	Signal			=	OutgoingSignal
 	
@@ -25,9 +25,8 @@ public class ValueStorage<T>: ValueStorageType {
 			return	_snapshot
 		}
 		set(v) {
-			_relay.cast(OutgoingSignal.willEnd(_snapshot, by: v))
-			_snapshot	=	v
-			_relay.cast(OutgoingSignal.didBegin(_snapshot, by: v))
+			let	tran	=	Transaction([(snapshot,v)])
+			apply(tran)
 		}
 	}
 	public var state: Snapshot {
@@ -35,14 +34,15 @@ public class ValueStorage<T>: ValueStorageType {
 			return	_snapshot
 		}
 		set(v) {
-			_relay.cast(OutgoingSignal.willEnd(_snapshot, by: v))
-			_snapshot	=	v
-			_relay.cast(OutgoingSignal.didBegin(_snapshot, by: v))
+			let	tran	=	Transaction([(state,v)])
+			apply(tran)
 		}
 	}
 	public func apply(transaction: Transaction) {
 		_relay.cast(StateSignal.willEnd(_snapshot, by: transaction))
-		_snapshot	=	transaction
+		for m in transaction.mutations {
+			_snapshot	=	m.future
+		}
 		_relay.cast(StateSignal.didBegin(_snapshot, by: transaction))
 	}
 	public func register(identifier: ObjectIdentifier, handler: OutgoingSignal->()) {

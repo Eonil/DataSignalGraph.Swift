@@ -54,7 +54,7 @@ public protocol ExistenceMonitorType: SensitiveStationType {
 }
 
 public class ValueExistenceMonitor<T>: ExistenceMonitorType {
-	public typealias	Signal		=	ValueStorage<T>.Signal
+	public typealias	Signal		=	StateSignal<T,ValueTransaction<T>>
 
 	public var didAdd: ((T)->())?
 	public var willRemove: ((T)->())?
@@ -64,16 +64,16 @@ public class ValueExistenceMonitor<T>: ExistenceMonitorType {
 	}
 }
 
-public class SetExistenceMonitor<T: Hashable>: ExistenceMonitorType {
-	public typealias	Signal		=	SetStorage<T>.Signal
-
-	public var didAdd: ((T,())->())?
-	public var willRemove: ((T,())->())?
-
-	public func cast(signal: Signal) {
-		MonitoringAlgorithms.route(signal, to: self)
-	}
-}
+//public class SetExistenceMonitor<T: Hashable>: ExistenceMonitorType {
+//	public typealias	Signal		=	SetStorage<T>.Signal
+//
+//	public var didAdd: ((T,())->())?
+//	public var willRemove: ((T,())->())?
+//
+//	public func cast(signal: Signal) {
+//		MonitoringAlgorithms.route(signal, to: self)
+//	}
+//}
 
 //	Not ready yet.
 //public class ArrayExistenceMonitor<T>: ExistenceMonitorType {
@@ -87,15 +87,15 @@ public class SetExistenceMonitor<T: Hashable>: ExistenceMonitorType {
 //	}
 //}
 
-public class DictionaryExistenceMonitor<K: Hashable, V>: ExistenceMonitorType {
-	public typealias	Signal		=	DictionaryStorage<K,V>.Signal
-
-	public var didAdd: ((K,V)->())?
-	public var willRemove: ((K,V)->())?
-
-	public func cast(signal: Signal) {
-		MonitoringAlgorithms.route(signal, to: self)
-	}
-}
+//public class DictionaryExistenceMonitor<K: Hashable, V>: ExistenceMonitorType {
+//	public typealias	Signal		=	DictionaryStorage<K,V>.Signal
+//
+//	public var didAdd: ((K,V)->())?
+//	public var willRemove: ((K,V)->())?
+//
+//	public func cast(signal: Signal) {
+//		MonitoringAlgorithms.route(signal, to: self)
+//	}
+//}
 
 
