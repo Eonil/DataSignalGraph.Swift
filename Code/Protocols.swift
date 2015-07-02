@@ -109,9 +109,10 @@ public enum StateSignalingTiming {
 public protocol StateSignalType {
 	typealias	Snapshot
 	typealias	Transaction
+	typealias	Cause
 	var timing	:	StateSignalingTiming	{ get }
 	var state	:	Snapshot		{ get }
-	var by		:	Transaction?		{ get }
+	var by		:	Cause			{ get }
 }
 
 
@@ -123,7 +124,7 @@ public protocol ValueTransactionType: TransactionType {
 
 }
 public struct ValueTransaction<T>: ValueTransactionType {
-	typealias	Mutation	=	(past: T, future: T)
+	public typealias	Mutation	=	(past: T, future: T)
 	public var mutations: [Mutation]
 
 	public init(_ mutations: [Mutation]) {
@@ -143,9 +144,9 @@ public protocol CollectionTransactionType: TransactionType {
 	var mutations: [Mutation] { get }
 }
 public struct CollectionTransaction<K,V>: CollectionTransactionType {
-	typealias	Identity	=	K
-	typealias	State		=	V
-	typealias	Mutation	=	(identity: K, past: V?, future: V?)
+	public typealias	Identity	=	K
+	public typealias	State		=	V
+	public typealias	Mutation	=	(identity: K, past: V?, future: V?)
 	public var mutations: [Mutation]
 
 	public init(_ mutations: [Mutation]) {
@@ -156,19 +157,37 @@ public struct StateSignal<S,T: TransactionType>: StateSignalType {
 	typealias	Transaction	=	T
 	public var timing: StateSignalingTiming
 	public var state: S
-	public var by: T?
+	public var by: StateCause<S,T>
 }
-public enum StateCause<S,T,M> {
+public enum StateCause<S,T: TransactionType> {
 	case Session(()->S)
 	case Transaction(()->T)
-	case Mutation(()->M)
+	case Mutation(()->T.Mutation)
 }
 public extension StateSignal {
-	static func didBegin(state: S, by: T?) -> StateSignal {
+	static func didBegin(state: S, by: StateCause<S,T>) -> StateSignal {
 		return	StateSignal(timing: .DidBegin, state: state, by: by)
 	}
-	static func willEnd(state: S, by: T?) -> StateSignal {
+	static func willEnd(state: S, by: StateCause<S,T>) -> StateSignal {
 		return	StateSignal(timing: .WillEnd, state: state, by: by)
+	}
+	static func didBegin(state: S, by: S) -> StateSignal {
+		return	didBegin(state, by: StateCause.Session({by}))
+	}
+	static func willEnd(state: S, by: S) -> StateSignal {
+		return	willEnd(state, by: StateCause.Session({by}))
+	}
+	static func didBegin(state: S, by: T) -> StateSignal {
+		return	didBegin(state, by: StateCause.Transaction({by}))
+	}
+	static func willEnd(state: S, by: T) -> StateSignal {
+		return	willEnd(state, by: StateCause.Transaction({by}))
+	}
+	static func didBegin(state: S, by: T.Mutation) -> StateSignal {
+		return	didBegin(state, by: StateCause.Mutation({by}))
+	}
+	static func willEnd(state: S, by: T.Mutation) -> StateSignal {
+		return	willEnd(state, by: StateCause.Mutation({by}))
 	}
 }
 public protocol StateChannelType: ChannelType, EmissiveStationType {
