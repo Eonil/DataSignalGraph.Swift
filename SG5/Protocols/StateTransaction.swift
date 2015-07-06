@@ -9,9 +9,9 @@
 public protocol ValueTransactionType: TransactionType {
 }
 public protocol CollectionTransactionType: TransactionType {
-	typealias	Identity
+	typealias	Segment
 	typealias	State
-	typealias	Mutation	=	(identity: Identity, past: State?, future: State?)
+	typealias	Mutation	=	(segment: Segment, past: State?, future: State?)
 	var mutations: [Mutation] { get }
 }
 

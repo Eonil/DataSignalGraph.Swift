@@ -45,9 +45,9 @@ public class ArrayStorage<T>: ArrayStorageType {
 			_cast(HOTFIX_StateSignalUtility.willEndStateByMutation(_snapshot, mutation: m))
 			switch m {
 			case (_,nil,nil):	fatalError()
-			case (_,nil,_):		_snapshot.splice(m.future!, atIndex: m.identity.startIndex)
-			case (_,_,nil):		_snapshot.removeRange(m.identity)
-			case (_,_,_):		_snapshot.replaceRange(m.identity, with: m.future!)
+			case (_,nil,_):		_snapshot.splice(m.future!, atIndex: m.segment.startIndex)
+			case (_,_,nil):		_snapshot.removeRange(m.segment)
+			case (_,_,_):		_snapshot.replaceRange(m.segment, with: m.future!)
 			}
 			_cast(HOTFIX_StateSignalUtility.didBeginStateByMutation(_snapshot, mutation: m))
 		}
@@ -67,9 +67,6 @@ public class ArrayStorage<T>: ArrayStorageType {
 	public func deregister<S: SensitiveStationType where S.IncomingSignal == OutgoingSignal>(s: S) {
 		deregister(ObjectIdentifier(s))
 	}
-	public func register(ArrayMonitor<T>) {
-		
-	}
 //	public func register<S: SensitiveStationType where S.IncomingSignal == OutgoingSignal, S: StateSegmentMonitor>(s: S) {
 //		_frequentRelay.register(ObjectIdentifier(s))	{ [weak s] in s!.cast($0) }
 //		s.cast(HOTFIX_StateSignalUtility.didBeginStateBySession(_snapshot))
@@ -87,9 +84,6 @@ public class ArrayStorage<T>: ArrayStorageType {
 	private var		_snapshot	:	[T]
 
 	private func _cast(signal: Signal) {
-		_relay.cast(signal)
-	}
-	private func _castFrequently(signal: Signal) {
 		_relay.cast(signal)
 	}
 }

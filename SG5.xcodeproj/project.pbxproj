@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		452E68C91B46D29100EEEC75 /* SetStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452E68C81B46D29100EEEC75 /* SetStorage.swift */; };
+		452E68CD1B479CDD00EEEC75 /* CollectionMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452E68CC1B479CDD00EEEC75 /* CollectionMonitor.swift */; };
+		452E68CF1B47A65C00EEEC75 /* DictionaryStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452E68CE1B47A65C00EEEC75 /* DictionaryStorage.swift */; };
+		452E68D11B47AA7C00EEEC75 /* ValueStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452E68D01B47AA7C00EEEC75 /* ValueStorage.swift */; };
+		452E68D91B47B95B00EEEC75 /* DictionaryFilteringDictionaryChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452E68D61B47B95B00EEEC75 /* DictionaryFilteringDictionaryChannel.swift */; };
+		452E68DA1B47B95B00EEEC75 /* DictionaryOrderingArrayChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452E68D71B47B95B00EEEC75 /* DictionaryOrderingArrayChannel.swift */; };
+		452E68DB1B47B95B00EEEC75 /* ArrayMappingArrayChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452E68D81B47B95B00EEEC75 /* ArrayMappingArrayChannel.swift */; };
+		452E68DD1B48042E00EEEC75 /* StateStorageUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452E68DC1B48042E00EEEC75 /* StateStorageUtility.swift */; };
+		452E68DF1B48C04200EEEC75 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452E68DE1B48C04200EEEC75 /* Test.swift */; };
+		452E68E11B48C26C00EEEC75 /* ValueMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452E68E01B48C26C00EEEC75 /* ValueMonitor.swift */; };
 		459929681B42DF0E00D5162A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459929671B42DF0E00D5162A /* main.swift */; };
 		45B9ACFE1B44174500E29D15 /* StatelessSignaling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B9ACFD1B44174500E29D15 /* StatelessSignaling.swift */; };
 		45B9AD001B44176900E29D15 /* StateStorages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B9ACFF1B44176900E29D15 /* StateStorages.swift */; };
@@ -19,7 +29,6 @@
 		45B9AD111B44192800E29D15 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B9AD0C1B44188000E29D15 /* Transaction.swift */; };
 		45D9EB8B1B442BCF003030E4 /* StateMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D9EB8A1B442BCF003030E4 /* StateMonitor.swift */; };
 		45D9EB8D1B443428003030E4 /* HOTFIX_StateSignalUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D9EB8C1B443428003030E4 /* HOTFIX_StateSignalUtility.swift */; };
-		45D9EB8F1B44464B003030E4 /* ArrayMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D9EB8E1B44464B003030E4 /* ArrayMonitor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,6 +44,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		452E68C81B46D29100EEEC75 /* SetStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetStorage.swift; sourceTree = "<group>"; };
+		452E68CC1B479CDD00EEEC75 /* CollectionMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionMonitor.swift; sourceTree = "<group>"; };
+		452E68CE1B47A65C00EEEC75 /* DictionaryStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryStorage.swift; sourceTree = "<group>"; };
+		452E68D01B47AA7C00EEEC75 /* ValueStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueStorage.swift; sourceTree = "<group>"; };
+		452E68D61B47B95B00EEEC75 /* DictionaryFilteringDictionaryChannel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryFilteringDictionaryChannel.swift; sourceTree = "<group>"; };
+		452E68D71B47B95B00EEEC75 /* DictionaryOrderingArrayChannel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryOrderingArrayChannel.swift; sourceTree = "<group>"; };
+		452E68D81B47B95B00EEEC75 /* ArrayMappingArrayChannel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayMappingArrayChannel.swift; sourceTree = "<group>"; };
+		452E68DC1B48042E00EEEC75 /* StateStorageUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateStorageUtility.swift; sourceTree = "<group>"; };
+		452E68DE1B48C04200EEEC75 /* Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
+		452E68E01B48C26C00EEEC75 /* ValueMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueMonitor.swift; sourceTree = "<group>"; };
 		459929641B42DF0E00D5162A /* SG5 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SG5; sourceTree = BUILT_PRODUCTS_DIR; };
 		459929671B42DF0E00D5162A /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		45B9ACFD1B44174500E29D15 /* StatelessSignaling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatelessSignaling.swift; sourceTree = "<group>"; };
@@ -48,7 +67,6 @@
 		45B9AD0D1B4418A300E29D15 /* Relay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Relay.swift; sourceTree = "<group>"; };
 		45D9EB8A1B442BCF003030E4 /* StateMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateMonitor.swift; sourceTree = "<group>"; };
 		45D9EB8C1B443428003030E4 /* HOTFIX_StateSignalUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HOTFIX_StateSignalUtility.swift; sourceTree = "<group>"; };
-		45D9EB8E1B44464B003030E4 /* ArrayMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayMonitor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +80,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		452E68D41B47ABED00EEEC75 /* (storages) */ = {
+			isa = PBXGroup;
+			children = (
+				452E68D01B47AA7C00EEEC75 /* ValueStorage.swift */,
+				452E68C81B46D29100EEEC75 /* SetStorage.swift */,
+				45B9AD0A1B44188000E29D15 /* ArrayStorage.swift */,
+				452E68CE1B47A65C00EEEC75 /* DictionaryStorage.swift */,
+			);
+			name = "(storages)";
+			sourceTree = "<group>";
+		};
+		452E68D51B47AC0000EEEC75 /* (tranformations) */ = {
+			isa = PBXGroup;
+			children = (
+				452E68D61B47B95B00EEEC75 /* DictionaryFilteringDictionaryChannel.swift */,
+				452E68D71B47B95B00EEEC75 /* DictionaryOrderingArrayChannel.swift */,
+				452E68D81B47B95B00EEEC75 /* ArrayMappingArrayChannel.swift */,
+			);
+			name = "(tranformations)";
+			sourceTree = "<group>";
+		};
 		4599295B1B42DF0E00D5162A = {
 			isa = PBXGroup;
 			children = (
@@ -82,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				459929671B42DF0E00D5162A /* main.swift */,
+				452E68DE1B48C04200EEEC75 /* Test.swift */,
 				45B9ACFC1B44173B00E29D15 /* Protocols */,
 				45B9AD091B44188000E29D15 /* Implementations */,
 			);
@@ -107,9 +147,12 @@
 				45B9AD0D1B4418A300E29D15 /* Relay.swift */,
 				45B9AD0B1B44188000E29D15 /* StateSignal.swift */,
 				45B9AD0C1B44188000E29D15 /* Transaction.swift */,
-				45B9AD0A1B44188000E29D15 /* ArrayStorage.swift */,
-				45D9EB8E1B44464B003030E4 /* ArrayMonitor.swift */,
+				452E68D41B47ABED00EEEC75 /* (storages) */,
+				452E68E01B48C26C00EEEC75 /* ValueMonitor.swift */,
+				452E68CC1B479CDD00EEEC75 /* CollectionMonitor.swift */,
+				452E68D51B47AC0000EEEC75 /* (tranformations) */,
 				45D9EB8C1B443428003030E4 /* HOTFIX_StateSignalUtility.swift */,
+				452E68DC1B48042E00EEEC75 /* StateStorageUtility.swift */,
 			);
 			path = Implementations;
 			sourceTree = "<group>";
@@ -171,19 +214,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				452E68E11B48C26C00EEEC75 /* ValueMonitor.swift in Sources */,
 				459929681B42DF0E00D5162A /* main.swift in Sources */,
 				45B9AD101B44192800E29D15 /* StateSignal.swift in Sources */,
 				45B9AD0F1B44192800E29D15 /* ArrayStorage.swift in Sources */,
 				45B9AD001B44176900E29D15 /* StateStorages.swift in Sources */,
+				452E68C91B46D29100EEEC75 /* SetStorage.swift in Sources */,
 				45B9AD111B44192800E29D15 /* Transaction.swift in Sources */,
+				452E68CD1B479CDD00EEEC75 /* CollectionMonitor.swift in Sources */,
+				452E68D91B47B95B00EEEC75 /* DictionaryFilteringDictionaryChannel.swift in Sources */,
 				45D9EB8B1B442BCF003030E4 /* StateMonitor.swift in Sources */,
 				45D9EB8D1B443428003030E4 /* HOTFIX_StateSignalUtility.swift in Sources */,
+				452E68DD1B48042E00EEEC75 /* StateStorageUtility.swift in Sources */,
 				45B9AD061B4417D600E29D15 /* StateTransformation.swift in Sources */,
 				45B9AD021B44177000E29D15 /* StateTransaction.swift in Sources */,
-				45D9EB8F1B44464B003030E4 /* ArrayMonitor.swift in Sources */,
 				45B9AD0E1B4418A300E29D15 /* Relay.swift in Sources */,
+				452E68DB1B47B95B00EEEC75 /* ArrayMappingArrayChannel.swift in Sources */,
+				452E68DA1B47B95B00EEEC75 /* DictionaryOrderingArrayChannel.swift in Sources */,
+				452E68CF1B47A65C00EEEC75 /* DictionaryStorage.swift in Sources */,
+				452E68DF1B48C04200EEEC75 /* Test.swift in Sources */,
 				45B9AD041B44178A00E29D15 /* StatefulSignaling.swift in Sources */,
 				45B9ACFE1B44174500E29D15 /* StatelessSignaling.swift in Sources */,
+				452E68D11B47AA7C00EEEC75 /* ValueStorage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,6 +10,10 @@ import Foundation
 
 ///	Exists because Swift 1.x cannot support multi-type enum and that makes 
 ///	signal building overly complex more than it should be.
+///
+///	These functions will be removed with Swift 2.x and replaced by direct instantiation
+///	of each enum values.
+///
 struct HOTFIX_StateSignalUtility {
 	static func didBeginStateBySession<S,T: TransactionType>(state: S) -> StateSignal<S,T> {
 		return	StateSignal.DidBegin(state: {state}, by: {StateSignalingCause<S,T>.Session({state})})

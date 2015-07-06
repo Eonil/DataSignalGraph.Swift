@@ -7,8 +7,7 @@
 //
 
 ///	Monitors session initiation and termination.
-public protocol SessionMonitor {
-	typealias	Snapshot
+public protocol SessionMonitorType {
 	var		didInitiate	:	(()->())?		{ get set }
 	var		willTerminate	:	(()->())?		{ get set }
 }
@@ -30,12 +29,33 @@ public protocol StateMonitorType {
 ///	Provides monitoring of add/remove of each segment. (element in collections)
 ///	
 ///	**NOTE** These events are occured for EVERY element so it's very frequent.
-///	Then it may degrade performance greatly. Use with your care.
+///	Then it may degrade performance greatly. Use carefully.
 ///
 public protocol StateSegmentMonitorType: SensitiveStationType {
-	typealias	Key
-	typealias	Value
-	typealias	Segment		=	(Key,Value)
+	typealias	Segment
 	var		didAdd		:	(Segment->())?		{ get set }
 	var		willRemove	:	(Segment->())?		{ get set }
 }
+
+public protocol StateCollectionSegmentMonitorType: StateSegmentMonitorType {
+	typealias	Key
+	typealias	Value
+	typealias	Segment		=	(Key,Value)
+}
+
+
+
+
+
+
+
+
+public protocol ValueMonitorType: StateSegmentMonitorType, StateMonitorType, TransactionMonitorType, SessionMonitorType {
+}
+
+public protocol CollectionMonitorType: StateSegmentMonitorType, StateMonitorType, TransactionMonitorType, SessionMonitorType {
+}
+
+
+
+

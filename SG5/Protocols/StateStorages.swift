@@ -133,6 +133,7 @@ public protocol EditableSet: ViewableSet, Editable, Countable {
 	typealias	Element		:	Hashable
 	mutating func insert(member: Element)
 	mutating func remove(member: Element) -> Element?
+	mutating func removeAll() 
 }
 
 public protocol ViewableArray: Viewable, Countable {

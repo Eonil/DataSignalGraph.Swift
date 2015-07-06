@@ -24,7 +24,7 @@ public protocol DictionaryFilteringDictionaryChannelType: DictionaryChannelType,
 	var filter: ((Key,Value)->Bool)? { get set }
 }
 ///	"sorting" means re-ordering of existing fixed data set.
-///	"ordering" means mutating a data set keeping ordering between elements.
+///	"ordering" means defining order between elements for a mutating data set.
 public protocol DictionaryOrderingArrayChannelType: ArrayChannelType, RelayingStationType {
 	typealias	Key		:	Hashable
 	typealias	Value
