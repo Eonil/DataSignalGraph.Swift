@@ -111,14 +111,9 @@ extension DictionaryStorage: EditableDictionary, CollectionType, SequenceType {
 			return	_snapshot[key]
 		}
 		set(v) {
-			var	ms	=	Array<Transaction.Mutation>()
-			if let old = _snapshot[key] {
-				ms.append((key, old, nil))
-			}
-			if let new = v {
-				ms.append((key, nil, new))
-			}
-			apply(Transaction(ms))
+			let	new	=	v
+			let	old	=	_snapshot[key]
+			apply(Transaction([(key, old, new)]))
 		}
 	}
 
@@ -126,11 +121,9 @@ extension DictionaryStorage: EditableDictionary, CollectionType, SequenceType {
 
 	public func updateValue(value: Value, forKey key: Key) -> Value? {
 		let	new	=	value
-		if let old = _snapshot[key] {
-			apply(Transaction([(key, old, new)]))
-			return	old
-		}
-		return	nil
+		let	old	=	_snapshot[key]
+		apply(Transaction([(key, old, new)]))
+		return	old
 	}
 	public func removeValueForKey(key: Key) -> Value? {
 		if let old = _snapshot[key] {

@@ -19,7 +19,7 @@ struct HOTFIX_StateSignalUtility {
 		return	StateSignal.DidBegin(state: {state}, by: {StateSignalingCause<S,T>.Session({state})})
 	}
 	static func willEndStateBySession<S,T: TransactionType>(state: S) -> StateSignal<S,T> {
-		return	StateSignal.DidBegin(state: {state}, by: {StateSignalingCause<S,T>.Session({state})})
+		return	StateSignal.WillEnd(state: {state}, by: {StateSignalingCause<S,T>.Session({state})})
 	}
 	static func didBeginStateByTransaction<S,T: TransactionType>(state: S, transaction: T) -> StateSignal<S,T> {
 		return	StateSignal.DidBegin(state: {state}, by: {StateSignalingCause<S,T>.Transaction({transaction})})

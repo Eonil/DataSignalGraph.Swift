@@ -24,10 +24,12 @@
 ///	For transactions,
 ///
 ///	1.	didApply
-///	2.	didBegin
+///	2.	willApply
 ///
-///	3.	willEnd
-///	4.	willApply
+///	Transaction does not trigger begin/end notification.
+///	Because each mutation will trigger them. If a transaction
+///	is empty with no mutation, then it means begin/end are 
+///	happening.
 ///
 ///	For mutations,
 ///
@@ -66,8 +68,11 @@ public class CollectionMonitor<S: CollectionType, K, V>: CollectionMonitorType, 
 
 		case .DidBegin(let state, let by):
 			switch by() {
-			case .Session(let s):		didInitiate?()
-			case .Transaction(let t):	didApply?(t())
+			case .Session(let s):
+				didInitiate?()
+				didBegin?(state())
+			case .Transaction(let t):
+				didApply?(t())
 			case .Mutation(let m):
 				let	m	=	m()
 				switch m {
@@ -76,22 +81,25 @@ public class CollectionMonitor<S: CollectionType, K, V>: CollectionMonitorType, 
 				case (_, _, nil):	break
 				case (_, _, _):		didAdd?(m.segment, m.future!)
 				}
+				didBegin?(state())
 			}
-			didBegin?(state())
 
 		case .WillEnd(let state, let by):
-			willEnd?(state())
 			switch by() {
 			case .Mutation(let m):
+				willEnd?(state())
 				let	m	=	m()
 				switch m {
 				case (_, nil, nil):	fatalError("Irrational combination.")
-				case (_, nil, _):	willRemove?(m.segment, m.past!)
-				case (_, _, nil):	break
+				case (_, nil, _):	break
+				case (_, _, nil):	willRemove?(m.segment, m.past!)
 				case (_, _, _):		willRemove?(m.segment, m.past!)
 				}
-			case .Transaction(let t):	willApply?(t())
-			case .Session(let s):		willTerminate?()
+			case .Transaction(let t):
+				willApply?(t())
+			case .Session(let s):
+				willEnd?(state())
+				willTerminate?()
 			}
 
 		}

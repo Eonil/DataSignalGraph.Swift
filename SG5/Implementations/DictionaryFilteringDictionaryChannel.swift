@@ -87,9 +87,9 @@ public class DictionaryFilteringDictionaryChannel<K: Hashable, V>: DictionaryFil
 	private func _applyTransactionWithFiltering(transaction: Transaction) {
 		let	muts	=	transaction.mutations.map(_filterMutation).filter({ $0 != nil }).map({ $0! })
 		let	tran1	=	Transaction(muts)
-		_relay.cast(HOTFIX_StateSignalUtility.willEndStateByTransaction(_snapshot!, transaction: tran1))
+//		_relay.cast(HOTFIX_StateSignalUtility.willEndStateByTransaction(_snapshot!, transaction: tran1))
 		StateStorageUtility.apply(tran1, to: &_snapshot!, relay: _relay)
-		_relay.cast(HOTFIX_StateSignalUtility.didBeginStateByTransaction(_snapshot!, transaction: tran1))
+//		_relay.cast(HOTFIX_StateSignalUtility.didBeginStateByTransaction(_snapshot!, transaction: tran1))
 	}
 	private func _filterMutation(m: Transaction.Mutation) -> Transaction.Mutation? {
 		switch (m.past, m.future) {

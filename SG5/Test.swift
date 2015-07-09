@@ -117,24 +117,26 @@ func testAll() {
 		let	m1		=	SetMonitor<Int>()
 		m1.didInitiate		=	{ x.satisfy(1) }
 		m1.didApply		=	{ _ in x.satisfy(2) }
-		m1.didBegin		=	{ _ in x.satisfy(3) }
-		m1.willEnd		=	{ _ in x.satisfy(4) }
-		m1.willApply		=	{ _ in x.satisfy(5) }
-		m1.willTerminate	=	{ x.satisfy(6) }
+		m1.didAdd		=	{ _ in x.satisfy(3) }
+		m1.didBegin		=	{ _ in x.satisfy(4) }
+		m1.willEnd		=	{ _ in x.satisfy(5) }
+		m1.willRemove		=	{ _ in x.satisfy(6) }
+		m1.willApply		=	{ _ in x.satisfy(7) }
+		m1.willTerminate	=	{ x.satisfy(8) }
 
-		x.expect([1,3])
+		x.expect([1,4])
 		v1.register(m1)
 		x.check()
 
-		x.expect([4,5,2,3])
+		x.expect([7,5,3,4,2])
 		v1.insert(444)
 		x.check()
 
-		x.expect([4,5,2,3])
+		x.expect([7,5,6,4,2])
 		v1.remove(222)
 		x.check()
 
-		x.expect([4,6])
+		x.expect([5,8])
 		v1.deregister(m1)
 		x.check()
 
@@ -150,24 +152,26 @@ func testAll() {
 		let	m1		=	ArrayMonitor<Int>()
 		m1.didInitiate		=	{ x.satisfy(1) }
 		m1.didApply		=	{ _ in x.satisfy(2) }
-		m1.didBegin		=	{ _ in x.satisfy(3) }
-		m1.willEnd		=	{ _ in x.satisfy(4) }
-		m1.willApply		=	{ _ in x.satisfy(5) }
-		m1.willTerminate	=	{ x.satisfy(6) }
+		m1.didAdd		=	{ _ in x.satisfy(3) }
+		m1.didBegin		=	{ _ in x.satisfy(4) }
+		m1.willEnd		=	{ _ in x.satisfy(5) }
+		m1.willRemove		=	{ _ in x.satisfy(6) }
+		m1.willApply		=	{ _ in x.satisfy(7) }
+		m1.willTerminate	=	{ x.satisfy(8) }
 
-		x.expect([1,3])
+		x.expect([1,4])
 		v1.register(m1)
 		x.check()
 
-		x.expect([4,5,2,3])
+		x.expect([7,5,3,4,2])
 		v1.append(444)
 		x.check()
 
-		x.expect([4,5,2,3])
+		x.expect([7,5,6,4,2])
 		v1.removeAtIndex(2)
 		x.check()
 
-		x.expect([4,6])
+		x.expect([5,8])
 		v1.deregister(m1)
 		x.check()
 
@@ -185,24 +189,26 @@ func testAll() {
 		let	m1		=	DictionaryMonitor<Int, String>()
 		m1.didInitiate		=	{ x.satisfy(1) }
 		m1.didApply		=	{ _ in x.satisfy(2) }
-		m1.didBegin		=	{ _ in x.satisfy(3) }
-		m1.willEnd		=	{ _ in x.satisfy(4) }
-		m1.willApply		=	{ _ in x.satisfy(5) }
-		m1.willTerminate	=	{ x.satisfy(6) }
+		m1.didAdd		=	{ _ in x.satisfy(3) }
+		m1.didBegin		=	{ _ in x.satisfy(4) }
+		m1.willEnd		=	{ _ in x.satisfy(5) }
+		m1.willRemove		=	{ _ in x.satisfy(6) }
+		m1.willApply		=	{ _ in x.satisfy(7) }
+		m1.willTerminate	=	{ x.satisfy(8) }
 
-		x.expect([1,3])
+		x.expect([1,4])
 		v1.register(m1)
 		x.check()
 
-		x.expect([4,5,2,3])
+		x.expect([7,5,3,4,2])
 		v1[444]	=	"D"
 		x.check()
 
-		x.expect([4,5,2,3])
+		x.expect([7,5,6,4,2])
 		v1.removeValueForKey(111)
 		x.check()
 
-		x.expect([4,6])
+		x.expect([5,8])
 		v1.deregister(m1)
 		x.check()
 
@@ -223,51 +229,53 @@ func testAll() {
 		let	m1	=	DictionaryMonitor<Int,String>()
 		m1.didInitiate		=	{ x.satisfy(1) }
 		m1.didApply		=	{ _ in x.satisfy(2) }
-		m1.didBegin		=	{ _ in x.satisfy(3) }
-		m1.willEnd		=	{ _ in x.satisfy(4) }
-		m1.willApply		=	{ _ in x.satisfy(5) }
-		m1.willTerminate	=	{ x.satisfy(6) }
+		m1.didAdd		=	{ _ in x.satisfy(3) }
+		m1.didBegin		=	{ _ in x.satisfy(4) }
+		m1.willEnd		=	{ _ in x.satisfy(5) }
+		m1.willRemove		=	{ _ in x.satisfy(6) }
+		m1.willApply		=	{ _ in x.satisfy(7) }
+		m1.willTerminate	=	{ x.satisfy(8) }
 
 		x.expect([])
 		a2.register(m1)
 		x.check()
 
-		x.expect([1,3])
+		x.expect([1,4])
 		a1.register(ObjectIdentifier(a2)) 	{ a2.cast($0) }
 		x.check()
 
-		x.expect([4,5,2,3])
+		x.expect([7,2])		//	Filter will filter out some muttions, but not transaction itself.
 		a1[111]	=	"AAA"
 		x.check()
 		assert(a1.snapshot == [111: "AAA"])
 		assert(a2.snapshot == [:])
 
-		x.expect([4,5,2,3])
+		x.expect([7,2])		//	Filter will filter out some muttions, but not transaction itself.
 		a1[111]	=	nil
 		x.check()
 		assert(a1.snapshot == [:])
 		assert(a2.snapshot == [:])
 
-		x.expect([4,5,2,3,4,5,2,3])
+		x.expect([7,2,7,5,3,4,2])
 		a1[111]	=	"AAA"
 		a1[222]	=	"BBB"
 		x.check()
 		assert(a1.snapshot == [111: "AAA", 222: "BBB"])
 		assert(a2.snapshot == [222: "BBB"])
 
-		x.expect([4,5,2,3])
+		x.expect([7,2])
 		a1[111]	=	nil
 		x.check()
 		assert(a1.snapshot == [222: "BBB"])
 		assert(a2.snapshot == [222: "BBB"])
 
-		x.expect([4,5,2,3])
+		x.expect([7,5,6,4,2])
 		a1[222]	=	nil
 		x.check()
 		assert(a1.snapshot == [:])
 		assert(a2.snapshot == [:])
 
-		x.expect([4,6])
+		x.expect([5,8])
 		a1.deregister(ObjectIdentifier(a2))
 		x.check()
 
@@ -285,16 +293,18 @@ func testAll() {
 			let	m1	=	ArrayMonitor<(Int,String)>()
 			m1.didInitiate		=	{ x.satisfy(1) }
 			m1.didApply		=	{ _ in x.satisfy(2) }
-			m1.didBegin		=	{ _ in x.satisfy(3) }
-			m1.willEnd		=	{ _ in x.satisfy(4) }
-			m1.willApply		=	{ _ in x.satisfy(5) }
-			m1.willTerminate	=	{ x.satisfy(6) }
+			m1.didAdd		=	{ _ in x.satisfy(3) }
+			m1.didBegin		=	{ _ in x.satisfy(4) }
+			m1.willEnd		=	{ _ in x.satisfy(5) }
+			m1.willRemove		=	{ _ in x.satisfy(6) }
+			m1.willApply		=	{ _ in x.satisfy(7) }
+			m1.willTerminate	=	{ x.satisfy(8) }
 
 			x.expect([])
 			a2.register(m1)
 			x.check()
 
-			x.expect([1,3])
+			x.expect([1,4])
 			a1.register(ObjectIdentifier(a2)) 	{ a2.cast($0) }
 			x.check()
 
