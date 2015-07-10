@@ -89,9 +89,9 @@ public class DictionaryOrderingArrayChannel<K: Hashable, V, C: Comparable>: Dict
 	private func _applyTransactionWithSorting(transaction: IncomingSignal.Transaction) {
 		let	muts	=	_flatten(transaction.mutations.map(_sortMutation))
 		let	tran1	=	OutgoingSignal.Transaction(muts)
-		_relay.cast(HOTFIX_StateSignalUtility.willEndStateByTransaction(_snapshot!, transaction: tran1))
+//		_relay.cast(HOTFIX_StateSignalUtility.willEndStateByTransaction(_snapshot!, transaction: tran1))
 		StateStorageUtility.apply(tran1, to: &_snapshot!, relay: _relay)
-		_relay.cast(HOTFIX_StateSignalUtility.didBeginStateByTransaction(_snapshot!, transaction: tran1))
+//		_relay.cast(HOTFIX_StateSignalUtility.didBeginStateByTransaction(_snapshot!, transaction: tran1))
 	}
 
 	private func _sortSnapshot(snapshot: [K:V]) -> Array<(K,V)> {

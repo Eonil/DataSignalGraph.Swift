@@ -68,18 +68,26 @@ public class ValueMonitor<T>: ValueMonitorType, SensitiveStationType, StateSegme
 
 		case .DidBegin(let state, let by):
 			switch by() {
-			case .Session(let s):		didInitiate?()
-			case .Transaction(let t):	didApply?(t())
-			case .Mutation(let m):		didAdd?(m().future)
+			case .Session(let s):
+				didInitiate?()
+				didBegin?(state())
+			case .Transaction(let t):
+				didApply?(t())
+			case .Mutation(let m):
+				didAdd?(m().future)
+				didBegin?(state())
 			}
-			didBegin?(state())
 
 		case .WillEnd(let state, let by):
-			willEnd?(state())
 			switch by() {
-			case .Mutation(let m):		willRemove?(m().past)
-			case .Transaction(let t):	willApply?(t())
-			case .Session(let s):		willTerminate?()
+			case .Mutation(let m):
+				willEnd?(state())
+				willRemove?(m().past)
+			case .Transaction(let t):
+				willApply?(t())
+			case .Session(let s):
+				willEnd?(state())
+				willTerminate?()
 			}
 
 		}

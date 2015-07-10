@@ -308,38 +308,38 @@ func testAll() {
 			a1.register(ObjectIdentifier(a2)) 	{ a2.cast($0) }
 			x.check()
 
-			x.expect([4,5,2,3])
+			x.expect([7,5,3,4,2])
 			a1[111]	=	"AAA"
 			x.check()
 			assert(a1.snapshot == [111: "AAA"])
 			assert(a2.snapshot == [(111,"AAA")])
 
-			x.expect([4,5,2,3])
+			x.expect([7,5,6,4,2])
 			a1[111]	=	nil
 			x.check()
 			assert(a1.snapshot == [:])
 			assert(a2.snapshot == [])
 
-			x.expect([4,5,2,3,4,5,2,3])
+			x.expect([7,5,3,4,2,7,5,3,4,2])
 			a1[111]	=	"AAA"
 			a1[222]	=	"BBB"
 			x.check()
 			assert(a1.snapshot == [111: "AAA", 222: "BBB"])
 			assert(a2.snapshot == [(111,"AAA"), (222,"BBB")])
 
-			x.expect([4,5,2,3])
+			x.expect([7,5,6,4,2])
 			a1[111]	=	nil
 			x.check()
 			assert(a1.snapshot == [222: "BBB"])
 			assert(a2.snapshot == [((222,"BBB"))])
 
-			x.expect([4,5,2,3])
+			x.expect([7,5,6,4,2])
 			a1[222]	=	nil
 			x.check()
 			assert(a1.snapshot == [:])
 			assert(a2.snapshot == [])
 
-			x.expect([4,6])
+			x.expect([5,8])
 			a1.deregister(ObjectIdentifier(a2))
 			x.check()
 
@@ -372,32 +372,34 @@ func testAll() {
 		let	m1	=	ArrayMonitor<String>()
 		m1.didInitiate		=	{ x.satisfy(1) }
 		m1.didApply		=	{ _ in x.satisfy(2) }
-		m1.didBegin		=	{ _ in x.satisfy(3) }
-		m1.willEnd		=	{ _ in x.satisfy(4) }
-		m1.willApply		=	{ _ in x.satisfy(5) }
-		m1.willTerminate	=	{ x.satisfy(6) }
+		m1.didAdd		=	{ _ in x.satisfy(3) }
+		m1.didBegin		=	{ _ in x.satisfy(4) }
+		m1.willEnd		=	{ _ in x.satisfy(5) }
+		m1.willRemove		=	{ _ in x.satisfy(6) }
+		m1.willApply		=	{ _ in x.satisfy(7) }
+		m1.willTerminate	=	{ x.satisfy(8) }
 
 		x.expect([])
 		a2.register(m1)
 		x.check()
 
-		x.expect([1,3])
+		x.expect([1,4])
 		a1.register(ObjectIdentifier(a2)) 	{ a2.cast($0) }
 		x.check()
 
-		x.expect([4,5,2,3])
+		x.expect([7,5,3,4,2])
 		a1.append(999)
 		x.check()
 		assert(a1.snapshot == [999])
 		assert(a2.snapshot == ["V:999"])
 
-		x.expect([4,5,2,3])
+		x.expect([7,5,6,4,2])
 		a1.removeAtIndex(0)
 		x.check()
 		assert(a1.snapshot == [])
 		assert(a2.snapshot == [])
 
-		x.expect([4,6])
+		x.expect([5,8])
 		a1.deregister(ObjectIdentifier(a2))
 		x.check()
 
@@ -407,27 +409,29 @@ func testAll() {
 	}
 
 	run("`ValueMonitor` basics.") {
-		let	x	=	Expect<Int>()
-		let	v	=	ValueStorage<Int>(111)
-		let	m	=	ValueMonitor<Int>()
-		m.didInitiate	=	{ x.satisfy(1) }
-		m.didApply	=	{ _ in x.satisfy(2) }
-		m.didBegin	=	{ _ in x.satisfy(3) }
-		m.willEnd	=	{ _ in x.satisfy(4) }
-		m.willApply	=	{ _ in x.satisfy(5) }
-		m.willTerminate	=	{ x.satisfy(6) }
+		let	x		=	Expect<Int>()
+		let	v		=	ValueStorage<Int>(111)
+		let	m1		=	ValueMonitor<Int>()
+		m1.didInitiate		=	{ x.satisfy(1) }
+		m1.didApply		=	{ _ in x.satisfy(2) }
+		m1.didAdd		=	{ _ in x.satisfy(3) }
+		m1.didBegin		=	{ _ in x.satisfy(4) }
+		m1.willEnd		=	{ _ in x.satisfy(5) }
+		m1.willRemove		=	{ _ in x.satisfy(6) }
+		m1.willApply		=	{ _ in x.satisfy(7) }
+		m1.willTerminate	=	{ x.satisfy(8) }
 
-		x.expect([1,3])
-		v.register(m)
+		x.expect([1,4])
+		v.register(m1)
 		x.check()
 
-		x.expect([4,5,2,3])
+		x.expect([7,5,6,3,4,2])
 		v.state	=	222
 		x.check()
 		assert(v.snapshot == 222)
 
-		x.expect([4,6])
-		v.deregister(m)
+		x.expect([5,8])
+		v.deregister(m1)
 		x.check()
 
 		x.expect([])
@@ -435,88 +439,6 @@ func testAll() {
 		x.check()
 		assert(v.state == 333)
 	}
-
-//	run ("ExistenceMonitor family test.") {
-//		run {
-//			let	x	=	Expect<Int>()
-//			let	v	=	ArrayStorage<Int>([])
-//			let	m	=	ArrayExistenceMonitor<Int>()
-//			m.didAdd	=	{ _ in x.satisfy(1) }
-//			m.willRemove	=	{ _ in x.satisfy(2) }
-//
-//			x.expect([])
-//			v.register(m)
-//			x.check()
-//
-//			x.expect([1])
-//			v.append(111)
-//			x.check()
-//
-//			x.expect([1])
-//			v.append(222)
-//			x.check()
-//
-//			x.expect([1])
-//			v.append(333)
-//			x.check()
-//
-//			x.expect([2])
-//			v.removeLast()
-//			x.check()
-//
-//			x.expect([2,2])
-//			v.deregister(m)
-//			x.check()
-//		}
-//
-//		run {
-//			let	x	=	Expect<Int>()
-//			let	v	=	ArrayStorage<Int>([111, 222])
-//			let	m	=	ArrayExistenceMonitor<Int>()
-//			m.didAdd	=	{ _ in x.satisfy(1) }
-//			m.willRemove	=	{ _ in x.satisfy(2) }
-//
-//			x.expect([1,1])
-//			v.register(m)
-//			x.check()
-//
-//			x.expect([1])
-//			v.append(333)
-//			x.check()
-//
-//			x.expect([2,2,2])
-//			v.removeAll()
-//			x.check()
-//
-//			x.expect([])
-//			v.deregister(m)
-//			x.check()
-//		}
-//
-//		run {
-//			let	x	=	Expect<Int>()
-//			let	v	=	ArrayStorage<Int>([111, 222])
-//			let	m	=	ArrayExistenceMonitor<Int>()
-//			m.didAdd	=	{ i in x.satisfy(i.1) }
-//			m.willRemove	=	{ i in x.satisfy(i.1 * 10) }
-//
-//			x.expect([111, 222])
-//			v.register(m)
-//			x.check()
-//
-//			x.expect([333])
-//			v.append(333)
-//			x.check()
-//
-//			x.expect([3330])
-//			v.removeLast()
-//			x.check()
-//
-//			x.expect([2220, 1110])
-//			v.deregister(m)
-//			x.check()
-//		}
-//	}
 }
 
 

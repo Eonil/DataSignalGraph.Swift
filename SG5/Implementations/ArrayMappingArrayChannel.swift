@@ -94,9 +94,9 @@ public class ArrayMappingArrayChannel<T,U>: ArrayMappingArrayChannelType {
 	private func _applyTransactionWithMapping(transaction: IncomingSignal.Transaction) {
 		let	muts	=	transaction.mutations.map(_mapMutation)
 		let	tran1	=	OutgoingSignal.Transaction(muts)
-		_relay.cast(HOTFIX_StateSignalUtility.willEndStateByTransaction(_snapshot!, transaction: tran1))
+//		_relay.cast(HOTFIX_StateSignalUtility.willEndStateByTransaction(_snapshot!, transaction: tran1))
 		StateStorageUtility.apply(tran1, to: &_snapshot!, relay: _relay)
-		_relay.cast(HOTFIX_StateSignalUtility.didBeginStateByTransaction(_snapshot!, transaction: tran1))
+//		_relay.cast(HOTFIX_StateSignalUtility.didBeginStateByTransaction(_snapshot!, transaction: tran1))
 	}
 	private func _mapMutation(m: IncomingSignal.Transaction.Mutation) -> OutgoingSignal.Transaction.Mutation {
 		switch (m.past, m.future) {
