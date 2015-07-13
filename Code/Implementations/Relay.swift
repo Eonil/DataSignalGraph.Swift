@@ -1,27 +1,13 @@
 //
-//  Caster.swift
-//  SG4
+//  Relay.swift
+//  SG5
 //
-//  Created by Hoon H. on 2015/06/28.
-//  Copyright (c) 2015 Eonil. All rights reserved.
+//  Created by Hoon H. on 2015/07/01.
+//  Copyright © 2015 Eonil. All rights reserved.
 //
 
-//public class Emitter<T>: EmissiveStationType {
-//	public typealias	OutgoingSignal		=	T
-//
-//	public func register(identifier: ObjectIdentifier, handler: OutgoingSignal -> ()) {
-//	}
-//	public func deregister(identifier: ObjectIdentifier) {
-//	}
-//	public func deregister<S : SensitiveStationType>(_: S) {
-//	}
-//	public func register<S : SensitiveStationType>(_: S) {
-//	}
-//}
-//public class Sensor<T>: SensitiveStationType {
-//	public func cast(signal: T) {
-//	}
-//}
+///	Routes signals to multiple handlers.
+///
 public class Relay<T>: SensitiveStationType, EmissiveStationType {
 	public typealias	IncomingSignal		=	T
 	public typealias	OutgoingSignal		=	T
@@ -49,10 +35,17 @@ public class Relay<T>: SensitiveStationType, EmissiveStationType {
 		_handlers[identifier]	=	nil
 	}
 	public func register<S : SensitiveStationType where S.IncomingSignal == T>(s: S) {
+
 		register(ObjectIdentifier(s), handler: { [weak s] in s!.cast($0) })
 	}
 	public func deregister<S : SensitiveStationType where S.IncomingSignal == T>(s: S) {
 		deregister(ObjectIdentifier(s))
+	}
+
+	///
+
+	internal func handlerForIdentifier(identifier: ObjectIdentifier) -> OutgoingSignal->() {
+		return	_handlers[identifier]!
 	}
 
 	///

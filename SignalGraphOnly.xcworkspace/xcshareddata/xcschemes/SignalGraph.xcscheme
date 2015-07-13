@@ -28,7 +28,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "457A3D7F1B3E29B400FFF5A1"
+               BlueprintIdentifier = "4508169D1B533E5900009A30"
                BuildableName = "SignalGraphTest.xctest"
                BlueprintName = "SignalGraphTest"
                ReferencedContainer = "container:SignalGraph.xcodeproj">
@@ -42,16 +42,6 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "457A3D7F1B3E29B400FFF5A1"
-               BuildableName = "SignalGraphTest.xctest"
-               BlueprintName = "SignalGraphTest"
-               ReferencedContainer = "container:SignalGraph.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
