@@ -10,6 +10,9 @@
 		450816971B533CE000009A30 /* SignalGraphMobileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3DE41B3E2C3300FFF5A1 /* SignalGraphMobileTests.swift */; };
 		450816981B533D4B00009A30 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3DB41B3E2B3A00FFF5A1 /* Test.swift */; };
 		450816991B533D5900009A30 /* SignalGraphMobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 457A3DBF1B3E2B7800FFF5A1 /* SignalGraphMobile.framework */; };
+		450CB4181B567D91000D8D7D /* ChannelUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450CB4171B567D91000D8D7D /* ChannelUtilities.swift */; };
+		450CB4191B567D9C000D8D7D /* ChannelUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450CB4171B567D91000D8D7D /* ChannelUtilities.swift */; };
+		450CB41A1B567D9D000D8D7D /* ChannelUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450CB4171B567D91000D8D7D /* ChannelUtilities.swift */; };
 		45519DE21B3FBDD30006248B /* WeakChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45519DB71B3FBDD30006248B /* WeakChannel.swift */; };
 		45519DE31B3FBDD30006248B /* WeakChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45519DB71B3FBDD30006248B /* WeakChannel.swift */; };
 		45519DE41B3FBDD30006248B /* WeakChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45519DB71B3FBDD30006248B /* WeakChannel.swift */; };
@@ -110,6 +113,7 @@
 
 /* Begin PBXFileReference section */
 		4508168B1B533CA100009A30 /* SignalGraphMobileTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SignalGraphMobileTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		450CB4171B567D91000D8D7D /* ChannelUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelUtilities.swift; sourceTree = "<group>"; };
 		453718A91B3AD93500160463 /* SignalGraph */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SignalGraph; sourceTree = BUILT_PRODUCTS_DIR; };
 		45519DB71B3FBDD30006248B /* WeakChannel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeakChannel.swift; sourceTree = "<group>"; };
 		4555D6E91B53372E0003475B /* ArrayMappingArrayChannel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayMappingArrayChannel.swift; sourceTree = "<group>"; };
@@ -265,6 +269,7 @@
 				4555D6F71B53372E0003475B /* Protocols */,
 				4555D6E81B53372E0003475B /* Implementations */,
 				45519DB71B3FBDD30006248B /* WeakChannel.swift */,
+				450CB4171B567D91000D8D7D /* ChannelUtilities.swift */,
 				45669D6D1B3E8DC900666D54 /* (tree signaling) */,
 				45669D5E1B3E4CE700666D54 /* PseudoCoroutine.swift */,
 				457A3DB21B3E29F900FFF5A1 /* (incomplete yet) */,
@@ -516,6 +521,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4555D7231B53372E0003475B /* ValueMonitor.swift in Sources */,
+				450CB41A1B567D9D000D8D7D /* ChannelUtilities.swift in Sources */,
 				45669D611B3E4D1700666D54 /* PseudoCoroutine.swift in Sources */,
 				4555D7021B53372E0003475B /* ArrayStorage.swift in Sources */,
 				4555D7261B53372E0003475B /* ValueStorage.swift in Sources */,
@@ -568,6 +574,7 @@
 				4555D7371B53372E0003475B /* StateTransformation.swift in Sources */,
 				4555D7221B53372E0003475B /* ValueMonitor.swift in Sources */,
 				4555D70D1B53372E0003475B /* DictionaryStorage.swift in Sources */,
+				450CB4181B567D91000D8D7D /* ChannelUtilities.swift in Sources */,
 				457A3DB01B3E29F200FFF5A1 /* TreePath.swift in Sources */,
 				4555D6FE1B53372E0003475B /* ArrayMappingArrayChannel.swift in Sources */,
 				4555D7281B53372E0003475B /* StatefulSignaling.swift in Sources */,
@@ -599,6 +606,7 @@
 				4555D72D1B53372E0003475B /* StatelessSignaling.swift in Sources */,
 				4555D7271B53372E0003475B /* ValueStorage.swift in Sources */,
 				4555D7331B53372E0003475B /* StateStorages.swift in Sources */,
+				450CB4191B567D9C000D8D7D /* ChannelUtilities.swift in Sources */,
 				457A3E0B1B3E2CBA00FFF5A1 /* TreeStorage.swift in Sources */,
 				4555D71B1B53372E0003475B /* StateSignal.swift in Sources */,
 				4555D7241B53372E0003475B /* ValueMonitor.swift in Sources */,
@@ -839,6 +847,7 @@
 				450816961B533CA200009A30 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		453718A41B3AD93500160463 /* Build configuration list for PBXProject "SignalGraph" */ = {
 			isa = XCConfigurationList;

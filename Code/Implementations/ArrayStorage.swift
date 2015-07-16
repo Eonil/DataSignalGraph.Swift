@@ -40,6 +40,8 @@ public class ArrayStorage<T>: ArrayStorageType {
 		}
 	}
 	public func apply(transaction: Transaction) {
+		assert(_isApplying == false, "You cannot call `apply` until existing application to be finished.")
+		_isApplying	=	true
 		_cast(HOTFIX_StateSignalUtility.willEndStateByTransaction(_snapshot, transaction: transaction))
 		for m in transaction.mutations {
 			_cast(HOTFIX_StateSignalUtility.willEndStateByMutation(_snapshot, mutation: m))
@@ -52,6 +54,7 @@ public class ArrayStorage<T>: ArrayStorageType {
 			_cast(HOTFIX_StateSignalUtility.didBeginStateByMutation(_snapshot, mutation: m))
 		}
 		_cast(HOTFIX_StateSignalUtility.didBeginStateByTransaction(_snapshot, transaction: transaction))
+		_isApplying	=	false
 	}
 	public func register(identifier: ObjectIdentifier, handler: Signal->()) {
 		_relay.register(identifier, handler: handler)
@@ -82,6 +85,8 @@ public class ArrayStorage<T>: ArrayStorageType {
 
 	private let		_relay		=	Relay<Signal>()
 	private var		_snapshot	:	[T]
+
+	private var		_isApplying	=	false
 
 	private func _cast(signal: Signal) {
 		_relay.cast(signal)

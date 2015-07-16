@@ -36,21 +36,31 @@ public class SetStorage<T: Hashable>: SetStorageType {
 		}
 	}
 	public func apply(transaction: Transaction) {
-		StateStorageUtility.apply(transaction, to: &_snapshot, relay: _relay)
+		_executeWithCastFlagging() {
+			StateStorageUtility.apply(transaction, to: &_snapshot, relay: _relay)
+		}
 	}
 	public func register(identifier: ObjectIdentifier, handler: Signal->()) {
-		_relay.register(identifier, handler: handler)
-		handler(HOTFIX_StateSignalUtility.didBeginStateBySession(_snapshot))
+		_executeWithCastFlagging() {
+			_relay.register(identifier, handler: handler)
+			handler(HOTFIX_StateSignalUtility.didBeginStateBySession(_snapshot))
+		}
 	}
 	public func deregister(identifier: ObjectIdentifier) {
-		_relay.handlerForIdentifier(identifier)(HOTFIX_StateSignalUtility.willEndStateBySession(_snapshot))
-		_relay.deregister(identifier)
+		_executeWithCastFlagging() {
+			_relay.handlerForIdentifier(identifier)(HOTFIX_StateSignalUtility.willEndStateBySession(_snapshot))
+			_relay.deregister(identifier)
+		}
 	}
 	public func register<S: SensitiveStationType where S.IncomingSignal == OutgoingSignal>(s: S) {
-		register(ObjectIdentifier(s))	{ [weak s] in s!.cast($0) }
+		_executeWithCastFlagging() {
+			register(ObjectIdentifier(s))	{ [weak s] in s!.cast($0) }
+		}
 	}
 	public func deregister<S: SensitiveStationType where S.IncomingSignal == OutgoingSignal>(s: S) {
-		deregister(ObjectIdentifier(s))
+		_executeWithCastFlagging() {
+			deregister(ObjectIdentifier(s))
+		}
 	}
 //	public func register<S: SensitiveStationType where S.IncomingSignal == OutgoingSignal, S: StateSegmentMonitor>(s: S) {
 //		_frequentRelay.register(ObjectIdentifier(s))	{ [weak s] in s!.cast($0) }
@@ -68,8 +78,17 @@ public class SetStorage<T: Hashable>: SetStorageType {
 	private let		_relay		=	Relay<Signal>()
 	private var		_snapshot	:	Set<T>
 
+	private var		_isCasting	=	false
+
 	private func _cast(signal: Signal) {
 		_relay.cast(signal)
+	}
+
+	private func _executeWithCastFlagging(@noescape code: ()->()) {
+		assert(_isCasting == false, "You cannot call `apply` while some signaling is under casting.")
+		_isCasting	=	true
+		code()
+		_isCasting	=	false
 	}
 }
 
