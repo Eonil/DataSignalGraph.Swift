@@ -13,6 +13,8 @@
 		450CB4181B567D91000D8D7D /* ChannelUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450CB4171B567D91000D8D7D /* ChannelUtilities.swift */; };
 		450CB4191B567D9C000D8D7D /* ChannelUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450CB4171B567D91000D8D7D /* ChannelUtilities.swift */; };
 		450CB41A1B567D9D000D8D7D /* ChannelUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450CB4171B567D91000D8D7D /* ChannelUtilities.swift */; };
+		453FEF131B5B3F9B00184603 /* AtomExistenceEmittable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453FEF121B5B3F9B00184603 /* AtomExistenceEmittable.swift */; };
+		453FEF151B5B4D5A00184603 /* AsynchronousSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453FEF141B5B4D5A00184603 /* AsynchronousSignal.swift */; };
 		45519DE21B3FBDD30006248B /* WeakChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45519DB71B3FBDD30006248B /* WeakChannel.swift */; };
 		45519DE31B3FBDD30006248B /* WeakChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45519DB71B3FBDD30006248B /* WeakChannel.swift */; };
 		45519DE41B3FBDD30006248B /* WeakChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45519DB71B3FBDD30006248B /* WeakChannel.swift */; };
@@ -115,6 +117,8 @@
 		4508168B1B533CA100009A30 /* SignalGraphMobileTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SignalGraphMobileTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		450CB4171B567D91000D8D7D /* ChannelUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelUtilities.swift; sourceTree = "<group>"; };
 		453718A91B3AD93500160463 /* SignalGraph */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SignalGraph; sourceTree = BUILT_PRODUCTS_DIR; };
+		453FEF121B5B3F9B00184603 /* AtomExistenceEmittable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtomExistenceEmittable.swift; sourceTree = "<group>"; };
+		453FEF141B5B4D5A00184603 /* AsynchronousSignal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsynchronousSignal.swift; sourceTree = "<group>"; };
 		45519DB71B3FBDD30006248B /* WeakChannel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeakChannel.swift; sourceTree = "<group>"; };
 		4555D6E91B53372E0003475B /* ArrayMappingArrayChannel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayMappingArrayChannel.swift; sourceTree = "<group>"; };
 		4555D6EA1B53372E0003475B /* ArrayStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayStorage.swift; sourceTree = "<group>"; };
@@ -210,10 +214,12 @@
 			children = (
 				4555D6F01B53372E0003475B /* Relay.swift */,
 				4555D6F21B53372E0003475B /* StateSignal.swift */,
+				453FEF141B5B4D5A00184603 /* AsynchronousSignal.swift */,
 				4555D6F41B53372E0003475B /* Transaction.swift */,
 				4555D73A1B53375B0003475B /* (storages) */,
 				4555D6F51B53372E0003475B /* ValueMonitor.swift */,
 				4555D6EB1B53372E0003475B /* CollectionMonitor.swift */,
+				453FEF121B5B3F9B00184603 /* AtomExistenceEmittable.swift */,
 				4555D73B1B5337960003475B /* (transformations) */,
 				4555D6EF1B53372E0003475B /* HOTFIX_StateSignalUtility.swift */,
 				4555D6F31B53372E0003475B /* StateStorageUtility.swift */,
@@ -570,11 +576,13 @@
 				4555D7011B53372E0003475B /* ArrayStorage.swift in Sources */,
 				4555D70A1B53372E0003475B /* DictionaryOrderingArrayChannel.swift in Sources */,
 				4555D7101B53372E0003475B /* HOTFIX_StateSignalUtility.swift in Sources */,
+				453FEF151B5B4D5A00184603 /* AsynchronousSignal.swift in Sources */,
 				4555D71F1B53372E0003475B /* Transaction.swift in Sources */,
 				4555D7371B53372E0003475B /* StateTransformation.swift in Sources */,
 				4555D7221B53372E0003475B /* ValueMonitor.swift in Sources */,
 				4555D70D1B53372E0003475B /* DictionaryStorage.swift in Sources */,
 				450CB4181B567D91000D8D7D /* ChannelUtilities.swift in Sources */,
+				453FEF131B5B3F9B00184603 /* AtomExistenceEmittable.swift in Sources */,
 				457A3DB01B3E29F200FFF5A1 /* TreePath.swift in Sources */,
 				4555D6FE1B53372E0003475B /* ArrayMappingArrayChannel.swift in Sources */,
 				4555D7281B53372E0003475B /* StatefulSignaling.swift in Sources */,

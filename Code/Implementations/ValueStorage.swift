@@ -40,7 +40,7 @@ public class ValueStorage<T>: ValueStorageType {
 		}
 	}
 	public func apply(transaction: Transaction) {
-		assert(_isApplying == false, "You cannot call `apply` until existing application to be finished.")
+		assert(_isApplying == false, "You cannot call `apply` until application of prior transaction to be finished.")
 		_isApplying	=	true
 		_cast(HOTFIX_StateSignalUtility.willEndStateByTransaction(_snapshot, transaction: transaction))
 		for m in transaction.mutations {

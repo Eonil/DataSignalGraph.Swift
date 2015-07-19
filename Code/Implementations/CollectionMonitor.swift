@@ -6,9 +6,18 @@
 //  Copyright (c) 2015 Eonil. All rights reserved.
 //
 
+///	**DEPRECATION ALERT!**
+///	This class considered overly complex than what it offers.
+///	What we actually need is simplication by having add/remove notification
+///	for all each element. If we need something more, there's no truly better
+///	way then handling signals directly.
+///	So, this is very likely to be replaced with direct closure registering call.
 ///	There's no defined order in session/transaction/mutation notifications.
 ///	Because they're semantically happen and practically sent all at once.
 ///	Anyway this monitor defines calling orders of them for your convenience.
+///	**DEPRECATION ALERT!**
+///
+///	----
 ///
 ///	Basically, cause of state beginning will be notified first, and new state last.
 ///	In reversed order for ending. Here's a proper table.
@@ -43,6 +52,7 @@
 ///	won't happen together, but a transaction signal will always be followed by
 ///	one or more mutation signals that describe the transaction.
 ///
+@availability(*,deprecated=0)
 public class CollectionMonitor<S: CollectionType, K, V>: CollectionMonitorType, SensitiveStationType, StateCollectionSegmentMonitorType, StateSegmentMonitorType, SessionMonitorType, TransactionMonitorType, StateMonitorType {
 	public typealias	Key		=	K
 	public typealias	Value		=	V
@@ -51,8 +61,8 @@ public class CollectionMonitor<S: CollectionType, K, V>: CollectionMonitorType, 
 	public typealias	Signal		=	StateSignal<S, CollectionTransaction<Key,Value>>
 	public typealias	IncomingSignal	=	Signal
 
-	public var		didInitiate	:	(()->())?
-	public var		willTerminate	:	(()->())?
+	public var		didInitiate	:	(Signal.Snapshot->())?
+	public var		willTerminate	:	(Signal.Snapshot->())?
 
 	public var		didApply	:	(Signal.Transaction->())?
 	public var		willApply	:	(Signal.Transaction->())?
@@ -69,7 +79,7 @@ public class CollectionMonitor<S: CollectionType, K, V>: CollectionMonitorType, 
 		case .DidBegin(let state, let by):
 			switch by() {
 			case .Session(let s):
-				didInitiate?()
+				didInitiate?(s())
 				didBegin?(state())
 			case .Transaction(let t):
 				didApply?(t())
@@ -99,7 +109,7 @@ public class CollectionMonitor<S: CollectionType, K, V>: CollectionMonitorType, 
 				willApply?(t())
 			case .Session(let s):
 				willEnd?(state())
-				willTerminate?()
+				willTerminate?(s())
 			}
 
 		}

@@ -8,8 +8,9 @@
 
 ///	Monitors session initiation and termination.
 public protocol SessionMonitorType {
-	var		didInitiate	:	(()->())?		{ get set }
-	var		willTerminate	:	(()->())?		{ get set }
+	typealias	Snapshot
+	var		didInitiate	:	(Snapshot->())?		{ get set }
+	var		willTerminate	:	(Snapshot->())?		{ get set }
 }
 
 ///	Monitors transaction application.

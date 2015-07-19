@@ -120,14 +120,14 @@ func testAll() {
 		let	x		=	Expect<Int>()
 		let	v1		=	SetStorage([111,222,333])
 		let	m1		=	SetMonitor<Int>()
-		m1.didInitiate		=	{ x.satisfy(1) }
+		m1.didInitiate		=	{ _ in x.satisfy(1) }
 		m1.didApply		=	{ _ in x.satisfy(2) }
 		m1.didAdd		=	{ _ in x.satisfy(3) }
 		m1.didBegin		=	{ _ in x.satisfy(4) }
 		m1.willEnd		=	{ _ in x.satisfy(5) }
 		m1.willRemove		=	{ _ in x.satisfy(6) }
 		m1.willApply		=	{ _ in x.satisfy(7) }
-		m1.willTerminate	=	{ x.satisfy(8) }
+		m1.willTerminate	=	{ _ in x.satisfy(8) }
 
 		x.expect([1,4])
 		v1.register(m1)
@@ -155,14 +155,14 @@ func testAll() {
 		let	x		=	Expect<Int>()
 		let	v1		=	ArrayStorage([111,222,333])
 		let	m1		=	ArrayMonitor<Int>()
-		m1.didInitiate		=	{ x.satisfy(1) }
+		m1.didInitiate		=	{ _ in x.satisfy(1) }
 		m1.didApply		=	{ _ in x.satisfy(2) }
 		m1.didAdd		=	{ _ in x.satisfy(3) }
 		m1.didBegin		=	{ _ in x.satisfy(4) }
 		m1.willEnd		=	{ _ in x.satisfy(5) }
 		m1.willRemove		=	{ _ in x.satisfy(6) }
 		m1.willApply		=	{ _ in x.satisfy(7) }
-		m1.willTerminate	=	{ x.satisfy(8) }
+		m1.willTerminate	=	{ _ in x.satisfy(8) }
 
 		x.expect([1,4])
 		v1.register(m1)
@@ -192,14 +192,14 @@ func testAll() {
 		let	x		=	Expect<Int>()
 		let	v1		=	DictionaryStorage([111: "A", 222: "B", 333: "C"])
 		let	m1		=	DictionaryMonitor<Int, String>()
-		m1.didInitiate		=	{ x.satisfy(1) }
+		m1.didInitiate		=	{ _ in x.satisfy(1) }
 		m1.didApply		=	{ _ in x.satisfy(2) }
 		m1.didAdd		=	{ _ in x.satisfy(3) }
 		m1.didBegin		=	{ _ in x.satisfy(4) }
 		m1.willEnd		=	{ _ in x.satisfy(5) }
 		m1.willRemove		=	{ _ in x.satisfy(6) }
 		m1.willApply		=	{ _ in x.satisfy(7) }
-		m1.willTerminate	=	{ x.satisfy(8) }
+		m1.willTerminate	=	{ _ in x.satisfy(8) }
 
 		x.expect([1,4])
 		v1.register(m1)
@@ -232,14 +232,14 @@ func testAll() {
 		let	a2	=	DictionaryFilteringDictionaryChannel<Int,String>()
 		a2.filter	=	{ k,v in return k % 2 == 0 }
 		let	m1	=	DictionaryMonitor<Int,String>()
-		m1.didInitiate		=	{ x.satisfy(1) }
+		m1.didInitiate		=	{ _ in x.satisfy(1) }
 		m1.didApply		=	{ _ in x.satisfy(2) }
 		m1.didAdd		=	{ _ in x.satisfy(3) }
 		m1.didBegin		=	{ _ in x.satisfy(4) }
 		m1.willEnd		=	{ _ in x.satisfy(5) }
 		m1.willRemove		=	{ _ in x.satisfy(6) }
 		m1.willApply		=	{ _ in x.satisfy(7) }
-		m1.willTerminate	=	{ x.satisfy(8) }
+		m1.willTerminate	=	{ _ in x.satisfy(8) }
 
 		x.expect([])
 		a2.register(m1)
@@ -296,14 +296,14 @@ func testAll() {
 			let	a2	=	DictionaryOrderingArrayChannel<Int,String,Int>()
 			a2.order	=	{ $0.0 }
 			let	m1	=	ArrayMonitor<(Int,String)>()
-			m1.didInitiate		=	{ x.satisfy(1) }
+			m1.didInitiate		=	{ _ in x.satisfy(1) }
 			m1.didApply		=	{ _ in x.satisfy(2) }
 			m1.didAdd		=	{ _ in x.satisfy(3) }
 			m1.didBegin		=	{ _ in x.satisfy(4) }
 			m1.willEnd		=	{ _ in x.satisfy(5) }
 			m1.willRemove		=	{ _ in x.satisfy(6) }
 			m1.willApply		=	{ _ in x.satisfy(7) }
-			m1.willTerminate	=	{ x.satisfy(8) }
+			m1.willTerminate	=	{ _ in x.satisfy(8) }
 
 			x.expect([])
 			a2.register(m1)
@@ -375,14 +375,14 @@ func testAll() {
 		let	a2	=	ArrayMappingArrayChannel<Int,String>()
 		a2.map		=	{ "V:\($0)" }
 		let	m1	=	ArrayMonitor<String>()
-		m1.didInitiate		=	{ x.satisfy(1) }
+		m1.didInitiate		=	{ _ in x.satisfy(1) }
 		m1.didApply		=	{ _ in x.satisfy(2) }
 		m1.didAdd		=	{ _ in x.satisfy(3) }
 		m1.didBegin		=	{ _ in x.satisfy(4) }
 		m1.willEnd		=	{ _ in x.satisfy(5) }
 		m1.willRemove		=	{ _ in x.satisfy(6) }
 		m1.willApply		=	{ _ in x.satisfy(7) }
-		m1.willTerminate	=	{ x.satisfy(8) }
+		m1.willTerminate	=	{ _ in x.satisfy(8) }
 
 		x.expect([])
 		a2.register(m1)
@@ -417,14 +417,14 @@ func testAll() {
 		let	x		=	Expect<Int>()
 		let	v		=	ValueStorage<Int>(111)
 		let	m1		=	ValueMonitor<Int>()
-		m1.didInitiate		=	{ x.satisfy(1) }
+		m1.didInitiate		=	{ _ in x.satisfy(1) }
 		m1.didApply		=	{ _ in x.satisfy(2) }
 		m1.didAdd		=	{ _ in x.satisfy(3) }
 		m1.didBegin		=	{ _ in x.satisfy(4) }
 		m1.willEnd		=	{ _ in x.satisfy(5) }
 		m1.willRemove		=	{ _ in x.satisfy(6) }
 		m1.willApply		=	{ _ in x.satisfy(7) }
-		m1.willTerminate	=	{ x.satisfy(8) }
+		m1.willTerminate	=	{ _ in x.satisfy(8) }
 
 		x.expect([1,4])
 		v.register(m1)

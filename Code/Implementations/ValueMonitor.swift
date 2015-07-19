@@ -6,6 +6,19 @@
 //  Copyright (c) 2015 Eonil. All rights reserved.
 //
 
+///	**DEPRECATION ALERT!**
+///	This class considered overly complex than what it offers.
+///	What we actually need is simplication by having add/remove notification
+///	for all each element. If we need something more, there's no truly better
+///	way then handling signals directly.
+///	So, this is very likely to be replaced with direct closure registering call.
+///	There's no defined order in session/transaction/mutation notifications.
+///	Because they're semantically happen and practically sent all at once.
+///	Anyway this monitor defines calling orders of them for your convenience.
+///	**DEPRECATION ALERT!**
+///
+///	----
+///
 ///	There's no defined order in session/transaction/mutation notifications.
 ///	Because they're semantically happen and practically sent all at once.
 ///	Anyway this monitor defines calling orders of them for your convenience.
@@ -46,13 +59,14 @@
 ///	As a value is conceptually an atomic state that cannot be divided into,
 ///	`ValueMonitor` treats a whole single value state as a segment.
 ///
+@availability(*,deprecated=0)
 public class ValueMonitor<T>: ValueMonitorType, SensitiveStationType, StateSegmentMonitorType, SessionMonitorType, TransactionMonitorType, StateMonitorType {
 	public typealias	Segment		=	T
 	public typealias	Signal		=	StateSignal<T, ValueTransaction<T>>
 	public typealias	IncomingSignal	=	Signal
 
-	public var		didInitiate	:	(()->())?
-	public var		willTerminate	:	(()->())?
+	public var		didInitiate	:	(Signal.Snapshot->())?
+	public var		willTerminate	:	(Signal.Snapshot->())?
 
 	public var		didApply	:	(Signal.Transaction->())?
 	public var		willApply	:	(Signal.Transaction->())?
@@ -71,7 +85,7 @@ public class ValueMonitor<T>: ValueMonitorType, SensitiveStationType, StateSegme
 		case .DidBegin(let state, let by):
 			switch by() {
 			case .Session(let s):
-				didInitiate?()
+				didInitiate?(s())
 				didBegin?(state())
 			case .Transaction(let t):
 				didApply?(t())
@@ -89,9 +103,8 @@ public class ValueMonitor<T>: ValueMonitorType, SensitiveStationType, StateSegme
 				willApply?(t())
 			case .Session(let s):
 				willEnd?(state())
-				willTerminate?()
+				willTerminate?(s())
 			}
-
 		}
 	}
 }
