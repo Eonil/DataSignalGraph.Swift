@@ -34,26 +34,26 @@ public class DictionaryOrderingArrayChannel<K: Hashable, V, C: Comparable>: Dict
 	}
 
 	public func cast(signal: IncomingSignal) {
-//		switch signal {
-//		case .DidBegin(let subsignal):
-//			switch subsignal().by {
-//			case .Session(let s):
-//				_connect(s())
-//			case .Transaction(let t):
-//				_applyTransactionWithSorting(t())
-//			case .Mutation(let m):
-//				break
-//			}
-//		case .WillEnd(let subsignal):
-//			switch subsignal().by {
-//			case .Session(let s):
-//				_disconnect(s())
-//			case .Transaction(let t):
-//				break
-//			case .Mutation(let m):
-//				break
-//			}
-//		}
+		switch signal {
+		case .DidBegin(let subsignal):
+			switch subsignal() {
+			case .Session(let s):
+				_connect(s())
+			case .Transaction(let t):
+				_applyTransactionWithSorting(t())
+			case .Mutation(let m):
+				break
+			}
+		case .WillEnd(let subsignal):
+			switch subsignal() {
+			case .Session(let s):
+				_disconnect(s())
+			case .Transaction(let t):
+				break
+			case .Mutation(let m):
+				break
+			}
+		}
 	}
 
 	public func register(identifier: ObjectIdentifier, handler: OutgoingSignal -> ()) {

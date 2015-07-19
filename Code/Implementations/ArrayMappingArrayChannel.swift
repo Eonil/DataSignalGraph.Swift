@@ -35,7 +35,7 @@ public class ArrayMappingArrayChannel<T,U>: ArrayMappingArrayChannelType {
 	public func cast(signal: IncomingSignal) {
 		switch signal {
 		case .DidBegin(let subsignal):
-			switch subsignal.by {
+			switch subsignal() {
 			case .Session(let s):
 				_connect(s())
 
@@ -49,7 +49,7 @@ public class ArrayMappingArrayChannel<T,U>: ArrayMappingArrayChannelType {
 			break
 
 		case .WillEnd(let subsignal):
-			switch subsignal.by {
+			switch subsignal() {
 			case .Session(let s):
 				_disconnect(s())
 

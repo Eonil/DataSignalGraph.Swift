@@ -16,22 +16,22 @@ import Foundation
 ///
 struct HOTFIX_TimingSignalUtility {
 	static func didBeginStateBySession<S,T: TransactionType>(state: S) -> TimingSignal<S,T> {
-		return	TimingSignal.DidBegin(StateSignal(state: state, by: .Session({state})))
+		return	TimingSignal.DidBegin({StateSignal.Session({state})})
 	}
 	static func willEndStateBySession<S,T: TransactionType>(state: S) -> TimingSignal<S,T> {
-		return	TimingSignal.WillEnd(StateSignal(state: state, by: .Session({state})))
+		return	TimingSignal.WillEnd({StateSignal.Session({state})})
 	}
 	static func didBeginStateByTransaction<S,T: TransactionType>(state: S, transaction: T) -> TimingSignal<S,T> {
-		return	TimingSignal.DidBegin(StateSignal(state: state, by: .Transaction({transaction})))
+		return	TimingSignal.DidBegin({StateSignal.Transaction({transaction})})
 	}
 	static func willEndStateByTransaction<S,T: TransactionType>(state: S, transaction: T) -> TimingSignal<S,T> {
-		return	TimingSignal.WillEnd(StateSignal(state: state, by: .Transaction({transaction})))
+		return	TimingSignal.WillEnd({StateSignal.Transaction({transaction})})
 	}
 	static func didBeginStateByMutation<S,T: TransactionType>(state: S, mutation: T.Mutation) -> TimingSignal<S,T> {
-		return	TimingSignal.DidBegin(StateSignal(state: state, by: .Mutation({mutation})))
+		return	TimingSignal.DidBegin({StateSignal.Mutation({mutation})})
 	}
 	static func willEndStateByMutation<S,T: TransactionType>(state: S, mutation: T.Mutation) -> TimingSignal<S,T> {
-		return	TimingSignal.WillEnd(StateSignal(state: state, by: .Mutation({mutation})))
+		return	TimingSignal.WillEnd({StateSignal.Mutation({mutation})})
 	}
 }
 

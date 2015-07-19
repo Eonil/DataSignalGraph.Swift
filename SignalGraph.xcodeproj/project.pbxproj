@@ -38,9 +38,9 @@
 		4555D70D1B53372E0003475B /* DictionaryStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4555D6EE1B53372E0003475B /* DictionaryStorage.swift */; };
 		4555D70E1B53372E0003475B /* DictionaryStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4555D6EE1B53372E0003475B /* DictionaryStorage.swift */; };
 		4555D70F1B53372E0003475B /* DictionaryStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4555D6EE1B53372E0003475B /* DictionaryStorage.swift */; };
-		4555D7101B53372E0003475B /* HOTFIX_StateSignalUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4555D6EF1B53372E0003475B /* HOTFIX_StateSignalUtility.swift */; };
-		4555D7111B53372E0003475B /* HOTFIX_StateSignalUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4555D6EF1B53372E0003475B /* HOTFIX_StateSignalUtility.swift */; };
-		4555D7121B53372E0003475B /* HOTFIX_StateSignalUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4555D6EF1B53372E0003475B /* HOTFIX_StateSignalUtility.swift */; };
+		4555D7101B53372E0003475B /* HOTFIX_TimingSignalUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4555D6EF1B53372E0003475B /* HOTFIX_TimingSignalUtility.swift */; };
+		4555D7111B53372E0003475B /* HOTFIX_TimingSignalUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4555D6EF1B53372E0003475B /* HOTFIX_TimingSignalUtility.swift */; };
+		4555D7121B53372E0003475B /* HOTFIX_TimingSignalUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4555D6EF1B53372E0003475B /* HOTFIX_TimingSignalUtility.swift */; };
 		4555D7131B53372E0003475B /* Relay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4555D6F01B53372E0003475B /* Relay.swift */; };
 		4555D7141B53372E0003475B /* Relay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4555D6F01B53372E0003475B /* Relay.swift */; };
 		4555D7151B53372E0003475B /* Relay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4555D6F01B53372E0003475B /* Relay.swift */; };
@@ -128,7 +128,7 @@
 		4555D6EC1B53372E0003475B /* DictionaryFilteringDictionaryChannel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryFilteringDictionaryChannel.swift; sourceTree = "<group>"; };
 		4555D6ED1B53372E0003475B /* DictionaryOrderingArrayChannel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryOrderingArrayChannel.swift; sourceTree = "<group>"; };
 		4555D6EE1B53372E0003475B /* DictionaryStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryStorage.swift; sourceTree = "<group>"; };
-		4555D6EF1B53372E0003475B /* HOTFIX_StateSignalUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HOTFIX_StateSignalUtility.swift; sourceTree = "<group>"; };
+		4555D6EF1B53372E0003475B /* HOTFIX_TimingSignalUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HOTFIX_TimingSignalUtility.swift; sourceTree = "<group>"; };
 		4555D6F01B53372E0003475B /* Relay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Relay.swift; sourceTree = "<group>"; };
 		4555D6F11B53372E0003475B /* SetStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetStorage.swift; sourceTree = "<group>"; };
 		4555D6F21B53372E0003475B /* TimingSignal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimingSignal.swift; sourceTree = "<group>"; };
@@ -223,7 +223,7 @@
 				4555D6EB1B53372E0003475B /* CollectionMonitor.swift */,
 				453FEF121B5B3F9B00184603 /* AtomExistenceEmittable.swift */,
 				4555D73B1B5337960003475B /* (transformations) */,
-				4555D6EF1B53372E0003475B /* HOTFIX_StateSignalUtility.swift */,
+				4555D6EF1B53372E0003475B /* HOTFIX_TimingSignalUtility.swift */,
 				4555D6F31B53372E0003475B /* StateStorageUtility.swift */,
 			);
 			path = Implementations;
@@ -555,7 +555,7 @@
 				4555D7051B53372E0003475B /* CollectionMonitor.swift in Sources */,
 				4555D7171B53372E0003475B /* SetStorage.swift in Sources */,
 				4555D7141B53372E0003475B /* Relay.swift in Sources */,
-				4555D7111B53372E0003475B /* HOTFIX_StateSignalUtility.swift in Sources */,
+				4555D7111B53372E0003475B /* HOTFIX_TimingSignalUtility.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -578,7 +578,7 @@
 				4555D7341B53372E0003475B /* StateTransaction.swift in Sources */,
 				4555D7011B53372E0003475B /* ArrayStorage.swift in Sources */,
 				4555D70A1B53372E0003475B /* DictionaryOrderingArrayChannel.swift in Sources */,
-				4555D7101B53372E0003475B /* HOTFIX_StateSignalUtility.swift in Sources */,
+				4555D7101B53372E0003475B /* HOTFIX_TimingSignalUtility.swift in Sources */,
 				453FEF151B5B4D5A00184603 /* StateSignal.swift in Sources */,
 				4555D71F1B53372E0003475B /* Transaction.swift in Sources */,
 				4555D7371B53372E0003475B /* StateTransformation.swift in Sources */,
@@ -597,7 +597,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4555D7121B53372E0003475B /* HOTFIX_StateSignalUtility.swift in Sources */,
+				4555D7121B53372E0003475B /* HOTFIX_TimingSignalUtility.swift in Sources */,
 				4555D7061B53372E0003475B /* CollectionMonitor.swift in Sources */,
 				45669D601B3E4D1600666D54 /* PseudoCoroutine.swift in Sources */,
 				4555D7151B53372E0003475B /* Relay.swift in Sources */,

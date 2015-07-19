@@ -34,7 +34,7 @@ public class DictionaryFilteringDictionaryChannel<K: Hashable, V>: DictionaryFil
 	public func cast(signal: IncomingSignal) {
 		switch signal {
 		case .DidBegin(let subsignal):
-			switch subsignal.by {
+			switch subsignal() {
 			case .Session(let s):
 				_connect(s())
 			case .Transaction(let t):
@@ -43,7 +43,7 @@ public class DictionaryFilteringDictionaryChannel<K: Hashable, V>: DictionaryFil
 				break
 			}
 		case .WillEnd(let subsignal):
-			switch subsignal.by {
+			switch subsignal() {
 			case .Session(let s):
 				_disconnect(s())
 			case .Transaction(let t):

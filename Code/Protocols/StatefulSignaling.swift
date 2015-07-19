@@ -11,5 +11,4 @@
 public protocol TimingSignalType {
 	typealias	Snapshot
 	typealias	Transaction
-	typealias	Cause
 }

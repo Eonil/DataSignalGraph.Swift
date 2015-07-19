@@ -6,23 +6,30 @@
 //  Copyright (c) 2015 Eonil. All rights reserved.
 //
 
-import Foundation
+///	Parameters are wrapped in a closure to avoid bugs in Swift 1.x.
+public enum StateSignal<S,T: TransactionType> {
+	case Session(()->S)
+	case Transaction(()->T)
+	case Mutation(()->T.Mutation)
+}
 
-///	**WARNING**
-///	This must be a `struct`, but written with `class` due to a
-///	bug in Swift 1.x compiler.
-///	So NEVER depend on referential identity of this object.
-///
-public final class StateSignal<S,T: TransactionType> {
-	public typealias	Snapshot	=	S
-	public typealias	Transaction	=	T
-	public typealias	Cause		=	StateSignalingCause<S,T>
-
-//	public var 		state		:	Snapshot
-	public var		by		:	Cause
-
-	public init(state: Snapshot, by: Cause) {
-//		self.state	=	state
-		self.by		=	by
+public extension StateSignal {
+	///	For Swift 1.x.
+	static func HOTFIX_Session(s: S) -> StateSignal {
+		return	Session({s})
+	}
+	///	For Swift 1.x.
+	static func HOTFIX_Transaction(s: T) -> StateSignal {
+		return	Transaction({s})
+	}
+	///	For Swift 1.x.
+	static func HOTFIX_Mutation(m: T.Mutation) -> StateSignal {
+		return	Mutation({m})
 	}
 }
+
+
+
+
+
+

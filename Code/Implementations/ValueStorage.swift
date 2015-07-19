@@ -6,7 +6,8 @@
 //  Copyright (c) 2015 Eonil. All rights reserved.
 //
 
-public class ValueStorage<T>: ValueStorageType {
+//public class ValueStorage<T>: ValueStorageType {
+public class ValueStorage<T> {
 	public typealias	Snapshot	=	T
 	public typealias	Transaction	=	ValueTransaction<T>
 	public typealias	OutgoingSignal	=	TimingSignal<Snapshot, Transaction>
@@ -65,14 +66,6 @@ public class ValueStorage<T>: ValueStorageType {
 	public func deregister<S: SensitiveStationType where S.IncomingSignal == OutgoingSignal>(s: S) {
 		deregister(ObjectIdentifier(s))
 	}
-//	public func register<S: SensitiveStationType where S.IncomingSignal == OutgoingSignal, S: StateSegmentMonitor>(s: S) {
-//		_frequentRelay.register(ObjectIdentifier(s))	{ [weak s] in s!.cast($0) }
-//		s.cast(HOTFIX_TimingSignalUtility.didBeginStateBySession(_snapshot))
-//	}
-//	public func deregister<S: SensitiveStationType where S.IncomingSignal == OutgoingSignal, S: StateSegmentMonitor>(s: S) {
-//		s.cast(HOTFIX_TimingSignalUtility.willEndStateBySession(_snapshot))
-//		_frequentRelay.deregister(ObjectIdentifier(s))
-//	}
 
 	///
 

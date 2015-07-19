@@ -58,14 +58,6 @@ public class DictionaryStorage<K: Hashable, V>: DictionaryStorageType {
 	public func deregister<S: SensitiveStationType where S.IncomingSignal == OutgoingSignal>(s: S) {
 		deregister(ObjectIdentifier(s))
 	}
-//	public func register<S: SensitiveStationType where S.IncomingSignal == OutgoingSignal, S: StateSegmentMonitor>(s: S) {
-//		_frequentRelay.register(ObjectIdentifier(s))	{ [weak s] in s!.cast($0) }
-//		s.cast(HOTFIX_TimingSignalUtility.didBeginStateBySession(_snapshot))
-//	}
-//	public func deregister<S: SensitiveStationType where S.IncomingSignal == OutgoingSignal, S: StateSegmentMonitor>(s: S) {
-//		s.cast(HOTFIX_TimingSignalUtility.willEndStateBySession(_snapshot))
-//		_frequentRelay.deregister(ObjectIdentifier(s))
-//	}
 
 	///
 
