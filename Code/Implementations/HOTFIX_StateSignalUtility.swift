@@ -1,5 +1,5 @@
 //
-//  HOTFIX_StateSignalUtility.swift
+//  HOTFIX_TimingSignalUtility.swift
 //  SG5
 //
 //  Created by Hoon H. on 2015/07/01.
@@ -14,24 +14,24 @@ import Foundation
 ///	These functions will be removed with Swift 2.x and replaced by direct instantiation
 ///	of each enum values.
 ///
-struct HOTFIX_StateSignalUtility {
-	static func didBeginStateBySession<S,T: TransactionType>(state: S) -> StateSignal<S,T> {
-		return	StateSignal.DidBegin(state: {state}, by: {StateSignalingCause<S,T>.Session({state})})
+struct HOTFIX_TimingSignalUtility {
+	static func didBeginStateBySession<S,T: TransactionType>(state: S) -> TimingSignal<S,T> {
+		return	TimingSignal.DidBegin(StateSignal(state: state, by: .Session({state})))
 	}
-	static func willEndStateBySession<S,T: TransactionType>(state: S) -> StateSignal<S,T> {
-		return	StateSignal.WillEnd(state: {state}, by: {StateSignalingCause<S,T>.Session({state})})
+	static func willEndStateBySession<S,T: TransactionType>(state: S) -> TimingSignal<S,T> {
+		return	TimingSignal.WillEnd(StateSignal(state: state, by: .Session({state})))
 	}
-	static func didBeginStateByTransaction<S,T: TransactionType>(state: S, transaction: T) -> StateSignal<S,T> {
-		return	StateSignal.DidBegin(state: {state}, by: {StateSignalingCause<S,T>.Transaction({transaction})})
+	static func didBeginStateByTransaction<S,T: TransactionType>(state: S, transaction: T) -> TimingSignal<S,T> {
+		return	TimingSignal.DidBegin(StateSignal(state: state, by: .Transaction({transaction})))
 	}
-	static func willEndStateByTransaction<S,T: TransactionType>(state: S, transaction: T) -> StateSignal<S,T> {
-		return	StateSignal.WillEnd(state: {state}, by: {StateSignalingCause<S,T>.Transaction({transaction})})
+	static func willEndStateByTransaction<S,T: TransactionType>(state: S, transaction: T) -> TimingSignal<S,T> {
+		return	TimingSignal.WillEnd(StateSignal(state: state, by: .Transaction({transaction})))
 	}
-	static func didBeginStateByMutation<S,T: TransactionType>(state: S, mutation: T.Mutation) -> StateSignal<S,T> {
-		return	StateSignal.DidBegin(state: {state}, by: {StateSignalingCause<S,T>.Mutation({mutation})})
+	static func didBeginStateByMutation<S,T: TransactionType>(state: S, mutation: T.Mutation) -> TimingSignal<S,T> {
+		return	TimingSignal.DidBegin(StateSignal(state: state, by: .Mutation({mutation})))
 	}
-	static func willEndStateByMutation<S,T: TransactionType>(state: S, mutation: T.Mutation) -> StateSignal<S,T> {
-		return	StateSignal.WillEnd(state: {state}, by: {StateSignalingCause<S,T>.Mutation({mutation})})
+	static func willEndStateByMutation<S,T: TransactionType>(state: S, mutation: T.Mutation) -> TimingSignal<S,T> {
+		return	TimingSignal.WillEnd(StateSignal(state: state, by: .Mutation({mutation})))
 	}
 }
 

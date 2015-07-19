@@ -11,7 +11,7 @@ public class DictionaryStorage<K: Hashable, V>: DictionaryStorageType {
 	public typealias	Value		=	V
 	public typealias	Snapshot	=	[K:V]
 	public typealias	Transaction	=	CollectionTransaction<K,V>
-	public typealias	OutgoingSignal	=	StateSignal<Snapshot, Transaction>
+	public typealias	OutgoingSignal	=	TimingSignal<Snapshot, Transaction>
 
 	public typealias	Signal		=	OutgoingSignal
 
@@ -46,10 +46,10 @@ public class DictionaryStorage<K: Hashable, V>: DictionaryStorageType {
 	}
 	public func register(identifier: ObjectIdentifier, handler: Signal->()) {
 		_relay.register(identifier, handler: handler)
-		handler(HOTFIX_StateSignalUtility.didBeginStateBySession(_snapshot))
+		handler(HOTFIX_TimingSignalUtility.didBeginStateBySession(_snapshot))
 	}
 	public func deregister(identifier: ObjectIdentifier) {
-		_relay.handlerForIdentifier(identifier)(HOTFIX_StateSignalUtility.willEndStateBySession(_snapshot))
+		_relay.handlerForIdentifier(identifier)(HOTFIX_TimingSignalUtility.willEndStateBySession(_snapshot))
 		_relay.deregister(identifier)
 	}
 	public func register<S: SensitiveStationType where S.IncomingSignal == OutgoingSignal>(s: S) {
@@ -60,10 +60,10 @@ public class DictionaryStorage<K: Hashable, V>: DictionaryStorageType {
 	}
 //	public func register<S: SensitiveStationType where S.IncomingSignal == OutgoingSignal, S: StateSegmentMonitor>(s: S) {
 //		_frequentRelay.register(ObjectIdentifier(s))	{ [weak s] in s!.cast($0) }
-//		s.cast(HOTFIX_StateSignalUtility.didBeginStateBySession(_snapshot))
+//		s.cast(HOTFIX_TimingSignalUtility.didBeginStateBySession(_snapshot))
 //	}
 //	public func deregister<S: SensitiveStationType where S.IncomingSignal == OutgoingSignal, S: StateSegmentMonitor>(s: S) {
-//		s.cast(HOTFIX_StateSignalUtility.willEndStateBySession(_snapshot))
+//		s.cast(HOTFIX_TimingSignalUtility.willEndStateBySession(_snapshot))
 //		_frequentRelay.deregister(ObjectIdentifier(s))
 //	}
 

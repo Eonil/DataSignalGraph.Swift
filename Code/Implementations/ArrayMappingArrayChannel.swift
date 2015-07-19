@@ -11,8 +11,8 @@ public class ArrayMappingArrayChannel<T,U>: ArrayMappingArrayChannelType {
 	typealias	IncomingElement		=	T
 	typealias	OutgoingElement		=	U
 	typealias	Transaction		=	CollectionTransaction<Range<Int>,[U]>
-	typealias	IncomingSignal		=	StateSignal<[T],CollectionTransaction<Range<Int>,[T]>>
-	typealias	OutgoingSignal		=	StateSignal<[U],CollectionTransaction<Range<Int>,[U]>>
+	typealias	IncomingSignal		=	TimingSignal<[T],CollectionTransaction<Range<Int>,[T]>>
+	typealias	OutgoingSignal		=	TimingSignal<[U],CollectionTransaction<Range<Int>,[U]>>
 
 	///
 
@@ -34,8 +34,8 @@ public class ArrayMappingArrayChannel<T,U>: ArrayMappingArrayChannelType {
 
 	public func cast(signal: IncomingSignal) {
 		switch signal {
-		case .DidBegin(let state, let by):
-			switch by() {
+		case .DidBegin(let subsignal):
+			switch subsignal.by {
 			case .Session(let s):
 				_connect(s())
 
@@ -46,8 +46,10 @@ public class ArrayMappingArrayChannel<T,U>: ArrayMappingArrayChannelType {
 				//	No need to handle this. Ignore it.
 				break
 			}
-		case .WillEnd(let state, let by):
-			switch by() {
+			break
+
+		case .WillEnd(let subsignal):
+			switch subsignal.by {
 			case .Session(let s):
 				_disconnect(s())
 
@@ -58,6 +60,7 @@ public class ArrayMappingArrayChannel<T,U>: ArrayMappingArrayChannelType {
 				//	No need to handle this. Ignore it.
 				break
 			}
+			break
 		}
 	}
 
@@ -84,19 +87,19 @@ public class ArrayMappingArrayChannel<T,U>: ArrayMappingArrayChannelType {
 	}
 	private func _connect(snapshot: [T]) {
 		_snapshot	=	snapshot.map(map!)
-		_relay.cast(HOTFIX_StateSignalUtility.didBeginStateBySession(_snapshot!))
+		_relay.cast(HOTFIX_TimingSignalUtility.didBeginStateBySession(_snapshot!))
 	}
 	private func _disconnect(snapshot: [T]) {
-		_relay.cast(HOTFIX_StateSignalUtility.willEndStateBySession(_snapshot!))
+		_relay.cast(HOTFIX_TimingSignalUtility.willEndStateBySession(_snapshot!))
 		_snapshot	=	nil
 	}
 
 	private func _applyTransactionWithMapping(transaction: IncomingSignal.Transaction) {
 		let	muts	=	transaction.mutations.map(_mapMutation)
 		let	tran1	=	OutgoingSignal.Transaction(muts)
-//		_relay.cast(HOTFIX_StateSignalUtility.willEndStateByTransaction(_snapshot!, transaction: tran1))
+//		_relay.cast(HOTFIX_TimingSignalUtility.willEndStateByTransaction(_snapshot!, transaction: tran1))
 		StateStorageUtility.apply(tran1, to: &_snapshot!, relay: _relay)
-//		_relay.cast(HOTFIX_StateSignalUtility.didBeginStateByTransaction(_snapshot!, transaction: tran1))
+//		_relay.cast(HOTFIX_TimingSignalUtility.didBeginStateByTransaction(_snapshot!, transaction: tran1))
 	}
 	private func _mapMutation(m: IncomingSignal.Transaction.Mutation) -> OutgoingSignal.Transaction.Mutation {
 		switch (m.past, m.future) {

@@ -12,8 +12,8 @@ public class DictionaryOrderingArrayChannel<K: Hashable, V, C: Comparable>: Dict
 	typealias	Order			=	C
 	typealias	Element			=	(K,V)
 	typealias	Transaction		=	CollectionTransaction<Int,(K,V)>
-	typealias	IncomingSignal		=	StateSignal<[K:V],CollectionTransaction<K,V>>
-	typealias	OutgoingSignal		=	StateSignal<[(K,V)],CollectionTransaction<Range<Int>,[(K,V)]>>
+	typealias	IncomingSignal		=	TimingSignal<[K:V],CollectionTransaction<K,V>>
+	typealias	OutgoingSignal		=	TimingSignal<[(K,V)],CollectionTransaction<Range<Int>,[(K,V)]>>
 
 	///
 
@@ -34,26 +34,26 @@ public class DictionaryOrderingArrayChannel<K: Hashable, V, C: Comparable>: Dict
 	}
 
 	public func cast(signal: IncomingSignal) {
-		switch signal {
-		case .DidBegin(let state, let by):
-			switch by() {
-			case .Session(let s):
-				_connect(s())
-			case .Transaction(let t):
-				_applyTransactionWithSorting(t())
-			case .Mutation(let m):
-				break
-			}
-		case .WillEnd(let state, let by):
-			switch by() {
-			case .Session(let s):
-				_disconnect(state())
-			case .Transaction(let t):
-				break
-			case .Mutation(let m):
-				break
-			}
-		}
+//		switch signal {
+//		case .DidBegin(let subsignal):
+//			switch subsignal().by {
+//			case .Session(let s):
+//				_connect(s())
+//			case .Transaction(let t):
+//				_applyTransactionWithSorting(t())
+//			case .Mutation(let m):
+//				break
+//			}
+//		case .WillEnd(let subsignal):
+//			switch subsignal().by {
+//			case .Session(let s):
+//				_disconnect(s())
+//			case .Transaction(let t):
+//				break
+//			case .Mutation(let m):
+//				break
+//			}
+//		}
 	}
 
 	public func register(identifier: ObjectIdentifier, handler: OutgoingSignal -> ()) {
@@ -79,19 +79,19 @@ public class DictionaryOrderingArrayChannel<K: Hashable, V, C: Comparable>: Dict
 	}
 	private func _connect(snapshot: [K:V]) {
 		_snapshot	=	_sortSnapshot(snapshot)
-		_relay.cast(HOTFIX_StateSignalUtility.didBeginStateBySession(_snapshot!))
+		_relay.cast(HOTFIX_TimingSignalUtility.didBeginStateBySession(_snapshot!))
 	}
 	private func _disconnect(snapshot: [K:V]) {
-		_relay.cast(HOTFIX_StateSignalUtility.willEndStateBySession(_snapshot!))
+		_relay.cast(HOTFIX_TimingSignalUtility.willEndStateBySession(_snapshot!))
 		_snapshot	=	nil
 	}
 
 	private func _applyTransactionWithSorting(transaction: IncomingSignal.Transaction) {
 		let	muts	=	_flatten(transaction.mutations.map(_sortMutation))
 		let	tran1	=	OutgoingSignal.Transaction(muts)
-//		_relay.cast(HOTFIX_StateSignalUtility.willEndStateByTransaction(_snapshot!, transaction: tran1))
+//		_relay.cast(HOTFIX_TimingSignalUtility.willEndStateByTransaction(_snapshot!, transaction: tran1))
 		StateStorageUtility.apply(tran1, to: &_snapshot!, relay: _relay)
-//		_relay.cast(HOTFIX_StateSignalUtility.didBeginStateByTransaction(_snapshot!, transaction: tran1))
+//		_relay.cast(HOTFIX_TimingSignalUtility.didBeginStateByTransaction(_snapshot!, transaction: tran1))
 	}
 
 	private func _sortSnapshot(snapshot: [K:V]) -> Array<(K,V)> {

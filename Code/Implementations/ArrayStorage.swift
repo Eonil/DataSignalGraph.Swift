@@ -14,7 +14,7 @@ public class ArrayStorage<T>: ArrayStorageType {
 	public typealias	Element		=	T
 	public typealias	Snapshot	=	[T]
 	public typealias	Transaction	=	CollectionTransaction<Range<Int>,[T]>
-	public typealias	OutgoingSignal	=	StateSignal<Snapshot, Transaction>
+	public typealias	OutgoingSignal	=	TimingSignal<Snapshot, Transaction>
 
 	public typealias	Signal		=	OutgoingSignal
 
@@ -42,26 +42,26 @@ public class ArrayStorage<T>: ArrayStorageType {
 	public func apply(transaction: Transaction) {
 		assert(_isApplying == false, "You cannot call `apply` until existing application to be finished.")
 		_isApplying	=	true
-		_cast(HOTFIX_StateSignalUtility.willEndStateByTransaction(_snapshot, transaction: transaction))
+		_cast(HOTFIX_TimingSignalUtility.willEndStateByTransaction(_snapshot, transaction: transaction))
 		for m in transaction.mutations {
-			_cast(HOTFIX_StateSignalUtility.willEndStateByMutation(_snapshot, mutation: m))
+			_cast(HOTFIX_TimingSignalUtility.willEndStateByMutation(_snapshot, mutation: m))
 			switch m {
 			case (_,nil,nil):	fatalError()
 			case (_,nil,_):		_snapshot.splice(m.future!, atIndex: m.segment.startIndex)
 			case (_,_,nil):		_snapshot.removeRange(m.segment)
 			case (_,_,_):		_snapshot.replaceRange(m.segment, with: m.future!)
 			}
-			_cast(HOTFIX_StateSignalUtility.didBeginStateByMutation(_snapshot, mutation: m))
+			_cast(HOTFIX_TimingSignalUtility.didBeginStateByMutation(_snapshot, mutation: m))
 		}
-		_cast(HOTFIX_StateSignalUtility.didBeginStateByTransaction(_snapshot, transaction: transaction))
+		_cast(HOTFIX_TimingSignalUtility.didBeginStateByTransaction(_snapshot, transaction: transaction))
 		_isApplying	=	false
 	}
 	public func register(identifier: ObjectIdentifier, handler: Signal->()) {
 		_relay.register(identifier, handler: handler)
-		handler(HOTFIX_StateSignalUtility.didBeginStateBySession(_snapshot))
+		handler(HOTFIX_TimingSignalUtility.didBeginStateBySession(_snapshot))
 	}
 	public func deregister(identifier: ObjectIdentifier) {
-		_relay.handlerForIdentifier(identifier)(HOTFIX_StateSignalUtility.willEndStateBySession(_snapshot))
+		_relay.handlerForIdentifier(identifier)(HOTFIX_TimingSignalUtility.willEndStateBySession(_snapshot))
 		_relay.deregister(identifier)
 	}
 	public func register<S: SensitiveStationType where S.IncomingSignal == OutgoingSignal>(s: S) {
@@ -72,10 +72,10 @@ public class ArrayStorage<T>: ArrayStorageType {
 	}
 //	public func register<S: SensitiveStationType where S.IncomingSignal == OutgoingSignal, S: StateSegmentMonitor>(s: S) {
 //		_frequentRelay.register(ObjectIdentifier(s))	{ [weak s] in s!.cast($0) }
-//		s.cast(HOTFIX_StateSignalUtility.didBeginStateBySession(_snapshot))
+//		s.cast(HOTFIX_TimingSignalUtility.didBeginStateBySession(_snapshot))
 //	}
 //	public func deregister<S: SensitiveStationType where S.IncomingSignal == OutgoingSignal, S: StateSegmentMonitor>(s: S) {
-//		s.cast(HOTFIX_StateSignalUtility.willEndStateBySession(_snapshot))
+//		s.cast(HOTFIX_TimingSignalUtility.willEndStateBySession(_snapshot))
 //		_frequentRelay.deregister(ObjectIdentifier(s))
 //	}
 

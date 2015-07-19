@@ -6,10 +6,10 @@
 //  Copyright © 2015 Eonil. All rights reserved.
 //
 
-//public protocol StateSignalType {
+//public protocol TimingSignalType {
 //	typealias	Snapshot
 //	typealias	Transaction	:	TransactionType
-//	var		timing		:	StateSignalingTiming				{ get set }
+//	var		timing		:	TimingSignalingTiming				{ get set }
 //	var		state		:	Snapshot					{ get set }
 //	var		by		:	StateSignalingCause<Snapshot,Transaction>	{ get set }
 //}

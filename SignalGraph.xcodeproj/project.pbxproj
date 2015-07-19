@@ -14,7 +14,9 @@
 		450CB4191B567D9C000D8D7D /* ChannelUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450CB4171B567D91000D8D7D /* ChannelUtilities.swift */; };
 		450CB41A1B567D9D000D8D7D /* ChannelUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450CB4171B567D91000D8D7D /* ChannelUtilities.swift */; };
 		453FEF131B5B3F9B00184603 /* AtomExistenceEmittable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453FEF121B5B3F9B00184603 /* AtomExistenceEmittable.swift */; };
-		453FEF151B5B4D5A00184603 /* AsynchronousSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453FEF141B5B4D5A00184603 /* AsynchronousSignal.swift */; };
+		453FEF151B5B4D5A00184603 /* StateSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453FEF141B5B4D5A00184603 /* StateSignal.swift */; };
+		453FEF161B5B4FE000184603 /* StateSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453FEF141B5B4D5A00184603 /* StateSignal.swift */; };
+		453FEF171B5B4FE000184603 /* StateSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453FEF141B5B4D5A00184603 /* StateSignal.swift */; };
 		45519DE21B3FBDD30006248B /* WeakChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45519DB71B3FBDD30006248B /* WeakChannel.swift */; };
 		45519DE31B3FBDD30006248B /* WeakChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45519DB71B3FBDD30006248B /* WeakChannel.swift */; };
 		45519DE41B3FBDD30006248B /* WeakChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45519DB71B3FBDD30006248B /* WeakChannel.swift */; };
@@ -45,9 +47,9 @@
 		4555D7161B53372E0003475B /* SetStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4555D6F11B53372E0003475B /* SetStorage.swift */; };
 		4555D7171B53372E0003475B /* SetStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4555D6F11B53372E0003475B /* SetStorage.swift */; };
 		4555D7181B53372E0003475B /* SetStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4555D6F11B53372E0003475B /* SetStorage.swift */; };
-		4555D7191B53372E0003475B /* StateSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4555D6F21B53372E0003475B /* StateSignal.swift */; };
-		4555D71A1B53372E0003475B /* StateSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4555D6F21B53372E0003475B /* StateSignal.swift */; };
-		4555D71B1B53372E0003475B /* StateSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4555D6F21B53372E0003475B /* StateSignal.swift */; };
+		4555D7191B53372E0003475B /* TimingSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4555D6F21B53372E0003475B /* TimingSignal.swift */; };
+		4555D71A1B53372E0003475B /* TimingSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4555D6F21B53372E0003475B /* TimingSignal.swift */; };
+		4555D71B1B53372E0003475B /* TimingSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4555D6F21B53372E0003475B /* TimingSignal.swift */; };
 		4555D71C1B53372E0003475B /* StateStorageUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4555D6F31B53372E0003475B /* StateStorageUtility.swift */; };
 		4555D71D1B53372E0003475B /* StateStorageUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4555D6F31B53372E0003475B /* StateStorageUtility.swift */; };
 		4555D71E1B53372E0003475B /* StateStorageUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4555D6F31B53372E0003475B /* StateStorageUtility.swift */; };
@@ -118,7 +120,7 @@
 		450CB4171B567D91000D8D7D /* ChannelUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelUtilities.swift; sourceTree = "<group>"; };
 		453718A91B3AD93500160463 /* SignalGraph */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SignalGraph; sourceTree = BUILT_PRODUCTS_DIR; };
 		453FEF121B5B3F9B00184603 /* AtomExistenceEmittable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtomExistenceEmittable.swift; sourceTree = "<group>"; };
-		453FEF141B5B4D5A00184603 /* AsynchronousSignal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsynchronousSignal.swift; sourceTree = "<group>"; };
+		453FEF141B5B4D5A00184603 /* StateSignal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateSignal.swift; sourceTree = "<group>"; };
 		45519DB71B3FBDD30006248B /* WeakChannel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeakChannel.swift; sourceTree = "<group>"; };
 		4555D6E91B53372E0003475B /* ArrayMappingArrayChannel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayMappingArrayChannel.swift; sourceTree = "<group>"; };
 		4555D6EA1B53372E0003475B /* ArrayStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayStorage.swift; sourceTree = "<group>"; };
@@ -129,7 +131,7 @@
 		4555D6EF1B53372E0003475B /* HOTFIX_StateSignalUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HOTFIX_StateSignalUtility.swift; sourceTree = "<group>"; };
 		4555D6F01B53372E0003475B /* Relay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Relay.swift; sourceTree = "<group>"; };
 		4555D6F11B53372E0003475B /* SetStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetStorage.swift; sourceTree = "<group>"; };
-		4555D6F21B53372E0003475B /* StateSignal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateSignal.swift; sourceTree = "<group>"; };
+		4555D6F21B53372E0003475B /* TimingSignal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimingSignal.swift; sourceTree = "<group>"; };
 		4555D6F31B53372E0003475B /* StateStorageUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateStorageUtility.swift; sourceTree = "<group>"; };
 		4555D6F41B53372E0003475B /* Transaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		4555D6F51B53372E0003475B /* ValueMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueMonitor.swift; sourceTree = "<group>"; };
@@ -213,8 +215,8 @@
 			isa = PBXGroup;
 			children = (
 				4555D6F01B53372E0003475B /* Relay.swift */,
-				4555D6F21B53372E0003475B /* StateSignal.swift */,
-				453FEF141B5B4D5A00184603 /* AsynchronousSignal.swift */,
+				4555D6F21B53372E0003475B /* TimingSignal.swift */,
+				453FEF141B5B4D5A00184603 /* StateSignal.swift */,
 				4555D6F41B53372E0003475B /* Transaction.swift */,
 				4555D73A1B53375B0003475B /* (storages) */,
 				4555D6F51B53372E0003475B /* ValueMonitor.swift */,
@@ -545,7 +547,8 @@
 				4555D7291B53372E0003475B /* StatefulSignaling.swift in Sources */,
 				4555D7381B53372E0003475B /* StateTransformation.swift in Sources */,
 				4555D7081B53372E0003475B /* DictionaryFilteringDictionaryChannel.swift in Sources */,
-				4555D71A1B53372E0003475B /* StateSignal.swift in Sources */,
+				453FEF161B5B4FE000184603 /* StateSignal.swift in Sources */,
+				4555D71A1B53372E0003475B /* TimingSignal.swift in Sources */,
 				4555D7201B53372E0003475B /* Transaction.swift in Sources */,
 				4555D6FF1B53372E0003475B /* ArrayMappingArrayChannel.swift in Sources */,
 				4555D72F1B53372E0003475B /* StateMonitor.swift in Sources */,
@@ -561,7 +564,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				45669D5F1B3E4CE700666D54 /* PseudoCoroutine.swift in Sources */,
-				4555D7191B53372E0003475B /* StateSignal.swift in Sources */,
+				4555D7191B53372E0003475B /* TimingSignal.swift in Sources */,
 				4555D7041B53372E0003475B /* CollectionMonitor.swift in Sources */,
 				4555D72E1B53372E0003475B /* StateMonitor.swift in Sources */,
 				4555D7311B53372E0003475B /* StateStorages.swift in Sources */,
@@ -576,7 +579,7 @@
 				4555D7011B53372E0003475B /* ArrayStorage.swift in Sources */,
 				4555D70A1B53372E0003475B /* DictionaryOrderingArrayChannel.swift in Sources */,
 				4555D7101B53372E0003475B /* HOTFIX_StateSignalUtility.swift in Sources */,
-				453FEF151B5B4D5A00184603 /* AsynchronousSignal.swift in Sources */,
+				453FEF151B5B4D5A00184603 /* StateSignal.swift in Sources */,
 				4555D71F1B53372E0003475B /* Transaction.swift in Sources */,
 				4555D7371B53372E0003475B /* StateTransformation.swift in Sources */,
 				4555D7221B53372E0003475B /* ValueMonitor.swift in Sources */,
@@ -616,7 +619,8 @@
 				4555D7331B53372E0003475B /* StateStorages.swift in Sources */,
 				450CB4191B567D9C000D8D7D /* ChannelUtilities.swift in Sources */,
 				457A3E0B1B3E2CBA00FFF5A1 /* TreeStorage.swift in Sources */,
-				4555D71B1B53372E0003475B /* StateSignal.swift in Sources */,
+				4555D71B1B53372E0003475B /* TimingSignal.swift in Sources */,
+				453FEF171B5B4FE000184603 /* StateSignal.swift in Sources */,
 				4555D7241B53372E0003475B /* ValueMonitor.swift in Sources */,
 				4555D7031B53372E0003475B /* ArrayStorage.swift in Sources */,
 			);

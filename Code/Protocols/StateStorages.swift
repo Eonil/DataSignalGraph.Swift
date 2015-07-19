@@ -57,7 +57,7 @@ public protocol TransactionalStorageType: StorageType, TransactionApplicable {
 
 public protocol StateChannelType: ChannelType, EmissiveStationType {
 	typealias	State		=	Snapshot
-	typealias	OutgoingSignal	:	StateSignalType
+	typealias	OutgoingSignal	:	TimingSignalType
 }
 public protocol StateStorageType: StateChannelType, TransactionalStorageType {
 }
@@ -80,7 +80,7 @@ public protocol SetChannelType: CollectionChannelType {
 	typealias	Element		:	Hashable
 	typealias	Snapshot	=	Set<Element>
 	typealias	Transaction	=	CollectionTransaction<Element,()>
-	typealias	OutgoingSignal	=	StateSignal<Snapshot,Transaction>
+	typealias	OutgoingSignal	=	TimingSignal<Snapshot,Transaction>
 }
 public protocol SetStorageType: SetChannelType, CollectionStorageType {
 }
@@ -89,7 +89,7 @@ public protocol ArrayChannelType: CollectionChannelType {
 	typealias	Snapshot	=	[Element]
 //	typealias	Transaction	=	CollectionTransaction<Int,Element>
 	typealias	Transaction	=	CollectionTransaction<Range<Int>,[Element]>
-	typealias	OutgoingSignal	=	StateSignal<Snapshot,Transaction>
+	typealias	OutgoingSignal	=	TimingSignal<Snapshot,Transaction>
 }
 public protocol ArrayStorageType: ArrayChannelType, CollectionStorageType {
 }
@@ -98,7 +98,7 @@ public protocol DictionaryChannelType: CollectionChannelType {
 	typealias	Value
 	typealias	Snapshot	=	[Key:Value]
 	typealias	Transaction	=	CollectionTransaction<Key,Value>
-	typealias	OutgoingSignal	=	StateSignal<Snapshot,Transaction>
+	typealias	OutgoingSignal	=	TimingSignal<Snapshot,Transaction>
 }
 public protocol DictionaryStorageType: DictionaryChannelType, CollectionStorageType {
 }
