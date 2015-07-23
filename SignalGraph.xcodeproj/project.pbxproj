@@ -91,6 +91,7 @@
 		457A3DFA1B3E2CB800FFF5A1 /* TreeStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3DA01B3E29F200FFF5A1 /* TreeStorage.swift */; };
 		457A3E0A1B3E2CBA00FFF5A1 /* TreePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3D9F1B3E29F200FFF5A1 /* TreePath.swift */; };
 		457A3E0B1B3E2CBA00FFF5A1 /* TreeStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A3DA01B3E29F200FFF5A1 /* TreeStorage.swift */; };
+		FB954F1A1B607BF1000AF38E /* Test1.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB954F181B607BA8000AF38E /* Test1.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -155,6 +156,7 @@
 		457A3DE31B3E2C3300FFF5A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		457A3DE41B3E2C3300FFF5A1 /* SignalGraphMobileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalGraphMobileTests.swift; sourceTree = "<group>"; };
 		457A3DE81B3E2C8D00FFF5A1 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		FB954F181B607BA8000AF38E /* Test1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test1.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -297,6 +299,7 @@
 			isa = PBXGroup;
 			children = (
 				457A3DB41B3E2B3A00FFF5A1 /* Test.swift */,
+				FB954F181B607BA8000AF38E /* Test1.swift */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -541,6 +544,7 @@
 				457A3DE91B3E2C8D00FFF5A1 /* main.swift in Sources */,
 				4555D70E1B53372E0003475B /* DictionaryStorage.swift in Sources */,
 				4555D7351B53372E0003475B /* StateTransaction.swift in Sources */,
+				FB954F1A1B607BF1000AF38E /* Test1.swift in Sources */,
 				457A3DB61B3E2B3A00FFF5A1 /* Test.swift in Sources */,
 				4555D71D1B53372E0003475B /* StateStorageUtility.swift in Sources */,
 				4555D72C1B53372E0003475B /* StatelessSignaling.swift in Sources */,
