@@ -36,7 +36,7 @@ public class DictionaryFilteringDictionaryChannel<K: Hashable, V>: DictionaryFil
 		case .DidBegin(let subsignal):
 			switch subsignal() {
 			case .Session(let s):
-				_connect(s())
+				_startSessionWithSnapshot(s())
 			case .Transaction(let t):
 				_applyTransactionWithFiltering(t())
 			case .Mutation(let m):
@@ -45,7 +45,7 @@ public class DictionaryFilteringDictionaryChannel<K: Hashable, V>: DictionaryFil
 		case .WillEnd(let subsignal):
 			switch subsignal() {
 			case .Session(let s):
-				_disconnect(s())
+				_finishSessionWithSnapshot(s())
 			case .Transaction(let t):
 				break
 			case .Mutation(let m):
@@ -55,16 +55,28 @@ public class DictionaryFilteringDictionaryChannel<K: Hashable, V>: DictionaryFil
 	}
 
 	public func register(identifier: ObjectIdentifier, handler: OutgoingSignal -> ()) {
+		if _isOnline() {
+			_dispatchSessionBeginSignalToObservers()
+		}
 		_relay.register(identifier, handler: handler)
 	}
 	public func deregister(identifier: ObjectIdentifier) {
 		_relay.deregister(identifier)
+		if _isOnline() {
+			_dispatchSessionEndSignalToObservers()
+		}
 	}
 	public func register<S : SensitiveStationType where S.IncomingSignal == OutgoingSignal>(s: S) {
+		if _isOnline() {
+			_dispatchSessionBeginSignalToObservers()
+		}
 		_relay.register(s)
 	}
 	public func deregister<S : SensitiveStationType where S.IncomingSignal == OutgoingSignal>(s: S) {
 		_relay.deregister(s)
+		if _isOnline() {
+			_dispatchSessionEndSignalToObservers()
+		}
 	}
 
 	///
@@ -75,13 +87,24 @@ public class DictionaryFilteringDictionaryChannel<K: Hashable, V>: DictionaryFil
 	private func _isOnline() -> Bool {
 		return	_snapshot != nil
 	}
-	private func _connect(snapshot: [K:V]) {
+	private func _startSessionWithSnapshot(snapshot: [K:V]) {
+		assert(_isOnline())
 		_snapshot	=	snapshot
+		_dispatchSessionBeginSignalToObservers()
+	}
+	private func _finishSessionWithSnapshot(snapshot: [K:V]) {
+		assert(_isOnline())
+		_dispatchSessionEndSignalToObservers()
+		_snapshot	=	nil
+	}
+
+	private func _dispatchSessionBeginSignalToObservers() {
+		assert(_isOnline())
 		_relay.cast(HOTFIX_TimingSignalUtility.didBeginStateBySession(_snapshot!))
 	}
-	private func _disconnect(snapshot: [K:V]) {
+	private func _dispatchSessionEndSignalToObservers() {
+		assert(_isOnline())
 		_relay.cast(HOTFIX_TimingSignalUtility.willEndStateBySession(_snapshot!))
-		_snapshot	=	nil
 	}
 
 	private func _applyTransactionWithFiltering(transaction: Transaction) {

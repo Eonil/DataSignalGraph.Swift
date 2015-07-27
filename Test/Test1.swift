@@ -100,8 +100,8 @@ func testAll() {
         let	v1		=	ValueStorage(111)
         func h1(timing: ValueStorage<Int>.Signal) {
             switch timing {
-            case .DidBegin(let state):
-                switch state() {
+            case .DidBegin(let by):
+                switch by() {
                 case .Session(let s):
                     x.satisfy(1)
                 case .Transaction(let t):
@@ -109,8 +109,8 @@ func testAll() {
                 case .Mutation(let m):
                     x.satisfy(3)
                 }
-            case .WillEnd(let state):
-                switch state() {
+            case .WillEnd(let by):
+                switch by() {
                 case .Mutation(let m):
                     x.satisfy(4)
                 case .Transaction(let t):
@@ -142,8 +142,8 @@ func testAll() {
         
         func h1(timing: SetStorage<Int>.Signal) {
             switch timing {
-            case .DidBegin(let state):
-                switch state() {
+            case .DidBegin(let by):
+                switch by() {
                 case .Session(let s):
                     x.satisfy(1)
                 case .Transaction(let t):
@@ -151,8 +151,8 @@ func testAll() {
                 case .Mutation(let m):
                     x.satisfy(3)
                 }
-            case .WillEnd(let state):
-                switch state() {
+            case .WillEnd(let by):
+                switch by() {
                 case .Mutation(let m):
                     x.satisfy(4)
                 case .Transaction(let t):
@@ -191,8 +191,8 @@ func testAll() {
         
         func h1(timing: ArrayStorage<Int>.Signal) {
             switch timing {
-            case .DidBegin(let state):
-                switch state() {
+            case .DidBegin(let by):
+                switch by() {
                 case .Session(let s):
                     x.satisfy(1)
                 case .Transaction(let t):
@@ -200,8 +200,8 @@ func testAll() {
                 case .Mutation(let m):
                     x.satisfy(3)
                 }
-            case .WillEnd(let state):
-                switch state() {
+            case .WillEnd(let by):
+                switch by() {
                 case .Mutation(let m):
                     x.satisfy(4)
                 case .Transaction(let t):
@@ -497,6 +497,171 @@ func testAll() {
 //        x.check()
 //    }
 //    
+
+	run("ArrayFilteringArrayChannel") {
+		run("Delayed Session 1") {
+			let	x		=	Expect<Int>()
+			let	a1		=	ArrayStorage<Int>([])
+			let	a2		=	ArrayFilteringArrayChannel<Int>()
+			let	m1		=	Monitor<ArrayStorage<Int>.Signal>()
+			m1.handler		=	{ timing in
+				switch timing {
+				case .DidBegin(let by):
+					switch by() {
+					case .Session(let s):
+						x.satisfy(1)
+					case .Transaction(let t):
+						x.satisfy(2)
+					case .Mutation(let m):
+						x.satisfy(3)
+					}
+				case .WillEnd(let by):
+					switch by() {
+					case .Mutation(let m):
+						x.satisfy(4)
+					case .Transaction(let t):
+						x.satisfy(5)
+					case .Session(let s):
+						x.satisfy(6)
+					}
+				}
+			}
+
+			a2.filter		=	{ $0.0 % 2 == 0 }
+
+			x.expect([])
+			a2.register(m1)		//	Session starting delayed.
+			x.check()
+
+			x.expect([1])
+			a1.register(a2)		//	Session starts lately.
+			x.check()
+
+			x.expect([6])
+			a1.deregister(a2)	//	Session ends early.
+			x.check()
+
+			x.expect([])
+			a2.deregister(m1)	//	No session ending here.
+			x.check()
+		}
+
+		run("Delayed Session 2") {
+			let	x		=	Expect<Int>()
+			let	a1		=	ArrayStorage<Int>([])
+			let	a2		=	ArrayFilteringArrayChannel<Int>()
+			let	m1		=	Monitor<ArrayStorage<Int>.Signal>()
+			m1.handler		=	{ timing in
+				switch timing {
+				case .DidBegin(let by):
+					switch by() {
+					case .Session(let s):
+						x.satisfy(1)
+					case .Transaction(let t):
+						x.satisfy(2)
+					case .Mutation(let m):
+						x.satisfy(3)
+					}
+				case .WillEnd(let by):
+					switch by() {
+					case .Mutation(let m):
+						x.satisfy(4)
+					case .Transaction(let t):
+						x.satisfy(5)
+					case .Session(let s):
+						x.satisfy(6)
+					}
+				}
+			}
+
+			a2.filter		=	{ $0.0 % 2 == 0 }
+
+			x.expect([])
+			a1.register(a2)
+			x.check()
+
+			x.expect([1])
+			a2.register(m1)
+			x.check()
+
+			x.expect([6])
+			a2.deregister(m1)
+			x.check()
+
+			x.expect([])
+			a1.deregister(a2)
+			x.check()
+		}
+
+		run("Mutations") {
+			let	x		=	Expect<Int>()
+			let	a1		=	ArrayStorage<Int>([])
+			let	a2		=	ArrayFilteringArrayChannel<Int>()
+			let	m1		=	Monitor<ArrayStorage<Int>.Signal>()
+			m1.handler		=	{ timing in
+				switch timing {
+				case .DidBegin(let by):
+					switch by() {
+					case .Session(let s):
+						x.satisfy(1)
+					case .Transaction(let t):
+						x.satisfy(2)
+					case .Mutation(let m):
+						x.satisfy(3)
+					}
+				case .WillEnd(let by):
+					switch by() {
+					case .Mutation(let m):
+						x.satisfy(4)
+					case .Transaction(let t):
+						x.satisfy(5)
+					case .Session(let s):
+						x.satisfy(6)
+					}
+				}
+			}
+
+			a2.filter		=	{ $0.0 % 2 == 0 }
+
+			x.expect([1])
+			a1.register(a2)
+			a2.register(m1)
+			x.check()
+
+			x.expect([])
+			a1.append(111)
+			x.check()
+
+			x.expect([5,4,3,2])
+			a1.append(222)
+			x.check()
+
+			x.expect([6])
+			a2.deregister(m1)
+			a1.deregister(a2)
+			x.check()
+		}
+		
+
+
+//
+//		x.expect([1])
+//		a1.register(ObjectIdentifier(x), handler: h1)
+//		x.check()
+//
+//
+//		x.expect([5,4,3,2])
+//		v1.snapshot    =   222
+//		x.check()
+//
+//		x.expect([6])
+//		v1.deregister(ObjectIdentifier(x))
+//		x.check()
+//
+//		assert(v1.state == 222)
+	}
+
+
 //    run("`ValueMonitor` basics.") {
 //        let	x		=	Expect<Int>()
 //        let	v		=	ValueStorage<Int>(111)

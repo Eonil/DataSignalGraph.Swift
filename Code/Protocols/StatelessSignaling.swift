@@ -24,7 +24,9 @@ public protocol Sensible {
 public protocol StationType: class {
 }
 public protocol EmissiveStationType: StationType, Emittable {
+	///	This MUST NOT keep a strong reference to the parameter.
 	func register<S: SensitiveStationType where S.IncomingSignal == OutgoingSignal>(S)
+	///	This MUST NOT keep a strong reference to the parameter.
 	func deregister<S: SensitiveStationType where S.IncomingSignal == OutgoingSignal>(S)
 }
 public protocol SensitiveStationType: StationType, Sensible {

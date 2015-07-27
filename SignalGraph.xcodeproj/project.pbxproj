@@ -17,6 +17,9 @@
 		453FEF151B5B4D5A00184603 /* StateSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453FEF141B5B4D5A00184603 /* StateSignal.swift */; };
 		453FEF161B5B4FE000184603 /* StateSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453FEF141B5B4D5A00184603 /* StateSignal.swift */; };
 		453FEF171B5B4FE000184603 /* StateSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453FEF141B5B4D5A00184603 /* StateSignal.swift */; };
+		453FEF191B6339C800184603 /* ArrayFilteringArrayChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453FEF181B6339C800184603 /* ArrayFilteringArrayChannel.swift */; };
+		453FEF1A1B634A2600184603 /* ArrayFilteringArrayChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453FEF181B6339C800184603 /* ArrayFilteringArrayChannel.swift */; };
+		453FEF1B1B634A2700184603 /* ArrayFilteringArrayChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453FEF181B6339C800184603 /* ArrayFilteringArrayChannel.swift */; };
 		45519DE21B3FBDD30006248B /* WeakChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45519DB71B3FBDD30006248B /* WeakChannel.swift */; };
 		45519DE31B3FBDD30006248B /* WeakChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45519DB71B3FBDD30006248B /* WeakChannel.swift */; };
 		45519DE41B3FBDD30006248B /* WeakChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45519DB71B3FBDD30006248B /* WeakChannel.swift */; };
@@ -122,6 +125,7 @@
 		453718A91B3AD93500160463 /* SignalGraph */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SignalGraph; sourceTree = BUILT_PRODUCTS_DIR; };
 		453FEF121B5B3F9B00184603 /* AtomExistenceEmittable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtomExistenceEmittable.swift; sourceTree = "<group>"; };
 		453FEF141B5B4D5A00184603 /* StateSignal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateSignal.swift; sourceTree = "<group>"; };
+		453FEF181B6339C800184603 /* ArrayFilteringArrayChannel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayFilteringArrayChannel.swift; sourceTree = "<group>"; };
 		45519DB71B3FBDD30006248B /* WeakChannel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeakChannel.swift; sourceTree = "<group>"; };
 		4555D6E91B53372E0003475B /* ArrayMappingArrayChannel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayMappingArrayChannel.swift; sourceTree = "<group>"; };
 		4555D6EA1B53372E0003475B /* ArrayStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayStorage.swift; sourceTree = "<group>"; };
@@ -258,6 +262,7 @@
 		4555D73B1B5337960003475B /* (transformations) */ = {
 			isa = PBXGroup;
 			children = (
+				453FEF181B6339C800184603 /* ArrayFilteringArrayChannel.swift */,
 				4555D6EC1B53372E0003475B /* DictionaryFilteringDictionaryChannel.swift */,
 				4555D6ED1B53372E0003475B /* DictionaryOrderingArrayChannel.swift */,
 				4555D6E91B53372E0003475B /* ArrayMappingArrayChannel.swift */,
@@ -553,6 +558,7 @@
 				4555D7081B53372E0003475B /* DictionaryFilteringDictionaryChannel.swift in Sources */,
 				453FEF161B5B4FE000184603 /* StateSignal.swift in Sources */,
 				4555D71A1B53372E0003475B /* TimingSignal.swift in Sources */,
+				453FEF1A1B634A2600184603 /* ArrayFilteringArrayChannel.swift in Sources */,
 				4555D7201B53372E0003475B /* Transaction.swift in Sources */,
 				4555D6FF1B53372E0003475B /* ArrayMappingArrayChannel.swift in Sources */,
 				4555D72F1B53372E0003475B /* StateMonitor.swift in Sources */,
@@ -587,6 +593,7 @@
 				4555D71F1B53372E0003475B /* Transaction.swift in Sources */,
 				4555D7371B53372E0003475B /* StateTransformation.swift in Sources */,
 				4555D7221B53372E0003475B /* ValueMonitor.swift in Sources */,
+				453FEF191B6339C800184603 /* ArrayFilteringArrayChannel.swift in Sources */,
 				4555D70D1B53372E0003475B /* DictionaryStorage.swift in Sources */,
 				450CB4181B567D91000D8D7D /* ChannelUtilities.swift in Sources */,
 				453FEF131B5B3F9B00184603 /* AtomExistenceEmittable.swift in Sources */,
@@ -617,6 +624,7 @@
 				4555D7211B53372E0003475B /* Transaction.swift in Sources */,
 				4555D70C1B53372E0003475B /* DictionaryOrderingArrayChannel.swift in Sources */,
 				457A3E0A1B3E2CBA00FFF5A1 /* TreePath.swift in Sources */,
+				453FEF1B1B634A2700184603 /* ArrayFilteringArrayChannel.swift in Sources */,
 				4555D7181B53372E0003475B /* SetStorage.swift in Sources */,
 				4555D72D1B53372E0003475B /* StatelessSignaling.swift in Sources */,
 				4555D7271B53372E0003475B /* ValueStorage.swift in Sources */,
